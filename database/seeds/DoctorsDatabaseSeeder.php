@@ -19,13 +19,13 @@ class DoctorsDatabaseSeeder extends Seeder
             $user->name = $faker->firstName();
             $user->lastname = $faker->lastName();
             $user->email = $faker->email();
-            $user->password = $faker->password(2, 16);
+            $user->password = Hash::make('mimmomimmo');
             $user->address = $faker->address();
             $user->save();
 
             $userDetail = new UserDetail();
             $userDetail->pic = 'https://picsum.photos/seed/'.rand(1,1000).'/200/300';
-            $userDetail->phone = $faker->phoneNumber();
+            $userDetail->phone = $faker->e164PhoneNumber();
             $userDetail->curriculum = $faker->text(1000);
 
             $user->detail()->save($userDetail);

@@ -31,6 +31,14 @@ class User extends Authenticatable
         return $this->belongsToMany(Vote::class);
     }
 
+    public function medicalServices() {
+        return $this->belongsToMany(MedicalService::class);
+    }
+
+    public function sponsors() {
+        return $this->belongsToMany(Sponsor::class);
+    }
+
 
     /**
      * The attributes that are mass assignable.

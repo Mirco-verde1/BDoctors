@@ -10,17 +10,25 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    public function detail(){
+    public function detail() {
         return $this->hasOne(UserDetail::class);
     }
 
 
-    public function messages(){
+    public function messages() {
         return $this->hasMany(Message::class);
     }
 
-    public function reviews(){
+    public function reviews() {
         return $this->hasMany(Review::class);
+    }
+
+    public function departments() {
+        return $this->belongsToMany(Department::class);
+    }
+
+    public function votes() {
+        return $this->belongsToMany(Vote::class);
     }
 
 

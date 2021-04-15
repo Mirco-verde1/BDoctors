@@ -46,7 +46,7 @@
 
                                 <select class="form-control" name="department" id="department">
                                     @foreach ($departments as $department)
-                                        <option value="department">{{$department->type}}</option>
+                                        <option value="{{$department->type}}">{{$department->type}}</option>
                                     @endforeach
                                 </select>
 
@@ -107,6 +107,10 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="department" class="col-md-4 col-form-label text-md-right"></label>
                         </div>
 
                         <div class="form-group row mb-0">

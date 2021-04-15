@@ -60,6 +60,8 @@ class MedicalServicesSeeder extends Seeder
 
             $newMedicalService->name = $medicalService['name'];
             $newMedicalService->price = $medicalService['price'];
+
+            $newMedicalService->save();
         }
     }
 }

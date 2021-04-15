@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use App\UserDetail;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -61,6 +62,51 @@ class DoctorsSeeder extends Seeder
             $newUser->address = $user['address'];
 
             $newUser->save();
+        }
+
+        $userDetails = [
+            [
+                'user_id' => '1',
+                'pic' => 'https://picsum.photos/seed/'.rand(1,1000).'/200/300',
+                'phone' => '+3903564039188',
+                'curriculum' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
+            ],
+            [
+                'user_id' => '2',
+                'pic' => 'https://picsum.photos/seed/'.rand(1,1000).'/200/300',
+                'phone' => '+3903561325788',
+                'curriculum' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
+            ],
+            [
+                'user_id' => '3',
+                'pic' => 'https://picsum.photos/seed/'.rand(1,1000).'/200/300',
+                'phone' => '+3903546289475',
+                'curriculum' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
+            ],
+            [
+                'user_id' => '4',
+                'pic' => 'https://picsum.photos/seed/'.rand(1,1000).'/200/300',
+                'phone' => '+39035675632545',
+                'curriculum' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
+            ],
+            [
+                'user_id' => '5',
+                'pic' => 'https://picsum.photos/seed/'.rand(1,1000).'/200/300',
+                'phone' => '+3903564598665',
+                'curriculum' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
+            ],
+
+        ];
+
+        foreach ($userDetails as $userDetail) {
+            $newUserDetail = new UserDetail();
+
+            $newUserDetail->user_id = $userDetail['user_id'];
+            $newUserDetail->pic = $userDetail['pic'];
+            $newUserDetail->phone = $userDetail['phone'];
+            $newUserDetail->curriculum = $userDetail['curriculum'];
+
+            $newUserDetail->save();
         }
     }
 }

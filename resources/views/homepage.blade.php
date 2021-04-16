@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
+        <link rel="stylesheet" href="{{asset('css/style.css')}}">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
 
@@ -33,8 +35,9 @@
         </div>
         <div class="jumbotron">
           <div class="container-title-jumbotron">
-             <h1>Cerca il tuo dottore online</h1>
-             <h2>BDoctor</h2>
+             <span class="title-jumbotron">Cerca il tuo dottore online</span>
+             <br>
+             <span>BDoctor</span>
           </div>
         </div>
         <div class="flex-center position-ref full-height">

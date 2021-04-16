@@ -1,0 +1,47 @@
+// Stile div navbar
+
+*{
+    font-size: 17px;
+}
+
+.container-nav{
+    height: 50px;
+
+    .header-nav{
+      display: inline-block;
+
+      li{
+          display: inline-block;
+          padding-top: 10px;
+          padding-left:5px;
+
+      }
+    }
+}
+
+.jumbotron{
+    width: 100vw;
+    height: 90vh;
+    background-image: url("https://www.doctors-365.de/home_slider_bg.95b2004ae0c9ce8f3a0b.jpg");
+    filter: brightness(0.8);
+    background-size: 120%;
+    background-position: right center;
+    position: relative;
+
+    .container-title-jumbotron{
+        width: 100vw;
+        position: absolute;
+        font-family: 'Dela Gothic One', cursive;
+        text-align: center;
+        top: 40%;
+        color: rgb(105, 175, 236);
+
+        .title-jumbotron{
+            font-size:80px;
+        }
+
+        span{
+            font-size:40px;
+        }
+    }
+}

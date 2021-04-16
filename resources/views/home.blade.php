@@ -11,7 +11,10 @@
 <body>
 
 <div id="app">
+
  <search-component></search-component>
+
+
 
 </div>
 

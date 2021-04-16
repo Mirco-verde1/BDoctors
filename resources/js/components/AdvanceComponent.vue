@@ -1,7 +1,7 @@
 <template>
 
   <div>
-<a href="/advance"><button>Ricerca avanzata</button></a>
+
 
    <div class="container">
 

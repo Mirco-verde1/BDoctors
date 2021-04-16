@@ -15,9 +15,15 @@ class UserController extends Controller
     public function index()
 
     {
-         return view('home');
+         return view('homepage');
     }
 
+
+    public function advance()
+
+    {
+         return view('advanced');
+    }
     /**
      * Show the form for creating a new resource.
      *

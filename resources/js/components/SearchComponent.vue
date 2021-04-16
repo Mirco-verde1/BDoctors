@@ -28,6 +28,10 @@
           Specializzazione: {{obj.type}}
       </div>
 
+      
+       <img :src="info.detail.pic" alt=""> 
+      
+
     </div>
 
 
@@ -65,8 +69,11 @@
         self.results = [];
 
         self.allInfo.data.forEach(elem => {
+
             elem.departments.forEach(item => {
+
                 if(item.type.toLowerCase().includes(self.searching.toLowerCase())){
+
                     return self.results.push(elem);
 
                 }

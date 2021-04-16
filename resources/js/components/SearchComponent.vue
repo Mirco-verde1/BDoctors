@@ -1,9 +1,11 @@
 <template>
 
-  <div>
-    <input type="text" name="" id="" v-model="searching">
+  <div class="form-inline">
 
-    <button @click="searchDepartment()">Cerca specializzazione</button>
+        <input class="form-control mr-sm-2" placeholder="Search" type="search" name="" id="" v-model="searching" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" @click="searchDepartment()">
+            Cerca specializzazione
+        </button>
 
     <div v-for="(info,index) in results" :key="index">
       Nome: {{info.name}} {{info.lastname}}

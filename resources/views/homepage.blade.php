@@ -17,6 +17,7 @@
 
     </head>
     <body>
+        @include('layouts/guest/partials/navbar')
         <div class="container-nav d-flex justify-content-center">
           <div class="logo-img">
              <img src="" alt="">

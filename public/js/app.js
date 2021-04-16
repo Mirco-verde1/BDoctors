@@ -1899,6 +1899,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -37616,6 +37618,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "form-inline" },
     [
       _c("input", {
         directives: [
@@ -37626,7 +37629,14 @@ var render = function() {
             expression: "searching"
           }
         ],
-        attrs: { type: "text", name: "", id: "" },
+        staticClass: "form-control mr-sm-2",
+        attrs: {
+          placeholder: "Search",
+          type: "search",
+          name: "",
+          id: "",
+          "aria-label": "Search"
+        },
         domProps: { value: _vm.searching },
         on: {
           input: function($event) {
@@ -37641,13 +37651,14 @@ var render = function() {
       _c(
         "button",
         {
+          staticClass: "btn btn-outline-success my-2 my-sm-0",
           on: {
             click: function($event) {
               return _vm.searchDepartment()
             }
           }
         },
-        [_vm._v("Cerca specializzazione")]
+        [_vm._v("\n          Cerca specializzazione\n      ")]
       ),
       _vm._v(" "),
       _vm._l(_vm.results, function(info, index) {

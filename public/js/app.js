@@ -1912,10 +1912,12 @@ __webpack_require__.r(__webpack_exports__);
     searchDepartment: function searchDepartment() {
       var self = this;
       self.results = [];
-      self.allInfo.forEach(function (elem) {
-        if (elem.department.toLowerCase().includes(self.searching.toLowerCase())) {
-          self.results.push(elem);
-        } else {}
+      self.allInfo.data.forEach(function (elem) {
+        elem.departments.forEach(function (item) {
+          if (item.type.toLowerCase().includes(self.searching.toLowerCase())) {
+            return self.results.push(elem);
+          }
+        });
       });
     }
   },
@@ -37645,19 +37647,31 @@ var render = function() {
             }
           }
         },
-        [_vm._v("cerca")]
+        [_vm._v("Cerca specializzazione")]
       ),
       _vm._v(" "),
       _vm._l(_vm.results, function(info, index) {
-        return _c("div", { key: index }, [
-          _vm._v(
-            "\n\n        " +
-              _vm._s(info.department) +
-              "\n        " +
-              _vm._s(info.name) +
-              "\n\n\n"
-          )
-        ])
+        return _c(
+          "div",
+          { key: index },
+          [
+            _vm._v(
+              "\n    Nome: " +
+                _vm._s(info.name) +
+                " " +
+                _vm._s(info.lastname) +
+                "\n\n    "
+            ),
+            _vm._l(info.departments, function(obj, index) {
+              return _c("div", { key: index }, [
+                _vm._v(
+                  "\n       Specializzazione: " + _vm._s(obj.type) + "\n    "
+                )
+              ])
+            })
+          ],
+          2
+        )
       })
     ],
     2

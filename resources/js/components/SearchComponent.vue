@@ -1,85 +1,76 @@
 <template>
 
-<div>
+  <div>
     <input type="text" name="" id="" v-model="searching">
 
-    <button @click="searchDepartment()">cerca</button>
+    <button @click="searchDepartment()">Cerca specializzazione</button>
 
-        <div v-for="(info,index) in results"
-        :key="index">
+    <div v-for="(info,index) in results" :key="index">
+      Nome: {{info.name}} {{info.lastname}}
 
-        {{info.department}}
-        {{info.name}}
+      <div v-for="(obj, index) in info.departments" :key="index">
+         Specializzazione: {{obj.type}}
+      </div>
 
+    </div>
 
-</div>
-
-</div>
+  </div>
 </template>
 
 <script>
-
-export default {
-
-
-    data:function(){
-
-     return{
-
-     allInfo:[],
-
-      results:[],
-
-      searching:'',
+  export default {
 
 
-}
+    data: function () {
+
+      return {
+
+        allInfo: [],
+
+        results: [],
+
+        searching: '',
+
+      }
 
     },
 
     methods: {
 
-//ricerca departments home page
-    searchDepartment:function(){
+      //ricerca departments home page
+      searchDepartment: function () {
         const self = this;
-        self.results=[];
+        self.results = [];
 
-        self.allInfo.forEach(elem => {
-
-            if (elem.department.toLowerCase().includes(self.searching.toLowerCase())){
-
-              self.results.push(elem);
-            }
-
-            else
-
-            {
-
-
-            }
-
+        self.allInfo.data.forEach(elem => {
+            elem.departments.forEach(item => {
+                if(item.type.toLowerCase().includes(self.searching.toLowerCase())){
+                    return self.results.push(elem);
+                }
+            })
 
         });
-    }
+      }
     },
 
     mounted() {
 
-//all doctors data
-  const self = this;
-      axios.get('http://127.0.0.1:8000/api/doctors',{
-        params:{
+      //all doctors data
+      const self = this;
+      axios.get('http://127.0.0.1:8000/api/doctors', {
+          params: {
 
-          query: self.searching,
+            query: self.searching,
 
-        },
-      })
+          },
+        })
 
-      .then((resp) => {
-        self.allInfo = resp.data
-      })
+        .then((resp) => {
+          self.allInfo = resp.data;
+        })
 
 
     },
-}
+  }
+
 </script>

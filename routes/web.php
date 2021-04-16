@@ -22,8 +22,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/test', 'Admin\UserController@index');
+
+//doctor route
+Route::get('/homepage', 'Admin\UserController@index');
+
+Route::get('/advance', 'Admin\UserController@advance');
 
 
 
+//guest route
+Route::get('/homepage', 'GuestController@index');
+
+Route::get('/advance', 'GuestController@advance');
 

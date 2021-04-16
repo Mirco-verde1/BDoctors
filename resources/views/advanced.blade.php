@@ -12,6 +12,7 @@
 
 <div id="app">
 
+    <advance-component></advance-component>
 
 
 </div>

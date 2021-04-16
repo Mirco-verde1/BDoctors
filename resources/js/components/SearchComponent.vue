@@ -1,24 +1,25 @@
 <template>
 
-<<<<<<< HEAD
-  <div class="form-inline">
-
-        <input class="form-control mr-sm-2" placeholder="Search" type="search" name="" id="" v-model="searching" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" @click="searchDepartment()">
-            Cerca specializzazione
-        </button>
-=======
   <div>
-<a href="/advance"><button>Ricerca avanzata</button></a>
+
+
 
    <div class="container">
->>>>>>> 4c0026777a2421c41f7bbdc235453d08d16e5428
 
-          <div class="row">
+        <div class="form-inline">
 
-     <input type="text" name="" id="" v-model="searching">
+            <input class="form-control mr-sm-2" placeholder="Search" type="search" name="" id="" v-model="searching" aria-label="Search">
 
-     <button @click="searchDepartment()">Cerca specializzazione</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" @click="searchDepartment()">
+                    Cerca specializzazione
+            </button>
+
+            <a href="/advance">
+                <button class="btn btn-outline-success my-2 my-sm-0">
+                    Ricerca avanzata
+                </button>
+            </a>
+        </div>
 
        <div v-for="(info,index) in results" :key="index">
         Nome: {{info.name}} {{info.lastname}}
@@ -29,7 +30,7 @@
 
     </div>
 
- </div>
+
 
 </div>
 

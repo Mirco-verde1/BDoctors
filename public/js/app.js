@@ -1980,8 +1980,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< HEAD
-=======
 //
 //
 //
@@ -1992,7 +1990,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
->>>>>>> 4c0026777a2421c41f7bbdc235453d08d16e5428
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -37874,75 +37881,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-<<<<<<< HEAD
-  return _c(
-    "div",
-    { staticClass: "form-inline" },
-    [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.searching,
-            expression: "searching"
-          }
-        ],
-        staticClass: "form-control mr-sm-2",
-        attrs: {
-          placeholder: "Search",
-          type: "search",
-          name: "",
-          id: "",
-          "aria-label": "Search"
-        },
-        domProps: { value: _vm.searching },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.searching = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-outline-success my-2 my-sm-0",
-          on: {
-            click: function($event) {
-              return _vm.searchDepartment()
-            }
-          }
-        },
-        [_vm._v("\n          Cerca specializzazione\n      ")]
-      ),
-      _vm._v(" "),
-      _vm._l(_vm.results, function(info, index) {
-        return _c(
-          "div",
-          { key: index },
-          [
-            _vm._v(
-              "\n    Nome: " +
-                _vm._s(info.name) +
-                " " +
-                _vm._s(info.lastname) +
-                "\n\n    "
-            ),
-            _vm._l(info.departments, function(obj, index) {
-              return _c("div", { key: index }, [
-=======
   return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "container" }, [
-      _c(
-        "div",
-        { staticClass: "row" },
-        [
+    _c(
+      "div",
+      { staticClass: "container" },
+      [
+        _c("div", { staticClass: "form-inline" }, [
           _c("input", {
             directives: [
               {
@@ -37952,7 +37896,14 @@ var render = function() {
                 expression: "searching"
               }
             ],
-            attrs: { type: "text", name: "", id: "" },
+            staticClass: "form-control mr-sm-2",
+            attrs: {
+              placeholder: "Search",
+              type: "search",
+              name: "",
+              id: "",
+              "aria-label": "Search"
+            },
             domProps: { value: _vm.searching },
             on: {
               input: function($event) {
@@ -37967,45 +37918,51 @@ var render = function() {
           _c(
             "button",
             {
+              staticClass: "btn btn-outline-success my-2 my-sm-0",
               on: {
                 click: function($event) {
                   return _vm.searchDepartment()
                 }
               }
             },
-            [_vm._v("Cerca specializzazione")]
+            [
+              _vm._v(
+                "\n                    Cerca specializzazione\n            "
+              )
+            ]
           ),
           _vm._v(" "),
-          _vm._l(_vm.results, function(info, index) {
-            return _c(
-              "div",
-              { key: index },
-              [
->>>>>>> 4c0026777a2421c41f7bbdc235453d08d16e5428
-                _vm._v(
-                  "\n        Nome: " +
-                    _vm._s(info.name) +
-                    " " +
-                    _vm._s(info.lastname) +
-                    "\n\n       "
-                ),
-                _vm._l(info.departments, function(obj, index) {
-                  return _c("div", { key: index }, [
-                    _vm._v(
-                      "\n          Specializzazione: " +
-                        _vm._s(obj.type) +
-                        "\n      "
-                    )
-                  ])
-                })
-              ],
-              2
-            )
-          })
-        ],
-        2
-      )
-    ])
+          _vm._m(0)
+        ]),
+        _vm._v(" "),
+        _vm._l(_vm.results, function(info, index) {
+          return _c(
+            "div",
+            { key: index },
+            [
+              _vm._v(
+                "\n        Nome: " +
+                  _vm._s(info.name) +
+                  " " +
+                  _vm._s(info.lastname) +
+                  "\n\n       "
+              ),
+              _vm._l(info.departments, function(obj, index) {
+                return _c("div", { key: index }, [
+                  _vm._v(
+                    "\n          Specializzazione: " +
+                      _vm._s(obj.type) +
+                      "\n      "
+                  )
+                ])
+              })
+            ],
+            2
+          )
+        })
+      ],
+      2
+    )
   ])
 }
 var staticRenderFns = [
@@ -38014,7 +37971,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("a", { attrs: { href: "/advance" } }, [
-      _c("button", [_vm._v("Ricerca avanzata")])
+      _c("button", { staticClass: "btn btn-outline-success my-2 my-sm-0" }, [
+        _vm._v("\n                    Ricerca avanzata\n                ")
+      ])
     ])
   }
 ]

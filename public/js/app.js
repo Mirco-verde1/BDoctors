@@ -1997,9 +1997,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -37938,11 +37935,7 @@ var render = function() {
                 }
               }
             },
-            [
-              _vm._v(
-                "\n                    Cerca specializzazione\n            "
-              )
-            ]
+            [_vm._v("\n        Cerca specializzazione\n      ")]
           ),
           _vm._v(" "),
           _vm._m(0)
@@ -37954,16 +37947,16 @@ var render = function() {
             { key: index },
             [
               _vm._v(
-                "\n        Nome: " +
+                "\n      Nome: " +
                   _vm._s(info.name) +
                   " " +
                   _vm._s(info.lastname) +
-                  "\n\n       "
+                  "\n\n      "
               ),
               _vm._l(info.departments, function(obj, index) {
                 return _c("div", { key: index }, [
                   _vm._v(
-                    "\n          Specializzazione: " +
+                    "\n        Specializzazione: " +
                       _vm._s(obj.type) +
                       "\n      "
                   )
@@ -37985,7 +37978,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("a", { attrs: { href: "/advance" } }, [
       _c("button", { staticClass: "btn btn-outline-success my-2 my-sm-0" }, [
-        _vm._v("\n                    Ricerca avanzata\n                ")
+        _vm._v("\n          Ricerca avanzata\n        ")
       ])
     ])
   }

@@ -2,37 +2,34 @@
 
   <div>
 
+    <div class="container">
 
+      <div class="form-inline">
 
-   <div class="container">
+        <input class="form-control mr-sm-2" placeholder="Search" type="search" name="" id="" v-model="searching"
+          aria-label="Search">
 
-        <div class="form-inline">
+        <button class="btn btn-outline-success my-2 my-sm-0" @click="searchDepartment()">
+          Cerca specializzazione
+        </button>
 
-            <input class="form-control mr-sm-2" placeholder="Search" type="search" name="" id="" v-model="searching" aria-label="Search">
+        <a href="/advance">
+          <button class="btn btn-outline-success my-2 my-sm-0">
+            Ricerca avanzata
+          </button>
+        </a>
+      </div>
 
-            <button class="btn btn-outline-success my-2 my-sm-0" @click="searchDepartment()">
-                    Cerca specializzazione
-            </button>
-
-            <a href="/advance">
-                <button class="btn btn-outline-success my-2 my-sm-0">
-                    Ricerca avanzata
-                </button>
-            </a>
-        </div>
-
-       <div v-for="(info,index) in results" :key="index">
+      <div v-for="(info,index) in results" :key="index">
         Nome: {{info.name}} {{info.lastname}}
 
-       <div v-for="(obj, index) in info.departments" :key="index">
+        <div v-for="(obj, index) in info.departments" :key="index">
           Specializzazione: {{obj.type}}
+        </div>
+
       </div>
 
     </div>
-
-
-
-</div>
 
 
 
@@ -65,12 +62,12 @@
         self.results = [];
 
         self.allInfo.data.forEach(elem => {
-            elem.departments.forEach(item => {
-                if(item.type.toLowerCase().includes(self.searching.toLowerCase())){
-                    return self.results.push(elem);
+          elem.departments.forEach(item => {
+            if (item.type.toLowerCase().includes(self.searching.toLowerCase())) {
+              return self.results.push(elem);
 
-                }
-            })
+            }
+          })
 
         });
 

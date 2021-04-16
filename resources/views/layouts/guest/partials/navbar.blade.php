@@ -15,10 +15,7 @@
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
-    {{-- Ricerca specializzazione --}}
-    <div id="app">
-        <search-component></search-component>
-    </div>
+
   </div>
 </nav>
 

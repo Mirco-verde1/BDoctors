@@ -10007,3 +10007,33 @@ h3 {
     border-color: #dee2e6;
   }
 }
+* {
+  font-size: 17px;
+}
+
+.container-nav {
+  height: 50px;
+}
+.container-nav .header-nav {
+  display: inline-block;
+}
+.container-nav .header-nav li {
+  display: inline-block;
+  padding-top: 10px;
+  padding-left: 5px;
+}
+
+.jumbotron {
+  width: 100vw;
+  height: 90vh;
+  background-image: url("https://www.doctors-365.de/home_slider_bg.95b2004ae0c9ce8f3a0b.jpg");
+  background-size: cover;
+  position: relative;
+}
+.jumbotron .container-title-jumbotron {
+  width: 100vw;
+  position: absolute;
+  font-family: "Dela Gothic One", cursive;
+  text-align: center;
+  top: 40%;
+}

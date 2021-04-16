@@ -1997,16 +1997,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< HEAD
 //
 //
 //
-//
-//
-//
-//
-=======
->>>>>>> front-end
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2027,6 +2020,14 @@ __webpack_require__.r(__webpack_exports__);
           }
         });
       });
+    },
+    //se si cancella la ricerca, non mostriamo risultati precedenti
+    searchOff: function searchOff() {
+      if (this.searching === '') {
+        this.results = [];
+      }
+
+      return this.results;
     }
   },
   mounted: function mounted() {
@@ -37926,6 +37927,9 @@ var render = function() {
             },
             domProps: { value: _vm.searching },
             on: {
+              keyup: function($event) {
+                return _vm.searchOff()
+              },
               input: function($event) {
                 if ($event.target.composing) {
                   return
@@ -37945,15 +37949,7 @@ var render = function() {
                 }
               }
             },
-<<<<<<< HEAD
-            [
-              _vm._v(
-                "\n                    Cerca specializzazione\n            "
-              )
-            ]
-=======
-            [_vm._v("\n        Cerca specializzazione\n      ")]
->>>>>>> front-end
+            [_vm._v("\n         Cerca specializzazione\n       ")]
           ),
           _vm._v(" "),
           _vm._m(0)
@@ -37965,39 +37961,23 @@ var render = function() {
             { key: index },
             [
               _vm._v(
-<<<<<<< HEAD
-                "\n        Nome: " +
+                "\n       Nome: " +
                   _vm._s(info.name) +
                   " " +
                   _vm._s(info.lastname) +
                   "\n\n       "
-=======
-                "\n      Nome: " +
-                  _vm._s(info.name) +
-                  " " +
-                  _vm._s(info.lastname) +
-                  "\n\n      "
->>>>>>> front-end
               ),
               _vm._l(info.departments, function(obj, index) {
                 return _c("div", { key: index }, [
                   _vm._v(
-<<<<<<< HEAD
-                    "\n          Specializzazione: " +
-=======
-                    "\n        Specializzazione: " +
->>>>>>> front-end
+                    "\n         Specializzazione: " +
                       _vm._s(obj.type) +
-                      "\n      "
+                      "\n       "
                   )
                 ])
-<<<<<<< HEAD
               }),
               _vm._v(" "),
               _c("img", { attrs: { src: info.detail.pic, alt: "" } })
-=======
-              })
->>>>>>> front-end
             ],
             2
           )
@@ -38014,11 +37994,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("a", { attrs: { href: "/advance" } }, [
       _c("button", { staticClass: "btn btn-outline-success my-2 my-sm-0" }, [
-<<<<<<< HEAD
-        _vm._v("\n                    Ricerca avanzata\n                ")
-=======
-        _vm._v("\n          Ricerca avanzata\n        ")
->>>>>>> front-end
+        _vm._v("\n           Ricerca avanzata\n         ")
       ])
     ])
   }

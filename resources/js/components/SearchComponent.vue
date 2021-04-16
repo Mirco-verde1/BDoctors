@@ -1,34 +1,13 @@
 <template>
 
   <div>
-<<<<<<< HEAD
-
-
-
-   <div class="container">
-
-        <div class="form-inline">
-
-            <input class="form-control mr-sm-2" placeholder="Search" type="search" name="" id="" v-model="searching" aria-label="Search">
-
-            <button class="btn btn-outline-success my-2 my-sm-0" @click="searchDepartment()">
-                    Cerca specializzazione
-            </button>
-
-            <a href="/advance">
-                <button class="btn btn-outline-success my-2 my-sm-0">
-                    Ricerca avanzata
-                </button>
-            </a>
-        </div>
-=======
 
     <div class="container">
 
       <div class="form-inline">
 
         <input class="form-control mr-sm-2" placeholder="Search" type="search" name="" id="" v-model="searching"
-          aria-label="Search">
+          aria-label="Search" @keyup="searchOff()">
 
         <button class="btn btn-outline-success my-2 my-sm-0" @click="searchDepartment()">
           Cerca specializzazione
@@ -40,7 +19,6 @@
           </button>
         </a>
       </div>
->>>>>>> front-end
 
       <div v-for="(info,index) in results" :key="index">
         Nome: {{info.name}} {{info.lastname}}
@@ -49,21 +27,13 @@
           Specializzazione: {{obj.type}}
         </div>
 
-      </div>
-
+    
       
        <img :src="info.detail.pic" alt=""> 
       
-
+ </div>
     </div>
 
-<<<<<<< HEAD
-
-
-</div>
-
-=======
->>>>>>> front-end
 
 
   </div>
@@ -95,24 +65,23 @@
         self.results = [];
 
         self.allInfo.data.forEach(elem => {
-<<<<<<< HEAD
-
-            elem.departments.forEach(item => {
-
-                if(item.type.toLowerCase().includes(self.searching.toLowerCase())){
-
-                    return self.results.push(elem);
-=======
           elem.departments.forEach(item => {
             if (item.type.toLowerCase().includes(self.searching.toLowerCase())) {
               return self.results.push(elem);
->>>>>>> front-end
 
             }
           })
 
         });
 
+      },
+
+//se si cancella la ricerca, non mostriamo risultati precedenti
+      searchOff:function(){
+      if(this.searching === ''){
+         this.results = [];
+      }
+        return this.results;
       }
 
     },

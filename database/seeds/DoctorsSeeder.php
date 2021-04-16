@@ -2,6 +2,7 @@
 
 use App\User;
 use App\UserDetail;
+use App\Department;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,11 +15,14 @@ class DoctorsSeeder extends Seeder
      */
     public function run()
     {
+
+        $departments = Department::all();
+
         $users = [
             [
                 'name' => 'Lorenzo',
                 'lastname' => 'Monaldo',
-                'department' => 'cardiologia',
+                'department' => $departments[rand(1, count($departments))],
                 'email' => 'monaldo@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via Campi Flegrei, 17',
@@ -26,7 +30,7 @@ class DoctorsSeeder extends Seeder
             [
                 'name' => 'Palmira',
                 'lastname' => 'Fallaci',
-                'department' => 'cardiologia',
+                'department' => $departments[rand(1, count($departments))],
                 'email' => 'fallaci@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via Ponte In Valtellina, 2',
@@ -34,7 +38,7 @@ class DoctorsSeeder extends Seeder
             [
                 'name' => 'Germano',
                 'lastname' => 'Nucci',
-                'department' => 'cardiologia',
+                'department' => $departments[rand(1, count($departments))],
                 'email' => 'nucci@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Piazza San Carlo, 13',
@@ -42,7 +46,7 @@ class DoctorsSeeder extends Seeder
             [
                 'name' => 'Albina',
                 'lastname' => 'Giordano',
-                'department' => 'cardiologia',
+                'department' => $departments[rand(1, count($departments))],
                 'email' => 'giordano@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via Venezia, 56',
@@ -50,7 +54,7 @@ class DoctorsSeeder extends Seeder
             [
                 'name' => 'Romilda',
                 'lastname' => 'Lo Duca',
-                'department' => 'cardiologia',
+                'department' => $departments[rand(1, count($departments))],
                 'email' => 'loduca@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via Catullo, 34',
@@ -62,12 +66,13 @@ class DoctorsSeeder extends Seeder
 
             $newUser->name = $user['name'];
             $newUser->lastname = $user['lastname'];
-            $newUser->department = $user['department'];
             $newUser->email = $user['email'];
             $newUser->password = $user['password'];
             $newUser->address = $user['address'];
-
+            
             $newUser->save();
+
+            $newUser->departments()->attach($user['department']);
         }
 
         $userDetails = [

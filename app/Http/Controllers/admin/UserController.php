@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -12,9 +13,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('doctor_view/profile');
 
+    {
+         return view('home');
     }
 
     /**
@@ -24,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('doctor_view/edit');
+        //
     }
 
     /**
@@ -57,7 +58,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('doctor_view/edit');
+        //
     }
 
     /**
@@ -69,7 +70,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return view('doctor_view/edit');
+        //
     }
 
     /**

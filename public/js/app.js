@@ -1997,6 +1997,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 //
 //
 //
@@ -2004,6 +2005,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+=======
+>>>>>>> front-end
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -34687,6 +34690,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/sass/style.scss":
+/*!***********************************!*\
+  !*** ./resources/sass/style.scss ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./node_modules/popper.js/dist/esm/popper.js":
 /*!***************************************************!*\
   !*** ./node_modules/popper.js/dist/esm/popper.js ***!
@@ -37929,11 +37945,15 @@ var render = function() {
                 }
               }
             },
+<<<<<<< HEAD
             [
               _vm._v(
                 "\n                    Cerca specializzazione\n            "
               )
             ]
+=======
+            [_vm._v("\n        Cerca specializzazione\n      ")]
+>>>>>>> front-end
           ),
           _vm._v(" "),
           _vm._m(0)
@@ -37945,23 +37965,39 @@ var render = function() {
             { key: index },
             [
               _vm._v(
+<<<<<<< HEAD
                 "\n        Nome: " +
                   _vm._s(info.name) +
                   " " +
                   _vm._s(info.lastname) +
                   "\n\n       "
+=======
+                "\n      Nome: " +
+                  _vm._s(info.name) +
+                  " " +
+                  _vm._s(info.lastname) +
+                  "\n\n      "
+>>>>>>> front-end
               ),
               _vm._l(info.departments, function(obj, index) {
                 return _c("div", { key: index }, [
                   _vm._v(
+<<<<<<< HEAD
                     "\n          Specializzazione: " +
+=======
+                    "\n        Specializzazione: " +
+>>>>>>> front-end
                       _vm._s(obj.type) +
                       "\n      "
                   )
                 ])
+<<<<<<< HEAD
               }),
               _vm._v(" "),
               _c("img", { attrs: { src: info.detail.pic, alt: "" } })
+=======
+              })
+>>>>>>> front-end
             ],
             2
           )
@@ -37978,7 +38014,11 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("a", { attrs: { href: "/advance" } }, [
       _c("button", { staticClass: "btn btn-outline-success my-2 my-sm-0" }, [
+<<<<<<< HEAD
         _vm._v("\n                    Ricerca avanzata\n                ")
+=======
+        _vm._v("\n          Ricerca avanzata\n        ")
+>>>>>>> front-end
       ])
     ])
   }
@@ -50219,7 +50259,8 @@ Vue.compile = compileToFunctions;
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
-/******/ 			"css/app": 0
+/******/ 			"css/app": 0,
+/******/ 			"css/style": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -50267,8 +50308,9 @@ Vue.compile = compileToFunctions;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/style"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/style"], () => (__webpack_require__("./resources/sass/app.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","css/style"], () => (__webpack_require__("./resources/sass/style.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

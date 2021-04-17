@@ -1,7 +1,4 @@
 <template>
-
-  <div>
-
     <div class="container">
 
       <div class="form-inline">
@@ -25,7 +22,6 @@
 
     </div>
 
-  </div>
 </template>
 
 <script>

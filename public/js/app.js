@@ -2013,10 +2013,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -38126,78 +38122,76 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "form-inline" }, [
-        _c(
-          "form",
-          {
-            staticClass: "needs-validation",
-            attrs: { action: "/advance", novalidate: "" }
-          },
-          [
-            _c("div", { staticClass: "search" }, [
-              _c("div", { staticClass: "search-left" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.searching,
-                      expression: "searching"
-                    }
-                  ],
-                  staticClass: "form-control mr-sm-2",
-                  class:
-                    _vm.searching && !_vm.validateQuery() ? "is-invalid" : "",
-                  attrs: {
-                    placeholder: "Search",
-                    type: "search",
-                    name: "",
-                    id: "",
-                    "aria-label": "Search"
-                  },
-                  domProps: { value: _vm.searching },
-                  on: {
-                    keyup: function($event) {
-                      if (
-                        !$event.type.indexOf("key") &&
-                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                      ) {
-                        return null
-                      }
-                      return _vm.searchDepartment()
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.searching = $event.target.value
-                    }
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "form-inline" }, [
+      _c(
+        "form",
+        {
+          staticClass: "needs-validation",
+          attrs: { action: "/advance", novalidate: "" }
+        },
+        [
+          _c("div", { staticClass: "search" }, [
+            _c("div", { staticClass: "search-left" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.searching,
+                    expression: "searching"
                   }
-                }),
-                _vm._v(" "),
-                _vm._m(0)
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "query-submit btn btn-outline-success my-2 my-sm-0",
-                  attrs: { type: "submit" },
-                  on: {
-                    click: function($event) {
-                      return _vm.searchDepartment()
-                    }
-                  }
+                ],
+                staticClass: "form-control mr-sm-2",
+                class:
+                  _vm.searching && !_vm.validateQuery() ? "is-invalid" : "",
+                attrs: {
+                  placeholder: "Search",
+                  type: "search",
+                  name: "",
+                  id: "",
+                  "aria-label": "Search"
                 },
-                [_vm._v("\n          Cerca specializzazione\n          ")]
-              )
-            ])
-          ]
-        )
-      ])
+                domProps: { value: _vm.searching },
+                on: {
+                  keyup: function($event) {
+                    if (
+                      !$event.type.indexOf("key") &&
+                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                    ) {
+                      return null
+                    }
+                    return _vm.searchDepartment()
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.searching = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(0)
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass:
+                  "query-submit btn btn-outline-success my-2 my-sm-0",
+                attrs: { type: "submit" },
+                on: {
+                  click: function($event) {
+                    return _vm.searchDepartment()
+                  }
+                }
+              },
+              [_vm._v("\n        Cerca specializzazione\n        ")]
+            )
+          ])
+        ]
+      )
     ])
   ])
 }

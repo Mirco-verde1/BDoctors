@@ -10,12 +10,11 @@
 </head>
 <body>
 
-<div id="app">
+    <div id="app">
 
-    <advance-component></advance-component>
-
-
-</div>
+        <advance-component></advance-component>
+        
+    </div>
 
     <script src="{{asset('js/app.js')}}"></script>
 </body>

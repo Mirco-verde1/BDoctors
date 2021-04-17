@@ -35,10 +35,10 @@
             </div>
             </div>
             <div class="jumbotron">
-            <div class="container-title-jumbotron">
-                <span class="title-jumbotron">Cerca il tuo dottore online</span>
+            <div class="jumbotron-container-title">
+                <span class="title">Cerca il tuo dottore online</span>
                 <br>
-                <span>BDoctor</span>
+                <span class="subtitle">BDoctor</span>
                 <search-component></search-component>
             </div>
             </div>

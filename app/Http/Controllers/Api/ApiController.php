@@ -15,7 +15,7 @@ class ApiController extends Controller
     {
         return response()->json([
             'success' => true,
-            'data' => User::with('departments', 'detail')->get(),
+            'data' => User::with('departments', 'detail')->get()
         ], 200);
     }
 

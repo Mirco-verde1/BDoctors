@@ -15,4 +15,4 @@ mix.js('resources/js/app.js', 'public/js')
   .vue()
   .sass('resources/sass/app.scss', 'public/css');
 mix.sass('resources/sass/style.scss', 'public/css')
-    .options({ processCssUrls: false });
+  .options({ processCssUrls: false });

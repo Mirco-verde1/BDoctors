@@ -10,13 +10,11 @@
 </head>
 <body>
 
-<div id="app">
+    <div id="app">
 
- <search-component></search-component>
+        <search-component></search-component>
 
-
-
-</div>
+    </div>
 
     <script src="{{asset('js/app.js')}}"></script>
 </body>

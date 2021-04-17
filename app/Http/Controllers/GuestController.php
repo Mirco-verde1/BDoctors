@@ -33,7 +33,7 @@ class GuestController extends Controller
 
 
     public function show(User $user, UserDetail $userDetail, Department $userDepartment){
-     
+
 
 
         return view('showDoc', compact('user', 'userDetail', 'userDepartment'));

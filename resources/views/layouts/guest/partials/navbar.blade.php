@@ -3,7 +3,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a href="#"><img src="img/logomod.png" class="logo-img"alt=""></a>
+        <a href="homepage"><img src="img/logomod.png" class="logo-img"alt=""></a>
             @if (Route::has('login'))
             @auth
             <a class="query-submit btn btn-outline-success my-2 my-sm-0" phref="{{ url('/home') }}">Home</a>

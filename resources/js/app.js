@@ -24,7 +24,7 @@ Vue.component('search-component', require('./components/SearchComponent.vue').de
 
 Vue.component('advance-component', require('./components/AdvanceComponent.vue').default);
 
-Vue.component('departments-component', require('./components/DepartmentsQuery.vue').default);
+
 
 
 /**

@@ -31,7 +31,6 @@
             </div>
             </div>
 
-            <departments-component></departments-component>
 
         </div>
         {{-- app --}}

@@ -3,6 +3,7 @@
 use App\User;
 use App\UserDetail;
 use App\Department;
+use App\Vote;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -17,6 +18,9 @@ class DoctorsSeeder extends Seeder
     {
 
         $departments = Department::all();
+        $votes = Vote::all();
+
+
 
         $users = [
             [
@@ -69,7 +73,7 @@ class DoctorsSeeder extends Seeder
             $newUser->email = $user['email'];
             $newUser->password = $user['password'];
             $newUser->address = $user['address'];
-            
+
             $newUser->save();
 
             $newUser->departments()->attach($user['department']);

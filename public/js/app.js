@@ -1874,7 +1874,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< HEAD
 //
 //
 //
@@ -1894,80 +1893,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  data: function data() {
-    return {
-      allInfo: [],
-      checked: [],
-      results: [],
-      searching: ''
-    };
-  },
-  methods: {
-    //ricerca departments home page
-    searchDepartment: function searchDepartment() {
-      var self = this;
-      self.results = [];
-      self.allInfo.data.forEach(function (elem) {
-        elem.departments.forEach(function (item) {
-          if (item.type.toLowerCase().includes(self.searching.toLowerCase())) {
-            return self.results.push(elem);
-          }
-        });
-      });
-    },
-    //ricerca name dottore
-    searchDocName: function searchDocName() {
-      var self = this;
-      self.results = [];
-      self.allInfo.data.forEach(function (elem) {
-        if (elem.name.toLowerCase().includes(self.searching.toLowerCase())) {
-          return self.results.push(elem);
-        }
-      });
-    },
-    //filter results by checkboxes
-    filterByCheck: function filterByCheck() {
-      var self = this;
-      self.results = [];
-      self.allInfo.data.forEach(function (item) {
-        self.checked.forEach(function (element) {
-          if (item.name.toLowerCase().includes(element)) {
-            self.results.push(item);
-          }
-        });
-      });
-    },
-    //se si cancella la ricerca, non mostriamo risultati precedenti
-    searchOff: function searchOff() {
-      if (this.searching === '') {
-        this.results = [];
-      }
-
-      return this.results;
-    }
-  },
-  mounted: function mounted() {
-    //all doctors data
-    var self = this;
-    axios.get('http://127.0.0.1:8000/api/doctors', {
-      params: {
-        query: self.searching
-      }
-    }).then(function (resp) {
-      self.allInfo = resp.data;
-    });
-  }
-=======
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       // Recupera la stringa JSON dallo storage locale e la trasforma in un oggetto JavaScript
-      results: JSON.parse(localStorage.getItem('results'))
+      results: JSON.parse(localStorage.getItem('results')),
+      checked: [],
+      checkedResults: []
     };
   },
-  methods: {}
->>>>>>> 26f8bfaead2642f197c72de69a9e056eaa9112b8
+  methods: {
+    //filter results by checkboxes
+    filterByCheck: function filterByCheck() {
+      var self = this;
+      self.checkedResults = [];
+      self.results.forEach(function (item) {
+        self.checked.forEach(function (elem) {
+          if (item.name.toLowerCase().includes(elem)) {
+            self.checkedResults.push(item);
+          }
+        });
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -2018,6 +1987,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
 //
 //
 //
@@ -37946,145 +37916,142 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "container" }, [
-      _c(
-        "div",
-        { staticClass: "row" },
-        [
-<<<<<<< HEAD
+      _c("div", { staticClass: "row" }, [
+        _vm.checkedResults.length === 0
+          ? _c(
+              "div",
+              { staticClass: "results" },
+              [
+                _vm.results.length === 0
+                  ? _c("h5", [
+                      _vm._v(
+                        "Nessun risultato corrisponde ai tuoi criteri di ricerca."
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm._l(_vm.results, function(doctor, index) {
+                  return _c(
+                    "div",
+                    { key: index },
+                    [
+                      _vm._v(
+                        "\n          Nome: " +
+                          _vm._s(doctor.name) +
+                          " " +
+                          _vm._s(doctor.lastname) +
+                          "\n\n          "
+                      ),
+                      _vm._l(doctor.departments, function(obj, index) {
+                        return _c("div", { key: index }, [
+                          _vm._v(
+                            "\n            Specializzazione: " +
+                              _vm._s(obj.type) +
+                              "\n          "
+                          )
+                        ])
+                      }),
+                      _vm._v(" "),
+                      _c("img", {
+                        attrs: { src: doctor.detail.pic, alt: "profile pic" }
+                      })
+                    ],
+                    2
+                  )
+                })
+              ],
+              2
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.checkedResults.length > 0
+          ? _c(
+              "div",
+              _vm._l(_vm.checkedResults, function(item, index) {
+                return _c(
+                  "div",
+                  { key: index },
+                  [
+                    _vm._v(
+                      "\n          Nome: " +
+                        _vm._s(item.name) +
+                        " " +
+                        _vm._s(item.lastname) +
+                        "\n\n          "
+                    ),
+                    _vm._l(item.departments, function(obj, index) {
+                      return _c("div", { key: index }, [
+                        _vm._v(
+                          "\n            Specializzazione: " +
+                            _vm._s(obj.type) +
+                            "\n          "
+                        )
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: { src: item.detail.pic, alt: "profile pic" }
+                    })
+                  ],
+                  2
+                )
+              }),
+              0
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "filters" }, [
           _c("input", {
             directives: [
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.searching,
-                expression: "searching"
+                value: _vm.checked,
+                expression: "checked"
               }
             ],
-            attrs: {
-              type: "text",
-              name: "",
-              id: "",
-              placeholder: "cerca specializzazione o nome dottore"
+            attrs: { type: "checkbox", name: "palmira", value: "palmira" },
+            domProps: {
+              checked: Array.isArray(_vm.checked)
+                ? _vm._i(_vm.checked, "palmira") > -1
+                : _vm.checked
             },
-            domProps: { value: _vm.searching },
             on: {
-              keyup: function($event) {
-                return _vm.searchOff()
-              },
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              change: function($event) {
+                var $$a = _vm.checked,
+                  $$el = $event.target,
+                  $$c = $$el.checked ? true : false
+                if (Array.isArray($$a)) {
+                  var $$v = "palmira",
+                    $$i = _vm._i($$a, $$v)
+                  if ($$el.checked) {
+                    $$i < 0 && (_vm.checked = $$a.concat([$$v]))
+                  } else {
+                    $$i > -1 &&
+                      (_vm.checked = $$a
+                        .slice(0, $$i)
+                        .concat($$a.slice($$i + 1)))
+                  }
+                } else {
+                  _vm.checked = $$c
                 }
-                _vm.searching = $event.target.value
               }
             }
           }),
-          _vm._v(" "),
+          _vm._v("\n    filtro name palmira\n\n\n    "),
           _c(
             "button",
             {
               on: {
                 click: function($event) {
-                  _vm.searchDepartment(), _vm.searchDocName()
+                  return _vm.filterByCheck()
                 }
               }
             },
-            [_vm._v("Cerca specializzazione")]
-          ),
-=======
-          _vm.results.length === 0
-            ? _c("h5", [
-                _vm._v(
-                  "Nessun risultato corrisponde ai tuoi criteri di ricerca."
-                )
-              ])
-            : _vm._e(),
->>>>>>> 26f8bfaead2642f197c72de69a9e056eaa9112b8
-          _vm._v(" "),
-          _vm._l(_vm.results, function(doctor, index) {
-            return _c(
-              "div",
-              { key: index },
-              [
-                _vm._v(
-                  "\n        Nome: " +
-                    _vm._s(doctor.name) +
-                    " " +
-                    _vm._s(doctor.lastname) +
-                    "\n\n        "
-                ),
-                _vm._l(doctor.departments, function(obj, index) {
-                  return _c("div", { key: index }, [
-                    _vm._v(
-                      "\n          Specializzazione: " +
-                        _vm._s(obj.type) +
-                        "\n        "
-                    )
-                  ])
-                }),
-                _vm._v(" "),
-                _c("img", {
-                  attrs: { src: doctor.detail.pic, alt: "profile pic" }
-                })
-              ],
-              2
-            )
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "filters" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.checked,
-                  expression: "checked"
-                }
-              ],
-              attrs: { type: "checkbox", name: "palmira", value: "palmira" },
-              domProps: {
-                checked: Array.isArray(_vm.checked)
-                  ? _vm._i(_vm.checked, "palmira") > -1
-                  : _vm.checked
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.checked,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = "palmira",
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.checked = $$a.concat([$$v]))
-                    } else {
-                      $$i > -1 &&
-                        (_vm.checked = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
-                    }
-                  } else {
-                    _vm.checked = $$c
-                  }
-                }
-              }
-            }),
-            _vm._v("\n    filtro name palmira \n  \n    \n    "),
-            _c(
-              "button",
-              {
-                on: {
-                  click: function($event) {
-                    return _vm.filterByCheck()
-                  }
-                }
-              },
-              [_vm._v("Applica Filtro")]
-            )
-          ])
-        ],
-        2
-      )
+            [_vm._v("Applica Filtro")]
+          )
+        ])
+      ])
     ])
   ])
 }
@@ -38192,6 +38159,15 @@ var render = function() {
                   },
                   domProps: { value: _vm.searching },
                   on: {
+                    keyup: function($event) {
+                      if (
+                        !$event.type.indexOf("key") &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                      ) {
+                        return null
+                      }
+                      return _vm.searchDepartment()
+                    },
                     input: function($event) {
                       if ($event.target.composing) {
                         return

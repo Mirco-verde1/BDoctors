@@ -8,7 +8,8 @@
         <form action="/advance" class="needs-validation" novalidate>
           <div class="search">
             <div class="search-left">
-              <input class="form-control mr-sm-2" :class="searching && !validateQuery() ? 'is-invalid' : ''" placeholder="Search" type="search" name="" id="" v-model="searching"
+              <input class="form-control mr-sm-2" :class="searching && !validateQuery() ? 'is-invalid' : ''" placeholder="Search" type="search" name="" id=""
+              @keyup.enter="searchDepartment()" v-model="searching"
               aria-label="Search">
               <div class="invalid-feedback">
                 <span class="invalid-message">Il formato non è valido</span>
@@ -20,8 +21,8 @@
             </button>
          </div>
         </form>
-      </div>    
-        
+      </div>
+
     </div>
 
   </div>

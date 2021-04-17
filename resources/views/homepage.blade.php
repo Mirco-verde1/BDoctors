@@ -30,7 +30,7 @@
 
             </div>
             </div>
-
+            @include('layouts/guest/partials/footer')
 
         </div>
         {{-- app --}}

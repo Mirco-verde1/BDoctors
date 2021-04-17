@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Department;
 use App\User;
 use App\UserDetail;
+use App\Vote;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class ApiController extends Controller
     {
         return response()->json([
             'success' => true,
-            'data' => User::with('departments', 'detail')->get(),
+            'data' => User::with('departments', 'detail','votes')->get(),
         ], 200);
     }
 

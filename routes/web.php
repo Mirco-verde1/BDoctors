@@ -31,7 +31,10 @@ Route::get('/advance', 'Admin\UserController@advance');
 
 
 //guest route
-Route::get('/homepage', 'GuestController@index');
+Route::get('/guest', 'GuestController@index');
 
 Route::get('/advance', 'GuestController@advance');
+
+Route::get('/doctor', 'GuestController@show');
+
 

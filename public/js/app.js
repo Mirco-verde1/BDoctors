@@ -1876,10 +1876,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       allInfo: [],
+      checked: [],
       results: [],
       searching: ''
     };
@@ -1896,6 +1914,36 @@ __webpack_require__.r(__webpack_exports__);
           }
         });
       });
+    },
+    //ricerca name dottore
+    searchDocName: function searchDocName() {
+      var self = this;
+      self.results = [];
+      self.allInfo.data.forEach(function (elem) {
+        if (elem.name.toLowerCase().includes(self.searching.toLowerCase())) {
+          return self.results.push(elem);
+        }
+      });
+    },
+    //filter results by checkboxes
+    filterByCheck: function filterByCheck() {
+      var self = this;
+      self.results = [];
+      self.allInfo.data.forEach(function (item) {
+        self.checked.forEach(function (element) {
+          if (item.name.toLowerCase().includes(element)) {
+            self.results.push(item);
+          }
+        });
+      });
+    },
+    //se si cancella la ricerca, non mostriamo risultati precedenti
+    searchOff: function searchOff() {
+      if (this.searching === '') {
+        this.results = [];
+      }
+
+      return this.results;
     }
   },
   mounted: function mounted() {
@@ -37776,9 +37824,17 @@ var render = function() {
                 expression: "searching"
               }
             ],
-            attrs: { type: "text", name: "", id: "" },
+            attrs: {
+              type: "text",
+              name: "",
+              id: "",
+              placeholder: "cerca specializzazione o nome dottore"
+            },
             domProps: { value: _vm.searching },
             on: {
+              keyup: function($event) {
+                return _vm.searchOff()
+              },
               input: function($event) {
                 if ($event.target.composing) {
                   return
@@ -37793,7 +37849,7 @@ var render = function() {
             {
               on: {
                 click: function($event) {
-                  return _vm.searchDepartment()
+                  _vm.searchDepartment(), _vm.searchDocName()
                 }
               }
             },
@@ -37824,7 +37880,59 @@ var render = function() {
               ],
               2
             )
-          })
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "filters" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.checked,
+                  expression: "checked"
+                }
+              ],
+              attrs: { type: "checkbox", name: "palmira", value: "palmira" },
+              domProps: {
+                checked: Array.isArray(_vm.checked)
+                  ? _vm._i(_vm.checked, "palmira") > -1
+                  : _vm.checked
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.checked,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = "palmira",
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.checked = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.checked = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.checked = $$c
+                  }
+                }
+              }
+            }),
+            _vm._v("\n    filtro name palmira \n  \n    \n    "),
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.filterByCheck()
+                  }
+                }
+              },
+              [_vm._v("Applica Filtro")]
+            )
+          ])
         ],
         2
       )

@@ -7,7 +7,8 @@
 
           <div class="row">
 
-     <input type="text" name="" id="" v-model="searching">
+<!-- Guest input search part -->
+     <input type="text" name="" id="" v-model="searching" placeholder="cerca specializzazione o nome dottore">
 
      <button @click="searchDepartment()">Cerca specializzazione</button>
 
@@ -19,6 +20,22 @@
       </div>
 
     </div>
+
+<!-- Filter results part -->
+  <div class="filters">
+    <input type="checkbox" name="palmira" value="palmira" v-model="checked">
+    filtro name palmira
+
+
+
+
+
+  </div>
+
+
+
+
+
 
  </div>
 
@@ -38,6 +55,8 @@
       return {
 
         allInfo: [],
+
+        checked:[],
 
         results: [],
 
@@ -64,9 +83,13 @@
 
         });
 
-      }
+      },
+
+
 
     },
+
+
 
     mounted() {
 

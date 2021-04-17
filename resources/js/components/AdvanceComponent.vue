@@ -2,65 +2,40 @@
 
   <div>
 
+    <div class="container">
 
-   <div class="container">
+      <div class="row">
 
-          <div class="row">
+        <h5 v-if="results.length === 0">Nessun risultato corrisponde ai tuoi criteri di ricerca.</h5>
 
-<!-- Guest input search part -->
-     <input type="text" name="" id="" v-model="searching" placeholder="cerca specializzazione o nome dottore">
+        <div v-for="(doctor,index) in results" :key="index">
+          Nome: {{doctor.name}} {{doctor.lastname}}
 
-     <button @click="searchDepartment()">Cerca specializzazione</button>
+          <div v-for="(obj, index) in doctor.departments" :key="index">
+            Specializzazione: {{obj.type}}
+          </div>
 
-       <div v-for="(info,index) in results" :key="index">
-        Nome: {{info.name}} {{info.lastname}}
+          <img :src="doctor.detail.pic" alt="profile pic">
 
-       <div v-for="(obj, index) in info.departments" :key="index">
-          Specializzazione: {{obj.type}}
-      </div>
+        </div>
 
-    </div>
+     </div>
 
-<!-- Filter results part -->
-  <div class="filters">
-    <input type="checkbox" name="palmira" value="palmira" v-model="checked">
-    filtro name palmira
-
-
-
-
+   </div>
 
   </div>
 
-
-
-
-
-
- </div>
-
-</div>
-
-
-
-  </div>
 </template>
 
 <script>
   export default {
 
-
     data: function () {
 
       return {
 
-        allInfo: [],
-
-        checked:[],
-
-        results: [],
-
-        searching: '',
+        // Recupera la stringa JSON dallo storage locale e la trasforma in un oggetto JavaScript
+        results: JSON.parse(localStorage.getItem('results')),
 
       }
 
@@ -68,47 +43,7 @@
 
     methods: {
 
-      //ricerca departments home page
-      searchDepartment: function () {
-        const self = this;
-        self.results = [];
-
-        self.allInfo.data.forEach(elem => {
-            elem.departments.forEach(item => {
-                if(item.type.toLowerCase().includes(self.searching.toLowerCase())){
-                    return self.results.push(elem);
-
-                }
-            })
-
-        });
-
-      },
-
-
-
-    },
-
-
-
-    mounted() {
-
-      //all doctors data
-      const self = this;
-      axios.get('http://127.0.0.1:8000/api/doctors', {
-          params: {
-
-            query: self.searching,
-
-          },
-        })
-
-        .then((resp) => {
-          self.allInfo = resp.data;
-        })
-
-
-    },
+    }
 
   }
 

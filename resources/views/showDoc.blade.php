@@ -10,11 +10,12 @@
 </head>
 <body>
 
+    <div id="app">
 
-    {{$user->name}}
+        <search-component></search-component>
 
+    </div>
 
-
-    
+    <script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>

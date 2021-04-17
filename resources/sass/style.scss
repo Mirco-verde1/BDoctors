@@ -1,6 +1,6 @@
 // Stile div navbar
 
-*{
+* {
     font-size: 17px;
 }
 
@@ -23,12 +23,12 @@
     width: 100vw;
     height: 90vh;
     background-image: url("https://www.doctors-365.de/home_slider_bg.95b2004ae0c9ce8f3a0b.jpg");
-    filter: brightness(0.8);
+    filter: brightness(.8);
     background-size: 120%;
     background-position: right center;
     position: relative;
 
-    .container-title-jumbotron{
+    &-container-title{
         width: 100vw;
         position: absolute;
         font-family: 'Dela Gothic One', cursive;
@@ -36,11 +36,11 @@
         top: 40%;
         color: rgb(105, 175, 236);
 
-        .title-jumbotron{
+        .title{
             font-size:80px;
         }
 
-        span{
+        .subtitle{
             font-size:40px;
         }
     }

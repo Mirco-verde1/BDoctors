@@ -5,43 +5,30 @@
     <div class="container">
 
       <div class="form-inline">
+        <form action="/advance" class="needs-validation" novalidate>
+          <div class="search">
+            <div class="search-left">
+              <input class="form-control mr-sm-2" :class="searching && !validateQuery() ? 'is-invalid' : ''" placeholder="Search" type="search" name="" id="" v-model="searching"
+              aria-label="Search">
+              <div class="invalid-feedback">
+                <span class="invalid-message">Il formato non è valido</span>
+              </div>
+            </div>
 
-        <input class="form-control mr-sm-2" placeholder="Search" type="search" name="" id="" v-model="searching"
-          aria-label="Search" @keyup="searchOff()">
-
-        <button class="btn btn-outline-success my-2 my-sm-0" @click="searchDepartment()">
-          Cerca specializzazione
-        </button>
-
-        <a href="/advance">
-          <button class="btn btn-outline-success my-2 my-sm-0">
-            Ricerca avanzata
-          </button>
-        </a>
-      </div>
-
-      <div v-for="(info,index) in results" :key="index">
-        Nome: {{info.name}} {{info.lastname}}
-
-        <div v-for="(obj, index) in info.departments" :key="index">
-          Specializzazione: {{obj.type}}
-        </div>
-
-    
-      
-       <img :src="info.detail.pic" alt=""> 
-      
- </div>
+            <button type="submit" class="query-submit btn btn-outline-success my-2 my-sm-0" @click="searchDepartment()">
+            Cerca specializzazione
+            </button>
+         </div>
+        </form>
+      </div>    
+        
     </div>
-
-
 
   </div>
 </template>
 
 <script>
   export default {
-
 
     data: function () {
 
@@ -51,7 +38,7 @@
 
         results: [],
 
-        searching: '',
+        searching: ''
 
       }
 
@@ -59,7 +46,18 @@
 
     methods: {
 
-      //ricerca departments home page
+      // Validazione ricerca utente
+      validateQuery: function () {
+        const query = this.searching;
+
+        if (isNaN(query)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+
+      // Ricerca departments homepage
       searchDepartment: function () {
         const self = this;
         self.results = [];
@@ -68,43 +66,66 @@
           elem.departments.forEach(item => {
             if (item.type.toLowerCase().includes(self.searching.toLowerCase())) {
               return self.results.push(elem);
-
             }
-          })
+          });
+
+          // Salva in locale la stringa JSON dei risultati
+          localStorage.setItem('results', JSON.stringify(self.results));
 
         });
-
-      },
-
-//se si cancella la ricerca, non mostriamo risultati precedenti
-      searchOff:function(){
-      if(this.searching === ''){
-         this.results = [];
-      }
-        return this.results;
       }
 
     },
 
     mounted() {
 
-      //all doctors data
+      // All doctors data
       const self = this;
+
       axios.get('http://127.0.0.1:8000/api/doctors', {
-          params: {
+        params: {
 
-            query: self.searching,
+          query: self.searching,
 
-          },
-        })
+        },
+      })
+      .then((resp) => {
+        self.allInfo = resp.data;
+      });
 
-        .then((resp) => {
-          self.allInfo = resp.data;
-        })
 
+      'use strict';
 
-    },
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      const forms = document.querySelectorAll('.needs-validation');
+
+      // Loop over them and prevent submission
+      Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+            if (!self.validateQuery()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+          }, false)
+        });
+    }
 
   }
 
 </script>
+
+<style scoped>
+  .search {
+    display: flex;
+  }
+
+  .search-left {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .invalid-message {
+    font-size: 10px;
+  }
+</style>

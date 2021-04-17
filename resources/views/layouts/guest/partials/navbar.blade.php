@@ -12,6 +12,10 @@
             @endif
             @if (Route::has('register'))
             <a class="query-submit btn btn-outline-success my-2 my-sm-0 btn-register" href="{{ route('register') }}">Register</a>
+            @else
+            <a class="query-submit btn btn-outline-success my-2 my-sm-0 btn-register" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            {{ __('Logout') }}
+        </a>
         @endauth
         @endif
     </div>

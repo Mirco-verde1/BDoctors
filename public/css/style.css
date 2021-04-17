@@ -59,6 +59,7 @@
   text-align: center;
   top: 40%;
   color: #69afec;
+  text-shadow: 2px 2px #0c0c0c;
 }
 .jumbotron-container-title .form-inline {
   display: flex;

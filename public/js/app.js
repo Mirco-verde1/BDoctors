@@ -2033,11 +2033,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< HEAD
-=======
 //
 //
->>>>>>> front-end
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -38241,41 +38238,6 @@ var render = function() {
         [
           _c("div", { staticClass: "search" }, [
             _c("div", { staticClass: "search-left" }, [
-<<<<<<< HEAD
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.searching,
-                    expression: "searching"
-                  }
-                ],
-                staticClass: "form-control mr-sm-2",
-                class:
-                  _vm.searching && !_vm.validateQuery() ? "is-invalid" : "",
-                attrs: {
-                  placeholder: "Search",
-                  type: "search",
-                  name: "",
-                  id: "",
-                  "aria-label": "Search"
-                },
-                domProps: { value: _vm.searching },
-                on: {
-                  keyup: function($event) {
-                    if (
-                      !$event.type.indexOf("key") &&
-                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                    ) {
-                      return null
-                    }
-                    return _vm.searchDepartment()
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-=======
               _c("div", { staticClass: "input-wrap" }, [
                 _c("input", {
                   directives: [
@@ -38303,7 +38265,6 @@ var render = function() {
                         return
                       }
                       _vm.searching = $event.target.value
->>>>>>> front-end
                     }
                   }
                 }),

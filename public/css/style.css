@@ -2,16 +2,44 @@
   font-size: 17px;
 }
 
-.container-nav {
-  height: 50px;
+.btn-register {
+  margin-left: 10px;
 }
-.container-nav .header-nav {
-  display: inline-block;
+
+.logo-img {
+  width: 300px;
 }
-.container-nav .header-nav li {
+
+.input-wrap {
   display: inline-block;
-  padding-top: 10px;
-  padding-left: 5px;
+  position: relative;
+}
+
+.input-wrap > input {
+  padding: 5px 10px 5px 30px;
+  height: 35px;
+  width: 200px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 1px solid #cdcdcd;
+}
+
+.input-wrap > i.fas {
+  position: absolute;
+  left: 8px;
+  top: 5px;
+  font-size: 21px;
+  color: #b2b2b2;
+  pointer-events: none;
+}
+
+.input-wrap > input:focus {
+  padding: 5px 10px;
+  width: 225px;
+}
+
+.input-wrap > input:focus + i.fas {
+  display: none;
 }
 
 .jumbotron {
@@ -19,7 +47,8 @@
   height: 90vh;
   background-image: url("https://www.doctors-365.de/home_slider_bg.95b2004ae0c9ce8f3a0b.jpg");
   filter: brightness(0.8);
-  background-size: 120%;
+  background-size: cover;
+  background-repeat: no-repeat;
   background-position: right center;
   position: relative;
 }
@@ -30,6 +59,21 @@
   text-align: center;
   top: 40%;
   color: #69afec;
+  text-shadow: 2px 2px #0c0c0c;
+}
+.jumbotron-container-title .form-inline {
+  display: flex;
+  justify-content: center;
+}
+.jumbotron-container-title .form-inline .search {
+  margin-top: 30px;
+}
+.jumbotron-container-title .form-inline .search .search-left {
+  display: inline-block;
+  flex-direction: column;
+}
+.jumbotron-container-title .form-inline .search .invalid-message {
+  font-size: 10px;
 }
 .jumbotron-container-title .title {
   font-size: 80px;

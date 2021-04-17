@@ -8,7 +8,7 @@
 
 
 
-    <div class="results" v-if="checkedResults.length === 0">
+    <div class="results" v-if="checkedVotes.length === 0">
 
    <h5 v-if="results.length === 0">Nessun risultato corrisponde ai tuoi criteri di ricerca.</h5>
 
@@ -30,7 +30,7 @@
 <!-- mostriamo i risultati della ricerca tramite filtri  -->
 
 
-   <div v-if="checkedResults.length > 0">
+   <div v-if="checkedVotes.length > 0">
 
       <div v-for="(item,index) in checkedResults" :key="index">
           Nome: {{item.name}} {{item.lastname}}
@@ -50,12 +50,23 @@
 
 <!-- Filter results part -->
   <div class="filters">
-    <input type="checkbox" name="palmira" value="palmira" v-model="checked">
-    filtro name palmira
+
+  <div> <input type="radio"  value="1" v-model="checkedVote"> <span>vote 1</span></div>
+  <div> <input type="radio"  value="2" v-model="checkedVote"> <span>vote 2</span></div>
+  <div> <input type="radio"  value="3" v-model="checkedVote"> <span>vote 3</span></div>
+  <div> <input type="radio"  value="4" v-model="checkedVote"> <span>vote 4</span></div>
+  <div> <input type="radio"  value="5" v-model="checkedVote"> <span>vote 5</span></div>
 
 
-    <button @click="filterByCheck()">Applica Filtro</button>
 
+    <button @click="filterByVote(),filterByReview()">Applica Filtro</button>
+
+
+  </div>
+
+  <div>
+
+   <input type="checkbox" name="" id="">
 
   </div>
 
@@ -80,9 +91,12 @@
         results: JSON.parse(localStorage.getItem('results')),
 
 
-        checked:[],
+        checkedVote:'',
+        checkedReview:'',
 
-        checkedResults:[],
+        checkedVotes:[],
+        checkedReviews:[],
+
 
       }
 
@@ -91,30 +105,45 @@
     methods: {
 
        //filter results by checkboxes
-      filterByCheck:function(){
+      filterByVote:function(){
 
       const self = this;
 
-       self.checkedResults=[];
+       self.checkedVotes=[];
 
             self.results.forEach(item => {
 
-                 self.checked.forEach(elem => {
+               item.votes.forEach(el => {
 
-                    if(item.name.toLowerCase().includes(elem)){
 
-                       self.checkedResults.push(item)
+                    if(el.value === parseInt(self.checked)){
+
+                       self.checkedVotes.push(item)
 
 
              }
 
-                 });
+
+               });
+
 
 
         });
 
 
       },
+
+
+      filterByReview:function(){
+
+         self.checkedReviews=[];
+
+          self.results.forEach(element => {
+
+             let len = element.reviews.length;
+             console.log(len);
+          });
+      }
 
     }
 

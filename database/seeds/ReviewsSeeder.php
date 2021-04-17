@@ -2,7 +2,7 @@
 
 use App\Review;
 use Illuminate\Database\Seeder;
-
+use Faker\Generator as Faker;
 class ReviewsSeeder extends Seeder
 {
     /**
@@ -10,103 +10,103 @@ class ReviewsSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
         $reviews = [
             [
                 'user_id' => '1',
-                'name' => '',
-                'email' => '',
+                'name' => 'Marco',
+                'email' => $faker->email(),
                 'body' => 'Persona molto professionale e disponibile.',
             ],
             [
                 'user_id' => '1',
-                'name' => '',
-                'email' => '',
+                'name' => 'Gianni',
+                'email' => $faker->email(),
                 'body' => 'Ottimo professionista, affidabile e disponibile.',
             ],
             [
                 'user_id' => '1',
-                'name' => '',
-                'email' => '',
+                'name' => 'Elena',
+                'email' => $faker->email(),
                 'body' => 'Molto disponibile, gentile e professionale. Fa sentire al suo agio anche il bambini.',
             ],
             [
                 'user_id' => '1',
-                'name' => '',
-                'email' => '',
-                'body' => '',
+                'name' => 'Mimmo',
+                'email' => $faker->email(),
+                'body' => 'Molto disponibile, gentile e professionale. Fa sentire al suo agio anche il bambini.',
             ],
             [
                 'user_id' => '2',
-                'name' => '',
-                'email' => '',
+                'name' => 'Dario',
+                'email' => $faker->email(),
                 'body' => 'Assolutamente consigliato. Il dottore è molto disponibile e preparato sia professionalmente che umanamente, tornerò sicuramente in caso avessi bisogno. ',
             ],
             [
                 'user_id' => '2',
-                'name' => '',
-                'email' => '',
+                'name' => 'Gianni',
+                'email' => $faker->email(),
                 'body' => 'Lo consiglio vivamente!',
             ],
             [
                 'user_id' => '2',
-                'name' => '',
-                'email' => '',
+                'name' => 'Giuseppe',
+                'email' => $faker->email(),
                 'body' => 'Diagnosi corretta e terapia risolutiva. Preciso e molto disponibile nel dare spiegazioni: consigliato!',
             ],
             [
                 'user_id' => '3',
-                'name' => '',
-                'email' => '',
+                'name' => 'Mariasol',
+                'email' => $faker->email(),
                 'body' => 'Medico di grandi qualità professionali e umane, una perla rara.',
             ],
             [
                 'user_id' => '3',
-                'name' => '',
-                'email' => '',
-                'body' => '',
+                'name' => 'Giuseppe',
+                'email' => $faker->email(),
+                'body' => 'Medico di grandi qualità professionali e umane, una perla rara.',
             ],
             [
                 'user_id' => '3',
-                'name' => '',
-                'email' => '',
+                'name' => 'Mariasol',
+                'email' => $faker->email(),
                 'body' => 'Preparato e professionale',
             ],
             [
                 'user_id' => '4',
-                'name' => '',
-                'email' => '',
-                'body' => '',
+                'name' => 'Sebastiano',
+                'email' => $faker->email(),
+                'body' => 'Molto disponibile, gentile e professionale. Fa sentire al suo agio anche il bambini.',
             ],
             [
                 'user_id' => '4',
-                'name' => '',
-                'email' => '',
+                'name' => 'Salvatore',
+                'email' => $faker->email(),
                 'body' => 'Medico di estrema precisione e professionalità. Attento alle necessità del paziente. Gentile e abile nel creare quel rapporto umano che per il paziente è fondamentale. Molto preparato e scrupoloso, aiutando il paziente nel percorso di guarigione migliore.',
             ],
             [
                 'user_id' => '4',
-                'name' => '',
-                'email' => '',
-                'body' => '',
+                'name' => 'Mirco',
+                'email' => $faker->email(),
+                'body' => 'Specialista molto competente,disponibile all\'ascolto,chiaro nello spiegazioni.',
             ],
             [
                 'user_id' => '5',
-                'name' => '',
-                'email' => '',
-                'body' => '',
+                'name' => 'Sebastiano',
+                'email' => $faker->email(),
+                'body' => 'Preparato e professionale',
             ],
             [
                 'user_id' => '5',
-                'name' => '',
-                'email' => '',
-                'body' => '',
+                'name' => 'Daniel',
+                'email' => $faker->email(),
+                'body' => 'Specialista molto competente,disponibile all\'ascolto,chiaro nello spiegazioni.',
             ],
             [
                 'user_id' => '5',
-                'name' => '',
-                'email' => '',
+                'name' => 'Nadia',
+                'email' => $faker->email(),
                 'body' => 'Specialista molto competente,disponibile all\'ascolto,chiaro nello spiegazioni.',
             ]
 

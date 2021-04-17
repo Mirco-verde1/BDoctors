@@ -1,7 +1,4 @@
 <template>
-
-  <div>
-
     <div class="container">
 
       <div class="form-inline">
@@ -20,11 +17,10 @@
             </button>
          </div>
         </form>
-      </div>    
-        
+      </div>
+
     </div>
 
-  </div>
 </template>
 
 <script>
@@ -115,17 +111,3 @@
 
 </script>
 
-<style scoped>
-  .search {
-    display: flex;
-  }
-
-  .search-left {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .invalid-message {
-    font-size: 10px;
-  }
-</style>

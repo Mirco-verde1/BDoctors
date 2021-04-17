@@ -5,8 +5,11 @@
         <form action="/advance" class="needs-validation" novalidate>
           <div class="search">
             <div class="search-left">
-              <input class="form-control mr-sm-2" :class="searching && !validateQuery() ? 'is-invalid' : ''" placeholder="Search" type="search" name="" id="" v-model="searching"
+                <div class="input-wrap">
+              <input class="form-control mr-sm-2" :class="searching && !validateQuery() ? 'is-invalid' : ''" placeholder="Search" type="text" name="" id="" v-model="searching"
               aria-label="Search">
+              <i class="fas fa-search"></i>
+              </div>
               <div class="invalid-feedback">
                 <span class="invalid-message">Il formato non è valido</span>
               </div>

@@ -2,8 +2,44 @@
   font-size: 17px;
 }
 
+.btn-register {
+  margin-left: 10px;
+}
+
 .logo-img {
   width: 300px;
+}
+
+.input-wrap {
+  display: inline-block;
+  position: relative;
+}
+
+.input-wrap > input {
+  padding: 5px 10px 5px 30px;
+  height: 35px;
+  width: 200px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 1px solid #cdcdcd;
+}
+
+.input-wrap > i.fas {
+  position: absolute;
+  left: 8px;
+  top: 5px;
+  font-size: 21px;
+  color: #b2b2b2;
+  pointer-events: none;
+}
+
+.input-wrap > input:focus {
+  padding: 5px 10px;
+  width: 225px;
+}
+
+.input-wrap > input:focus + i.fas {
+  display: none;
 }
 
 .jumbotron {

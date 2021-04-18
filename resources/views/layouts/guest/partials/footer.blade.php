@@ -9,8 +9,8 @@
                     <div class="col-xl-4 col-md-4 col-sm-4 col-12">
                         <h6 class="mb-3 mb-lg-4 bold-text text-dark "><b>MENU</b></h6>
                         <ul class="list-unstyled">
-                            <li>Home</li>
-                            <li>Advanced Search</li>
+                            <a href="/"><li>Home</li></a>
+                            <a href="/advance"><li>Advanced Search</li></a>
                         </ul>
                     </div>
                     <div class="col-xl-2 col-md-4 col-sm-4 col-12">
@@ -46,11 +46,11 @@
                             <span>
                                 <i class="fa fa-facebook" aria-hidden="true"></i>
                             </span>
-                            <span><i class="fab fa-linkedin"></i>
+                            <span><a href="#"><i class="fab fa-linkedin"></i></a>
                             </span>
-                            <span><i class="fab fa-twitter-square"></i>
+                            <span><a href="#"><i class="fab fa-twitter-square"></i></a>
                             </span>
-                            <span><i class="fab fa-instagram-square"></i>
+                            <span><a href="#"><i class="fab fa-instagram-square"></i></a>
                             </span></p>
                     </div>
                 </div>

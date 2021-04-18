@@ -22,7 +22,6 @@ class VotesSeeder extends Seeder
 
         foreach ($votes as $vote) {
             $voteDB = new Vote();
-
             $voteDB->value = $vote;
 
             $voteDB->save();

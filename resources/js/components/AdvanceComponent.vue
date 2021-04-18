@@ -13,47 +13,43 @@
                         <div>
                             <input type="radio" value="1" v-model="checkedVote">
                             <span>
-                                <i class="far fa-star"></i>
+                                <i class="fas fa-star"></i>
                             </span>
                         </div>
 
                         <div>
                             <input type="radio" value="2" v-model="checkedVote">
                             <span>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
                             </span>
                         </div>
-
                         <div>
                             <input type="radio" value="3" v-model="checkedVote">
                             <span>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
                             </span>
                         </div>
-
                         <div>
                             <input type="radio" value="4" v-model="checkedVote">
                             <span>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
                             </span>
                         </div>
-
                         <div>
-                            <input type="radio" value="5" v-model="checkedVote">
+                            <input type="radio" value="5" v-model="checkedVote"></div>
                             <span>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
                             </span>
-                        </div>
 
                         <button @click="filterByVote()">Applica Filtro</button>
 

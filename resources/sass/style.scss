@@ -74,14 +74,14 @@ background-color: #F5F8FA;
         animation: jumbotron-container-title 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 
 
-@keyframes jumbotron-container-title {
-    0% {
-      transform: scale(0.5);
+    @keyframes jumbotron-container-title {
+        0% {
+        transform: scale(0.5);
+        }
+        100% {
+        transform: scale(1);
+        }
     }
-    100% {
-      transform: scale(1);
-    }
-  }
 
 
         .form-inline{
@@ -113,3 +113,10 @@ background-color: #F5F8FA;
         }
     }
 }
+
+// advanced search section
+
+.margin-top-container {
+    margin-top: 50px;
+}
+// end advanced search section

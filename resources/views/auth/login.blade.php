@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+<title>{{ __('BDoctors - Login') }}</title>
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

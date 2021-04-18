@@ -24,6 +24,7 @@
                                 <i class="fas fa-star"></i>
                             </span>
                         </div>
+
                         <div>
                             <input type="radio" value="3" v-model="checkedVote">
                             <span>
@@ -32,6 +33,7 @@
                                 <i class="fas fa-star"></i>
                             </span>
                         </div>
+
                         <div>
                             <input type="radio" value="4" v-model="checkedVote">
                             <span>
@@ -41,8 +43,9 @@
                                 <i class="fas fa-star"></i>
                             </span>
                         </div>
+
                         <div>
-                            <input type="radio" value="5" v-model="checkedVote"></div>
+                            <input type="radio" value="5" v-model="checkedVote">
                             <span>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -50,8 +53,9 @@
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                             </span>
+                        </div>
 
-                        <button @click="filterByVote()">Applica Filtro</button>
+                        <button @click="filterByVote(),averageByReviews()">Applica Filtro</button>
 
                     </div>
 
@@ -87,9 +91,8 @@
                             Nome: {{doctor.name}} {{doctor.lastname}}
                         </div>
 
-                        <div v-for="(obj, index) in doctor.departments" :key="index">
-                            Specializzazione: {{obj.type}}
-                        </div>
+
+
 
                         <a :href="'doctor/'+ doctor.id">
                             <img class="doctor-pic" :src="doctor.detail.pic" alt="profile pic">
@@ -120,9 +123,9 @@
                 checkedVote: '',
                 checkedReview: '',
 
-                checkedVotes: [],
-                checkedReviews: [],
-
+        checkedVotes:[],
+        defaultReviews:3,
+        totReviewDoctor:[],
 
             }
 
@@ -158,6 +161,29 @@
 
 
             },
+
+
+      averageByReviews:function(){
+       const self = this;
+
+         self.results.forEach(element => {
+
+            const b = element;
+             const a = element.reviews.length;
+
+             console.log(a);
+
+               if(a >= self.defaultReviews){
+
+                  self.totReviewDoctor.push(b);
+
+          }
+
+         });
+
+         return self.totReviewDoctor;
+      },
+
 
 
 

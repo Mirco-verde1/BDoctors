@@ -1929,11 +1929,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -38153,25 +38148,14 @@ var render = function() {
                   },
                   [_vm._v("Applica Filtro")]
                 )
-              ]),
-              _vm._v(" "),
-              _vm._m(0)
+              ])
             ])
           : _vm._e()
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("input", { attrs: { type: "checkbox", name: "", id: "" } })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

@@ -21,8 +21,8 @@
             </div>
             </div>
             <div class="jumbotron">
-            <div class="jumbotron-container-title">
-                <span class="title">Cerca il tuo dottore online</span>
+            <div class="jumbotron-container-title scale-in-center">
+                <span class="title"> Cerca il tuo dottore online</span>
                 <br>
                 <span class="subtitle">BDoctors</span>
 

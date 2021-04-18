@@ -6,7 +6,7 @@
 @section('content')
     <div id="app">
 
-        <div class="container-nav d-flex justify-content-center">
+        <div>
             <advance-component></advance-component>
         </div>
 

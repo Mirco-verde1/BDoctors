@@ -26,5 +26,7 @@
         </div>
 
         <script src="{{asset('js/app.js')}}"></script>
+
+        @include('layouts/guest/partials/footer')
     </body>
 </html>

@@ -30,6 +30,7 @@
 
             </div>
             </div>
+            @include('layouts/guest/partials/carousel')
             @include('layouts/guest/partials/footer')
 
         </div>

@@ -1920,6 +1920,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1945,18 +1966,21 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    averageByReviews: function averageByReviews() {
-      var self = this;
-      self.results.forEach(function (element) {
-        var b = element;
-        var a = element.reviews.length;
-        console.log(a);
+    filterByReviews: function filterByReviews() {
+      if (this.checkedReview) {
+        var self = this;
+        self.totReviewDoctor = [];
+        self.results.forEach(function (element) {
+          var b = element;
+          var a = element.reviews.length;
+          console.log(a);
 
-        if (a >= self.defaultReviews) {
-          self.totReviewDoctor.push(b);
-        }
-      });
-      return self.totReviewDoctor;
+          if (a >= self.defaultReviews) {
+            self.totReviewDoctor.push(b);
+          }
+        });
+        return self.totReviewDoctor;
+      }
     }
   }
 });
@@ -37817,7 +37841,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
-      _vm.checkedVotes.length === 0
+      _vm.checkedVotes.length === 0 && _vm.totReviewDoctor.length === 0
         ? _c(
             "div",
             { staticClass: "results" },
@@ -37836,18 +37860,18 @@ var render = function() {
                   { key: index },
                   [
                     _vm._v(
-                      "\n\n          Nome: " +
+                      "\n\n           Nome: " +
                         _vm._s(doctor.name) +
                         " " +
                         _vm._s(doctor.lastname) +
-                        "\n\n\n          "
+                        "\n\n\n           "
                     ),
                     _vm._l(doctor.departments, function(obj, index) {
                       return _c("div", { key: index }, [
                         _vm._v(
-                          "\n            Specializzazione: " +
+                          "\n             Specializzazione: " +
                             _vm._s(obj.type) +
-                            "\n          "
+                            "\n           "
                         )
                       ])
                     }),
@@ -37866,7 +37890,7 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-      _vm.checkedVotes.length > 0
+      _vm.checkedVotes.length > 0 && _vm.totReviewDoctor === 0
         ? _c(
             "div",
             _vm._l(_vm.checkedVotes, function(item, index) {
@@ -37875,18 +37899,54 @@ var render = function() {
                 { key: index },
                 [
                   _vm._v(
-                    "\n          Nome: " +
+                    "\n           Nome: " +
                       _vm._s(item.name) +
                       " " +
                       _vm._s(item.lastname) +
-                      "\n\n          "
+                      "\n\n           "
                   ),
                   _vm._l(item.departments, function(obj, index) {
                     return _c("div", { key: index }, [
                       _vm._v(
-                        "\n            Specializzazione: " +
+                        "\n             Specializzazione: " +
                           _vm._s(obj.type) +
-                          "\n          "
+                          "\n           "
+                      )
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c("img", {
+                    attrs: { src: item.detail.pic, alt: "profile pic" }
+                  })
+                ],
+                2
+              )
+            }),
+            0
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.totReviewDoctor.length > 0
+        ? _c(
+            "div",
+            _vm._l(_vm.totReviewDoctor, function(item, index) {
+              return _c(
+                "div",
+                { key: index },
+                [
+                  _vm._v(
+                    "\n           Nome: " +
+                      _vm._s(item.name) +
+                      " " +
+                      _vm._s(item.lastname) +
+                      "\n\n           "
+                  ),
+                  _vm._l(item.departments, function(obj, index) {
+                    return _c("div", { key: index }, [
+                      _vm._v(
+                        "\n             Specializzazione: " +
+                          _vm._s(obj.type) +
+                          "\n           "
                       )
                     ])
                   }),
@@ -37924,7 +37984,7 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c("span", [_vm._v("vote 1")])
+                _c("i", { staticClass: "far fa-star" })
               ]),
               _vm._v(" "),
               _c("div", [
@@ -37946,7 +38006,8 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c("span", [_vm._v("vote 2")])
+                _c("i", { staticClass: "far fa-star" }),
+                _c("i", { staticClass: "far fa-star" })
               ]),
               _vm._v(" "),
               _c("div", [
@@ -37968,7 +38029,9 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c("span", [_vm._v("vote 3")])
+                _c("i", { staticClass: "far fa-star" }),
+                _c("i", { staticClass: "far fa-star" }),
+                _c("i", { staticClass: "far fa-star" })
               ]),
               _vm._v(" "),
               _c("div", [
@@ -37990,7 +38053,10 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c("span", [_vm._v("vote 4")])
+                _c("i", { staticClass: "far fa-star" }),
+                _c("i", { staticClass: "far fa-star" }),
+                _c("i", { staticClass: "far fa-star" }),
+                _c("i", { staticClass: "far fa-star" })
               ]),
               _vm._v(" "),
               _c("div", [
@@ -38012,7 +38078,54 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c("span", [_vm._v("vote 5")])
+                _c("i", { staticClass: "far fa-star" }),
+                _c("i", { staticClass: "far fa-star" }),
+                _c("i", { staticClass: "far fa-star" }),
+                _c("i", { staticClass: "far fa-star" }),
+                _c("i", { staticClass: "far fa-star" })
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.checkedReview,
+                      expression: "checkedReview"
+                    }
+                  ],
+                  attrs: { type: "checkbox", value: "" },
+                  domProps: {
+                    checked: Array.isArray(_vm.checkedReview)
+                      ? _vm._i(_vm.checkedReview, "") > -1
+                      : _vm.checkedReview
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.checkedReview,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.checkedReview = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.checkedReview = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.checkedReview = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("i", { staticClass: "far fa-edit" }),
+                _vm._v("Recensioni")
               ]),
               _vm._v(" "),
               _c(
@@ -38020,25 +38133,13 @@ var render = function() {
                 {
                   on: {
                     click: function($event) {
-                      _vm.filterByVote(), _vm.averageByReviews()
+                      _vm.filterByVote(), _vm.filterByReviews()
                     }
                   }
                 },
                 [_vm._v("Applica Filtro")]
               )
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                on: {
-                  click: function($event) {
-                    return _vm.filterByVote()
-                  }
-                }
-              },
-              [_vm._v("Applica Filtro")]
-            )
+            ])
           ])
         : _vm._e()
     ])

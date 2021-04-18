@@ -5,7 +5,7 @@
       <div class="row">
 
         <!-- mostriamo i risultati della ricerca che saranno cliccabili per visualizzarne i dettagli  -->
-        <div class="results" v-if="checkedVotes.length === 0">
+        <div class="results" v-if="checkedVotes.length === 0 && totReviewDoctor.length === 0">
 
           <h5 v-if="results.length === 0">Nessun risultato corrisponde ai tuoi criteri di ricerca.</h5>
 
@@ -27,8 +27,8 @@
           </div>
         </div>
 
-        <!-- mostriamo i risultati della ricerca tramite filtri  -->
-        <div v-if="checkedVotes.length > 0">
+        <!-- mostriamo i risultati della ricerca tramite filtro per il voto  -->
+        <div v-if="checkedVotes.length > 0 && totReviewDoctor === 0">
 
           <div v-for="(item,index) in checkedVotes" :key="index">
             Nome: {{item.name}} {{item.lastname}}
@@ -43,25 +43,46 @@
 
         </div>
 
+
+ <!-- mostriamo i risultati della ricerca tramite filtro per le reviews  -->
+        <div v-if="totReviewDoctor.length > 0">
+
+          <div v-for="(item,index) in totReviewDoctor" :key="index">
+            Nome: {{item.name}} {{item.lastname}}
+
+            <div v-for="(obj, index) in item.departments" :key="index">
+              Specializzazione: {{obj.type}}
+            </div>
+
+            <img :src="item.detail.pic" alt="profile pic">
+
+          </div>
+
+        </div>
+
+
+
+
+
         <!-- Filter results part -->
         <div v-if="results.length > 0">
 
           <div class="filters">
 
-  <div> <input type="radio"  value="1" v-model="checkedVote"> <span>vote 1</span></div>
-  <div> <input type="radio"  value="2" v-model="checkedVote"> <span>vote 2</span></div>
-  <div> <input type="radio"  value="3" v-model="checkedVote"> <span>vote 3</span></div>
-  <div> <input type="radio"  value="4" v-model="checkedVote"> <span>vote 4</span></div>
-  <div> <input type="radio"  value="5" v-model="checkedVote"> <span>vote 5</span></div>
+  <div> <input type="radio"  value="1" v-model="checkedVote"> <i class="far fa-star"></i></div>
+  <div> <input type="radio"  value="2" v-model="checkedVote"> <i class="far fa-star"></i><i class="far fa-star"></i></div>
+  <div> <input type="radio"  value="3" v-model="checkedVote"> <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
+  <div> <input type="radio"  value="4" v-model="checkedVote"> <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
+  <div> <input type="radio"  value="5" v-model="checkedVote"> <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
+
+  <div> <input type="checkbox"  value="" v-model="checkedReview"> <i class="far fa-edit"></i>Recensioni</div>
 
 
 
-    <button @click="filterByVote(),averageByReviews()">Applica Filtro</button>
+    <button @click="filterByVote(),filterByReviews()">Applica Filtro</button>
 
 
   </div>
-
-            <button @click="filterByVote()">Applica Filtro</button>
 
           </div>
 
@@ -69,7 +90,7 @@
 
       </div>
 
-  </div>
+
 
 </template>
 
@@ -90,6 +111,7 @@
         checkedVotes:[],
         defaultReviews:3,
         totReviewDoctor:[],
+
 
       }
 
@@ -127,10 +149,14 @@
       },
 
 
-      averageByReviews:function(){
-       const self = this;
+      filterByReviews:function(){
 
-         self.results.forEach(element => {
+     if(this.checkedReview){
+
+       const self = this;
+         self.totReviewDoctor = [];
+
+          self.results.forEach(element => {
 
             const b = element;
              const a = element.reviews.length;
@@ -146,6 +172,7 @@
          });
 
          return self.totReviewDoctor;
+        }
       },
 
 

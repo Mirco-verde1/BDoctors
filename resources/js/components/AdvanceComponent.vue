@@ -10,14 +10,14 @@
 
                     <div class="filters">
 
-                        <div>
+                        <div @change="filterByVote()">
                             <input type="radio" value="1" v-model="checkedVote">
                             <span>
                                 <i class="fas fa-star"></i>
                             </span>
                         </div>
 
-                        <div>
+                        <div @change="filterByVote()">
                             <input type="radio" value="2" v-model="checkedVote">
                             <span>
                                 <i class="fas fa-star"></i>
@@ -25,7 +25,7 @@
                             </span>
                         </div>
 
-                        <div>
+                        <div @change="filterByVote()">
                             <input type="radio" value="3" v-model="checkedVote">
                             <span>
                                 <i class="fas fa-star"></i>
@@ -34,8 +34,8 @@
                             </span>
                         </div>
 
-                        <div>
-                            <input type="radio" value="4" v-model="checkedVote">
+                        <div @change="filterByVote()">
+                            <input type="radio" value="4" v-model="checkedVote" >
                             <span>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -44,7 +44,7 @@
                             </span>
                         </div>
 
-                        <div>
+                        <div @change="filterByVote()">
                             <input type="radio" value="5" v-model="checkedVote">
                             <span>
                                 <i class="fas fa-star"></i>
@@ -65,7 +65,8 @@
             </div>
 
             <div class="col-lg-8">
-                <!-- mostriamo i risultati della ricerca tramite filtri  -->
+
+                <!-- mostriamo i risultati della ricerca tramite filtro per i voti -->
                 <div class="" v-if="checkedVotes.length > 0">
 
                     <div class="strip-list" v-for="(item,index) in checkedVotes" :key="index">

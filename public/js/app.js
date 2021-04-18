@@ -1956,6 +1956,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -37860,115 +37861,165 @@ var render = function() {
         _vm.results.length > 0
           ? _c("div", [
               _c("div", { staticClass: "filters" }, [
-                _c("div", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.checkedVote,
-                        expression: "checkedVote"
-                      }
-                    ],
-                    attrs: { type: "radio", value: "1" },
-                    domProps: { checked: _vm._q(_vm.checkedVote, "1") },
+                _c(
+                  "div",
+                  {
                     on: {
                       change: function($event) {
-                        _vm.checkedVote = "1"
+                        return _vm.filterByVote()
                       }
                     }
-                  }),
-                  _vm._v(" "),
-                  _vm._m(0)
-                ]),
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.checkedVote,
+                          expression: "checkedVote"
+                        }
+                      ],
+                      attrs: { type: "radio", value: "1" },
+                      domProps: { checked: _vm._q(_vm.checkedVote, "1") },
+                      on: {
+                        change: function($event) {
+                          _vm.checkedVote = "1"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(0)
+                  ]
+                ),
                 _vm._v(" "),
-                _c("div", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.checkedVote,
-                        expression: "checkedVote"
-                      }
-                    ],
-                    attrs: { type: "radio", value: "2" },
-                    domProps: { checked: _vm._q(_vm.checkedVote, "2") },
+                _c(
+                  "div",
+                  {
                     on: {
                       change: function($event) {
-                        _vm.checkedVote = "2"
+                        return _vm.filterByVote()
                       }
                     }
-                  }),
-                  _vm._v(" "),
-                  _vm._m(1)
-                ]),
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.checkedVote,
+                          expression: "checkedVote"
+                        }
+                      ],
+                      attrs: { type: "radio", value: "2" },
+                      domProps: { checked: _vm._q(_vm.checkedVote, "2") },
+                      on: {
+                        change: function($event) {
+                          _vm.checkedVote = "2"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]
+                ),
                 _vm._v(" "),
-                _c("div", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.checkedVote,
-                        expression: "checkedVote"
-                      }
-                    ],
-                    attrs: { type: "radio", value: "3" },
-                    domProps: { checked: _vm._q(_vm.checkedVote, "3") },
+                _c(
+                  "div",
+                  {
                     on: {
                       change: function($event) {
-                        _vm.checkedVote = "3"
+                        return _vm.filterByVote()
                       }
                     }
-                  }),
-                  _vm._v(" "),
-                  _vm._m(2)
-                ]),
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.checkedVote,
+                          expression: "checkedVote"
+                        }
+                      ],
+                      attrs: { type: "radio", value: "3" },
+                      domProps: { checked: _vm._q(_vm.checkedVote, "3") },
+                      on: {
+                        change: function($event) {
+                          _vm.checkedVote = "3"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(2)
+                  ]
+                ),
                 _vm._v(" "),
-                _c("div", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.checkedVote,
-                        expression: "checkedVote"
-                      }
-                    ],
-                    attrs: { type: "radio", value: "4" },
-                    domProps: { checked: _vm._q(_vm.checkedVote, "4") },
+                _c(
+                  "div",
+                  {
                     on: {
                       change: function($event) {
-                        _vm.checkedVote = "4"
+                        return _vm.filterByVote()
                       }
                     }
-                  }),
-                  _vm._v(" "),
-                  _vm._m(3)
-                ]),
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.checkedVote,
+                          expression: "checkedVote"
+                        }
+                      ],
+                      attrs: { type: "radio", value: "4" },
+                      domProps: { checked: _vm._q(_vm.checkedVote, "4") },
+                      on: {
+                        change: function($event) {
+                          _vm.checkedVote = "4"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(3)
+                  ]
+                ),
                 _vm._v(" "),
-                _c("div", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.checkedVote,
-                        expression: "checkedVote"
-                      }
-                    ],
-                    attrs: { type: "radio", value: "5" },
-                    domProps: { checked: _vm._q(_vm.checkedVote, "5") },
+                _c(
+                  "div",
+                  {
                     on: {
                       change: function($event) {
-                        _vm.checkedVote = "5"
+                        return _vm.filterByVote()
                       }
                     }
-                  }),
-                  _vm._v(" "),
-                  _vm._m(4)
-                ]),
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.checkedVote,
+                          expression: "checkedVote"
+                        }
+                      ],
+                      attrs: { type: "radio", value: "5" },
+                      domProps: { checked: _vm._q(_vm.checkedVote, "5") },
+                      on: {
+                        change: function($event) {
+                          _vm.checkedVote = "5"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(4)
+                  ]
+                ),
                 _vm._v(" "),
                 _c("div", [
                   _c("input", {

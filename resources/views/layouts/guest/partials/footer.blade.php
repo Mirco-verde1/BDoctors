@@ -1,4 +1,4 @@
-<div class="container-fluid pb-0 mb-0 justify-content-center text-light ">
+<div class="container pb-0 mb-0 justify-content-center text-light ">
     <footer>
         <div class="row my-5 justify-content-center py-5">
             <div class="col-11">
@@ -32,7 +32,7 @@
                             <span class="mx-2"><i class="fab fa-instagram-square"></i>
                             </span></p>
                             <small class="rights">
-                                <span>&#174;</span> Pepper All Rights Reserved.</small>
+                                <span>&#174;</span> Team7 BDoctor All Rights Reserved.</small>
                     </div>
                     <div class="col-xl-2 col-md-4 col-sm-4 col-auto order-1 align-self-end ">
                         <h6 class="mt-55 mt-2 text-muted bold-text">

@@ -10,12 +10,10 @@
 </head>
 <body>
 
-    <div id="app">
+    <h1>{{$user->name}}</h1>
+    @foreach ($user->departments as $department)
+        <span>{{$department->type}}</span>
 
-        <search-component></search-component>
-
-    </div>
-
-    <script src="{{asset('js/app.js')}}"></script>
+    @endforeach
 </body>
 </html>

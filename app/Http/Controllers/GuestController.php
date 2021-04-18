@@ -32,11 +32,12 @@ class GuestController extends Controller
 
 
 
-    public function show(User $user, UserDetail $userDetail, Department $userDepartment){
+    public function show(User $user, $id){
 
 
-
-        return view('showDoc', compact('user', 'userDetail', 'userDepartment'));
+        $user = User::where('id', $id)->first();
+        $departments = Department::all();
+        return view('showDoc', compact('user', 'departments'));
 
     }
 

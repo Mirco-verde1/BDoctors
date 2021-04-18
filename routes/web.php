@@ -29,7 +29,7 @@ Route::get('/', 'GuestController@index')->name('public.homepage');
 
 Route::get('/advance', 'GuestController@advance');
 
-Route::get('/doctor', 'GuestController@show');
+Route::get('/doctor/{id}', 'GuestController@show');
 
 //doctor route
 Route::prefix('admin')

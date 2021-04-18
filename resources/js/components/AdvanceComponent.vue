@@ -37,7 +37,7 @@
 
    <div v-if="checkedVotes.length > 0">
 
-      <div v-for="(item,index) in checkedResults" :key="index">
+      <div v-for="(item,index) in checkedVotes" :key="index">
           Nome: {{item.name}} {{item.lastname}}
 
           <div v-for="(obj, index) in item.departments" :key="index">
@@ -66,7 +66,7 @@
 
 
 
-    <button @click="filterByVote(),filterByReview()">Applica Filtro</button>
+    <button @click="filterByVote()">Applica Filtro</button>
 
 
   </div>
@@ -120,7 +120,7 @@
                item.votes.forEach(el => {
 
 
-                    if(el.value === parseInt(self.checked)){
+                    if(el.value === parseInt(self.checkedVote)){
 
                        self.checkedVotes.push(item)
 
@@ -138,16 +138,7 @@
       },
 
 
-      filterByReview:function(){
 
-         self.checkedReviews=[];
-
-          self.results.forEach(element => {
-
-             let len = element.reviews.length;
-             console.log(len);
-          });
-      }
 
     }
 

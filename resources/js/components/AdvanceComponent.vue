@@ -1,62 +1,52 @@
 <template>
 
-  <div>
-
-    <div class="container">
+  <div class="container">
 
       <div class="row">
 
+        <!-- mostriamo i risultati della ricerca che saranno cliccabili per visualizzarne i dettagli  -->
+        <div class="results" v-if="checkedVotes.length === 0">
 
-<!-- mostriamo i risultati della ricerca che saranno cliccabili per visualizzarne i dettagli  -->
+          <h5 v-if="results.length === 0">Nessun risultato corrisponde ai tuoi criteri di ricerca.</h5>
 
-  <div class="results" v-if="checkedVotes.length === 0">
+          <div v-for="(doctor,index) in results" :key="index">
 
-   <h5 v-if="results.length === 0">Nessun risultato corrisponde ai tuoi criteri di ricerca.</h5>
-
-        <div v-for="(doctor,index) in results" :key="index">
-
-          Nome: {{doctor.name}} {{doctor.lastname}}
+            Nome: {{doctor.name}} {{doctor.lastname}}
 
 
-          <div v-for="(obj, index) in doctor.departments" :key="index">
-            Specializzazione: {{obj.type}}
+            <div v-for="(obj, index) in doctor.departments" :key="index">
+              Specializzazione: {{obj.type}}
+            </div>
+
+            <a :href="'doctor/'+ doctor.id">
+
+              <img :src="doctor.detail.pic" alt="profile pic">
+
+            </a>
+
           </div>
-
-       <a  :href ="'doctor/'+ doctor.id">
-
-          <img :src="doctor.detail.pic" alt="profile pic">
-
-       </a>
-
         </div>
-   </div>
 
+        <!-- mostriamo i risultati della ricerca tramite filtri  -->
+        <div v-if="checkedVotes.length > 0">
 
-<!-- mostriamo i risultati della ricerca tramite filtri  -->
+          <div v-for="(item,index) in checkedVotes" :key="index">
+            Nome: {{item.name}} {{item.lastname}}
 
+            <div v-for="(obj, index) in item.departments" :key="index">
+              Specializzazione: {{obj.type}}
+            </div>
 
-   <div v-if="checkedVotes.length > 0">
+            <img :src="item.detail.pic" alt="profile pic">
 
-      <div v-for="(item,index) in checkedVotes" :key="index">
-          Nome: {{item.name}} {{item.lastname}}
-
-          <div v-for="(obj, index) in item.departments" :key="index">
-            Specializzazione: {{obj.type}}
           </div>
-
-          <img :src="item.detail.pic" alt="profile pic">
 
         </div>
 
+        <!-- Filter results part -->
+        <div v-if="results.length > 0">
 
-   </div>
-
-
-<!-- Filter results part -->
-
-<div v-if="results.length > 0">
-
-  <div class="filters">
+          <div class="filters">
 
   <div> <input type="radio"  value="1" v-model="checkedVote"> <span>vote 1</span></div>
   <div> <input type="radio"  value="2" v-model="checkedVote"> <span>vote 2</span></div>
@@ -71,20 +61,19 @@
 
   </div>
 
+            <button @click="filterByVote()">Applica Filtro</button>
 
+          </div>
 
-</div>
-     </div>
+        </div>
 
-   </div>
+      </div>
 
   </div>
 
 </template>
 
 <script>
-
-
   export default {
 
     data: function () {
@@ -95,8 +84,8 @@
         results: JSON.parse(localStorage.getItem('results')),
 
 
-        checkedVote:'',
-        checkedReview:'',
+        checkedVote: '',
+        checkedReview: '',
 
         checkedVotes:[],
         defaultReviews:3,
@@ -108,27 +97,27 @@
 
     methods: {
 
-       //filter results by checkboxes
-      filterByVote:function(){
+      //filter results by checkboxes
+      filterByVote: function () {
 
-      const self = this;
+        const self = this;
 
-       self.checkedVotes=[];
+        self.checkedVotes = [];
 
-            self.results.forEach(item => {
+        self.results.forEach(item => {
 
-               item.votes.forEach(el => {
-
-
-                    if(el.value === parseInt(self.checkedVote)){
-
-                       self.checkedVotes.push(item)
+          item.votes.forEach(el => {
 
 
-             }
+            if (el.value === parseInt(self.checkedVote)) {
+
+              self.checkedVotes.push(item)
 
 
-               });
+            }
+
+
+          });
 
 
 

@@ -6,20 +6,23 @@
         <div class="col-md-8">
             <div class="card">
 
-                <a href="/" class=" btn btn-outline-success my-2 my-sm-0">{{ __('Home') }} <i class="fas fa-home"></i></a>
+                <a href="/" class=" btn btn-outline-success my-2 my-sm-0">{{ __('Home') }} <i
+                        class="fas fa-home"></i></a>
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                     @endif
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }}
-                </a>
+                    </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
-                    {{ __('You are logged in!') }}
+                    {{ __('Hello') }}
+                    {{ Auth::user()->name }}
+                    {{ Auth::user()->lastname }}{{ __('.') }} <br>
+                    {{ __('You are now logged in.') }}
                 </div>
             </div>
         </div>

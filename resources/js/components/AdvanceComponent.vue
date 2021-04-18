@@ -66,7 +66,7 @@
 
 
 
-    <button @click="filterByVote()">Applica Filtro</button>
+    <button @click="filterByVote(),averageByReviews()">Applica Filtro</button>
 
 
   </div>
@@ -99,8 +99,8 @@
         checkedReview:'',
 
         checkedVotes:[],
-        checkedReviews:[],
-
+        defaultReviews:3,
+        totReviewDoctor:[],
 
       }
 
@@ -136,6 +136,29 @@
 
 
       },
+
+
+      averageByReviews:function(){
+       const self = this;
+
+         self.results.forEach(element => {
+
+            const b = element;
+             const a = element.reviews.length;
+
+             console.log(a);
+
+               if(a >= self.defaultReviews){
+
+                  self.totReviewDoctor.push(b);
+
+          }
+
+         });
+
+         return self.totReviewDoctor;
+      },
+
 
 
 

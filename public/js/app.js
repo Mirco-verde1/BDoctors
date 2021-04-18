@@ -1937,7 +1937,8 @@ __webpack_require__.r(__webpack_exports__);
       checkedVote: '',
       checkedReview: '',
       checkedVotes: [],
-      checkedReviews: []
+      defaultReviews: 3,
+      totReviewDoctor: []
     };
   },
   methods: {
@@ -1952,6 +1953,19 @@ __webpack_require__.r(__webpack_exports__);
           }
         });
       });
+    },
+    averageByReviews: function averageByReviews() {
+      var self = this;
+      self.results.forEach(function (element) {
+        var b = element;
+        var a = element.reviews.length;
+        console.log(a);
+
+        if (a >= self.defaultReviews) {
+          self.totReviewDoctor.push(b);
+        }
+      });
+      return self.totReviewDoctor;
     }
   }
 });
@@ -38135,7 +38149,7 @@ var render = function() {
                   {
                     on: {
                       click: function($event) {
-                        return _vm.filterByVote()
+                        _vm.filterByVote(), _vm.averageByReviews()
                       }
                     }
                   },

@@ -6,16 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
-    <title>Document</title>
+    <title>Info Doctor</title>
 </head>
 <body>
 
-    <div id="app">
+    <h1>{{$user->name}}</h1>
+    @foreach ($user->departments as $department)
+        <span>{{$department->type}}</span>
 
-        <search-component></search-component>
-
-    </div>
-
-    <script src="{{asset('js/app.js')}}"></script>
+    @endforeach
 </body>
 </html>

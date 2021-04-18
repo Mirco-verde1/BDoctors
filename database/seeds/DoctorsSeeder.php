@@ -3,6 +3,7 @@
 use App\User;
 use App\UserDetail;
 use App\Department;
+use App\Vote;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -17,6 +18,9 @@ class DoctorsSeeder extends Seeder
     {
 
         $departments = Department::all();
+        $votes = Vote::all();
+
+
 
         $users = [
             [
@@ -26,6 +30,7 @@ class DoctorsSeeder extends Seeder
                 'email' => 'monaldo@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via Campi Flegrei, 17',
+                'vote' => 5
             ],
             [
                 'name' => 'Palmira',
@@ -34,6 +39,7 @@ class DoctorsSeeder extends Seeder
                 'email' => 'fallaci@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via Ponte In Valtellina, 2',
+                'vote' => 3
             ],
             [
                 'name' => 'Germano',
@@ -42,6 +48,7 @@ class DoctorsSeeder extends Seeder
                 'email' => 'nucci@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Piazza San Carlo, 13',
+                'vote' => 4
             ],
             [
                 'name' => 'Albina',
@@ -50,6 +57,7 @@ class DoctorsSeeder extends Seeder
                 'email' => 'giordano@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via Venezia, 56',
+                'vote' => 5
             ],
             [
                 'name' => 'Romilda',
@@ -58,6 +66,7 @@ class DoctorsSeeder extends Seeder
                 'email' => 'loduca@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via Catullo, 34',
+                'vote' => 4
             ]
         ];
 
@@ -69,10 +78,12 @@ class DoctorsSeeder extends Seeder
             $newUser->email = $user['email'];
             $newUser->password = $user['password'];
             $newUser->address = $user['address'];
-            
+
             $newUser->save();
 
             $newUser->departments()->attach($user['department']);
+            $newUser->votes()->attach($user['vote']);
+
         }
 
         $userDetails = [

@@ -5,7 +5,7 @@
         <form action="/advance" class="needs-validation" novalidate>
           <div class="search">
             <div class="search-left">
-                <div class="input-wrap">
+            <div class="input-wrap">
               <input class="form-control mr-sm-2" :class="searching && !validateQuery() ? 'is-invalid' : ''" placeholder="Search" type="text" name="" id="" v-model="searching"
               aria-label="Search">
               <i class="fas fa-search"></i>
@@ -114,3 +114,17 @@
 
 </script>
 
+<style scoped>
+  .search {
+    display: flex;
+  }
+
+  .search-left {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .invalid-message {
+    font-size: 10px;
+  }
+</style>

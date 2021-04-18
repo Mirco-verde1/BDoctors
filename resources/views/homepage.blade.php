@@ -11,7 +11,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-        <title>BDoctor</title>
+        <title>BDoctors - Home</title>
     </head>
     <body>
         <div id="app">
@@ -21,16 +21,16 @@
             </div>
             </div>
             <div class="jumbotron">
-            <div class="jumbotron-container-title">
-                <span class="title">Cerca il tuo dottore online</span>
+            <div class="jumbotron-container-title scale-in-center">
+                <span class="title"> Cerca il tuo dottore online</span>
                 <br>
-                <span class="subtitle">BDoctor</span>
+                <span class="subtitle">BDoctors</span>
 
                 <search-component></search-component>
 
             </div>
             </div>
-
+            @include('layouts/guest/partials/footer')
 
         </div>
         {{-- app --}}

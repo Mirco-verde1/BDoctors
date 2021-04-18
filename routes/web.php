@@ -1,5 +1,6 @@
 <?php
 
+use DeepCopy\Filter\Doctrine\DoctrineCollectionFilter;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,24 +15,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('homepage');
-});
+}); */
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-//doctor route
-Route::get('/homepage', 'Admin\UserController@index');
-
-Route::get('/advance', 'Admin\UserController@advance');
-
-
-
 //guest route
-Route::get('/homepage', 'GuestController@index');
+Route::get('/', 'GuestController@index')->name('public.homepage');
 
 Route::get('/advance', 'GuestController@advance');
 
+Route::get('/doctor/{id}', 'GuestController@show');
+
+//doctor route
+Route::prefix('admin')
+->namespace('Admin')
+->middleware('auth')
+->group(function () {
+    Route::resource('/', UserController::class);
+});

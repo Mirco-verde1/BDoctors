@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +12,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-
     {
-        return redirect()->route('public.homepage');
+        //
     }
 
     /**
@@ -47,7 +45,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        /* return view('doctor_view.dashboard') */
+        //
     }
 
     /**

@@ -7,21 +7,26 @@
       <div class="row">
 
 
+<!-- mostriamo i risultati della ricerca che saranno cliccabili per visualizzarne i dettagli  -->
 
-    <div class="results" v-if="checkedVotes.length === 0">
+  <div class="results" v-if="checkedVotes.length === 0">
 
    <h5 v-if="results.length === 0">Nessun risultato corrisponde ai tuoi criteri di ricerca.</h5>
 
         <div v-for="(doctor,index) in results" :key="index">
+
           Nome: {{doctor.name}} {{doctor.lastname}}
+
 
           <div v-for="(obj, index) in doctor.departments" :key="index">
             Specializzazione: {{obj.type}}
           </div>
 
+       <a  :href ="'doctor/'+ doctor.id">
+
           <img :src="doctor.detail.pic" alt="profile pic">
 
-
+       </a>
 
         </div>
    </div>
@@ -41,14 +46,16 @@
 
           <img :src="item.detail.pic" alt="profile pic">
 
-
-
         </div>
 
 
    </div>
 
+
 <!-- Filter results part -->
+
+<div v-if="results.length > 0">
+
   <div class="filters">
 
   <div> <input type="radio"  value="1" v-model="checkedVote"> <span>vote 1</span></div>
@@ -70,6 +77,8 @@
 
   </div>
 
+
+</div>
      </div>
 
    </div>

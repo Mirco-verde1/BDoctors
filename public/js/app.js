@@ -1947,17 +1947,10 @@ __webpack_require__.r(__webpack_exports__);
       self.checkedVotes = [];
       self.results.forEach(function (item) {
         item.votes.forEach(function (el) {
-          if (el.value === parseInt(self.checked)) {
+          if (el.value === parseInt(self.checkedVote)) {
             self.checkedVotes.push(item);
           }
         });
-      });
-    },
-    filterByReview: function filterByReview() {
-      self.checkedReviews = [];
-      self.results.forEach(function (element) {
-        var len = element.reviews.length;
-        console.log(len);
       });
     }
   }
@@ -37872,7 +37865,7 @@ var render = function() {
         _vm.checkedVotes.length > 0
           ? _c(
               "div",
-              _vm._l(_vm.checkedResults, function(item, index) {
+              _vm._l(_vm.checkedVotes, function(item, index) {
                 return _c(
                   "div",
                   { key: index },
@@ -38023,7 +38016,7 @@ var render = function() {
                   {
                     on: {
                       click: function($event) {
-                        _vm.filterByVote(), _vm.filterByReview()
+                        return _vm.filterByVote()
                       }
                     }
                   },

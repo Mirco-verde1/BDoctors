@@ -1,14 +1,28 @@
-@extends('layouts.app')
+    @extends('layouts.app')
 
 
-@section('content')
-    <div id="app">
+    @section('content')
+        <div id="app">
 
-        <h1>{{$user->name}}</h1>
+            <div class="info-doctor">
 
-        @foreach ($user->departments as $department)
-            <span>{{$department->type}}</span>
+            <h1>{{$user->name}} {{$user->lastname}}</h1>
+
+
+
+            @foreach ($user->departments as $department)
+                <h2>{{$department->type}}</h2>
+            @endforeach
+
+            <h2>{{$user->email}}</h2>
+
+            <h2>{{$user->address}}</h2>
+
+
+            @foreach ($user->detail() as $details)
+            <h2>{{$details->pic}}</h2>
+
         @endforeach
-
     </div>
-@endsection
+        </div>
+    @endsection

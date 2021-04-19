@@ -82,7 +82,8 @@ class RegisterController extends Controller
             'pic',
             'phone',
             'curriculum',
-            'user_id' => auth()->id() ]);
+            'user_id' => $user->id
+            ]);
         $user->detail()->save($userdetail);
         return $user;
     }

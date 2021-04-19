@@ -1,4 +1,5 @@
-
+// Variables
+@import 'app';
 
 * {
     font-size: 17px;
@@ -16,7 +17,6 @@
     }
 
     .input-wrap {
-        display: inline-block;
         position: relative;
       }
       .input-wrap > input {
@@ -47,12 +47,17 @@
 
 //stile navbar e jumbotron
 
-
+#app{
+background-color: #F5F8FA;
+}
+.navbar-toggler{
+    background-color: #F5F8FA;
+}
 .jumbotron{
     width: 100vw;
     height: 90vh;
     background-image: url("https://www.doctors-365.de/home_slider_bg.95b2004ae0c9ce8f3a0b.jpg");
-    filter: brightness(.8);
+    filter: brightness(.7);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: right center;
@@ -66,6 +71,18 @@
         top: 40%;
         color: rgb(105, 175, 236);
         text-shadow: 2px 2px #0c0c0c;
+        animation: jumbotron-container-title 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+
+
+    @keyframes jumbotron-container-title {
+        0% {
+        transform: scale(0.5);
+        }
+        100% {
+        transform: scale(1);
+        }
+    }
+
 
         .form-inline{
 
@@ -85,13 +102,45 @@
                 }
           }
         }
-
         .title{
             font-size:80px;
+            filter: brightness(1.3);
         }
 
         .subtitle{
             font-size:40px;
+            filter: brightness(1.3);
         }
     }
 }
+
+// stile advanced search
+
+.margin-top-container {
+    margin-top: 50px;
+}
+
+.fa-star {
+    color: $gold;
+}
+
+.strip-list {
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: space-around;
+    margin-bottom: 25px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 0 0 15px 0 rgb(0 0 0 / 5%);
+}
+.doctor-pic {
+    border-radius: 50%;
+    border: 3px solid $green-logo;
+    height: 100px;
+    width: 100px;
+    // align-self: flex-end;
+}
+
+//

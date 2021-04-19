@@ -29,7 +29,9 @@ Route::get('/', 'GuestController@index')->name('public.homepage');
 
 Route::get('/advance', 'GuestController@advance');
 
-Route::get('/doctor/{id}', 'GuestController@show');
+Route::get('/doctor/{id}', 'GuestController@show')->name('show.doctor');
+
+Route::resource('review', ReviewController::class)->only('create', 'store', 'edit', 'update');
 
 //doctor route
 Route::prefix('admin')

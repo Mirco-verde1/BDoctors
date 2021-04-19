@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Message;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -34,7 +35,22 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validateForm($request);
+
+        $data = $request->all();
+
+        $newMessage = new Message();
+        $$newMessage->fill($data);
+        $newMessage->save();
+    }
+
+    protected function validateForm(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|max:255',
+            'body' => 'required|max:255'
+        ]);
     }
 
     /**

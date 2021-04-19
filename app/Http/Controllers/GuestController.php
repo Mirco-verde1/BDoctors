@@ -37,7 +37,8 @@ class GuestController extends Controller
 
         $user = User::where('id', $id)->first();
         $departments = Department::all();
-        return view('showDoc', compact('user', 'departments'));
+        $detail = UserDetail::all();
+        return view('showDoc', compact('user', 'departments','detail'));
 
     }
 

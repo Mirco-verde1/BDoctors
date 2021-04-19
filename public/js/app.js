@@ -1996,44 +1996,48 @@ __webpack_require__.r(__webpack_exports__);
       checkedVote: '',
       checkedReview: '',
       checkedVotes: [],
-      defaultReviews: 3,
-      totReviewDoctor: []
+      totReviewDoctors: []
     };
   },
   methods: {
-    //filter results by checkboxes
+    // Filter results by votes
     filterByVote: function filterByVote() {
-      var self = this;
-      self.checkedVotes = [];
-      self.results.forEach(function (item) {
+      var _this = this;
+
+      this.checkedVotes = [];
+      this.results.forEach(function (item) {
         item.votes.forEach(function (el) {
-          if (el.value === parseInt(self.checkedVote)) {
-            self.checkedVotes.push(item);
-            self.checkedReview = false;
+          if (el.value === parseInt(_this.checkedVote)) {
+            _this.checkedVotes.push(item);
+
+            _this.checkedReview = false;
           }
         });
       });
     },
+    // Filter results by reviews
     filterByReviews: function filterByReviews() {
-      if (this.checkedReview) {
-        var self = this;
-        self.totReviewDoctor = [];
-        self.results.forEach(function (element) {
-          var b = element;
-          var a = element.reviews.length;
-          console.log(a);
+      var _this2 = this;
 
-          if (a >= self.defaultReviews) {
-            self.totReviewDoctor.push(b);
-            self.checkedVote = '';
-          }
+      if (this.checkedReview) {
+        this.totReviewDoctors = [];
+        this.results.forEach(function (element) {
+          var reviewsNumber = element.reviews.length;
+
+          _this2.totReviewDoctors.push(element);
+
+          _this2.totReviewDoctors.sort(function (a, b) {
+            return a.reviewsNumber > b.reviewsNumber ? 1 : -1;
+          });
+
+          console.log(_this2.totReviewDoctors);
         });
-        return self.totReviewDoctor;
+        this.totReviewDoctors.reverse();
       }
     },
     reviewsOff: function reviewsOff() {
-      if (this.totReviewDoctor.length > 0) {
-        return this.totReviewDoctor = [];
+      if (this.totReviewDoctors.length > 0) {
+        this.totReviewDoctors = [];
       }
     }
   }
@@ -38111,131 +38115,134 @@ var render = function() {
           : _vm._e()
       ]),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-lg-8" },
-        [
-          _vm.checkedVotes.length > 0 && _vm.totReviewDoctor.length === 0
-            ? _c(
-                "div",
-                {},
-                _vm._l(_vm.checkedVotes, function(item, index) {
-                  return _c(
-                    "div",
-                    { key: index, staticClass: "strip-list" },
-                    [
-                      _c("div", [
+      _c("div", { staticClass: "col-lg-8" }, [
+        _vm.checkedVotes.length > 0 && _vm.totReviewDoctors.length === 0
+          ? _c(
+              "div",
+              {},
+              _vm._l(_vm.checkedVotes, function(item, index) {
+                return _c(
+                  "div",
+                  { key: index, staticClass: "strip-list" },
+                  [
+                    _c("div", [
+                      _vm._v(
+                        "\n                        Nome: " +
+                          _vm._s(item.name) +
+                          " " +
+                          _vm._s(item.lastname) +
+                          "\n                    "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(item.departments, function(obj, index) {
+                      return _c("div", { key: index }, [
                         _vm._v(
-                          "\n                            Nome: " +
-                            _vm._s(item.name) +
-                            " " +
-                            _vm._s(item.lastname) +
+                          "\n                        Specializzazione: " +
+                            _vm._s(obj.type) +
+                            "\n                    "
+                        )
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c("a", { attrs: { href: "doctor/" + item.id } }, [
+                      _c("img", {
+                        staticClass: "doctor-pic",
+                        attrs: { src: item.detail.pic, alt: "profile pic" }
+                      })
+                    ])
+                  ],
+                  2
+                )
+              }),
+              0
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.checkedVotes.length === 0 && _vm.totReviewDoctors.length === 0
+          ? _c(
+              "div",
+              _vm._l(_vm.results, function(doctor, index) {
+                return _c(
+                  "div",
+                  { key: index, staticClass: "strip-list" },
+                  [
+                    _c("div", [
+                      _vm._v(
+                        "\n                            Nome: " +
+                          _vm._s(doctor.name) +
+                          " " +
+                          _vm._s(doctor.lastname) +
+                          "\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(doctor.departments, function(obj, index) {
+                      return _c("div", { key: index }, [
+                        _vm._v(
+                          "\n                            Specializzazione: " +
+                            _vm._s(obj.type) +
                             "\n                        "
                         )
-                      ]),
-                      _vm._v(" "),
-                      _vm._l(item.departments, function(obj, index) {
-                        return _c("div", { key: index }, [
-                          _vm._v(
-                            "\n                            Specializzazione: " +
-                              _vm._s(obj.type) +
-                              "\n                        "
-                          )
-                        ])
-                      }),
-                      _vm._v(" "),
-                      _c("a", { attrs: { href: "doctor/" + item.id } }, [
-                        _c("img", {
-                          staticClass: "doctor-pic",
-                          attrs: { src: item.detail.pic, alt: "profile pic" }
-                        })
                       ])
-                    ],
-                    2
-                  )
-                }),
-                0
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm._l(_vm.results, function(doctor, index) {
-            return _c("div", { key: index }, [
-              _vm.checkedVotes.length === 0 && _vm.totReviewDoctor.length === 0
-                ? _c(
-                    "div",
-                    { staticClass: "strip-list" },
-                    [
-                      _c("div", [
-                        _vm._v(
-                          "\n                              Nome: " +
-                            _vm._s(doctor.name) +
-                            " " +
-                            _vm._s(doctor.lastname) +
-                            "\n                          "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _vm._l(doctor.departments, function(obj, index) {
-                        return _c("div", { key: index }, [
-                          _vm._v(
-                            "\n                              Specializzazione: " +
-                              _vm._s(obj.type) +
-                              "\n                          "
-                          )
-                        ])
-                      }),
-                      _vm._v(" "),
-                      _c("a", { attrs: { href: "doctor/" + doctor.id } }, [
-                        _c("img", {
-                          staticClass: "doctor-pic",
-                          attrs: { src: doctor.detail.pic, alt: "profile pic" }
-                        })
-                      ])
-                    ],
-                    2
-                  )
-                : _vm._e()
-            ])
-          }),
-          _vm._v(" "),
-          _vm._l(_vm.totReviewDoctor, function(item, index) {
-            return _c(
-              "div",
-              { key: index, staticClass: "strip-list" },
-              [
-                _c("div", [
-                  _vm._v(
-                    "\n                            Nome: mimmo" +
-                      _vm._s(item.name) +
-                      " " +
-                      _vm._s(item.lastname) +
-                      "\n                        "
-                  )
-                ]),
-                _vm._v(" "),
-                _vm._l(item.departments, function(obj, index) {
-                  return _c("div", { key: index }, [
-                    _vm._v(
-                      "\n                                                Specializzazione: " +
-                        _vm._s(obj.type) +
-                        "\n                                            "
-                    )
-                  ])
-                }),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "doctor/" + item.id } }, [
-                  _c("img", {
-                    staticClass: "doctor-pic",
-                    attrs: { src: item.detail.pic, alt: "profile pic" }
-                  })
-                ])
-              ],
-              2
+                    }),
+                    _vm._v(" "),
+                    _c("a", { attrs: { href: "doctor/" + doctor.id } }, [
+                      _c("img", {
+                        staticClass: "doctor-pic",
+                        attrs: { src: doctor.detail.pic, alt: "profile pic" }
+                      })
+                    ])
+                  ],
+                  2
+                )
+              }),
+              0
             )
-          })
-        ],
-        2
-      )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.checkedVotes.length === 0 && _vm.totReviewDoctors.length > 0
+          ? _c(
+              "div",
+              _vm._l(_vm.totReviewDoctors, function(item, index) {
+                return _c(
+                  "div",
+                  { key: index, staticClass: "strip-list" },
+                  [
+                    _c("div", [
+                      _vm._v(
+                        "\n                        Nome: " +
+                          _vm._s(item.name) +
+                          " " +
+                          _vm._s(item.lastname) +
+                          "\n                    "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(item.departments, function(obj, index) {
+                      return _c("div", { key: index }, [
+                        _vm._v(
+                          "\n                        Specializzazione: " +
+                            _vm._s(obj.type) +
+                            "\n                    "
+                        )
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c("a", { attrs: { href: "doctor/" + item.id } }, [
+                      _c("img", {
+                        staticClass: "doctor-pic",
+                        attrs: { src: item.detail.pic, alt: "profile pic" }
+                      })
+                    ])
+                  ],
+                  2
+                )
+              }),
+              0
+            )
+          : _vm._e()
+      ])
     ])
   ])
 }

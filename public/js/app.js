@@ -38159,42 +38159,43 @@ var render = function() {
             : _vm._e(),
           _vm._v(" "),
           _vm._l(_vm.results, function(doctor, index) {
-            return _vm.checkedVotes.length === 0 &&
-              _vm.totReviewDoctor.length === 0
-              ? _c(
-                  "div",
-                  { key: index, staticClass: "strip-list" },
-                  [
-                    _c("div", [
-                      _vm._v(
-                        "\n                            Nome: " +
-                          _vm._s(doctor.name) +
-                          " " +
-                          _vm._s(doctor.lastname) +
-                          "\n                        "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _vm._l(doctor.departments, function(obj, index) {
-                      return _c("div", { key: index }, [
+            return _c("div", { key: index }, [
+              _vm.checkedVotes.length === 0 && _vm.totReviewDoctor.length === 0
+                ? _c(
+                    "div",
+                    { staticClass: "strip-list" },
+                    [
+                      _c("div", [
                         _vm._v(
-                          "\n                                                Specializzazione: " +
-                            _vm._s(obj.type) +
-                            "\n                                            "
+                          "\n                              Nome: " +
+                            _vm._s(doctor.name) +
+                            " " +
+                            _vm._s(doctor.lastname) +
+                            "\n                          "
                         )
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(doctor.departments, function(obj, index) {
+                        return _c("div", { key: index }, [
+                          _vm._v(
+                            "\n                              Specializzazione: " +
+                              _vm._s(obj.type) +
+                              "\n                          "
+                          )
+                        ])
+                      }),
+                      _vm._v(" "),
+                      _c("a", { attrs: { href: "doctor/" + doctor.id } }, [
+                        _c("img", {
+                          staticClass: "doctor-pic",
+                          attrs: { src: doctor.detail.pic, alt: "profile pic" }
+                        })
                       ])
-                    }),
-                    _vm._v(" "),
-                    _c("a", { attrs: { href: "doctor/" + doctor.id } }, [
-                      _c("img", {
-                        staticClass: "doctor-pic",
-                        attrs: { src: doctor.detail.pic, alt: "profile pic" }
-                      })
-                    ])
-                  ],
-                  2
-                )
-              : _vm._e()
+                    ],
+                    2
+                  )
+                : _vm._e()
+            ])
           }),
           _vm._v(" "),
           _vm._l(_vm.totReviewDoctor, function(item, index) {

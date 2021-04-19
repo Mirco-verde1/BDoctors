@@ -93,22 +93,22 @@
 
                       <!-- mostriamo i risultati della ricerca effettuata nella homepage -->
 
-                      <div v-if="checkedVotes.length === 0  && totReviewDoctor.length === 0" class="strip-list"
+                      <div v-for="(doctor,index) in results" :key="index">
+                        <div v-if="checkedVotes.length === 0  && totReviewDoctor.length === 0" class="strip-list">
 
-                      v-for="(doctor,index) in results" :key="index">
+                            <div>
+                                Nome: {{doctor.name}} {{doctor.lastname}}
+                            </div>
 
-                          <div>
-                              Nome: {{doctor.name}} {{doctor.lastname}}
-                          </div>
+                            <div v-for="(obj, index) in doctor.departments" :key="index">
+                                Specializzazione: {{obj.type}}
+                            </div>
 
-                      <div v-for="(obj, index) in doctor.departments" :key="index">
-                                                  Specializzazione: {{obj.type}}
-                                              </div>
+                            <a :href="'doctor/'+ doctor.id">
+                                <img class="doctor-pic" :src="doctor.detail.pic" alt="profile pic">
+                            </a>
 
-                        <a :href="'doctor/'+ doctor.id">
-                              <img class="doctor-pic" :src="doctor.detail.pic" alt="profile pic">
-                          </a>
-
+                        </div>
                       </div>
 
 

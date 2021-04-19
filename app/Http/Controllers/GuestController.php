@@ -19,7 +19,7 @@ class GuestController extends Controller
         $userDetail= UserDetail::all();
         $userDepartment= Department::all();
 
-         return view('homepage');
+         return view('homepage', compact('users', 'userDetail', 'userDepartment'));
     }
 
 

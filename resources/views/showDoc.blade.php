@@ -1,60 +1,63 @@
-@extends('layouts.app')
+        @extends('layouts.app')
 
 
-@section('content')
-    <div id="app">
+        @section('content')
 
-        <h1>{{$user->name}}</h1>
+            <div id="app">
 
-        @foreach ($user->departments as $department)
-            <span>{{$department->type}}</span>
-        @endforeach
+                <img src="{{$user->detail->pic}}" alt="">
+
+                <form action="{{ route('review.store', [ 'user_id' => $user->id]) }}" method="post">
+                    @csrf
+                    @method('POST')
+
+                    <div class="form-group position-relative">
+                        <label for="name" class="form-label">Name</label>
+                        <input class="form-control {{ $errors->has('name') ? 'is-invalid' : ''}}" type="text" name="name" placeholder="Name" value="{{isset($review) ? $review->name : '' }}">
+                        <div class="invalid-tooltip">
+                            {{ $errors->first('name') }}
+                        </div>
+                    </div>
+
+                    <div class="form-group position-relative">
+                        <label for="email">Email</label>
+                        <input class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}" type="text" name="email" placeholder="Email" value="{{isset($review) ? $review->email : '' }}">
+                        <div class="invalid-tooltip">
+                            {{ $errors->first('email') }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="body">Body</label>
+                        <textarea class="form-control {{ $errors->has('body') ? 'is-invalid' : ''}}" type="text" name="body" placeholder="Body" rows="6" value="{{isset($review) ? $review->body : '' }}"></textarea>
+                        <div class="invalid-feedback">
+                            {{ $errors->first('body') }}
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Send">
+                </form>
 
 
-        <a href="{{ route('review.create') }}">
-        <button type="submit" class="btn btn-primary">
-            Recensisci
-        </button>
-        </a>
+                <h1>Dottor/ssa: {{$user->name}} {{$user->lastname}}</h1>
 
-        <form action="{{ route('review.store', [ 'user_id' => $user->id]) }}" method="post">
-            @csrf
-            @method('POST')
+                @foreach ($user->departments as $department)
+                    <h2>Specializzazione: {{$department->type}}</h2>
+                @endforeach
 
-            {{--  <div class="form-group">
-                <label for="user_id">Doctor</label>
-                <select class="form-control" id="user_id" name="user_id">
-                    @foreach ($users as $doctor)
-                        <option value="{{ $doctor->id }}">{{ $doctor->name }} {{ $doctor->lastname }}</option>
-                    @endforeach
-                </select>
-            </div> --}}
+                <div class="contacts">
+                    <h1>Contatti: </h1>
+                    <h2>Indirizzo: {{$user->address}}</h2>
 
-            <div class="form-group position-relative">
-                <label for="name" class="form-label">Name</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : ''}}" type="text" name="name" placeholder="Name" value="{{isset($review) ? $review->name : '' }}">
-                <div class="invalid-tooltip">
-                    {{ $errors->first('name') }}
+                    <h2>Email: {{$user->email}}</h2>
+
+                    <h2>{{$user->detail->phone}}</h2>
                 </div>
-            </div>
 
-            <div class="form-group position-relative">
-                <label for="email">Email</label>
-                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}" type="text" name="email" placeholder="Email" value="{{isset($review) ? $review->email : '' }}">
-                <div class="invalid-tooltip">
-                    {{ $errors->first('email') }}
+                <div class="curriculum">
+                <h1>Curriculum: </h1>
+                <h3>{{$user->detail->curriculum}}</h3>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label for="body">Body</label>
-                <textarea class="form-control {{ $errors->has('body') ? 'is-invalid' : ''}}" type="text" name="body" placeholder="Body" rows="6" value="{{isset($review) ? $review->body : '' }}"></textarea>
-                <div class="invalid-feedback">
-                    {{ $errors->first('body') }}
-                </div>
             </div>
-
-            <input type="submit" value="Send">
-        </form>
-    </div>
-@endsection
+        @endsection

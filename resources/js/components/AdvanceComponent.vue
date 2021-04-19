@@ -1,242 +1,209 @@
-  <template>
+<template>
 
-      <div class="container margin-top-container">
+    <div class="container margin-top-container">
 
-          <div class="row">
+        <div class="row">
 
-              <div class="col-lg-3">
-                  <!-- Filter results part -->
-                  <div v-if="results.length > 0 ">
+            <div class="col-lg-3">
 
-                      <div class="filters">
+                <!-- Filter results part -->
+                <div v-if="results.length > 0">
 
-                          <div @change="filterByVote(), reviewsOff()">
-                              <input type="radio" value="1" v-model="checkedVote">
-                              <span>
-                                  <i class="fas fa-star"></i>
-                              </span>
-                          </div>
+                    <div class="filters">
 
-                          <div @change="filterByVote(), reviewsOff()">
-                              <input type="radio" value="2" v-model="checkedVote">
-                              <span>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                              </span>
-                          </div>
+                    <div @change="filterByVote(), reviewsOff()">
+                        <input type="radio" value="1" v-model="checkedVote">
+                        <span>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
 
-                          <div @change="filterByVote(), reviewsOff()">
-                              <input type="radio" value="3" v-model="checkedVote">
-                              <span>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                              </span>
-                          </div>
+                    <div @change="filterByVote(), reviewsOff()">
+                        <input type="radio" value="2" v-model="checkedVote">
+                        <span>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
 
-                          <div @change="filterByVote(), reviewsOff()">
-                              <input type="radio" value="4" v-model="checkedVote" >
-                              <span>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                              </span>
-                          </div>
+                    <div @change="filterByVote(), reviewsOff()">
+                        <input type="radio" value="3" v-model="checkedVote">
+                        <span>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
 
-                          <div @change="filterByVote(), reviewsOff()">
-                              <input type="radio" value="5" v-model="checkedVote">
-                              <span>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                              </span>
-                          </div>
+                    <div @change="filterByVote(), reviewsOff()">
+                        <input type="radio" value="4" v-model="checkedVote" >
+                        <span>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
 
-                      <div> <input type="checkbox" @change="filterByReviews()"  value="" v-model="checkedReview"> <i class="far fa-edit"></i>Recensioni</div>
+                    <div @change="filterByVote(), reviewsOff()">
+                        <input type="radio" value="5" v-model="checkedVote">
+                            <span>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </span>
+                    </div>
 
+                <div>
+                
+                    <input type="checkbox" @change="filterByReviews()"  value="" v-model="checkedReview"> <i class="far fa-edit"></i>Recensioni</div>
 
+                </div>
 
-                      </div>
-
-                  </div>
-              </div>
-
-
-              <div class="col-lg-8">
-
-                  <!-- mostriamo i risultati della ricerca tramite filtro per i voti -->
-                  <div class="" v-if="checkedVotes.length > 0 && totReviewDoctor.length === 0">
-
-                      <div class="strip-list" v-for="(item,index) in checkedVotes" :key="index">
-                          <div>
-                              Nome: {{item.name}} {{item.lastname}}
-                          </div>
-
-                          <div v-for="(obj, index) in item.departments" :key="index">
-                              Specializzazione: {{obj.type}}
-                          </div>
+            </div>
+        </div>
 
 
-                        <a :href="'doctor/'+ item.id">
-                              <img class="doctor-pic" :src="item.detail.pic" alt="profile pic">
-                          </a>
+        <div class="col-lg-8">
 
-                      </div>
+            <!-- mostriamo i risultati della ricerca tramite filtro per i voti -->
+            <div class="" v-if="checkedVotes.length > 0 && totReviewDoctors.length === 0">
 
-                  </div>
+                <div class="strip-list" v-for="(item,index) in checkedVotes" :key="index">
+                
+                    <div>
+                        Nome: {{item.name}} {{item.lastname}}
+                    </div>
 
-
-
-
-                      <!-- mostriamo i risultati della ricerca effettuata nella homepage -->
-
-                      <div v-for="(doctor,index) in results" :key="index">
-                        <div v-if="checkedVotes.length === 0  && totReviewDoctor.length === 0" class="strip-list">
-
-                            <div>
-                                Nome: {{doctor.name}} {{doctor.lastname}}
-                            </div>
-
-                            <div v-for="(obj, index) in doctor.departments" :key="index">
-                                Specializzazione: {{obj.type}}
-                            </div>
-
-                            <a :href="'doctor/'+ doctor.id">
-                                <img class="doctor-pic" :src="doctor.detail.pic" alt="profile pic">
-                            </a>
-
-                        </div>
-                      </div>
-
-
-                    <!-- mostriamo i risultati della ricerca tramite filtro per le reviews -->
-
-                    <div v-for="(item, index) in totReviewDoctor" :key="index"   class="strip-list"
-  >
-                        <div>
-                              Nome: mimmo{{item.name}} {{item.lastname}}
-                          </div>
-
-                      <div v-for="(obj, index) in item.departments" :key="index">
-                                                  Specializzazione: {{obj.type}}
-                                              </div>
-
-                        <a :href="'doctor/'+ item.id">
-                              <img class="doctor-pic" :src="item.detail.pic" alt="profile pic">
-                          </a>
-
+                    <div v-for="(obj, index) in item.departments" :key="index">
+                        Specializzazione: {{obj.type}}
                     </div>
 
 
-                  </div>
-              </div>
+                    <a :href="'doctor/'+ item.id">
+                        <img class="doctor-pic" :src="item.detail.pic" alt="profile pic">
+                    </a>
 
-          </div>
-          <!-- row -->
+                </div>
 
-      <!-- containe -->
-
-  </template>
-
-  <script>
-      export default {
-
-          data: function () {
-
-              return {
-
-                  // Recupera la stringa JSON dallo storage locale e la trasforma in un oggetto JavaScript
-                  results: JSON.parse(localStorage.getItem('results')),
+            </div>
 
 
-                  checkedVote: '',
-                  checkedReview: '',
+                <!-- mostriamo i risultati della ricerca effettuata nella homepage -->
 
-          checkedVotes:[],
-          defaultReviews:3,
-          totReviewDoctor:[],
+                <div v-if="checkedVotes.length === 0 && totReviewDoctors.length === 0">
+                    <div class="strip-list" v-for="(doctor,index) in results" :key="index">
 
+                        <div>
+                            Nome: {{doctor.name}} {{doctor.lastname}}
+                        </div>
+
+                        <div v-for="(obj, index) in doctor.departments" :key="index">
+                            Specializzazione: {{obj.type}}
+                        </div>
+
+                        <a :href="'doctor/' + doctor.id">
+                            <img class="doctor-pic" :src="doctor.detail.pic" alt="profile pic">
+                        </a>
+
+                    </div>
+                </div>
+
+
+            <!-- mostriamo i risultati della ricerca tramite filtro per le reviews -->
+
+            <div v-if="checkedVotes.length === 0 && totReviewDoctors.length > 0" >
+                <div class="strip-list" v-for="(item, index) in totReviewDoctors" :key="index">
+                    <div>
+                        Nome: {{item.name}} {{item.lastname}}
+                    </div>
+
+                    <div v-for="(obj, index) in item.departments" :key="index">
+                        Specializzazione: {{obj.type}}
+                    </div>
+
+                    <a :href="'doctor/'+ item.id">
+                        <img class="doctor-pic" :src="item.detail.pic" alt="profile pic">
+                    </a>
+                </div>
+            </div>
+
+
+            </div>
+        </div>
+
+    </div>
+    <!-- row -->
+
+<!-- container -->
+
+</template>
+
+<script>
+    export default {
+
+        data: function () {
+
+            return {
+
+            // Recupera la stringa JSON dallo storage locale e la trasforma in un oggetto JavaScript
+            results: JSON.parse(localStorage.getItem('results')),
+
+
+            checkedVote: '',
+            checkedReview: '',
+
+            checkedVotes:[],
+            totReviewDoctors:[],
 
         }
+    },
 
-          },
+    methods: {
 
-          methods: {
+        // Filter results by votes
+        filterByVote: function () {
+            this.checkedVotes = [];
+            this.results.forEach(item => {
 
-              //filter results by checkboxes
-              filterByVote: function () {
+                item.votes.forEach(el => {
+                    if (el.value === parseInt(this.checkedVote)) {
+                        this.checkedVotes.push(item);
+                        this.checkedReview = false;
+                    }
+                });
+            });
+        },
 
-                  const self = this;
+        // Filter results by reviews
+        filterByReviews: function() {
 
-                  self.checkedVotes = [];
+            if (this.checkedReview) {
+                this.totReviewDoctors = [];
 
-                  self.results.forEach(item => {
+                this.results.forEach(element => {
+                    const reviewsNumber = element.reviews.length;
 
-                      item.votes.forEach(el => {
+                    this.totReviewDoctors.push(element);
 
+                    this.totReviewDoctors.sort((a, b) => (a.reviewsNumber > b.reviewsNumber) ? 1 : -1);
+                    
+                    console.log(this.totReviewDoctors);                  
+                });
 
-                          if (el.value === parseInt(self.checkedVote)) {
-
-                              self.checkedVotes.push(item);
-                              self.checkedReview = false;
-
-
-                          }
-
-
-                      });
-
-
-
-                  });
-
-
-              },
-
-
-        filterByReviews:function(){
-
-      if(this.checkedReview){
-
-        const self = this;
-          self.totReviewDoctor = [];
-
-            self.results.forEach(element => {
-
-              const b = element;
-              const a = element.reviews.length;
-
-              console.log(a);
-
-                if(a >= self.defaultReviews){
-
-                    self.totReviewDoctor.push(b);
-                    self.checkedVote = '';
+                this.totReviewDoctors.reverse();
             }
-
-          });
-
-          return self.totReviewDoctor;
-          }
         },
 
 
-        reviewsOff:function(){
-
-          if(this.totReviewDoctor.length > 0){
-          return this.totReviewDoctor = [];
-          }
+        reviewsOff: function() {
+            if(this.totReviewDoctors.length > 0) {
+                this.totReviewDoctors = [];
+            }
         },
+    }
+}
 
-
-
-
-
-          }
-
-      }
-
-  </script>
+</script>

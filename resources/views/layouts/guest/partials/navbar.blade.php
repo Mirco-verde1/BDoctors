@@ -18,7 +18,6 @@
                 <!-- Authentication Links -->
                 @if (Route::has('login'))
                 @auth
-                <a class="query-submit btn btn-outline-success my-2 my-sm-0" href="{{ url('/') }}">Home</a>
                 @else
                     <a class="query-submit btn btn-outline-success my-2 my-sm-0 btn-register"
                         href="{{ route('login') }}">{{ __('Login') }}

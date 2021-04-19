@@ -16,10 +16,11 @@ class CreateUserDetailsTable extends Migration
         Schema::create('user_details', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('pic',2048)->nullable();
-            $table->string('phone',16);
-            $table->text('curriculum');
+            $table->string('pic',2048)->default('https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png');
+            $table->string('phone',16)->default('+390000000000');
+            $table->text('curriculum')->nullable();
             $table->timestamps();
+
 
 
             $table->foreign('user_id')

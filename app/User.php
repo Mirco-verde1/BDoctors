@@ -39,6 +39,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Sponsor::class);
     }
 
+    // getting details to get the picture into dashboard
+    public function getPic()
+    {
+        return $this->detail;
+    }
+
 
     /**
      * The attributes that are mass assignable.
@@ -46,7 +52,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'lastname','address', 'department','vote'
+        'name', 'email', 'password', 'lastname','address', 'department','vote',
     ];
 
     /**
@@ -66,4 +72,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 }

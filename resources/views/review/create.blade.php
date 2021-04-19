@@ -22,7 +22,7 @@
 
     <h1 class="text-center">Recensisci questo dottore</h1>
 
-    @include('review.form', ['edit' => false])
+    @include('review.form');
 
 
 </body>

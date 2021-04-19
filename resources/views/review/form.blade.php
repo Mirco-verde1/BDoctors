@@ -10,26 +10,20 @@
 </head>
 <body>
 
-    @php
-        if (isset($edit) && !empty($edit)) {
-            $method = 'PATCH';
-            $url = route('review.update', compact('review'));
-        } else {
-            $method = 'POST';
-            $url = route('review.store');
-        }
-    @endphp
-
     <div class="container">
-    {{-- <a href="{{ route('show.doctor') }}">
-        <button type="submit" class="btn btn-primary home-button">
-            <i class="fas fa-home"></i>
-        </button>
-    </a> --}}
 
-        <form action="{{ $url }}" method="post">
+        <form action="{{ route('review.store', [ 'user_id' => $user->id]) }}" method="post">
             @csrf
-            @method($method)
+            @method('POST')
+
+            {{--  <div class="form-group">
+                <label for="user_id">Doctor</label>
+                <select class="form-control" id="user_id" name="user_id">
+                    @foreach ($users as $doctor)
+                        <option value="{{ $doctor->id }}">{{ $doctor->name }} {{ $doctor->lastname }}</option>
+                    @endforeach
+                </select>
+            </div> --}}
 
             <div class="form-group position-relative">
                 <label for="name" class="form-label">Name</label>

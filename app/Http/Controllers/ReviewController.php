@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Review;
+use App\User;
 
 class ReviewController extends Controller
 {
@@ -24,7 +25,8 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        return view('review.create');
+        $users = User::all();
+        return view('review.create', compact('users'));
     }
 
     /**
@@ -35,13 +37,21 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validateForm($request);
 
-        $data = $request->all();
+        $data = $request->validate([
 
-        $newReview = new Review();
-        $newReview->fill($data);
-        $newReview->save();
+            'name' => 'required',
+            'email' => 'required',
+            'body' => 'required',
+
+        ]);
+
+        $id = $request->user_id;
+        $data['user_id'] = $id;
+
+        Review::create($data);
+
+        return redirect()->route('public.homepage');
 
     }
 
@@ -62,9 +72,9 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Review $review)
+    public function edit($id)
     {
-        return view('review.edit', compact('review'));
+        //
     }
 
     /**
@@ -74,22 +84,9 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Review $review)
+    public function update(Request $request)
     {
-        $this->validateForm($request);
-
-        $data = $request->all();
-
-        $review->update($data);
-    }
-
-    protected function validateForm(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|max:128',
-            'email' => 'required',
-            'body' => 'required'
-        ]);
+        //
     }
 
     /**

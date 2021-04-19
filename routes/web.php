@@ -32,6 +32,7 @@ Route::get('/advance', 'GuestController@advance');
 Route::get('/doctor/{id}', 'GuestController@show')->name('show.doctor');
 
 Route::resource('review', ReviewController::class)->only('create', 'store', 'edit', 'update');
+Route::resource('message', MessageController::class);
 
 //doctor route
 Route::prefix('admin')

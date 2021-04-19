@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card margin-top-container">
 
                 <a href="/" class=" btn btn-outline-success my-2 my-sm-0">{{ __('Home') }} <i
                         class="fas fa-home"></i></a>

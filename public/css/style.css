@@ -16269,6 +16269,19 @@ readers do not read off random characters that represent icons */
   width: 100px;
 }
 
+.title-carousel {
+  font-family: "Dela Gothic One", cursive;
+  text-align: center;
+  top: 40%;
+  color: #69afec;
+  text-shadow: 2px 2px #0c0c0c;
+}
+
+.doctor-card {
+  margin-bottom: 200px;
+  margin-top: 50px;
+}
+
 .feather {
   width: 16px;
   height: 16px;

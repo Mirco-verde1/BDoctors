@@ -67,7 +67,6 @@
 
 #app{
 background-color: #F5F8FA;
-overflow-x: hidden;
 }
 
 .navbar-toggler{
@@ -357,8 +356,8 @@ overflow-x: hidden;
         .doctor-pic-show {
             border-radius: 50%;
             border: 3px solid $green-logo;
-            height: 300px;
             width: 300px;
+            height: 300px;
         }
 
         .info {

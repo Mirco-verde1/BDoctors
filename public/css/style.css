@@ -16197,7 +16197,6 @@ readers do not read off random characters that represent icons */
 
 #app {
   background-color: #F5F8FA;
-  overflow-x: hidden;
 }
 
 .navbar-toggler {
@@ -16466,8 +16465,8 @@ readers do not read off random characters that represent icons */
 .box-general .profile .doctor-pic-show {
   border-radius: 50%;
   border: 3px solid #1DB487;
-  height: 300px;
   width: 300px;
+  height: 300px;
 }
 .box-general .profile .info .department {
   color: #1DB487;

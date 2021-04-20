@@ -16404,11 +16404,11 @@ readers do not read off random characters that represent icons */
 
 .box-general {
   box-shadow: 0 0 0 rgba(45, 62, 79, 0.35), -1px 2px 20px 6px rgba(0, 0, 0, 0.22);
-  border-end-end-radius: 10px;
-  border-end-start-radius: 10px;
 }
 .box-general .profile {
   padding: 30px;
+  border-end-end-radius: 10px;
+  border-end-start-radius: 10px;
 }
 .box-general .profile .doctor-pic-show {
   border-radius: 50%;

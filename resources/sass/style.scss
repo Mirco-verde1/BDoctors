@@ -292,12 +292,13 @@ background-color: #F5F8FA;
 
     box-shadow: 0 0 0 rgb(45 62 79 / 35%),
     -1px 2px 20px 6px rgb(0 0 0 / 22%);
-    border-end-end-radius: 10px;
-    border-end-start-radius: 10px;
+
 
     .profile {
 
         padding: 30px;
+            border-end-end-radius: 10px;
+            border-end-start-radius: 10px;
 
         .doctor-pic-show {
             border-radius: 50%;

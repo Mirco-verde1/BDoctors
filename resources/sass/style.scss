@@ -54,7 +54,7 @@ background-color: #F5F8FA;
 .navbar-toggler{
     background-color: #F5F8FA;
 }
-.jumbotron{
+.jumbotron-doc{
     width: 100vw;
     height: 90vh;
     font-weight: bold;
@@ -63,16 +63,15 @@ background-color: #F5F8FA;
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
-    position: relative;
+    display: flex;
+    align-items: center;
 
     &-container-title{
-        width: 100vw;
-        position: absolute;
+        margin: 0 auto;
         font-weight: bold;
-        text-align: center;
-        top: 30%;
         color: rgb(105, 175, 236);
         text-shadow: 2px 2px #0c0c0c;
+        text-align: center;
         animation: jumbotron-container-title 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 
 
@@ -91,23 +90,45 @@ background-color: #F5F8FA;
 
     }
         .title{
-            font-size:4vw;
+            font-size:80px;
             display: block;
         }
 
         .subtitle{
-            font-size:2vw;
+            font-size:40px;
         }
-    }
 
-}
-.jumbotron-overlay {
-    width: 100vw;
-    height: 90vh;
-    background: rgba(0, 0, 0, .5);
-    position: absolute;
-    top: 0;
-    left: 0;
+        @media screen and (max-width: 768px) {
+            .title{
+                font-size:60px;
+                display: block;
+            }
+
+            .subtitle{
+                font-size:30px;
+            }
+            @media (max-width: 576px) {
+                .title{
+                    font-size:40px;
+                    display: block;
+                }
+
+                .subtitle{
+                    font-size:20px;
+                }
+             }
+        }
+        .jumbotron-overlay {
+            width: 100vw;
+            height: 90vh;
+            background: rgba(0, 0, 0, .5);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+
+    }
 }
 
 // stile advanced search ---------------------------------------------------
@@ -325,4 +346,9 @@ background-color: #F5F8FA;
         }
 
     }
+}
+
+
+.nav-link:hover {
+    font-weight: bold;
 }

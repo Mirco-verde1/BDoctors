@@ -16183,7 +16183,7 @@ readers do not read off random characters that represent icons */
   background-color: #F5F8FA;
 }
 
-.jumbotron {
+.jumbotron-doc {
   width: 100vw;
   height: 90vh;
   font-weight: bold;
@@ -16192,16 +16192,15 @@ readers do not read off random characters that represent icons */
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
-  position: relative;
+  display: flex;
+  align-items: center;
 }
-.jumbotron-container-title {
-  width: 100vw;
-  position: absolute;
+.jumbotron-doc-container-title {
+  margin: 0 auto;
   font-weight: bold;
-  text-align: center;
-  top: 30%;
   color: #69afec;
   text-shadow: 2px 2px #0c0c0c;
+  text-align: center;
   -webkit-animation: jumbotron-container-title 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
           animation: jumbotron-container-title 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
 }
@@ -16221,19 +16220,36 @@ readers do not read off random characters that represent icons */
     transform: scale(1);
   }
 }
-.jumbotron-container-title .select-department {
+.jumbotron-doc-container-title .select-department {
   width: 300px;
   margin-top: 40px;
 }
-.jumbotron-container-title .title {
-  font-size: 4vw;
+.jumbotron-doc-container-title .title {
+  font-size: 80px;
   display: block;
 }
-.jumbotron-container-title .subtitle {
-  font-size: 2vw;
+.jumbotron-doc-container-title .subtitle {
+  font-size: 40px;
 }
-
-.jumbotron-overlay {
+@media screen and (max-width: 768px) {
+  .jumbotron-doc-container-title .title {
+    font-size: 60px;
+    display: block;
+  }
+  .jumbotron-doc-container-title .subtitle {
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 768px) and (max-width: 576px) {
+  .jumbotron-doc-container-title .title {
+    font-size: 40px;
+    display: block;
+  }
+  .jumbotron-doc-container-title .subtitle {
+    font-size: 20px;
+  }
+}
+.jumbotron-doc-container-title .jumbotron-overlay {
   width: 100vw;
   height: 90vh;
   background: rgba(0, 0, 0, 0.5);
@@ -16428,5 +16444,9 @@ readers do not read off random characters that represent icons */
 }
 .box-general .profile .info .department {
   color: #1DB487;
+  font-weight: bold;
+}
+
+.nav-link:hover {
   font-weight: bold;
 }

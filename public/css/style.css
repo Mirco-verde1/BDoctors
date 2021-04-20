@@ -16271,6 +16271,7 @@ readers do not read off random characters that represent icons */
 }
 
 .jumbotron-overlay {
+  overflow-x: hidden;
   width: inherit;
   height: inherit;
   overflow: hidden;
@@ -16482,4 +16483,8 @@ readers do not read off random characters that represent icons */
 
 .nav-link:hover {
   font-weight: bold;
+}
+
+.cotainer-box1 {
+  width: 100vw;
 }

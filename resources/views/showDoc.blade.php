@@ -13,8 +13,8 @@
                         <nav id="secondary-nav">
                             <div>
                                 <ul>
-                                    <li>
-                                        <a class="active-nav">Info Generali</a>
+                                    <li class="active-nav">
+                                        Info Generali
                                     </li>
                                     <li>
                                         <a class="">Recensioni</a>

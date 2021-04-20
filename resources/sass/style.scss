@@ -73,7 +73,7 @@ background-color: #F5F8FA;
     background-color: #F5F8FA;
 }
 .jumbotron-doc{
-    width: calc(100vw - 13px) ;
+    width: calc(100vw - 13px);
     height: 90vh;
     font-weight: bold;
     background-image: url("https://www.doctors-365.de/home_slider_bg.95b2004ae0c9ce8f3a0b.jpg");
@@ -139,6 +139,7 @@ background-color: #F5F8FA;
     }
 }
 .jumbotron-overlay {
+    overflow-x: hidden;
     width: inherit;
     height: inherit;
     overflow: hidden;
@@ -391,4 +392,10 @@ background-color: #F5F8FA;
 
 .nav-link:hover {
     font-weight: bold;
+}
+
+// style edit profile
+
+.cotainer-box1{
+    width: 100vw;
 }

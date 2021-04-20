@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+<title>{{ __('BDoctors - Edit') }}</title>
+
+<form method="post" action="{{ route('doc.update', $user->id) }}" enctype="multipart/form-data">
+
 <title>{{ __('BDoctors - Modifica Profilo') }}</title>
 
 @section('content')
@@ -14,11 +18,8 @@
                 <nav id="secondary-nav">
                     <div>
                         <ul>
-                            <li>
-                                <a class="active-nav">Info Generali</a>
-                            </li>
-                            <li>
-                                <a class="">Recensioni</a>
+                            <li class="active-nav">
+                                <b>My account</b>
                             </li>
                         </ul>
                     </div>
@@ -27,48 +28,56 @@
 
                 <div class="box-general">
                     <div class="profile">
-                        <div class="row">
+
 
 
                             <div class="form-group d_flex_column">
+                                <div class="row container-box1">
+                                    {{-- pic --}}
+                                    <div class="col-md-6 offset-col-md-2">
+                                    <figure class=" doctor-pic-show-container">
+                                        <img class="doctor-pic-show" src="{{$user->detail->pic}}" alt="{{$user->name}} {{$user->lastname}}">
+                                    </figure>
+                                   </div>
+                                    {{-- name --}}
+                                 <div class="col-md-4 align-self-center">
+                                    <label class="" for="name"><b>Name</b></label>
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="Insert your name" value="{{$user->name}}" required>
+                                    <br>
 
 
-                                <label class="" for="name">Name</label>
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Insert your name" value="{{$user->name}}" required>
-                                <br>
+                                    <label class="" for="lastname"><b>Lastname</b></label>
+                                    <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Insert your lastname" value="{{$user->lastname}}" required>
+                                    <br>
+                                 </div>
+                                </div>
 
 
-                                <label class="" for="lastname">Lastname</label>
-                                <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Insert your lastname" value="{{$user->lastname}}" required>
-                                <br>
-
-
-
-                                <label class="" for="email">Email</label>
+                                <label class="" for="email"><b>Email</b></label>
                                 <input type="email" name="email" id="email" class="form-control" placeholder="Insert your email" value="{{$user->email}}" required>
                                 <br>
 
 
 
-                                <label class="" for="address">Address</label>
+                                <label class="" for="address"><b>Address</b></label>
                                 <input type="text" name="address" id="address" class="form-control" placeholder="Insert your address" value="{{$user->address}}" required>
                                 <br>
 
-                                <label for="departments">Departments</label>
+                                <label for="departments"><b>Departments</b></label>
                                 <select class="form-control" name="departments[]" id="departments" multiple>
                                     @foreach($departments as $department)
                                         <option value="{{$department->id}}"> {{$department->type}} </option>
                                     @endforeach
                                 </select>
 
-                                <label class="" for="phone">Phone</label>
+                                <label class="" for="phone"><b>Phone</b></label>
                                 <input type="text" name="phone" id="phone" class="form-control" placeholder="Insert your phone" value="{{$userDetail->phone}}">
                                 <br>
 
-                                <label for="curriculum">Curriculum</label>
+                                <label for="curriculum"><b>Curriculum</b></label>
                                 <textarea class="form-control" id="curriculum" name="curriculum" rows="6"></textarea>
 
-                                <label for="pic">Immagine del profilo</label>
+                                <label for="pic"><b>Immagine del profilo</b></label>
                                 <input class="form-control" type="file" name="pic" id="pic">
 
                                 <button type="submit" class="btn btn-success">Edit</button>
@@ -76,7 +85,6 @@
 
                             </div>
 
-                        </div>
                     </div>
                 </div>
 

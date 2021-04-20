@@ -48,7 +48,9 @@
                                 <input type="email" name="email" id="email" class="form-control" placeholder="Insert your email" value="{{$user->email}}" required>
                                 <br>
 
-
+                                {{-- <label class="" for="password">Password</label>
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Change your password">
+                                <br> --}}
 
                                 <label class="" for="address">Address</label>
                                 <input type="text" name="address" id="address" class="form-control" placeholder="Insert your address" value="{{$user->address}}" required>

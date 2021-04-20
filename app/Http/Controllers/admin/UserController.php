@@ -82,23 +82,31 @@ class UserController extends Controller
             'name' => 'required',
             'lastname' => 'required',
             'email' => 'required',
-            'address' => 'required',
+            'address' => 'required'
+            /* 'password' => 'required' */
 
         ]);
 
         $userDetailData = $request->validate([
-            'pic' => 'required',
+            'pic' => 'nullable',
             'phone' => 'required',
             'curriculum' => 'nullable'
         ]);
 
-        $path = $request->file('pic')->store('images');
+
+
+        if ($request->file('pic') !== null) {
+            $path = $request->file('pic')->store('images');
+        }
 
         $user = Auth::user();
         $userDetail = UserDetail::where('id', $id)->first();
         $user->departments()->attach($request['departments']);
 
-        $userDetailData['pic'] = $path;
+        if (isset($path)) {
+            $userDetailData['pic'] = $path;
+        }
+
         $user->update($userData);
         $userDetail->update($userDetailData);
 

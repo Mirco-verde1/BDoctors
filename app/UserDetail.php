@@ -10,4 +10,9 @@ class UserDetail extends Model
 
         return $this->belongsTo(User::class);
     }
+
+    protected $fillable = [
+        'pic', 'phone', 'curriculum', 'user_id',
+    ];
 }
+

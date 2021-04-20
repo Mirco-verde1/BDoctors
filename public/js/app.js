@@ -2031,10 +2031,13 @@ __webpack_require__.r(__webpack_exports__);
           _this2.totReviewDoctors.sort(function (a, b) {
             return a.reviewsNumber > b.reviewsNumber ? 1 : -1;
           });
-
-          console.log(_this2.totReviewDoctors);
         });
         this.totReviewDoctors.reverse();
+      } else {
+        this.totReviewDoctors = [];
+        this.results.forEach(function (element) {
+          _this2.totReviewDoctors.push(element);
+        });
       }
     },
     reviewsOff: function reviewsOff() {

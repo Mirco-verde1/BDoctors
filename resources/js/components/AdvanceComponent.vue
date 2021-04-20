@@ -58,7 +58,7 @@
 
                 <div>
 
-                    <input type="checkbox" @change="filterByReviews()"  value="" v-model="checkedReview"> <i class="far fa-edit"></i>Recensioni</div>
+                    <input type="checkbox" @change="filterByReviews()" value="" v-model="checkedReview"> <i class="far fa-edit"></i>Recensioni</div>
 
                 </div>
 
@@ -192,12 +192,20 @@
                     this.totReviewDoctors.push(element);
 
                     this.totReviewDoctors.sort((a, b) => (a.reviewsNumber > b.reviewsNumber) ? 1 : -1);
-
-                    console.log(this.totReviewDoctors);
                 });
 
                 this.totReviewDoctors.reverse();
+
             }
+            else{
+                this.totReviewDoctors = [];
+
+                this.results.forEach(element => {
+
+                    this.totReviewDoctors.push(element);
+                     })
+            }
+
         },
 
 

@@ -16136,6 +16136,26 @@ readers do not read off random characters that represent icons */
   font-family: "Roboto", sans-serif;
 }
 
+::-webkit-scrollbar {
+  width: 13px;
+  height: 13px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7ad6bc;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1DB487;
+}
+
+::-webkit-scrollbar-track {
+  background: #e9f5f1;
+  border-radius: 10px;
+  box-shadow: inset 7px 10px 12px #f0f0f0;
+}
+
 .btn-register {
   margin-left: 10px;
 }

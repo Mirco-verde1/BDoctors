@@ -3,6 +3,7 @@
 
 * {
     font-size: 17px;
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -56,18 +57,20 @@ background-color: #F5F8FA;
 .jumbotron{
     width: 100vw;
     height: 90vh;
+    font-weight: bold;
     background-image: url("https://www.doctors-365.de/home_slider_bg.95b2004ae0c9ce8f3a0b.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: right center;
+    background-position: center center;
+    background-attachment: fixed;
     position: relative;
 
     &-container-title{
         width: 100vw;
         position: absolute;
-        font-family: 'Dela Gothic One', cursive;
+        font-weight: bold;
         text-align: center;
-        top: 40%;
+        top: 30%;
         color: rgb(105, 175, 236);
         text-shadow: 2px 2px #0c0c0c;
         animation: jumbotron-container-title 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
@@ -128,7 +131,7 @@ background-color: #F5F8FA;
 // carousel doctor
 
 .title-carousel{
-    font-family: 'Dela Gothic One', cursive;
+    font-weight: bold;
     text-align: center;
     color: rgb(105, 175, 236);
     text-shadow: 2px 2px #0c0c0c;
@@ -145,8 +148,20 @@ background-color: #F5F8FA;
 .btn-floating-next{
     position: absolute;
     top:200px;
-    left:1125px;
+    left:1175px;
+}
+.img-container{
+    margin-left: auto;
+    margin-right: auto;
 
+    .card-img-top{
+        border-radius: 50%;
+        border: 3px solid $green-logo;
+        height: 300px;
+    }
+}
+.card-body{
+    text-align: center;
 }
 
 // Dashboard dottore ---------------------------------------------------

@@ -16133,6 +16133,7 @@ readers do not read off random characters that represent icons */
 
 * {
   font-size: 17px;
+  font-family: "Roboto", sans-serif;
 }
 
 .btn-register {
@@ -16185,18 +16186,20 @@ readers do not read off random characters that represent icons */
 .jumbotron {
   width: 100vw;
   height: 90vh;
+  font-weight: bold;
   background-image: url("https://www.doctors-365.de/home_slider_bg.95b2004ae0c9ce8f3a0b.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: right center;
+  background-position: center center;
+  background-attachment: fixed;
   position: relative;
 }
 .jumbotron-container-title {
   width: 100vw;
   position: absolute;
-  font-family: "Dela Gothic One", cursive;
+  font-weight: bold;
   text-align: center;
-  top: 40%;
+  top: 30%;
   color: #69afec;
   text-shadow: 2px 2px #0c0c0c;
   -webkit-animation: jumbotron-container-title 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
@@ -16257,7 +16260,7 @@ readers do not read off random characters that represent icons */
 }
 
 .title-carousel {
-  font-family: "Dela Gothic One", cursive;
+  font-weight: bold;
   text-align: center;
   color: #69afec;
   text-shadow: 2px 2px #0c0c0c;
@@ -16274,7 +16277,21 @@ readers do not read off random characters that represent icons */
 .btn-floating-next {
   position: absolute;
   top: 200px;
-  left: 1125px;
+  left: 1175px;
+}
+
+.img-container {
+  margin-left: auto;
+  margin-right: auto;
+}
+.img-container .card-img-top {
+  border-radius: 50%;
+  border: 3px solid #1DB487;
+  height: 300px;
+}
+
+.card-body {
+  text-align: center;
 }
 
 .feather {

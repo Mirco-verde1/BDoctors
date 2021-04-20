@@ -148,15 +148,13 @@
 
             return {
 
-            // Recupera la stringa JSON dallo storage locale e la trasforma in un oggetto JavaScript
-            results: JSON.parse(localStorage.getItem('results')),
-
-
             checkedVote: '',
             checkedReview: '',
 
             checkedVotes:[],
             totReviewDoctors:[],
+            lastItem:window.location.search.substring(window.location.search.lastIndexOf('=') + 1),
+            results:[],
 
         }
     },
@@ -165,7 +163,6 @@
 
         // Filter results by votes
         filterByVote: function () {
-            const lastItem = window.location.search.substring(window.location.search.lastIndexOf('=') + 1)
             console.log(lastItem);
 
             this.checkedVotes = [];
@@ -214,6 +211,27 @@
                 this.totReviewDoctors = [];
             }
         },
+
+        mounted() {
+
+      // All doctors data
+      const self = this;
+
+      axios.get('http://127.0.0.1:8000/api/doctors', {
+        params: {
+
+
+
+        },
+      })
+      .then((resp) => {
+        self.allInfo = resp.data;
+      });
+
+
+
+    }
+
     }
 }
 

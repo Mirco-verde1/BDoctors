@@ -36,7 +36,7 @@
                                     {{-- pic --}}
                                     <div class="col-md-6 offset-col-md-2">
                                     <figure class=" doctor-pic-show-container">
-                                        <img class="doctor-pic-show" src="{{$user->detail->pic}}" alt="{{$user->name}} {{$user->lastname}}">
+                                        <img class="doctor-pic-show" src="{{ asset($user->detail->pic)}}" alt="{{$user->name}} {{$user->lastname}}">
                                     </figure>
                                    </div>
                                     {{-- name --}}

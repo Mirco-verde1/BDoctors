@@ -16135,6 +16135,7 @@ readers do not read off random characters that represent icons */
   font-size: 17px;
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
+  scrollbar-color: #7ad6bc #e9f5f1;
 }
 
 ::-webkit-scrollbar {

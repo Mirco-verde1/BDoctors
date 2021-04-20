@@ -16299,11 +16299,15 @@ readers do not read off random characters that represent icons */
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
 }
 
-.doctor-pic {
+.doctor-pic-dashboard-container {
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   border: 3px solid #1DB487;
-  height: 100px;
-  width: 100px;
+  overflow: hidden;
+}
+.doctor-pic-dashboard-container .doctor-pic {
+  width: 100%;
 }
 
 .carousel {
@@ -16371,12 +16375,11 @@ readers do not read off random characters that represent icons */
   position: relative;
   top: 0;
   height: calc(100vh - 48px);
-  padding-top: 0.5rem;
+  padding: 15px;
   overflow-x: hidden;
   overflow-y: auto;
   /* Scrollable contents if viewport is shorter than content. */
 }
-
 @supports (position: sticky) {
   .sidebar-sticky {
     position: sticky;
@@ -16462,9 +16465,14 @@ readers do not read off random characters that represent icons */
   border-end-end-radius: 10px;
   border-end-start-radius: 10px;
 }
-.box-general .profile .doctor-pic-show {
+.box-general .profile .doctor-pic-show-container {
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   border: 3px solid #1DB487;
+  overflow: hidden;
+}
+.box-general .profile .doctor-pic-show-container .doctor-pic-show {
   width: 100%;
 }
 .box-general .profile .info .department {

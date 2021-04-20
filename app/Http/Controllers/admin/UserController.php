@@ -78,8 +78,6 @@ class UserController extends Controller
     public function update(Request $request, User $user, $id)
     {
 
-        $path = $request->file('pic')->store('images');
-
         $userData = $request->validate([
             'name' => 'required',
             'lastname' => 'required',
@@ -100,6 +98,7 @@ class UserController extends Controller
         $userDetail = UserDetail::where('id', $id)->first();
         $user->departments()->attach($request['departments']);
 
+        $userDetailData['pic'] = $path;
         $user->update($userData);
         $userDetail->update($userDetailData);
 

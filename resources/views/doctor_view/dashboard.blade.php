@@ -71,6 +71,7 @@
       </div>
 
       <h2>{{$user->id}}</h2>
+      <img src="{{ asset($user->detail->pic) }}" width="100" alt="">
 
       <div class="table-responsive">
         <table class="table table-striped table-sm">

@@ -13,7 +13,7 @@
 
                     <div class="form-group position-relative">
                         <label for="name" class="form-label">Name</label>
-                        <input class="form-control {{ $errors->has('name') ? 'is-invalid' : ''}}" type="text" name="name" placeholder="Name" value="{{isset($review) ? $review->name : '' }}">
+                        <input class="form-control {{ $errors->has('name') ? 'is-invalid' : ''}}" type="text" name="name" placeholder="Name">
                         <div class="invalid-tooltip">
                             {{ $errors->first('name') }}
                         </div>
@@ -21,16 +21,16 @@
 
                     <div class="form-group position-relative">
                         <label for="email">Email</label>
-                        <input class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}" type="text" name="email" placeholder="Email" value="{{isset($review) ? $review->email : '' }}">
+                        <input class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}" type="text" name="email" placeholder="Email">
                         <div class="invalid-tooltip">
                             {{ $errors->first('email') }}
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group position-relative">
                         <label for="body">Body</label>
-                        <textarea class="form-control {{ $errors->has('body') ? 'is-invalid' : ''}}" type="text" name="body" placeholder="Body" rows="6" value="{{isset($review) ? $review->body : '' }}"></textarea>
-                        <div class="invalid-feedback">
+                        <textarea class="form-control {{ $errors->has('body') ? 'is-invalid' : ''}}" type="text" name="body" placeholder="Body" rows="6"></textarea>
+                        <div class="invalid-tooltip">
                             {{ $errors->first('body') }}
                         </div>
                     </div>

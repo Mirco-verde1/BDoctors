@@ -35,22 +35,22 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validateForm($request);
 
-        $data = $request->all();
+        $data = $request->validate([
 
-        $newMessage = new Message();
-        $$newMessage->fill($data);
-        $newMessage->save();
-    }
+            'name' => 'required',
+            'email' => 'required',
+            'body' => 'required',
 
-    protected function validateForm(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|max:255',
-            'email' => 'required|max:255',
-            'body' => 'required|max:255'
         ]);
+
+        $id = $request->user_id;
+        $data['user_id'] = $id;
+
+        Message::create($data);
+
+        return redirect()->route('public.homepage');
+
     }
 
     /**

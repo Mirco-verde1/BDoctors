@@ -3,7 +3,7 @@
 
   @foreach ($users as $user)
 <div class="card col-md-3 p-2 bd-highlight doctor-card" style="width: 18rem;">
-    <img class="card-img-top" src="{{$user->detail['pic']}}" alt="Card image cap">
+    {{-- <img class="card-img-top" src="{{$user->detail['pic']}}" alt="Card image cap"> --}}
     <div class="card-body">
       <h5 class="card-title">{{$user->name}} {{$user->lastname}}</h5>
       @foreach($user->departments as $department)

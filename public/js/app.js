@@ -2004,6 +2004,8 @@ __webpack_require__.r(__webpack_exports__);
     filterByVote: function filterByVote() {
       var _this = this;
 
+      var lastItem = window.location.search.substring(window.location.search.lastIndexOf('=') + 1);
+      console.log(lastItem);
       this.checkedVotes = [];
       this.results.forEach(function (item) {
         item.votes.forEach(function (el) {

@@ -16,10 +16,10 @@ class GuestController extends Controller
 
     {
         $users= User::all();
-        $userDetail= UserDetail::all();
-        $userDepartment= Department::all();
+        $userDetails= UserDetail::all();
+        $departments = Department::all();
 
-         return view('homepage', compact('users', 'userDetail', 'userDepartment'));
+         return view('homepage', compact('users', 'userDetails', 'departments'));
     }
 
 

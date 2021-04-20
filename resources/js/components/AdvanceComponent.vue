@@ -57,7 +57,7 @@
                     </div>
 
                 <div>
-                
+
                     <input type="checkbox" @change="filterByReviews()"  value="" v-model="checkedReview"> <i class="far fa-edit"></i>Recensioni</div>
 
                 </div>
@@ -72,7 +72,7 @@
             <div class="" v-if="checkedVotes.length > 0 && totReviewDoctors.length === 0">
 
                 <div class="strip-list" v-for="(item,index) in checkedVotes" :key="index">
-                
+
                     <div>
                         Nome: {{item.name}} {{item.lastname}}
                     </div>
@@ -165,6 +165,9 @@
 
         // Filter results by votes
         filterByVote: function () {
+            const lastItem = window.location.search.substring(window.location.search.lastIndexOf('=') + 1)
+            console.log(lastItem);
+
             this.checkedVotes = [];
             this.results.forEach(item => {
 
@@ -189,8 +192,8 @@
                     this.totReviewDoctors.push(element);
 
                     this.totReviewDoctors.sort((a, b) => (a.reviewsNumber > b.reviewsNumber) ? 1 : -1);
-                    
-                    console.log(this.totReviewDoctors);                  
+
+                    console.log(this.totReviewDoctors);
                 });
 
                 this.totReviewDoctors.reverse();

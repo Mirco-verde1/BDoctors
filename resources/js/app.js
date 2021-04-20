@@ -22,6 +22,8 @@ Vue.component('search-component', require('./components/SearchComponent.vue').de
 
 Vue.component('advance-component', require('./components/AdvanceComponent.vue').default);
 
+Vue.component('carousel-component', require('./components/CarouselComponent.vue').default);
+
 
 
 

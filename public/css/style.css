@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https: //fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap);
 @charset "UTF-8";
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
@@ -16369,5 +16369,54 @@ readers do not read off random characters that represent icons */
   }
 }
 .nav-link:hover {
+  font-weight: bold;
+}
+
+#secondary-nav {
+  background-color: #2d3e4f;
+  position: relative;
+  bottom: -3px;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  padding: 20px;
+}
+#secondary-nav ul {
+  list-style: none;
+  display: flex;
+  color: #1DB487;
+  margin: 0;
+  padding: 0;
+}
+#secondary-nav ul li:first-of-type {
+  margin-right: 20px;
+}
+#secondary-nav ul a {
+  cursor: pointer;
+  text-decoration: none;
+}
+#secondary-nav ul a:hover {
+  color: white;
+}
+#secondary-nav .active-nav {
+  color: white;
+  font-weight: bold;
+}
+
+.box-general {
+  box-shadow: 0 0 0 rgba(45, 62, 79, 0.35), -1px 2px 20px 6px rgba(0, 0, 0, 0.22);
+  border-end-end-radius: 10px;
+  border-end-start-radius: 10px;
+}
+.box-general .profile {
+  padding: 30px;
+}
+.box-general .profile .doctor-pic-show {
+  border-radius: 50%;
+  border: 3px solid #1DB487;
+  height: 300px;
+  width: 300px;
+}
+.box-general .profile .info .department {
+  color: #1DB487;
   font-weight: bold;
 }

@@ -248,3 +248,70 @@ background-color: #F5F8FA;
 .nav-link:hover {
     font-weight: bold;
 }
+
+// show dottore ---------------------------------------------------
+
+
+#secondary-nav {
+    background-color: #2d3e4f;
+    position: relative;
+    bottom: -3px;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    padding: 20px;
+
+    ul {
+        list-style: none;
+        display: flex;
+        color: $green-logo;
+        margin: 0;
+        padding: 0;
+
+        li:first-of-type {
+            margin-right: 20px;
+        }
+
+        a {
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: white;
+        }
+    }
+
+    .active-nav {
+        color: white;
+        font-weight: bold;
+    }
+
+}
+
+.box-general {
+
+    box-shadow: 0 0 0 rgb(45 62 79 / 35%),
+    -1px 2px 20px 6px rgb(0 0 0 / 22%);
+    border-end-end-radius: 10px;
+    border-end-start-radius: 10px;
+
+    .profile {
+
+        padding: 30px;
+
+        .doctor-pic-show {
+            border-radius: 50%;
+            border: 3px solid $green-logo;
+            height: 300px;
+            width: 300px;
+        }
+
+        .info {
+            .department {
+                color: $green-logo;
+                font-weight: bold;
+            }
+        }
+
+    }
+}

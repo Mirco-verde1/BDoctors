@@ -6,10 +6,12 @@
   <div class="row">
 
     <nav class="col-md-2 d-none d-md-block bg-light sidebar margin-top-container navbar-expand-md">
-      <div class="sidebar-sticky margin-top-container ">
-        <div class="container">
+      <div class="sidebar-sticky margin-top-container">
+
+        <figure class="doctor-pic-dashboard-container ">
             <img class="doctor-pic" src="{{ Auth::user()->getPic()->pic }}" alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
-        </div>
+        </figure>
+
         <div class="collapse navbar-collapse margin-top-container" id="navbarSupportedContent">
             <ul class="nav flex-column">
             <li class="nav-item">

@@ -67,14 +67,13 @@
 
 #app{
 background-color: #F5F8FA;
-overflow-x: hidden;
 }
 
 .navbar-toggler{
     background-color: #F5F8FA;
 }
 .jumbotron-doc{
-    width: 100vw ;
+    width: calc(100vw - 13px) ;
     height: 90vh;
     font-weight: bold;
     background-image: url("https://www.doctors-365.de/home_slider_bg.95b2004ae0c9ce8f3a0b.jpg");
@@ -170,12 +169,19 @@ overflow-x: hidden;
     position: relative;
     box-shadow: 0 0 15px 0 rgb(0 0 0 / 5%);
 }
-.doctor-pic {
+
+.doctor-pic-dashboard-container {
+
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     border: 3px solid $green-logo;
-    height: 100px;
-    width: 100px;
-    // align-self: flex-end;
+    overflow: hidden;
+
+    .doctor-pic {
+        width: 100%;
+        // align-self: flex-end;
+    }
 }
 // carousel doctor
 
@@ -246,10 +252,14 @@ overflow-x: hidden;
     position: relative;
     top: 0;
     height: calc(100vh - 48px);
-    padding-top: .5rem;
+    padding: 15px;
     overflow-x: hidden;
     overflow-y: auto;
     /* Scrollable contents if viewport is shorter than content. */
+
+    figure {
+
+    }
 }
 
 @supports ((position: -webkit-sticky) or (position: sticky)) {
@@ -350,15 +360,22 @@ overflow-x: hidden;
 
     .profile {
 
-        padding: 30px;
-            border-end-end-radius: 10px;
-            border-end-start-radius: 10px;
 
-        .doctor-pic-show {
+        padding: 30px;
+        border-end-end-radius: 10px;
+        border-end-start-radius: 10px;
+
+        .doctor-pic-show-container {
+
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             border: 3px solid $green-logo;
-            height: 300px;
-            width: 300px;
+            overflow: hidden;
+
+            .doctor-pic-show {
+                width: 100%;
+            }
         }
 
         .info {

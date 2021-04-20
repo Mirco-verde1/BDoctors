@@ -29,7 +29,7 @@
 
                                 <div class="row">
 
-                                    <figure class="col-lg-5 col-md-4">
+                                    <figure class="doctor-pic-show-container">
                                         <img class="doctor-pic-show" src="{{$user->detail->pic}}" alt="{{$user->name}} {{$user->lastname}}">
                                     </figure>
 

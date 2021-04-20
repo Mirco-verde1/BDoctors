@@ -19,7 +19,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="admin/doc/{{$user->id}}/edit ">
                 <span data-feather="home"></span>
                 Informazioni
                 </a>
@@ -70,7 +70,7 @@
         </div>
       </div>
 
-      <h2>Section title</h2>
+      <h2>{{$user->id}}</h2>
 
       <div class="table-responsive">
         <table class="table table-striped table-sm">

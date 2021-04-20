@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Department;
 use App\Http\Controllers\Controller;
+use App\User;
+use App\UserDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -58,7 +62,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = Auth::user();
+        $departments = Department::all();
+        $userDetail = UserDetail::where('id', $id)->first();
+        return view('doctor_view.edit', compact('user', 'departments', 'userDetail'));
     }
 
     /**
@@ -68,9 +75,36 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user, $id)
     {
-        //
+
+        $path = $request->file('pic')->store('images');
+
+        $userData = $request->validate([
+            'name' => 'required',
+            'lastname' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+
+        ]);
+
+        $userDetailData = $request->validate([
+            'pic' => 'required',
+            'phone' => 'required',
+            'curriculum' => 'nullable'
+        ]);
+
+        $path = $request->file('pic')->store('images');
+
+        $user = Auth::user();
+        $userDetail = UserDetail::where('id', $id)->first();
+        $user->departments()->attach($request['departments']);
+
+        $user->update($userData);
+        $userDetail->update($userDetailData);
+
+        return redirect()->route('home');
+
     }
 
     /**

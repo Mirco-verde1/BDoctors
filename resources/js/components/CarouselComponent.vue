@@ -1,14 +1,14 @@
 <template>
     <!--Carousel Wrapper-->
-    <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+    <div id="multi-item-example" class="carousel slide carousel-multi-item container" data-ride="carousel">
 
         <!--Controls-->
         <div class="controls-top">
-            <a class="btn-floating" href="#multi-item-example" data-slide="prev">
-                <i class="fa fa-chevron-left"></i>
+            <a class="btn-floating-prev" href="#multi-item-example" data-slide="prev">
+                <i class="fas fa-chevron-left fa-3x"></i>
             </a>
-            <a class="btn-floating" href="#multi-item-example" data-slide="next">
-                <i class="fa fa-chevron-right"></i>
+            <a class="btn-floating-next" href="#multi-item-example" data-slide="next">
+                <i class="fas fa-chevron-right fa-3x"></i>
             </a>
         </div>
         <!--/.Controls-->
@@ -28,7 +28,7 @@
             <div class="carousel-item" :class="(i === 1) ? 'active' : ''" v-for="i in Math.ceil(results.length / cardsPerSlide)">
 
                 <div class="row container d-flex flex-row p-2 flex-wrap">
-                    <div class="card col-md-3 p-2 bd-highlight doctor-card" :class="(i === 1) ? 'clearfix d-none d-md-block' : ''" v-for="doctor in carouselLoop(i, results)">
+                    <div class="card col-md-4 p-2 bd-highlight doctor-card" :class="(i === 1) ? 'clearfix d-none d-md-block' : ''" v-for="doctor in carouselLoop(i, results)">
                         <div class="img-container">
                             <img class="card-img-top" :src="doctor.detail.pic" alt="Card image cap">
                         </div>

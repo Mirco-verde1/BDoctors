@@ -57,7 +57,6 @@ background-color: #F5F8FA;
     width: 100vw;
     height: 90vh;
     background-image: url("https://www.doctors-365.de/home_slider_bg.95b2004ae0c9ce8f3a0b.jpg");
-    filter: brightness(.7);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: right center;
@@ -83,33 +82,17 @@ background-color: #F5F8FA;
         }
     }
 
+    .select-department{
+        width: 300px;
+        margin-top: 40px;
 
-        .form-inline{
-
-            display:flex;
-            justify-content:center;
-
-                .search {
-                    margin-top: 30px;
-
-                .search-left {
-                    display: inline-block;
-                    flex-direction: column;
-                }
-
-                .invalid-message {
-                    font-size: 10px;
-                }
-          }
-        }
+    }
         .title{
-            font-size:80px;
-            filter: brightness(1.3);
+            font-size:4vw;
         }
 
         .subtitle{
-            font-size:40px;
-            filter: brightness(1.3);
+            font-size:2vw;
         }
     }
 }
@@ -142,20 +125,30 @@ background-color: #F5F8FA;
     width: 100px;
     // align-self: flex-end;
 }
-// card doctor
+// carousel doctor
 
 .title-carousel{
-    font-family: "Dela Gothic One", cursive;
+    font-family: 'Dela Gothic One', cursive;
     text-align: center;
-    top: 40%;
     color: rgb(105, 175, 236);
     text-shadow: 2px 2px #0c0c0c;
+    font-size:40px;
+    margin-bottom:50px;
 }
 
-.doctor-card{
-    margin-bottom: 200px;
-    margin-top: 50px;
+.btn-floating-prev{
+    position: absolute;
+    top:200px;
+    right:1200px;
 }
+
+.btn-floating-next{
+    position: absolute;
+    top:200px;
+    left:1125px;
+
+}
+
 // Dashboard dottore ---------------------------------------------------
 
 .feather {

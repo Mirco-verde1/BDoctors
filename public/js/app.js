@@ -38502,7 +38502,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "carousel slide carousel-multi-item",
+      staticClass: "carousel slide carousel-multi-item container",
       attrs: { id: "multi-item-example", "data-ride": "carousel" }
     },
     [
@@ -38538,7 +38538,7 @@ var render = function() {
                   return _c(
                     "div",
                     {
-                      staticClass: "card col-md-3 p-2 bd-highlight doctor-card",
+                      staticClass: "card col-md-4 p-2 bd-highlight doctor-card",
                       class: i === 1 ? "clearfix d-none d-md-block" : ""
                     },
                     [
@@ -38608,19 +38608,19 @@ var staticRenderFns = [
       _c(
         "a",
         {
-          staticClass: "btn-floating",
+          staticClass: "btn-floating-prev",
           attrs: { href: "#multi-item-example", "data-slide": "prev" }
         },
-        [_c("i", { staticClass: "fa fa-chevron-left" })]
+        [_c("i", { staticClass: "fas fa-chevron-left fa-3x" })]
       ),
       _vm._v(" "),
       _c(
         "a",
         {
-          staticClass: "btn-floating",
+          staticClass: "btn-floating-next",
           attrs: { href: "#multi-item-example", "data-slide": "next" }
         },
-        [_c("i", { staticClass: "fa fa-chevron-right" })]
+        [_c("i", { staticClass: "fas fa-chevron-right fa-3x" })]
       )
     ])
   }

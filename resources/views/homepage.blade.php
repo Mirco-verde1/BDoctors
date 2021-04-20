@@ -14,19 +14,17 @@
                     <span class="title"> Cerca il tuo dottore online</span>
                     <br>
                     <span class="subtitle">BDoctors</span>
-
                         <form action="http://127.0.0.1:8000/advance"  method="GET">
                             <div class="form-group">
                                 <label for="department"></label>
-                                <select class="form-control" id="department" name="department">
+                                <select class="form-control select-department d-inline" id="department" name="department">
                                     @foreach ($departments as $department)
                                         <option value="{{ $department->type }}">{{ $department->type }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <button type="submit" class="search_submit btn btn-lg btn-warning btn-block"><i class="fa fa-search" aria-hidden="true"></i> Cerca specializzazione</button>
+                            <button type="submit" class="query-submit btn btn-outline-success my-2 my-sm-0 d-inline"><i class="fa fa-search" aria-hidden="true"></i> Cerca specializzazione</button>
                         </form>
-
                     </div>
                     </div>
                     <div>

@@ -16271,6 +16271,7 @@ readers do not read off random characters that represent icons */
 }
 
 .jumbotron-overlay {
+  overflow-x: hidden;
   width: inherit;
   height: inherit;
   overflow: hidden;
@@ -16375,11 +16376,15 @@ readers do not read off random characters that represent icons */
   position: relative;
   top: 0;
   height: calc(100vh - 48px);
-  padding: 15px;
+  padding: 50px 25px;
   overflow-x: hidden;
   overflow-y: auto;
   /* Scrollable contents if viewport is shorter than content. */
 }
+.sidebar-sticky .nav-link {
+  padding-left: 0;
+}
+
 @supports (position: sticky) {
   .sidebar-sticky {
     position: sticky;
@@ -16457,29 +16462,43 @@ readers do not read off random characters that represent icons */
   font-weight: bold;
 }
 
-.box-general {
+.box-general,
+.doctor-pic-show-container,
+.doctor-pic-dashboard-container {
   box-shadow: 0 0 0 rgba(45, 62, 79, 0.35), -1px 2px 20px 6px rgba(0, 0, 0, 0.22);
 }
-.box-general .profile {
+.box-general .profile,
+.doctor-pic-show-container .profile,
+.doctor-pic-dashboard-container .profile {
   padding: 30px;
   border-end-end-radius: 10px;
   border-end-start-radius: 10px;
 }
-.box-general .profile .doctor-pic-show-container {
+.box-general .profile .doctor-pic-show-container,
+.doctor-pic-show-container .profile .doctor-pic-show-container,
+.doctor-pic-dashboard-container .profile .doctor-pic-show-container {
   width: 250px;
   height: 250px;
   border-radius: 50%;
   border: 3px solid #1DB487;
   overflow: hidden;
 }
-.box-general .profile .doctor-pic-show-container .doctor-pic-show {
+.box-general .profile .doctor-pic-show-container .doctor-pic-show,
+.doctor-pic-show-container .profile .doctor-pic-show-container .doctor-pic-show,
+.doctor-pic-dashboard-container .profile .doctor-pic-show-container .doctor-pic-show {
   width: 100%;
 }
-.box-general .profile .info .department {
+.box-general .profile .info .department,
+.doctor-pic-show-container .profile .info .department,
+.doctor-pic-dashboard-container .profile .info .department {
   color: #1DB487;
   font-weight: bold;
 }
 
 .nav-link:hover {
   font-weight: bold;
+}
+
+.cotainer-box1 {
+  width: 100vw;
 }

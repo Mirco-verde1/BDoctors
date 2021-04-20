@@ -9,11 +9,11 @@
                     <div class="jumbotron-overlay">
                     </div>
                 <div class="jumbotron-doc-container-title scale-in-center">
-                    <span class="title"> Cerca il tuo dottore online</span>
+                    <span class="title fade-in-bottom-first"> Cerca il tuo dottore online</span>
                     <br>
-                    <span class="subtitle">BDoctors</span>
+                    <span class="subtitle puff-in-bottom ">BDoctors</span>
                         <form action="http://127.0.0.1:8000/advance"  method="GET">
-                            <div class="form-group">
+                            <div class="form-group fade-in-bottom-second ">
                                 <label for="department"></label>
                                 <select class="form-control select-department d-inline" id="department" name="department">
                                     @foreach ($departments as $department)
@@ -21,7 +21,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <button type="submit" class="query-submit btn btn-outline-success my-2 my-sm-0 d-inline"><i class="fa fa-search" aria-hidden="true"></i> Cerca specializzazione</button>
+                            <button type="submit" class="query-submit btn btn-outline-success my-2 my-sm-0 d-inline fade-in-bottom-third"><i class="fa fa-search" aria-hidden="true"></i> Cerca specializzazione</button>
                         </form>
                     </div>
                     </div>

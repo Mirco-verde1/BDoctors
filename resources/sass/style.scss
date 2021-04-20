@@ -4,30 +4,25 @@
 * {
     font-size: 17px;
     font-family: 'Roboto', sans-serif;
-    overflow-x: hidden;
-    scrollbar-color: #7ad6bc #e9f5f1; // Supporto scrollbar Firefox
 }
 
-// Stile scrollbar
 ::-webkit-scrollbar {
     width: 13px;
     height: 13px;
 }
-
 ::-webkit-scrollbar-thumb {
     background: #7ad6bc;
     border-radius: 10px;
 }
-
 ::-webkit-scrollbar-thumb:hover{
     background: #1DB487;
 }
-
 ::-webkit-scrollbar-track{
     background: #e9f5f1;
     border-radius: 10px;
     box-shadow: inset 7px 10px 12px #f0f0f0;
 }
+
 
 // Stile div search-bar ---------------------------------------------------
 
@@ -72,14 +67,14 @@
 
 #app{
 background-color: #F5F8FA;
-
+overflow-x: hidden;
 }
 
 .navbar-toggler{
     background-color: #F5F8FA;
 }
 .jumbotron-doc{
-    width: 100vw;
+    width: 100vw ;
     height: 90vh;
     font-weight: bold;
     background-image: url("https://www.doctors-365.de/home_slider_bg.95b2004ae0c9ce8f3a0b.jpg");
@@ -142,20 +137,15 @@ background-color: #F5F8FA;
                 }
              }
         }
-
-
-
     }
 }
 .jumbotron-overlay {
-
     width: inherit;
     height: inherit;
     overflow: hidden;
     background: rgba(0, 0, 0, .5);
     background-size: cover;
     position: absolute;
-
 }
 
 
@@ -187,8 +177,7 @@ background-color: #F5F8FA;
     width: 100px;
     // align-self: flex-end;
 }
-
-// carousel doctor ---------------------------------------------------
+// carousel doctor
 
 .carousel {
     overflow-x: visible;
@@ -199,8 +188,9 @@ background-color: #F5F8FA;
     text-align: center;
     color: rgb(105, 175, 236);
     text-shadow: 2px 2px #0c0c0c;
-    font-size:40px;
-    margin-bottom:50px;
+    font-size:50px;
+    margin-top: 100px;
+    margin-bottom:100px;
 }
 
 .btn-floating-prev{

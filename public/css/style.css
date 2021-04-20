@@ -16134,8 +16134,6 @@ readers do not read off random characters that represent icons */
 * {
   font-size: 17px;
   font-family: "Roboto", sans-serif;
-  overflow-x: hidden;
-  scrollbar-color: #7ad6bc #e9f5f1;
 }
 
 ::-webkit-scrollbar {
@@ -16199,6 +16197,7 @@ readers do not read off random characters that represent icons */
 
 #app {
   background-color: #F5F8FA;
+  overflow-x: hidden;
 }
 
 .navbar-toggler {
@@ -16317,8 +16316,9 @@ readers do not read off random characters that represent icons */
   text-align: center;
   color: #69afec;
   text-shadow: 2px 2px #0c0c0c;
-  font-size: 40px;
-  margin-bottom: 50px;
+  font-size: 50px;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 .btn-floating-prev {

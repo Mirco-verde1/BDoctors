@@ -252,14 +252,16 @@ background-color: #F5F8FA;
     position: relative;
     top: 0;
     height: calc(100vh - 48px);
-    padding: 15px;
+    padding: 50px 25px;
     overflow-x: hidden;
     overflow-y: auto;
     /* Scrollable contents if viewport is shorter than content. */
 
-    figure {
-
+    .nav-link {
+        padding-left: 0;
     }
+
+
 }
 
 @supports ((position: -webkit-sticky) or (position: sticky)) {
@@ -352,7 +354,9 @@ background-color: #F5F8FA;
 
 }
 
-.box-general {
+.box-general,
+.doctor-pic-show-container,
+.doctor-pic-dashboard-container {
 
     box-shadow: 0 0 0 rgb(45 62 79 / 35%),
     -1px 2px 20px 6px rgb(0 0 0 / 22%);

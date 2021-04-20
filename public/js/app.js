@@ -2123,8 +2123,15 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       results: JSON.parse(localStorage.getItem('results')),
-      cardsPerSlide: 3
+      cardsPerSlide: ''
     };
+  },
+  mounted: function mounted() {
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      this.cardsPerSlide = 1;
+    } else {
+      this.cardsPerSlide = 3;
+    }
   },
   methods: {
     // Scomponiamo l'array di risultati per recuperare di volta in volta i valori con cui popolare le slide

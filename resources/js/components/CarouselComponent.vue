@@ -55,7 +55,15 @@ export default {
 
         return {
             results: JSON.parse(localStorage.getItem('results')),
-            cardsPerSlide: 3
+            cardsPerSlide: ''
+        }
+    },
+
+    mounted() {
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            this.cardsPerSlide = 1;
+        } else {
+            this.cardsPerSlide = 3;
         }
     },
 

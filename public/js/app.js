@@ -1988,6 +1988,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1996,62 +1997,104 @@ __webpack_require__.r(__webpack_exports__);
       checkedVotes: [],
       totReviewDoctors: [],
       lastItem: window.location.search.substring(window.location.search.lastIndexOf('=') + 1),
-      results: []
+      results: [],
+      resultsFiltered: [],
+      test: []
     };
   },
-  methods: {
-    // Filter results by votes
-    filterByVote: function filterByVote() {
-      var _this = this;
+  mounted: function mounted() {
+    // All doctors data filtererd by homepage research
+    var self = this;
 
-      console.log(lastItem);
-      this.checkedVotes = [];
-      this.results.forEach(function (item) {
-        item.votes.forEach(function (el) {
-          if (el.value === parseInt(_this.checkedVote)) {
-            _this.checkedVotes.push(item);
+    while (self.lastItem.includes('+')) {
+      self.lastItem = self.lastItem.replace('+', ' ');
+    }
 
-            _this.checkedReview = false;
+    ;
+    axios.get('http://127.0.0.1:8000/api/doctors', {
+      params: {}
+    }).then(function (resp) {
+      self.results = resp.data;
+      self.results.data.forEach(function (element) {
+        element.departments.forEach(function (item) {
+          if (item.type === self.lastItem) {
+            self.resultsFiltered.push(element);
           }
+        });
+      });
+    });
+  },
+  methods: {
+    filterByVote: function filterByVote() {
+      var self = this;
+
+      while (self.lastItem.includes('+')) {
+        self.lastItem = self.lastItem.replace('+', ' ');
+      }
+
+      ;
+      axios.get('http://127.0.0.1:8000/api/doctors', {
+        params: {
+          vote: self.checkedVote
+        }
+      }).then(function (resp) {
+        self.results = resp.data;
+        self.checkedVotes = [], self.results.data.forEach(function (element) {
+          element.departments.forEach(function (item) {
+            if (item.type === self.lastItem) {
+              element.votes.forEach(function (elem) {
+                if (elem.value === parseInt(self.checkedVote)) {
+                  self.checkedVotes.push(element);
+                }
+              });
+            }
+          });
         });
       });
     },
     // Filter results by reviews
     filterByReviews: function filterByReviews() {
-      var _this2 = this;
+      var _this = this;
 
-      if (this.checkedReview) {
-        this.totReviewDoctors = [];
-        this.results.forEach(function (element) {
-          var reviewsNumber = element.reviews.length;
+      var self = this;
 
-          _this2.totReviewDoctors.push(element);
-
-          _this2.totReviewDoctors.sort(function (a, b) {
-            return a.reviewsNumber > b.reviewsNumber ? 1 : -1;
-          });
-        });
-        this.totReviewDoctors.reverse();
-      } else {
-        this.totReviewDoctors = [];
-        this.results.forEach(function (element) {
-          _this2.totReviewDoctors.push(element);
-        });
+      while (self.lastItem.includes('+')) {
+        self.lastItem = self.lastItem.replace('+', ' ');
       }
+
+      ;
+      axios.get('http://127.0.0.1:8000/api/doctors', {
+        params: {
+          vote: self.checkedVote
+        }
+      }).then(function (resp) {
+        if (_this.checkedReview) {
+          _this.totReviewDoctors = [];
+
+          _this.results.forEach(function (element) {
+            var reviewsNumber = element.reviews.length;
+
+            _this.totReviewDoctors.push(element);
+
+            _this.totReviewDoctors.sort(function (a, b) {
+              return a.reviewsNumber > b.reviewsNumber ? 1 : -1;
+            });
+          });
+
+          _this.totReviewDoctors.reverse();
+        } else {
+          _this.totReviewDoctors = [];
+
+          _this.results.forEach(function (element) {
+            _this.totReviewDoctors.push(element);
+          });
+        }
+      });
     },
     reviewsOff: function reviewsOff() {
       if (this.totReviewDoctors.length > 0) {
         this.totReviewDoctors = [];
       }
-    },
-    mounted: function mounted() {
-      // All doctors data
-      var self = this;
-      axios.get('http://127.0.0.1:8000/api/doctors', {
-        params: {}
-      }).then(function (resp) {
-        self.allInfo = resp.data;
-      });
     }
   }
 });
@@ -2156,6 +2199,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -2165,6 +2210,8 @@ __webpack_require__.r(__webpack_exports__);
 window.Vue = vue__WEBPACK_IMPORTED_MODULE_0__.default;
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -2174,7 +2221,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  */
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
 
 vue__WEBPACK_IMPORTED_MODULE_0__.default.component('advance-component', __webpack_require__(/*! ./components/AdvanceComponent.vue */ "./resources/js/components/AdvanceComponent.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_0__.default.component('carousel-component', __webpack_require__(/*! ./components/CarouselComponent.vue */ "./resources/js/components/CarouselComponent.vue").default);
@@ -37912,7 +37958,7 @@ var render = function() {
   return _c("div", { staticClass: "container margin-top-container" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-lg-3" }, [
-        _vm.results.length > 0
+        _vm.resultsFiltered.length > 0
           ? _c("div", [
               _c("div", { staticClass: "filters" }, [
                 _c(
@@ -38139,7 +38185,7 @@ var render = function() {
                   [
                     _c("div", [
                       _vm._v(
-                        "\n                        Nome: " +
+                        "\n                        Nome:" +
                           _vm._s(item.name) +
                           " " +
                           _vm._s(item.lastname) +
@@ -38174,49 +38220,7 @@ var render = function() {
         _vm.checkedVotes.length === 0 && _vm.totReviewDoctors.length === 0
           ? _c(
               "div",
-              _vm._l(_vm.results, function(doctor, index) {
-                return _c(
-                  "div",
-                  { key: index, staticClass: "strip-list" },
-                  [
-                    _c("div", [
-                      _vm._v(
-                        "\n                            Nome: " +
-                          _vm._s(doctor.name) +
-                          " " +
-                          _vm._s(doctor.lastname) +
-                          "\n                        "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _vm._l(doctor.departments, function(obj, index) {
-                      return _c("div", { key: index }, [
-                        _vm._v(
-                          "\n                            Specializzazione: " +
-                            _vm._s(obj.type) +
-                            "\n                        "
-                        )
-                      ])
-                    }),
-                    _vm._v(" "),
-                    _c("a", { attrs: { href: "doctor/" + doctor.id } }, [
-                      _c("img", {
-                        staticClass: "doctor-pic",
-                        attrs: { src: doctor.detail.pic, alt: "profile pic" }
-                      })
-                    ])
-                  ],
-                  2
-                )
-              }),
-              0
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.checkedVotes.length === 0 && _vm.totReviewDoctors.length > 0
-          ? _c(
-              "div",
-              _vm._l(_vm.totReviewDoctors, function(item, index) {
+              _vm._l(_vm.resultsFiltered, function(item, index) {
                 return _c(
                   "div",
                   { key: index, staticClass: "strip-list" },

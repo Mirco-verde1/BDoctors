@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white shadow-sm">
     <div class="container">
-        <a href="/"><img src="../img/logomod.png" class="logo-img" alt=""></a>
+        <a href="/"><img src="{{ asset('/img/logomod.png') }}" class="logo-img" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>

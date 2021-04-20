@@ -13,8 +13,8 @@
                         <nav id="secondary-nav">
                             <div>
                                 <ul>
-                                    <li>
-                                        <a class="active-nav">Info Generali</a>
+                                    <li class="active-nav">
+                                        Info Generali
                                     </li>
                                     <li>
                                         <a class="">Recensioni</a>
@@ -29,7 +29,7 @@
 
                                 <div class="row">
 
-                                    <figure class="col-lg-5 col-md-4">
+                                    <figure class="doctor-pic-show-container">
                                         <img class="doctor-pic-show" src="{{$user->detail->pic}}" alt="{{$user->name}} {{$user->lastname}}">
                                     </figure>
 

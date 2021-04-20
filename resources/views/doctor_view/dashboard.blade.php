@@ -5,11 +5,13 @@
 <div class="container-fluid">
   <div class="row">
 
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar margin-top-container navbar-expand-md">
-      <div class="sidebar-sticky margin-top-container ">
-        <div class="container">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar  navbar-expand-md">
+      <div class="sidebar-sticky ">
+
+        <figure class="doctor-pic-dashboard-container ">
             <img class="doctor-pic" src="{{ Auth::user()->getPic()->pic }}" alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
-        </div>
+        </figure>
+
         <div class="collapse navbar-collapse margin-top-container" id="navbarSupportedContent">
             <ul class="nav flex-column">
             <li class="nav-item">
@@ -19,7 +21,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="admin/doc/{{$user->id}}/edit ">
                 <span data-feather="home"></span>
                 Informazioni
                 </a>
@@ -70,7 +72,8 @@
         </div>
       </div>
 
-      <h2>Section title</h2>
+      <h2>{{$user->id}}</h2>
+      <img src="{{ asset($user->detail->pic) }}" width="100" alt="">
 
       <div class="table-responsive">
         <table class="table table-striped table-sm">

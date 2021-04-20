@@ -39,5 +39,5 @@ Route::prefix('admin')
 ->namespace('Admin')
 ->middleware('auth')
 ->group(function () {
-    Route::resource('/', UserController::class);
+    Route::resource('doc', UserController::class);
 });

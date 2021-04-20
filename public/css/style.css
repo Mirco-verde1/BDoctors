@@ -16227,9 +16227,19 @@ readers do not read off random characters that represent icons */
 }
 .jumbotron-container-title .title {
   font-size: 4vw;
+  display: block;
 }
 .jumbotron-container-title .subtitle {
   font-size: 2vw;
+}
+
+.jumbotron-overlay {
+  width: 100vw;
+  height: 90vh;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .margin-top-container {

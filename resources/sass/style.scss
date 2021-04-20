@@ -92,12 +92,22 @@ background-color: #F5F8FA;
     }
         .title{
             font-size:4vw;
+            display: block;
         }
 
         .subtitle{
             font-size:2vw;
         }
     }
+
+}
+.jumbotron-overlay {
+    width: 100vw;
+    height: 90vh;
+    background: rgba(0, 0, 0, .5);
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 // stile advanced search ---------------------------------------------------

@@ -16204,7 +16204,7 @@ readers do not read off random characters that represent icons */
 }
 
 .jumbotron-doc {
-  width: 100vw;
+  width: calc(100vw - 13px);
   height: 90vh;
   font-weight: bold;
   background-image: url("https://www.doctors-365.de/home_slider_bg.95b2004ae0c9ce8f3a0b.jpg");
@@ -16465,8 +16465,7 @@ readers do not read off random characters that represent icons */
 .box-general .profile .doctor-pic-show {
   border-radius: 50%;
   border: 3px solid #1DB487;
-  width: 300px;
-  height: 300px;
+  width: 100%;
 }
 .box-general .profile .info .department {
   color: #1DB487;

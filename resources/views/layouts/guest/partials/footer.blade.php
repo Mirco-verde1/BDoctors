@@ -4,7 +4,7 @@
             <div class="col-12">
                 <div class="row ">
                     <div class="col-xl-4 col-md-2 col-sm-2 col-12 my-auto mx-auto a">
-                        <img src="img/logomod.png" class="logo-img" alt="">
+                        <img src="../img/logomod.png" class="logo-img" alt="">
                     </div>
                     <div class="col-xl-4 col-md-4 col-sm-4 col-12">
                         <h6 class="mb-3 mb-lg-4 bold-text text-dark "><b>MENU</b></h6>

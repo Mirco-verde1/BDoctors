@@ -37,6 +37,9 @@ Route::post('vote/{vote}', 'VoteController@sendVote')->name('send.vote');
 Route::resource('review', ReviewController::class)->only('create', 'store', 'edit', 'update');
 Route::resource('message', MessageController::class);
 
+//payment
+Route::get('/payment/make', 'PaymentsController@make')->name('payment.make');
+
 //doctor route
 Route::prefix('admin')
 ->namespace('Admin')

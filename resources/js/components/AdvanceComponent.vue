@@ -1,343 +1,231 @@
-            <template>
+<template>
 
-                <div class="container margin-top-container">
+    <div class="container margin-top-container">
 
-                    <div class="row">
+        <div class="row">
 
-                        <div class="col-lg-3">
+            <div class="col-lg-3 col-md-8">
+                <div class="box-general">
+                    <div class="profile">
+                        <!-- Filter results part -->
+                        <div v-if="filteredResults.length > 0">
 
-                            <!-- Filter results part -->
-                            <div v-if="resultsFiltered.length > 0">
+                            <div class="filters">
+                                <b>Filtra per:</b>
+                                <hr>
 
-                                <div class="filters">
+                                <small>Voto</small>
 
-                                <div @change="filterByVote(), reviewsOff()">
-                                    <input type="radio" value="1" v-model="checkedVote">
+                                <div @change="filterByVote()" v-for="i in 5">
+                                    <input type="radio" :value="i" v-model="checkedVote">
                                     <span>
-                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star" v-for="number in i"></i>
                                     </span>
                                 </div>
 
-                                <div @change="filterByVote(), reviewsOff()">
-                                    <input type="radio" value="2" v-model="checkedVote">
-                                    <span>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </span>
+                                <small>Numero di recensioni</small>
+
+                                <div>
+                                    <input type="checkbox" @change="filterByReviews()" value="" v-model="checkedReview">
+                                    <i class="far fa-edit"></i> <span>In ordine decrescente</span>
                                 </div>
-
-                                <div @change="filterByVote(), reviewsOff()">
-                                    <input type="radio" value="3" v-model="checkedVote">
-                                    <span>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </span>
-                                </div>
-
-                                <div @change="filterByVote(), reviewsOff()">
-                                    <input type="radio" value="4" v-model="checkedVote" >
-                                    <span>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </span>
-                                </div>
-
-                                <div @change="filterByVote(), reviewsOff()">
-                                    <input type="radio" value="5" v-model="checkedVote">
-                                        <span>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </span>
-                                </div>
-
-                            <div>
-
-                                <input type="checkbox" @change="filterByReviews()" value="" v-model="checkedReview"> <i class="far fa-edit"></i>Recensioni</div>
 
                             </div>
 
                         </div>
                     </div>
-
-
-                    <div class="col-lg-8">
-
-                        <!-- mostriamo i risultati della ricerca tramite filtro per i voti -->
-                         <div class="" v-if="checkedVotes.length > 0 && totReviewDoctors.length === 0">
-
-                            <div class="strip-list" v-for="(item,index) in checkedVotes" :key="index">
-
-                                <div>
-                                    Nome:{{item.name}} {{item.lastname}}
-                                </div>
-
-                                <div v-for="(obj, index) in item.departments" :key="index">
-                                    Specializzazione: {{obj.type}}
-                                </div>
-
-
-                                <a :href="'doctor/'+ item.id">
-                                    <img class="doctor-pic" :src="item.detail.pic" alt="profile pic">
-                                </a>
-
-                            </div>
-
-                        </div>
-
-
-                            <!-- mostriamo i risultati della ricerca effettuata nella homepage -->
-
-                            <!-- <div v-if="checkedVotes.length === 0 && totReviewDoctors.length === 0">
-                                <div class="strip-list" v-for="(doctor,index) in results" :key="index">
-
-                                    <div>
-                                        Nome: {{doctor.name}} {{doctor.lastname}}
-                                    </div>
-
-                                    <div v-for="(obj, index) in doctor.departments" :key="index">
-                                        Specializzazione: {{obj.type}}
-                                    </div>
-
-                                    <a :href="'doctor/' + doctor.id">
-                                        <img class="doctor-pic" :src="doctor.detail.pic" alt="profile pic">
-                                    </a>
-
-                                </div>
-                            </div> -->
-
-
-                        <!-- mostriamo i risultati della ricerca tramite filtro per le reviews -->
-
-                        <div v-if="checkedVotes.length === 0 && totReviewDoctors.length === 0" >
-
-                            <div class="strip-list" v-for="(item, index) in resultsFiltered" :key="index">
-                                <div>
-                                    Nome: {{item.name}} {{item.lastname}}
-                                </div>
-
-                                <div v-for="(obj, index) in item.departments" :key="index">
-                                    Specializzazione: {{obj.type}}
-                                </div>
-
-                                <a :href="'doctor/'+ item.id">
-                                    <img class="doctor-pic" :src="item.detail.pic" alt="profile pic">
-                                </a>
-                            </div>
-                        </div>
-
-
-                        </div>
-                    </div>
-
                 </div>
-                <!-- row -->
+            </div>
+            <!-- Fine colonna di sinistra -->
 
-            <!-- container -->
+            <div class="col-lg-9 col-md-8">
+                <div class="box-general">
+                    <div class="">                                  
 
-            </template>
+                        <!-- Mostriamo i risultati iniziali della ricerca effettuata nella homepage -->
+                        <div v-if="!checkedVote && filteredByVote.length === 0 && filteredByReviews.length === 0">
+                            <div class="strip-list" v-for="(doctor, index) in filteredResults" :key="index">
 
-            <script>
+                                <div>
+                                    Nome: {{doctor.name}} risultati generali{{doctor.lastname}}
+                                </div>
 
-                export default {
+                                <div>
+                                    Specializzazioni:
+                                    <span v-for="(obj, index) in doctor.departments" :key="index">
+                                        {{obj.type}}{{(index !== doctor.departments.length - 1) ? ',' : ''}}
+                                    </span>
+                                </div>
 
-                    data: function () {
+                                <figure class=" doctor-pic-dashboard-container">
+                                    <a  :href="'doctor/'+ doctor.id">
+                                        <img class="doctor-pic" :src="'storage/' + doctor.detail.pic" alt="profile pic">
+                                    </a>
+                                </figure>
 
-                        return {
+                            </div>
+                        </div>
 
-                        checkedVote: '',
-                        checkedReview: '',
+                        <!-- Mostriamo i risultati della ricerca tramite filtro per i voti -->
+                        <div v-if="filteredByVote.length > 0">
 
-                        checkedVotes:[],
-                        totReviewDoctors:[],
-                        lastItem:window.location.search.substring(window.location.search.lastIndexOf('=') + 1),
-                        results:[],
-                        resultsFiltered:[],
-                        test:[],
+                            <div class="strip-list" v-for="(doctor, index) in filteredByVote" :key="index">
+
+                                <div>
+                                    Nome:{{doctor.name}} {{doctor.lastname}}
+                                </div>
+
+                                <div>
+                                    Specializzazioni:
+                                    <span v-for="(obj, index) in doctor.departments" :key="index">
+                                        {{obj.type}}{{(index !== doctor.departments.length - 1) ? ',' : ''}}
+                                    </span>
+                                </div>
+
+                                <figure class=" doctor-pic-dashboard-container">
+                                    <a  :href="'doctor/'+ doctor.id">
+                                        <img class="doctor-pic" :src="'storage/' + doctor.detail.pic" alt="profile pic">
+                                    </a>
+                                </figure>
+
+                            </div>
+
+                        </div>
 
 
+                        <!-- Mostriamo i risultati della ricerca tramite filtro per le reviews -->
+                        <div v-if="filteredByReviews.length > 0">
+
+                            <div class="strip-list" v-for="(doctor, index) in filteredResults" :key="index">
+                                <div>
+                                    Nome: {{doctor.name}} {{doctor.lastname}}
+                                </div>
+
+                                <div>
+                                    Specializzazioni:
+                                    <span v-for="(obj, index) in doctor.departments" :key="index">
+                                        {{obj.type}}{{(index !== doctor.departments.length - 1) ? ',' : ''}}
+                                    </span>
+                                </div>
+
+                                <figure class=" doctor-pic-dashboard-container">
+                                    <a  :href="'doctor/'+ doctor.id">
+                                        <img class="doctor-pic"  :src="'storage/' + doctor.detail.pic" alt="profile pic">
+                                    </a>
+                                </figure>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- row -->
+
+    </div>
+    <!-- container -->
+
+</template>
+
+<script>
+
+    export default {
+
+        data: function () {
+
+            return {
+                searchedDepartment: window.location.search.substring(window.location.search.lastIndexOf('=') + 1),
+
+                checkedVote: '',
+                checkedReview: '',
+
+                results: [],
+                filteredResults: [],
+                filteredByVote: [],
+                filteredByReviews: []
+            }
+        },
+
+    mounted() {
+
+    // All doctors data filtererd by homepage research
+
+    const self = this;
+
+    // Sostituiamo i + derivanti dalla query string per poter confrontare con i risultati
+    while(this.searchedDepartment.includes('+')) {
+        this.searchedDepartment = this.searchedDepartment.replace('+', ' ');
+    }
+
+    // Chiamata Axios all'API per filtrare i risultati in base al department scelto in home
+    axios.get('http://127.0.0.1:8000/api/doctors', {
+    })
+    .then((resp) => {
+        self.results = resp.data;
+
+        self.results.data.forEach(element => {
+
+            element.departments.forEach(item => {
+                if(item.type === self.searchedDepartment) {
+                    self.filteredResults.push(element);
+                }
+            });
+
+        });
+    });
+    },
+
+    methods: {
+
+        // Filtriamo i risultati per voto
+        filterByVote: function () {
+            this.filteredByVote = [];
+
+            this.filteredResults.forEach(element => {
+
+                element.votes.forEach(elem => {
+                    if(elem.value === parseInt(this.checkedVote)) {
+                        this.filteredByVote.push(element);
                     }
-                },
+                });
+            });
+        },
 
-                mounted() {
+        // Filtriamo i risultati per recensione
+        filterByReviews: function() {
+            if (this.checkedReview) {
 
-                // All doctors data filtererd by homepage research
+                if (this.filteredByVote.length > 0) {
 
-                const self = this;
+                    this.filteredByVote.forEach(element => {
+                        const reviewsNumber = element.reviews.length;
+                        
+                        this.filteredByReviews.push(element);
+                        this.filteredByReviews.sort((a, b) => (a.reviewsNumber > b.reviewsNumber) ? 1 : -1);       
+                    });
 
-                while(self.lastItem.includes('+')){
+                } else {
+                    
+                    this.filteredResults.forEach(element => {
+                        const reviewsNumber = element.reviews.length;
 
-                        self.lastItem = self.lastItem.replace('+', ' '); };
-
-
-
-                axios.get('http://127.0.0.1:8000/api/doctors', {
-
-                    params: {
-
-                            },
-                })
-
-                .then((resp) => {
-
-
-                self.results = resp.data;
-
-
-                    self.results.data.forEach(element => {
-
-                        element.departments.forEach(item => {
-
-
-
-                            if(item.type === self.lastItem){
-
-
-
-                                self.resultsFiltered.push(element);
-
-                            }
-
-                        });
+                        this.filteredByReviews.push(element);
+                        this.filteredByReviews.sort((a, b) => (a.reviewsNumber > b.reviewsNumber) ? 1 : -1);       
 
                     });
 
-                });
 
-
-
-                },
-
-                methods: {
-
-                    filterByVote: function () {
-
-                    const self = this;
-
-                        while(self.lastItem.includes('+')){
-
-                        self.lastItem = self.lastItem.replace('+', ' '); };
-
-                    axios.get('http://127.0.0.1:8000/api/doctors', {
-
-                    params: {
-
-                             vote:self.checkedVote,
-
-                            },
-
-                }) .then((resp) => {
-
-
-                self.results = resp.data;
-                self.checkedVotes = [],
-
-                    self.results.data.forEach(element => {
-
-                        element.departments.forEach(item => {
-
-
-
-                            if(item.type === self.lastItem){
-
-
-                               element.votes.forEach(elem => {
-
-                                    if(elem.value === parseInt(self.checkedVote)){
-
-
-
-                                        self.checkedVotes.push(element);
-                                    }
-                               })
-
-
-
-
-
-
-                            }
-
-                        });
-
-                    });
-
-                });
-                    },
-
-
-
-
-                    // Filter results by reviews
-                    filterByReviews: function() {
-
-                         const self = this;
-
-                        while(self.lastItem.includes('+')){
-
-                        self.lastItem = self.lastItem.replace('+', ' '); };
-
-                    axios.get('http://127.0.0.1:8000/api/doctors', {
-
-                    params: {
-
-                             vote:self.checkedVote,
-
-                            },
-
-                }).then((resp) => {
-
-
-                  if (this.checkedReview) {
-                            this.totReviewDoctors = [];
-
-                            this.results.forEach(element => {
-                                const reviewsNumber = element.reviews.length;
-
-                                this.totReviewDoctors.push(element);
-
-                                this.totReviewDoctors.sort((a, b) => (a.reviewsNumber > b.reviewsNumber) ? 1 : -1);
-                            });
-
-                            this.totReviewDoctors.reverse();
-
-                        }
-
-                        else{
-                            this.totReviewDoctors = [];
-
-                            this.results.forEach(element => {
-
-                                this.totReviewDoctors.push(element);
-                                })
-                        }
-
-
-
-
-
-                });
-
-
-
-                    },
-
-
-                    reviewsOff: function() {
-                        if(this.totReviewDoctors.length > 0) {
-                            this.totReviewDoctors = [];
-                        }
-                    },
-
-
-
+                    console.log(this.filteredByReviews)
 
                 }
-            }
 
-            </script>
+
+            } else {
+                this.filteredByReviews = [];
+            }
+            
+        }
+    }
+}
+</script>

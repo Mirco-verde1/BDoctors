@@ -2013,6 +2013,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.filteredByVote = [];
+      this.checkedReview = false;
+      this.filteredByReviews = [];
       this.filteredResults.forEach(function (element) {
         element.votes.forEach(function (elem) {
           if (elem.value === parseInt(_this.checkedVote)) {
@@ -2024,6 +2026,9 @@ __webpack_require__.r(__webpack_exports__);
     // Filtriamo i risultati per recensione
     filterByReviews: function filterByReviews() {
       var _this2 = this;
+
+      this.checkedVote = '';
+      this.filteredByVote = [];
 
       if (this.checkedReview) {
         if (this.filteredByVote.length > 0) {
@@ -38048,7 +38053,7 @@ var render = function() {
                           _vm._v(
                             "\n                                Nome: " +
                               _vm._s(doctor.name) +
-                              " risultati generali" +
+                              " " +
                               _vm._s(doctor.lastname) +
                               "\n                            "
                           )

@@ -40,14 +40,14 @@
 
             <div class="col-lg-9 col-md-8">
                 <div class="box-general">
-                    <div class="">                                  
+                    <div class="">
 
                         <!-- Mostriamo i risultati iniziali della ricerca effettuata nella homepage -->
                         <div v-if="!checkedVote && filteredByVote.length === 0 && filteredByReviews.length === 0">
                             <div class="strip-list" v-for="(doctor, index) in filteredResults" :key="index">
 
                                 <div>
-                                    Nome: {{doctor.name}} risultati generali{{doctor.lastname}}
+                                    Nome: {{doctor.name}} {{doctor.lastname}}
                                 </div>
 
                                 <div>
@@ -181,6 +181,9 @@
         // Filtriamo i risultati per voto
         filterByVote: function () {
             this.filteredByVote = [];
+            this.checkedReview = false;
+            this.filteredByReviews = [];
+
 
             this.filteredResults.forEach(element => {
 
@@ -194,24 +197,26 @@
 
         // Filtriamo i risultati per recensione
         filterByReviews: function() {
+            this.checkedVote = '';
+            this.filteredByVote = [];
             if (this.checkedReview) {
 
                 if (this.filteredByVote.length > 0) {
 
                     this.filteredByVote.forEach(element => {
                         const reviewsNumber = element.reviews.length;
-                        
+
                         this.filteredByReviews.push(element);
-                        this.filteredByReviews.sort((a, b) => (a.reviewsNumber > b.reviewsNumber) ? 1 : -1);       
+                        this.filteredByReviews.sort((a, b) => (a.reviewsNumber > b.reviewsNumber) ? 1 : -1);
                     });
 
                 } else {
-                    
+
                     this.filteredResults.forEach(element => {
                         const reviewsNumber = element.reviews.length;
 
                         this.filteredByReviews.push(element);
-                        this.filteredByReviews.sort((a, b) => (a.reviewsNumber > b.reviewsNumber) ? 1 : -1);       
+                        this.filteredByReviews.sort((a, b) => (a.reviewsNumber > b.reviewsNumber) ? 1 : -1);
 
                     });
 
@@ -224,7 +229,7 @@
             } else {
                 this.filteredByReviews = [];
             }
-            
+
         }
     }
 }

@@ -34,14 +34,10 @@ Route::get('/doctor/{id}', 'GuestController@show')->name('show.doctor');
 Route::resource('review', ReviewController::class)->only('create', 'store', 'edit', 'update');
 Route::resource('message', MessageController::class);
 
-//payment
-Route::get('/payment/make', 'PaymentsController@make')->name('payment.make');
-
 //doctor route
 Route::prefix('admin')
 ->namespace('Admin')
 ->middleware('auth')
 ->group(function () {
     Route::resource('doc', UserController::class);
-    Route::resource('sponsor', SponsorController::class);
 });

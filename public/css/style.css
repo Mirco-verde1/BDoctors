@@ -16415,6 +16415,7 @@ readers do not read off random characters that represent icons */
 
 .doctor-pic-dashboard-container {
   width: 150px;
+  height: 150px;
   border-radius: 50%;
   border: 3px solid #1DB487;
   overflow: hidden;

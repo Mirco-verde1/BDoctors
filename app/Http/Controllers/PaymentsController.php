@@ -23,6 +23,7 @@ class PaymentsController extends Controller
                                          ]
               ]);
 
+
     return view('layouts.guest/partials.checkout',compact('status'));
 
 }

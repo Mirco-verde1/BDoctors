@@ -10,11 +10,12 @@
         // Estrapoliamo dall'URI la posizione del valore numerico associato all'id
         preg_match('/[0-9]/', $slicedURI, $matches, PREG_OFFSET_CAPTURE);
         $idPosition = $matches[0][1];
+        $idInURL = intval(substr($slicedURI, $idPosition, (strlen($slicedURI) - $idPosition)));
     @endphp
 
     {{-- Verifichiamo che l'id dell'utente che sta modificando il suo profilo si trovi
     alla posizione estrapolata in precedenza --}}
-    @if($idPosition === stripos($slicedURI, strval($user->id)))
+    @if($idInURL === $user->id)
 
         <div class="container">
 
@@ -109,7 +110,7 @@
         </div>
 
     {{-- Semplice verifica che l'id estrapolato dall'URI non sia superiore agli utenti totali del database --}}
-    @elseif(intval(substr($slicedURI, $idPosition, (strrpos($slicedURI, '/') - $idPosition))) > count($users))
+    @elseif($idInURL > count($users) || $idInURL === 0)
 
         <div class="col-xl-10 col-lg-10 mx-auto">
             <span>Spiacenti, il medico che hai richiesto non è presente nel nostro database.</span>

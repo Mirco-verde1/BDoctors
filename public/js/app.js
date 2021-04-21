@@ -1967,16 +1967,14 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       if (!check) {
-        if (!(!this.checkedVote && this.checkedReview)) {
-          this.filteredResults = [];
-          this.results.data.forEach(function (element) {
-            element.departments.forEach(function (item) {
-              if (item.type === _this.searchedDepartment) {
-                _this.filteredResults.push(element);
-              }
-            });
+        this.filteredResults = [];
+        this.results.data.forEach(function (element) {
+          element.departments.forEach(function (item) {
+            if (item.type === _this.searchedDepartment) {
+              _this.filteredResults.push(element);
+            }
           });
-        }
+        });
       }
     },
     // Filtriamo i risultati per voto
@@ -1986,11 +1984,17 @@ __webpack_require__.r(__webpack_exports__);
       var filteredByVote = [];
       this.restoreResults();
       this.filteredResults.forEach(function (element) {
+        var votesSum = 0;
+        var votesCount = element.votes.length;
+        var votesAverage;
         element.votes.forEach(function (elem) {
-          if (elem.value === _this2.checkedVoteValue) {
-            filteredByVote.push(element);
-          }
+          votesSum += elem.value;
         });
+        votesAverage = Math.ceil(votesSum / votesCount);
+
+        if (votesAverage === _this2.checkedVoteValue) {
+          filteredByVote.push(element);
+        }
       });
       this.filteredResults = filteredByVote;
 
@@ -37924,7 +37928,7 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _c("small", [_vm._v("Voto")]),
+                  _c("small", [_vm._v("Media voti")]),
                   _vm._v(" "),
                   _vm._l(5, function(i) {
                     return _vm.checkedVote

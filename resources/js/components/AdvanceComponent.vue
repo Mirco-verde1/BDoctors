@@ -15,7 +15,7 @@
                             
                             <div>
                                 <input @change="restoreResults(checkedVote)" type="checkbox" v-model="checkedVote">
-                                <small>Voto</small>
+                                <small>Media voti</small>
 
                                 <div v-for="i in 5" v-if="checkedVote">
                                     <input @change="filterByVote()" type="radio" :value="i"  v-model="checkedVoteValue">
@@ -135,19 +135,17 @@
         restoreResults: function(check) {
             if (!check) {
 
-                if (!(!this.checkedVote && this.checkedReview)) {
-                    this.filteredResults = [];
+                this.filteredResults = [];
 
-                    this.results.data.forEach(element => {
+                this.results.data.forEach(element => {
 
-                        element.departments.forEach(item => {
-                            if(item.type === this.searchedDepartment) {
-                                this.filteredResults.push(element);
-                            }
-                        });
-
+                    element.departments.forEach(item => {
+                        if(item.type === this.searchedDepartment) {
+                            this.filteredResults.push(element);
+                        }
                     });
-                }
+
+                });
             }
         },
 
@@ -158,11 +156,19 @@
             this.restoreResults();
 
             this.filteredResults.forEach(element => {
+                let votesSum = 0;
+                let votesCount = element.votes.length;
+                let votesAverage;
+
                 element.votes.forEach(elem => {
-                    if (elem.value === this.checkedVoteValue) {
-                        filteredByVote.push(element);
-                    }
+                    votesSum += elem.value;
                 });
+                
+                votesAverage = Math.ceil(votesSum / votesCount);
+
+                if (votesAverage === this.checkedVoteValue) {
+                    filteredByVote.push(element);
+                }
             });
 
             this.filteredResults = filteredByVote;

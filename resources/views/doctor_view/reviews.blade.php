@@ -21,7 +21,9 @@
 
             
             <div>
-                @foreach ($reviews as $review )
+                @foreach ($reviews as $review)
+                    <h2>{{$review->name}}</h2>
+                    <h4>{{$review->email}}</h4>
                     <p>{{$review->body}}</p>
                 @endforeach
             </div>

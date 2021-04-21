@@ -15,14 +15,16 @@
 
     {{-- Verifichiamo che l'id dell'utente che sta modificando il suo profilo si trovi
     alla posizione estrapolata in precedenza --}}
-    @if($idInURL === $user->id))
+    @if($idInURL === $user->id)
 
         <div class="container">
 
             
             <div>
-                @foreach ($messages as $message )
-                    <p>{{$message->body}}</p>
+                @foreach ($messages as $message)
+                    <h2>{{$review->name}}</h2>
+                    <h4>{{$review->email}}</h4>
+                    <p>{{$review->body}}</p>
                 @endforeach
             </div>
 

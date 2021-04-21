@@ -19,12 +19,12 @@
 
         <div class="container">
 
-            
+
             <div>
                 @foreach ($messages as $message)
-                    <h2>{{$review->name}}</h2>
-                    <h4>{{$review->email}}</h4>
-                    <p>{{$review->body}}</p>
+                    <h2>{{$message->name}}</h2>
+                    <h4>{{$message->email}}</h4>
+                    <p>{{$message->body}}</p>
                 @endforeach
             </div>
 

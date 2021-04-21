@@ -33,16 +33,20 @@ class HomeController extends Controller
 
     public function myReviews()
     {
+        $user = Auth::user();
+        $users = User::all();
         $reviews = Auth::user()->reviews()->orderBy('id', 'desc')->get();
 
-        return view('doctor_view.reviews', compact('users', 'user', 'reviews'));
+        return view('doctor_view.reviews', compact('user', 'users', 'reviews'));
     }
 
     public function myMessages()
     {
+        $user = Auth::user();
+        $users = User::all();
         $messages = Auth::user()->messages()->orderBy('id', 'desc')->get();
 
-        return view('doctor_view.messages', compact('users', 'user', 'messages'));
+        return view('doctor_view.messages', compact('user', 'users', 'messages'));
     }
 
 }

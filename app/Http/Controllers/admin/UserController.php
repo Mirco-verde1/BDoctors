@@ -62,10 +62,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $users = User::all();
         $user = Auth::user();
         $departments = Department::all();
         $userDetail = UserDetail::where('id', $id)->first();
-        return view('doctor_view.edit', compact('user', 'departments', 'userDetail'));
+        return view('doctor_view.edit', compact('users', 'user', 'departments', 'userDetail'));
     }
 
     /**

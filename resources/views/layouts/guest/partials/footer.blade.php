@@ -10,7 +10,6 @@
                         <h6 class="mb-3 mb-lg-4 bold-text text-dark "><b>MENU</b></h6>
                         <ul class="list-unstyled">
                             <a href="/"><li>Home</li></a>
-                            <a href="/advance"><li>Advanced Search</li></a>
                         </ul>
                     </div>
                     <div class="col-xl-2 col-md-4 col-sm-4 col-12">
@@ -44,14 +43,18 @@
                         <h6 class="text-dark bold-text"><b>SOCIAL</b></h6>
                         <p class="social text-muted mb-0 pb-0 bold-text">
                             <span>
-                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                <a href="#"><i class="fab fa-facebook"></i></a>
                             </span>
-                            <span><a href="#"><i class="fab fa-linkedin"></i></a>
+                            <span>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
                             </span>
-                            <span><a href="#"><i class="fab fa-twitter-square"></i></a>
+                            <span>
+                                <a href="#"><i class="fab fa-twitter-square"></i></a>
                             </span>
-                            <span><a href="#"><i class="fab fa-instagram-square"></i></a>
-                            </span></p>
+                            <span>
+                                <a href="#"><i class="fab fa-instagram-square"></i></a>
+                            </span>
+                        </p>
                     </div>
                 </div>
             </div>

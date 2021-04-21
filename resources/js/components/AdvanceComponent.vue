@@ -4,135 +4,153 @@
 
                     <div class="row">
 
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 col-md-8">
+                            <div class="box-general">
+                                <div class="profile">
+                                    <!-- Filter results part -->
+                                    <div v-if="resultsFiltered.length > 0">
 
-                            <!-- Filter results part -->
-                            <div v-if="resultsFiltered.length > 0">
+                                        <div class="filters">
+                                            <b>Filtra per:</b>
+                                            <hr>
 
-                                <div class="filters">
+                                            <small>Voti</small>
 
-                                <div @change="filterByVote(), reviewsOff()">
-                                    <input type="radio" value="1" v-model="checkedVote">
-                                    <span>
-                                        <i class="fas fa-star"></i>
-                                    </span>
+                                            <div @change="filterByVote(), reviewsOff()">
+                                                <input type="radio" value="1" v-model="checkedVote">
+                                                <span>
+                                                    <i class="fas fa-star"></i>
+                                                </span>
+                                            </div>
+
+                                            <div @change="filterByVote(), reviewsOff()">
+                                                <input type="radio" value="2" v-model="checkedVote">
+                                                <span>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </span>
+                                            </div>
+
+                                            <div @change="filterByVote(), reviewsOff()">
+                                                <input type="radio" value="3" v-model="checkedVote">
+                                                <span>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </span>
+                                            </div>
+
+                                            <div @change="filterByVote(), reviewsOff()">
+                                                <input type="radio" value="4" v-model="checkedVote" >
+                                                <span>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </span>
+                                            </div>
+
+                                            <div @change="filterByVote(), reviewsOff()">
+                                                <input type="radio" value="5" v-model="checkedVote">
+                                                    <span>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </span>
+                                            </div>
+
+                                            <small>Recensioni</small>
+
+                                            <div>
+                                                <input type="checkbox" @change="filterByReviews()" value="" v-model="checkedReview">
+                                                <i class="far fa-edit"></i>Recensioni
+                                            </div>
+
+                                        </div>
+
+                                    </div>
                                 </div>
-
-                                <div @change="filterByVote(), reviewsOff()">
-                                    <input type="radio" value="2" v-model="checkedVote">
-                                    <span>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </span>
-                                </div>
-
-                                <div @change="filterByVote(), reviewsOff()">
-                                    <input type="radio" value="3" v-model="checkedVote">
-                                    <span>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </span>
-                                </div>
-
-                                <div @change="filterByVote(), reviewsOff()">
-                                    <input type="radio" value="4" v-model="checkedVote" >
-                                    <span>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </span>
-                                </div>
-
-                                <div @change="filterByVote(), reviewsOff()">
-                                    <input type="radio" value="5" v-model="checkedVote">
-                                        <span>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </span>
-                                </div>
-
-                            <div>
-
-                                <input type="checkbox" @change="filterByReviews()" value="" v-model="checkedReview"> <i class="far fa-edit"></i>Recensioni</div>
-
                             </div>
-
                         </div>
-                    </div>
+                        <!-- fine colonna di sinistra -->
 
+                        <div class="col-lg-9 col-md-8">
+                            <div class="box-general">
+                                <div class="">
 
-                    <div class="col-lg-8">
+                                    <!-- mostriamo i risultati della ricerca tramite filtro per i voti -->
+                                    <div v-if="checkedVotes.length > 0 && totReviewDoctors.length === 0">
 
-                        <!-- mostriamo i risultati della ricerca tramite filtro per i voti -->
-                         <div class="" v-if="checkedVotes.length > 0 && totReviewDoctors.length === 0">
+                                        <div class="strip-list" v-for="(item,index) in checkedVotes" :key="index">
 
-                            <div class="strip-list" v-for="(item,index) in checkedVotes" :key="index">
+                                            <div>
+                                                Nome:{{item.name}} {{item.lastname}}
+                                            </div>
 
-                                <div>
-                                    Nome:{{item.name}} {{item.lastname}}
-                                </div>
+                                            <div v-for="(obj, index) in item.departments" :key="index">
+                                                Specializzazione: {{obj.type}}
+                                            </div>
 
-                                <div v-for="(obj, index) in item.departments" :key="index">
-                                    Specializzazione: {{obj.type}}
-                                </div>
+                                            <figure class=" doctor-pic-dashboard-container">
+                                                <a  :href="'doctor/'+ item.id">
+                                                    <img class="doctor-pic" :src="'storage/' + item.detail.pic" alt="profile pic">
+                                                </a>
+                                            </figure>
 
+                                        </div>
 
-                                <a :href="'doctor/'+ item.id">
-                                    <img class="doctor-pic" :src="item.detail.pic" alt="profile pic">
-                                </a>
-
-                            </div>
-
-                        </div>
-
-
-                            <!-- mostriamo i risultati della ricerca effettuata nella homepage -->
-
-                            <!-- <div v-if="checkedVotes.length === 0 && totReviewDoctors.length === 0">
-                                <div class="strip-list" v-for="(doctor,index) in results" :key="index">
-
-                                    <div>
-                                        Nome: {{doctor.name}} {{doctor.lastname}}
                                     </div>
 
-                                    <div v-for="(obj, index) in doctor.departments" :key="index">
-                                        Specializzazione: {{obj.type}}
+                                    <!-- mostriamo i risultati della ricerca effettuata nella homepage -->
+
+                                    <!-- <div v-if="checkedVotes.length === 0 && totReviewDoctors.length === 0">
+                                            <div class="strip-list" v-for="(doctor,index) in results" :key="index">
+
+                                                <div>
+                                                    Nome: {{doctor.name}} {{doctor.lastname}}
+                                                </div>
+
+                                                <div v-for="(obj, index) in doctor.departments" :key="index">
+                                                    Specializzazione: {{obj.type}}
+                                                </div>
+
+                                                <a :href="'doctor/' + doctor.id">
+                                                    <img class="doctor-pic" :src="doctor.detail.pic" alt="profile pic">
+                                                </a>
+
+                                            </div>
+                                         </div> -->
+
+
+                                    <!-- mostriamo i risultati della ricerca tramite filtro per le reviews -->
+
+                                    <div v-if="checkedVotes.length === 0 && totReviewDoctors.length === 0" >
+
+                                        <div class="strip-list" v-for="(item, index) in resultsFiltered" :key="index">
+                                            <div>
+                                                Nome: {{item.name}} {{item.lastname}}
+                                            </div>
+
+                                            <div v-for="(obj, index) in item.departments" :key="index">
+                                                Specializzazione: {{obj.type}}
+                                            </div>
+
+                                            <figure class=" doctor-pic-dashboard-container">
+                                                <a  :href="'doctor/'+ item.id">
+                                                    <img class="doctor-pic"  :src="'storage/' + item.detail.pic" alt="profile pic">
+                                                </a>
+                                            </figure>
+
+                                        </div>
                                     </div>
-
-                                    <a :href="'doctor/' + doctor.id">
-                                        <img class="doctor-pic" :src="doctor.detail.pic" alt="profile pic">
-                                    </a>
-
                                 </div>
-                            </div> -->
-
-
-                        <!-- mostriamo i risultati della ricerca tramite filtro per le reviews -->
-
-                        <div v-if="checkedVotes.length === 0 && totReviewDoctors.length === 0" >
-
-                            <div class="strip-list" v-for="(item, index) in resultsFiltered" :key="index">
-                                <div>
-                                    Nome: {{item.name}} {{item.lastname}}
-                                </div>
-
-                                <div v-for="(obj, index) in item.departments" :key="index">
-                                    Specializzazione: {{obj.type}}
-                                </div>
-
-                                <a :href="'doctor/'+ item.id">
-                                    <img class="doctor-pic" :src="item.detail.pic" alt="profile pic">
-                                </a>
                             </div>
                         </div>
 
 
-                        </div>
+
                     </div>
 
                 </div>

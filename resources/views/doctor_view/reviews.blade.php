@@ -1,19 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+@extends('layouts.app')
 
-     <div>
-        @foreach ($reviews as $review )
-            <p>{{$review->body}}</p>
-        @endforeach
-    </div>
+<title>{{ __('BDoctors - Modifica Profilo') }}</title>
+
+@section('content')
+
+    @php
+        $slicedURI = $_SERVER['REQUEST_URI'];
+
+        // Estrapoliamo dall'URI la posizione del valore numerico associato all'id
+        preg_match('/[0-9]/', $slicedURI, $matches, PREG_OFFSET_CAPTURE);
+        $idPosition = $matches[0][1];
+        $idInURL = intval(substr($slicedURI, $idPosition, (strlen($slicedURI) - $idPosition)));
+    @endphp
+
+    {{-- Verifichiamo che l'id dell'utente che sta modificando il suo profilo si trovi
+    alla posizione estrapolata in precedenza --}}
+    @if($idInURL === $user->id)
+
+        <div class="container">
+
+            
+            <div>
+                @foreach ($reviews as $review )
+                    <p>{{$review->body}}</p>
+                @endforeach
+            </div>
+
+        </div>
+
+    {{-- Semplice verifica che l'id estrapolato dall'URI non sia superiore agli utenti totali del database --}}
+    @elseif($idInURL > count($users) || $idInURL === 0)
+
+        <div class="col-xl-10 col-lg-10 mx-auto">
+            <span>Spiacenti, il medico che hai richiesto non è presente nel nostro database.</span>
+            <br>
+            <span>Clicca <a href="/myReviews/{{$user->id}}">qui</a> per tornare alle recensioni del tuo profilo.</span>
+        </div>
+
+    @else
+
+        <div class="col-xl-10 col-lg-10 mx-auto">
+            <span>Stai cercando di visualizzare i dati di un profilo che non è il tuo.</span>
+            <br>
+            <span>Clicca <a href="/myReviews/{{$user->id}}">qui</a> per tornare alle recensioni del tuo profilo.</span>
+        </div>
+
+    @endif
 
 
-</body>
-</html>
+    @endsection

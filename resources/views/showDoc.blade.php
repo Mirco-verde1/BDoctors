@@ -74,7 +74,7 @@
                                             </form>
 
                                             <div>
-                                                @foreach ($user->reviews as $review)
+                                                @foreach ($reviews as $review)
                                                     <p>{{$review->body}}</p>
                                                 @endforeach
                                             </div>

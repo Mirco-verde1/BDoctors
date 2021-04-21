@@ -97,7 +97,7 @@ class UserController extends Controller
 
 
         if ($request->file('pic') !== null) {
-            $path = $request->file('pic')->store('images');
+            $path = $request->file('pic')->store('storage/images');
         }
 
         $user = Auth::user();

@@ -9,7 +9,7 @@
       <div class="sidebar-sticky ">
 
         <figure class="doctor-pic-dashboard-container ">
-            <img class="doctor-pic" src="{{ Auth::user()->getPic()->pic }}" alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
+            <img class="doctor-pic" src="{{ URL::asset('storage/'.$user->detail->pic) }}" alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
         </figure>
 
         <div class="collapse navbar-collapse margin-top-container" id="navbarSupportedContent">

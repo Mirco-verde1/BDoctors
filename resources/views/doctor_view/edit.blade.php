@@ -107,7 +107,7 @@
                     <h2>{{$user->name}}</h2>
 
         </div>
-    
+
     {{-- Semplice verifica che l'id estrapolato dall'URI non sia superiore agli utenti totali del database --}}
     @elseif(intval(substr($slicedURI, $idPosition, (strrpos($slicedURI, '/') - $idPosition))) > count($users))
 

@@ -30,6 +30,7 @@ Route::get('/', 'GuestController@index')->name('public.homepage');
 Route::get('/advance', 'GuestController@advance');
 
 Route::get('/doctor/{id}', 'GuestController@show')->name('show.doctor');
+Route::post('vote/{vote}', 'VoteController@sendVote')->name('send.vote');
 
 Route::resource('review', ReviewController::class)->only('create', 'store', 'edit', 'update');
 Route::resource('message', MessageController::class);

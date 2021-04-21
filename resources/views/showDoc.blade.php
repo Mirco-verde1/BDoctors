@@ -4,8 +4,8 @@
 
     @section('content')
 
-        <div id="app">          
-            <div class="container margin-top-container">            
+        <div id="app">
+            <div class="container margin-top-container">
                 <div class="row">
 
                     @if(isset($user->id))
@@ -56,6 +56,22 @@
 
 
                                             @endforeach
+
+                                        <form action="{{ route('send.vote', $user->id) }}" method="post">
+                                            @csrf
+                                            @method('POST')
+
+                                            <div>
+                                                <label for="votes[]">Vota</label>
+                                                <select class="form-control" id="votes[]" name="votes[]">
+                                                    @foreach ($votes as $vote)
+                                                        <option value="{{ $vote->id }}">{{ $vote->value }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
+                                            <input type="submit" value="Send">
+                                        </form>
 
 
                                             {{-------------------------------------------- qui inserire medical services --------------------------------------------}}

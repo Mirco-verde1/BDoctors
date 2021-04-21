@@ -14,42 +14,71 @@
 
         <div class="collapse navbar-collapse margin-top-container" id="navbarSupportedContent">
             <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">
-                <span data-feather="home"></span>
-                Dashboard <span class="sr-only">(current)</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="admin/doc/{{$user->id}}/edit ">
-                <span data-feather="home"></span>
-                Informazioni
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                <span data-feather="file"></span>
-                Messaggi ricevuti
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                <span data-feather="shopping-cart"></span>
-                Recensioni ricevute
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                <span data-feather="users"></span>
-                Sponsorizzazione profilo
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                <span data-feather="bar-chart-2"></span>
-                Statistiche
-                </a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                    <span data-feather="home"></span>
+                    Dashboard <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="admin/doc/{{$user->id}}/edit ">
+                    <span data-feather="home"></span>
+                    Informazioni
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                    <span data-feather="file"></span>
+                    Messaggi ricevuti
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                    <span data-feather="shopping-cart"></span>
+                    Recensioni ricevute
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                    <span data-feather="users"></span>
+                    Sponsorizzazione profilo
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                    <span data-feather="bar-chart-2"></span>
+                    Statistiche
+                    </a>
+                </li>
+                <button type="button" class="btn btn-danger" data-toggle="modal"
+                data-target="#exampleModalCenter{{ $user->id }}">
+                    CANCELLA PROFILO
+                </button>
+                <div class="modal fade" id="exampleModalCenter{{ $user->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" data-backdrop="false">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">SEI SICURO?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                L'AZIONE E' IRREVERSIBILE
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <form action="{{ route('doc.destroy', $user->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Cancella</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </ul>
 
       </div>

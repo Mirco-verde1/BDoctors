@@ -107,7 +107,7 @@ class UserController extends Controller
         if (isset($path)) {
             $userDetailData['pic'] = $path;
         }
-
+        dd($request);
         $user->update($userData);
         $userDetail->update($userDetailData);
 
@@ -125,5 +125,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $user->delete();
+
+        return redirect()->route('public.homepage');
     }
 }

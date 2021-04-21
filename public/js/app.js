@@ -1928,68 +1928,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       searchedDepartment: window.location.search.substring(window.location.search.lastIndexOf('=') + 1),
       checkedVote: '',
+      checkedVoteValue: '',
       checkedReview: '',
       results: [],
-      filteredResults: [],
-      filteredByVote: [],
-      filteredByReviews: []
+      filteredResults: []
     };
   },
   mounted: function mounted() {
     // All doctors data filtererd by homepage research
-    var self = this; // Sostituiamo i + derivanti dalla query string per poter confrontare con i risultati
+    var self = this;
+    /* Sostituiamo gli eventuali + derivanti dalla query string per poterla confrontare
+    con i risultati */
 
     while (this.searchedDepartment.includes('+')) {
       this.searchedDepartment = this.searchedDepartment.replace('+', ' ');
@@ -2008,54 +1962,52 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    // Filtriamo i risultati per voto
-    filterByVote: function filterByVote() {
+    // Resettiamo i risultati; utile in caso di passaggio da un filtro ad un altro
+    restoreResults: function restoreResults(check) {
       var _this = this;
 
-      this.filteredByVote = [];
-      this.checkedReview = false;
-      this.filteredByReviews = [];
+      if (!check) {
+        if (!(!this.checkedVote && this.checkedReview)) {
+          this.filteredResults = [];
+          this.results.data.forEach(function (element) {
+            element.departments.forEach(function (item) {
+              if (item.type === _this.searchedDepartment) {
+                _this.filteredResults.push(element);
+              }
+            });
+          });
+        }
+      }
+    },
+    // Filtriamo i risultati per voto
+    filterByVote: function filterByVote() {
+      var _this2 = this;
+
+      var filteredByVote = [];
+      this.restoreResults();
       this.filteredResults.forEach(function (element) {
         element.votes.forEach(function (elem) {
-          if (elem.value === parseInt(_this.checkedVote)) {
-            _this.filteredByVote.push(element);
+          if (elem.value === _this2.checkedVoteValue) {
+            filteredByVote.push(element);
           }
         });
       });
+      this.filteredResults = filteredByVote;
+
+      if (this.checkedReview) {
+        this.filterByReviews();
+      }
     },
     // Filtriamo i risultati per recensione
     filterByReviews: function filterByReviews() {
-      var _this2 = this;
-
-      this.checkedVote = '';
-      this.filteredByVote = [];
-
-      if (this.checkedReview) {
-        if (this.filteredByVote.length > 0) {
-          this.filteredByVote.forEach(function (element) {
-            var reviewsNumber = element.reviews.length;
-
-            _this2.filteredByReviews.push(element);
-
-            _this2.filteredByReviews.sort(function (a, b) {
-              return a.reviewsNumber > b.reviewsNumber ? 1 : -1;
-            });
-          });
-        } else {
-          this.filteredResults.forEach(function (element) {
-            var reviewsNumber = element.reviews.length;
-
-            _this2.filteredByReviews.push(element);
-
-            _this2.filteredByReviews.sort(function (a, b) {
-              return a.reviewsNumber > b.reviewsNumber ? 1 : -1;
-            });
-          });
-          console.log(this.filteredByReviews);
-        }
-      } else {
-        this.filteredByReviews = [];
-      }
+      var filteredByReviews = [];
+      this.filteredResults.forEach(function (element) {
+        filteredByReviews.push(element);
+        filteredByReviews.sort(function (a, b) {
+          return b.reviews.length > a.reviews.length ? 1 : -1;
+        });
+      });
+      this.filteredResults = filteredByReviews;
     }
   }
 });
@@ -37921,117 +37873,169 @@ var render = function() {
       _c("div", { staticClass: "col-lg-3 col-md-8" }, [
         _c("div", { staticClass: "box-general" }, [
           _c("div", { staticClass: "profile" }, [
-            _vm.filteredResults.length > 0
-              ? _c("div", [
-                  _c(
-                    "div",
-                    { staticClass: "filters" },
-                    [
-                      _c("b", [_vm._v("Filtra per:")]),
-                      _vm._v(" "),
-                      _c("hr"),
-                      _vm._v(" "),
-                      _c("small", [_vm._v("Voto")]),
-                      _vm._v(" "),
-                      _vm._l(5, function(i) {
-                        return _c(
-                          "div",
-                          {
-                            on: {
-                              change: function($event) {
-                                return _vm.filterByVote()
-                              }
+            _c("div", { staticClass: "filters" }, [
+              _c("b", [_vm._v("Filtra per:")]),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c(
+                "div",
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.checkedVote,
+                        expression: "checkedVote"
+                      }
+                    ],
+                    attrs: { type: "checkbox" },
+                    domProps: {
+                      checked: Array.isArray(_vm.checkedVote)
+                        ? _vm._i(_vm.checkedVote, null) > -1
+                        : _vm.checkedVote
+                    },
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$a = _vm.checkedVote,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = null,
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 && (_vm.checkedVote = $$a.concat([$$v]))
+                            } else {
+                              $$i > -1 &&
+                                (_vm.checkedVote = $$a
+                                  .slice(0, $$i)
+                                  .concat($$a.slice($$i + 1)))
                             }
-                          },
-                          [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.checkedVote,
-                                  expression: "checkedVote"
-                                }
-                              ],
-                              attrs: { type: "radio" },
-                              domProps: {
-                                value: i,
-                                checked: _vm._q(_vm.checkedVote, i)
-                              },
-                              on: {
-                                change: function($event) {
-                                  _vm.checkedVote = i
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "span",
-                              _vm._l(i, function(number) {
-                                return _c("i", { staticClass: "fas fa-star" })
-                              }),
-                              0
-                            )
-                          ]
-                        )
-                      }),
-                      _vm._v(" "),
-                      _c("small", [_vm._v("Numero di recensioni")]),
-                      _vm._v(" "),
-                      _c("div", [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.checkedReview,
-                              expression: "checkedReview"
-                            }
-                          ],
-                          attrs: { type: "checkbox", value: "" },
-                          domProps: {
-                            checked: Array.isArray(_vm.checkedReview)
-                              ? _vm._i(_vm.checkedReview, "") > -1
-                              : _vm.checkedReview
-                          },
-                          on: {
-                            change: [
-                              function($event) {
-                                var $$a = _vm.checkedReview,
-                                  $$el = $event.target,
-                                  $$c = $$el.checked ? true : false
-                                if (Array.isArray($$a)) {
-                                  var $$v = "",
-                                    $$i = _vm._i($$a, $$v)
-                                  if ($$el.checked) {
-                                    $$i < 0 &&
-                                      (_vm.checkedReview = $$a.concat([$$v]))
-                                  } else {
-                                    $$i > -1 &&
-                                      (_vm.checkedReview = $$a
-                                        .slice(0, $$i)
-                                        .concat($$a.slice($$i + 1)))
-                                  }
-                                } else {
-                                  _vm.checkedReview = $$c
-                                }
-                              },
-                              function($event) {
-                                return _vm.filterByReviews()
-                              }
-                            ]
+                          } else {
+                            _vm.checkedVote = $$c
                           }
-                        }),
+                        },
+                        function($event) {
+                          return _vm.restoreResults(_vm.checkedVote)
+                        }
+                      ]
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("small", [_vm._v("Voto")]),
+                  _vm._v(" "),
+                  _vm._l(5, function(i) {
+                    return _vm.checkedVote
+                      ? _c("div", [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.checkedVoteValue,
+                                expression: "checkedVoteValue"
+                              }
+                            ],
+                            attrs: { type: "radio" },
+                            domProps: {
+                              value: i,
+                              checked: _vm._q(_vm.checkedVoteValue, i)
+                            },
+                            on: {
+                              change: [
+                                function($event) {
+                                  _vm.checkedVoteValue = i
+                                },
+                                function($event) {
+                                  return _vm.filterByVote()
+                                }
+                              ]
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            _vm._l(i, function(number) {
+                              return _c("i", { staticClass: "fas fa-star" })
+                            }),
+                            0
+                          )
+                        ])
+                      : _vm._e()
+                  })
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.checkedReview,
+                      expression: "checkedReview"
+                    }
+                  ],
+                  attrs: { type: "checkbox" },
+                  domProps: {
+                    checked: Array.isArray(_vm.checkedReview)
+                      ? _vm._i(_vm.checkedReview, null) > -1
+                      : _vm.checkedReview
+                  },
+                  on: {
+                    change: [
+                      function($event) {
+                        var $$a = _vm.checkedReview,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 && (_vm.checkedReview = $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              (_vm.checkedReview = $$a
+                                .slice(0, $$i)
+                                .concat($$a.slice($$i + 1)))
+                          }
+                        } else {
+                          _vm.checkedReview = $$c
+                        }
+                      },
+                      function($event) {
+                        return _vm.restoreResults(_vm.checkedReview)
+                      }
+                    ]
+                  }
+                }),
+                _vm._v(" "),
+                _c("small", [_vm._v("Numero di recensioni")]),
+                _vm._v(" "),
+                _vm.checkedReview
+                  ? _c(
+                      "div",
+                      {
+                        on: {
+                          change: function($event) {
+                            return _vm.filterByReviews()
+                          }
+                        }
+                      },
+                      [
+                        _c("input", { attrs: { type: "radio" } }),
                         _vm._v(" "),
                         _c("i", { staticClass: "far fa-edit" }),
                         _vm._v(" "),
                         _c("span", [_vm._v("In ordine decrescente")])
-                      ])
-                    ],
-                    2
-                  )
-                ])
-              : _vm._e()
+                      ]
+                    )
+                  : _vm._e()
+              ])
+            ])
           ])
         ])
       ]),
@@ -38039,211 +38043,63 @@ var render = function() {
       _c("div", { staticClass: "col-lg-9 col-md-8" }, [
         _c("div", { staticClass: "box-general" }, [
           _c("div", {}, [
-            !_vm.checkedVote &&
-            _vm.filteredByVote.length === 0 &&
-            _vm.filteredByReviews.length === 0
-              ? _c(
-                  "div",
-                  _vm._l(_vm.filteredResults, function(doctor, index) {
-                    return _c(
-                      "div",
-                      { key: index, staticClass: "strip-list" },
-                      [
-                        _c("div", [
-                          _vm._v(
-                            "\n                                Nome: " +
-                              _vm._s(doctor.name) +
-                              " " +
-                              _vm._s(doctor.lastname) +
-                              "\n                            "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          [
-                            _vm._v(
-                              "\n                                Specializzazioni:\n                                "
-                            ),
-                            _vm._l(doctor.departments, function(obj, index) {
-                              return _c("span", { key: index }, [
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(obj.type) +
-                                    _vm._s(
-                                      index !== doctor.departments.length - 1
-                                        ? ","
-                                        : ""
-                                    ) +
-                                    "\n                                "
-                                )
-                              ])
-                            })
-                          ],
-                          2
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "figure",
-                          { staticClass: " doctor-pic-dashboard-container" },
-                          [
-                            _c(
-                              "a",
-                              { attrs: { href: "doctor/" + doctor.id } },
-                              [
-                                _c("img", {
-                                  staticClass: "doctor-pic",
-                                  attrs: {
-                                    src: "storage/" + doctor.detail.pic,
-                                    alt: "profile pic"
-                                  }
-                                })
-                              ]
-                            )
-                          ]
-                        )
-                      ]
+            _c(
+              "div",
+              _vm._l(_vm.filteredResults, function(doctor, index) {
+                return _c("div", { key: index, staticClass: "strip-list" }, [
+                  _c("div", [
+                    _vm._v(
+                      "\n                                Nome: " +
+                        _vm._s(doctor.name) +
+                        " " +
+                        _vm._s(doctor.lastname) +
+                        "\n                            "
                     )
-                  }),
-                  0
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.filteredByVote.length > 0
-              ? _c(
-                  "div",
-                  _vm._l(_vm.filteredByVote, function(doctor, index) {
-                    return _c(
-                      "div",
-                      { key: index, staticClass: "strip-list" },
-                      [
-                        _c("div", [
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    [
+                      _vm._v(
+                        "\n                                Specializzazioni:\n                                "
+                      ),
+                      _vm._l(doctor.departments, function(obj, index) {
+                        return _c("span", { key: index }, [
                           _vm._v(
-                            "\n                                Nome:" +
-                              _vm._s(doctor.name) +
-                              " " +
-                              _vm._s(doctor.lastname) +
-                              "\n                            "
+                            "\n                                    " +
+                              _vm._s(obj.type) +
+                              _vm._s(
+                                index !== doctor.departments.length - 1
+                                  ? ","
+                                  : ""
+                              ) +
+                              "\n                                "
                           )
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          [
-                            _vm._v(
-                              "\n                                Specializzazioni:\n                                "
-                            ),
-                            _vm._l(doctor.departments, function(obj, index) {
-                              return _c("span", { key: index }, [
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(obj.type) +
-                                    _vm._s(
-                                      index !== doctor.departments.length - 1
-                                        ? ","
-                                        : ""
-                                    ) +
-                                    "\n                                "
-                                )
-                              ])
-                            })
-                          ],
-                          2
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "figure",
-                          { staticClass: " doctor-pic-dashboard-container" },
-                          [
-                            _c(
-                              "a",
-                              { attrs: { href: "doctor/" + doctor.id } },
-                              [
-                                _c("img", {
-                                  staticClass: "doctor-pic",
-                                  attrs: {
-                                    src: "storage/" + doctor.detail.pic,
-                                    alt: "profile pic"
-                                  }
-                                })
-                              ]
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  }),
-                  0
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.filteredByReviews.length > 0
-              ? _c(
-                  "div",
-                  _vm._l(_vm.filteredResults, function(doctor, index) {
-                    return _c(
-                      "div",
-                      { key: index, staticClass: "strip-list" },
-                      [
-                        _c("div", [
-                          _vm._v(
-                            "\n                                Nome: " +
-                              _vm._s(doctor.name) +
-                              " " +
-                              _vm._s(doctor.lastname) +
-                              "\n                            "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          [
-                            _vm._v(
-                              "\n                                Specializzazioni:\n                                "
-                            ),
-                            _vm._l(doctor.departments, function(obj, index) {
-                              return _c("span", { key: index }, [
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(obj.type) +
-                                    _vm._s(
-                                      index !== doctor.departments.length - 1
-                                        ? ","
-                                        : ""
-                                    ) +
-                                    "\n                                "
-                                )
-                              ])
-                            })
-                          ],
-                          2
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "figure",
-                          { staticClass: " doctor-pic-dashboard-container" },
-                          [
-                            _c(
-                              "a",
-                              { attrs: { href: "doctor/" + doctor.id } },
-                              [
-                                _c("img", {
-                                  staticClass: "doctor-pic",
-                                  attrs: {
-                                    src: "storage/" + doctor.detail.pic,
-                                    alt: "profile pic"
-                                  }
-                                })
-                              ]
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  }),
-                  0
-                )
-              : _vm._e()
+                        ])
+                      })
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "figure",
+                    { staticClass: " doctor-pic-dashboard-container" },
+                    [
+                      _c("a", { attrs: { href: "doctor/" + doctor.id } }, [
+                        _c("img", {
+                          staticClass: "doctor-pic",
+                          attrs: {
+                            src: "storage/" + doctor.detail.pic,
+                            alt: "profile pic"
+                          }
+                        })
+                      ])
+                    ]
+                  )
+                ])
+              }),
+              0
+            )
           ])
         ])
       ])

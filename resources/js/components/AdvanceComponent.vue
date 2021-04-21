@@ -7,32 +7,35 @@
             <div class="col-lg-3 col-md-8">
                 <div class="box-general">
                     <div class="profile">
+
                         <!-- Filter results part -->
-                        <div v-if="filteredResults.length > 0">
-
-                            <div class="filters">
-                                <b>Filtra per:</b>
-                                <hr>
-
+                        <div class="filters">
+                            <b>Filtra per:</b>
+                            <hr>
+                            
+                            <div>
+                                <input @change="restoreResults(checkedVote)" type="checkbox" v-model="checkedVote">
                                 <small>Voto</small>
 
-                                <div @change="filterByVote()" v-for="i in 5">
-                                    <input type="radio" :value="i" v-model="checkedVote">
+                                <div v-for="i in 5" v-if="checkedVote">
+                                    <input @change="filterByVote()" type="radio" :value="i"  v-model="checkedVoteValue">
                                     <span>
                                         <i class="fas fa-star" v-for="number in i"></i>
                                     </span>
                                 </div>
-
-                                <small>Numero di recensioni</small>
-
-                                <div>
-                                    <input type="checkbox" @change="filterByReviews()" value="" v-model="checkedReview">
-                                    <i class="far fa-edit"></i> <span>In ordine decrescente</span>
-                                </div>
-
                             </div>
 
+                            <div>
+                                <input @change="restoreResults(checkedReview)" type="checkbox" v-model="checkedReview">
+                                <small>Numero di recensioni</small>
+
+                                <div @change="filterByReviews()" v-if="checkedReview">
+                                    <input type="radio">
+                                    <i class="far fa-edit"></i> <span>In ordine decrescente</span>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -40,10 +43,10 @@
 
             <div class="col-lg-9 col-md-8">
                 <div class="box-general">
-                    <div class="">
+                    <div class="">                                  
 
                         <!-- Mostriamo i risultati iniziali della ricerca effettuata nella homepage -->
-                        <div v-if="!checkedVote && filteredByVote.length === 0 && filteredByReviews.length === 0">
+                        <div>
                             <div class="strip-list" v-for="(doctor, index) in filteredResults" :key="index">
 
                                 <div>
@@ -66,56 +69,6 @@
                             </div>
                         </div>
 
-                        <!-- Mostriamo i risultati della ricerca tramite filtro per i voti -->
-                        <div v-if="filteredByVote.length > 0">
-
-                            <div class="strip-list" v-for="(doctor, index) in filteredByVote" :key="index">
-
-                                <div>
-                                    Nome:{{doctor.name}} {{doctor.lastname}}
-                                </div>
-
-                                <div>
-                                    Specializzazioni:
-                                    <span v-for="(obj, index) in doctor.departments" :key="index">
-                                        {{obj.type}}{{(index !== doctor.departments.length - 1) ? ',' : ''}}
-                                    </span>
-                                </div>
-
-                                <figure class=" doctor-pic-dashboard-container">
-                                    <a  :href="'doctor/'+ doctor.id">
-                                        <img class="doctor-pic" :src="'storage/' + doctor.detail.pic" alt="profile pic">
-                                    </a>
-                                </figure>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- Mostriamo i risultati della ricerca tramite filtro per le reviews -->
-                        <div v-if="filteredByReviews.length > 0">
-
-                            <div class="strip-list" v-for="(doctor, index) in filteredResults" :key="index">
-                                <div>
-                                    Nome: {{doctor.name}} {{doctor.lastname}}
-                                </div>
-
-                                <div>
-                                    Specializzazioni:
-                                    <span v-for="(obj, index) in doctor.departments" :key="index">
-                                        {{obj.type}}{{(index !== doctor.departments.length - 1) ? ',' : ''}}
-                                    </span>
-                                </div>
-
-                                <figure class=" doctor-pic-dashboard-container">
-                                    <a  :href="'doctor/'+ doctor.id">
-                                        <img class="doctor-pic"  :src="'storage/' + doctor.detail.pic" alt="profile pic">
-                                    </a>
-                                </figure>
-
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -138,98 +91,99 @@
                 searchedDepartment: window.location.search.substring(window.location.search.lastIndexOf('=') + 1),
 
                 checkedVote: '',
+                checkedVoteValue: '',
                 checkedReview: '',
 
                 results: [],
-                filteredResults: [],
-                filteredByVote: [],
-                filteredByReviews: []
+                filteredResults: []
             }
         },
 
     mounted() {
 
-    // All doctors data filtererd by homepage research
+        // All doctors data filtererd by homepage research
 
-    const self = this;
+        const self = this;
 
-    // Sostituiamo i + derivanti dalla query string per poter confrontare con i risultati
-    while(this.searchedDepartment.includes('+')) {
-        this.searchedDepartment = this.searchedDepartment.replace('+', ' ');
-    }
+        /* Sostituiamo gli eventuali + derivanti dalla query string per poterla confrontare
+        con i risultati */
+        while (this.searchedDepartment.includes('+')) {
+            this.searchedDepartment = this.searchedDepartment.replace('+', ' ');
+        }
 
-    // Chiamata Axios all'API per filtrare i risultati in base al department scelto in home
-    axios.get('http://127.0.0.1:8000/api/doctors', {
-    })
-    .then((resp) => {
-        self.results = resp.data;
+        // Chiamata Axios all'API per filtrare i risultati in base al department scelto in home
+        axios.get('http://127.0.0.1:8000/api/doctors', {
+        })
+        .then((resp) => {
+            self.results = resp.data;
 
-        self.results.data.forEach(element => {
+            self.results.data.forEach(element => {
 
-            element.departments.forEach(item => {
-                if(item.type === self.searchedDepartment) {
-                    self.filteredResults.push(element);
-                }
+                element.departments.forEach(item => {
+                    if(item.type === self.searchedDepartment) {
+                        self.filteredResults.push(element);
+                    }
+                });
+
             });
-
         });
-    });
     },
 
     methods: {
 
+        // Resettiamo i risultati; utile in caso di passaggio da un filtro ad un altro
+        restoreResults: function(check) {
+            if (!check) {
+
+                if (!(!this.checkedVote && this.checkedReview)) {
+                    this.filteredResults = [];
+
+                    this.results.data.forEach(element => {
+
+                        element.departments.forEach(item => {
+                            if(item.type === this.searchedDepartment) {
+                                this.filteredResults.push(element);
+                            }
+                        });
+
+                    });
+                }
+            }
+        },
+
         // Filtriamo i risultati per voto
         filterByVote: function () {
-            this.filteredByVote = [];
-            this.checkedReview = false;
-            this.filteredByReviews = [];
+            const filteredByVote = [];
 
+            this.restoreResults();
 
             this.filteredResults.forEach(element => {
-
                 element.votes.forEach(elem => {
-                    if(elem.value === parseInt(this.checkedVote)) {
-                        this.filteredByVote.push(element);
+                    if (elem.value === this.checkedVoteValue) {
+                        filteredByVote.push(element);
                     }
                 });
             });
+
+            this.filteredResults = filteredByVote;
+
+            if (this.checkedReview) {
+                this.filterByReviews()
+            }
         },
 
         // Filtriamo i risultati per recensione
         filterByReviews: function() {
-            this.checkedVote = '';
-            this.filteredByVote = [];
-            if (this.checkedReview) {
+            const filteredByReviews = [];
 
-                if (this.filteredByVote.length > 0) {
+            this.filteredResults.forEach(element => {
+                filteredByReviews.push(element);
 
-                    this.filteredByVote.forEach(element => {
-                        const reviewsNumber = element.reviews.length;
+                filteredByReviews.sort((a, b) => (b.reviews.length > a.reviews.length) ? 1 : -1); 
+                    
+            });
 
-                        this.filteredByReviews.push(element);
-                        this.filteredByReviews.sort((a, b) => (a.reviewsNumber > b.reviewsNumber) ? 1 : -1);
-                    });
-
-                } else {
-
-                    this.filteredResults.forEach(element => {
-                        const reviewsNumber = element.reviews.length;
-
-                        this.filteredByReviews.push(element);
-                        this.filteredByReviews.sort((a, b) => (a.reviewsNumber > b.reviewsNumber) ? 1 : -1);
-
-                    });
-
-
-                    console.log(this.filteredByReviews)
-
-                }
-
-
-            } else {
-                this.filteredByReviews = [];
-            }
-
+            this.filteredResults = filteredByReviews;
         }
     }
 }

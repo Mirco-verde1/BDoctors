@@ -8,6 +8,7 @@ use App\Department;
 use App\User;
 use App\UserDetail;
 use App\Vote;
+use App\Review;
 
 
 class GuestController extends Controller
@@ -36,10 +37,8 @@ class GuestController extends Controller
 
 
         $user = User::where('id', $id)->first();
-        $departments = Department::all();
-        $details = UserDetail::all();
         $votes = Vote::all();
-        return view('showDoc', compact('user', 'departments','details','votes'));
+        return view('showDoc', compact('user', 'votes'));
 
     }
 

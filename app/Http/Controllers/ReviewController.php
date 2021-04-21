@@ -51,7 +51,7 @@ class ReviewController extends Controller
 
         Review::create($data);
 
-        return redirect()->route('public.homepage');
+        return redirect()->route('show.doctor', $id);
 
     }
 

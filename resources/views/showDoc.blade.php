@@ -57,23 +57,27 @@
 
                                             @endforeach
 
-                                        <form action="{{ route('send.vote', $user->id) }}" method="post">
-                                            @csrf
-                                            @method('POST')
+                                            <form action="{{ route('send.vote', $user->id) }}" method="post">
+                                                @csrf
+                                                @method('POST')
+
+                                                <div>
+                                                    <label for="votes[]">Vota</label>
+                                                    <select class="form-control" id="votes[]" name="votes[]">
+                                                        @foreach ($votes as $vote)
+                                                            <option value="{{ $vote->id }}">{{ $vote->value }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <input type="submit" value="Send">
+                                            </form>
 
                                             <div>
-                                                <label for="votes[]">Vota</label>
-                                                <select class="form-control" id="votes[]" name="votes[]">
-                                                    @foreach ($votes as $vote)
-                                                        <option value="{{ $vote->id }}">{{ $vote->value }}</option>
-                                                    @endforeach
-                                                </select>
+                                                @foreach ($user->reviews as $review)
+                                                    <p>{{$review->body}}</p>
+                                                @endforeach
                                             </div>
-
-                                            <input type="submit" value="Send">
-                                        </form>
-
-
                                             {{-------------------------------------------- qui inserire medical services --------------------------------------------}}
 
                                         </div>

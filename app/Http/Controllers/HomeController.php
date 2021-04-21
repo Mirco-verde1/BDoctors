@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Review;
 
 class HomeController extends Controller
 {
@@ -29,4 +30,19 @@ class HomeController extends Controller
         $user = Auth::user();
         return view('doctor_view.dashboard', compact('user'));
     }
+
+    public function myReviews()
+    {
+        $reviews = Auth::user()->reviews;
+
+        return view('doctor_view.reviews', compact('reviews'));
+    }
+
+    public function myMessages()
+    {
+        $messages = Auth::user()->messages;
+
+        return view('doctor_view.messages', compact('messages'));
+    }
+
 }

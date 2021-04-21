@@ -23,17 +23,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="admin/doc/{{$user->id}}/edit ">
                     <span data-feather="home"></span>
-                    Informazioni
+                    Modifica il profilo
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="myMessages/{{$user->id}}">
                     <span data-feather="file"></span>
                     Messaggi ricevuti
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="myReviews/{{$user->id}}">
                     <span data-feather="shopping-cart"></span>
                     Recensioni ricevute
                     </a>
@@ -59,7 +59,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">SEI SICURO?</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">SEI SICURO DI VOLER CANCELLARE IL PROFILO?</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>

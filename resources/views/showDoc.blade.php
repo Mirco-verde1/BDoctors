@@ -40,22 +40,27 @@
                                             @foreach ($user->departments as $department)
                                                 <h5 class="department">{{$department->type}}</h5>
                                             @endforeach
-
-                                            @foreach ($user->votes as $vote)
+                                      
+                                            @php
+                                                $voteSum = 0;
+                                                
+                                                foreach ($user->votes as $vote) {
+                                                    $voteSum += $vote->value;
+                                                }
+                                                
+                                                $voteAverage = $voteSum / count($user->votes);
+                                            @endphp
 
                                             <span>
-                                                @for ($f = 0; $f < $vote->value; $f++)
+                                                Media voti: 
+                                                @for ($f = 0; $f < intval(ceil($voteAverage)); $f++)
                                                     <i class="fas fa-star"></i>
                                                 @endfor
 
-                                                @for ($e = 0; $e < 5 - $vote->value; $e++)
+                                                @for ($e = 0; $e < (5 - intval(ceil($voteAverage))); $e++)
                                                     <i class="far fa-star"></i>
                                                 @endfor
-
                                             </span>
-
-
-                                            @endforeach
 
                                             <form action="{{ route('send.vote', $user->id) }}" method="post">
                                                 @csrf

@@ -4,8 +4,8 @@
 
     @section('content')
 
-        <div id="app">          
-            <div class="container margin-top-container">            
+        <div id="app">
+            <div class="container margin-top-container">
                 <div class="row">
 
                     @if(isset($user->id))
@@ -31,7 +31,7 @@
                                     <div class="row">
 
                                         <figure class="doctor-pic-show-container">
-                                            <img class="doctor-pic-show" src="{{$user->detail->pic}}" alt="{{$user->name}} {{$user->lastname}}">
+                                            <img class="doctor-pic-show" src="{{ URL::asset('storage/'.$user->detail->pic) }}" alt="{{$user->name}} {{$user->lastname}}">
                                         </figure>
 
                                         <div class="col-lg-7 col-md-8 info">

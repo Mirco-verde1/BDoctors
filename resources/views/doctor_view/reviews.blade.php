@@ -36,7 +36,7 @@
                     <div class="row justify-content-md-center">
 
                             <div class="box-review">
-                                @foreach ($reviews as $review)
+                                @foreach ($user->reviews as $review)
                                    <div class="container-review">
                                        <div class="header-review d-flex justify-content-between">
                                        <h5><b>{{$review->name}}</b></h5>

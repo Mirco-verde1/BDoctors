@@ -49,10 +49,8 @@
                         <div>
                             <div class="strip-list" v-for="(doctor, index) in filteredResults" :key="index">
                                   <div class="col-md-3 column align-self-center">
-                                    <b>Voto:</b>
-                                    <span v-for="(obj, index) in doctor.votes" :key="index">
-                                       {{obj.value}}
-                                    </span>
+                                    <b>Media Voto:</b>
+                                    <p></p>
                                 </div>
                                 <div class="col-md-3 column align-self-center">
                                     <b>Specializzazioni:</b>
@@ -99,6 +97,7 @@
                 checkedVote: '',
                 checkedVoteValue: '',
                 checkedReview: '',
+                votesAverage: '',
 
                 results: [],
                 filteredResults: []
@@ -133,6 +132,7 @@
 
             });
         });
+
     },
 
     methods: {
@@ -164,15 +164,14 @@
             this.filteredResults.forEach(element => {
                 let votesSum = 0;
                 let votesCount = element.votes.length;
-                let votesAverage;
 
                 element.votes.forEach(elem => {
                     votesSum += elem.value;
                 });
 
-                votesAverage = Math.ceil(votesSum / votesCount);
+                this.votesAverage = Math.ceil(votesSum / votesCount);
 
-                if (votesAverage === this.checkedVoteValue) {
+                if (this.votesAverage === this.checkedVoteValue) {
                     filteredByVote.push(element);
                 }
             });
@@ -196,7 +195,8 @@
             });
 
             this.filteredResults = filteredByReviews;
-        }
+        },
+
     }
 }
 </script>

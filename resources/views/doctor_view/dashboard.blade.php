@@ -2,18 +2,6 @@
 
 @section('content')
 
-    {{-- @php
-        $slicedURI = $_SERVER['REQUEST_URI'];
-
-        // Estrapoliamo dall'URI la posizione del valore numerico associato all'id
-        preg_match('/[0-9]/', $slicedURI, $matches, PREG_OFFSET_CAPTURE);
-        $idPosition = $matches[0][1];
-        $idInURL = intval(substr($slicedURI, $idPosition, (strlen($slicedURI) - $idPosition)));
-    @endphp --}}
-
-    {{-- Verifichiamo che l'id dell'utente che sta modificando il suo profilo si trovi
-    alla posizione estrapolata in precedenza --}}
-    {{-- @if($idInURL === $user->id) --}}
 
         <div class="container-fluid">
             <div class="row">
@@ -132,11 +120,11 @@
                                         </nav>
                                         <div class="card-body text-left">
                                             <div>
-                                                @foreach ($messages as $message)
+
                                                 <small class="text-muted text-capitalize d-block">Nome: {{$message->name}}</small>
                                                 <small class="text-muted">Email: {{$message->email}}</small>
                                                     <p class="margin-top-container">{{$message->body}}</p>
-                                                @endforeach
+
                                             </div>
                                         </div>
                                         <div class="card-footer">
@@ -159,12 +147,12 @@
                                         <div class="card-body text-left">
                                             <div>
 
-                                                    @foreach ($reviews as $review)
+
                                                         <small class="text-muted text-capitalize d-block">Nome: {{$review->name}}</small>
                                                         <small class="text-muted">Email: {{$review->email}}</small>
                                                         <p>{{$review->body}}</p>
-                                                        <hr>
-                                                    @endforeach
+
+
 
                                             </div>
                                         </div>
@@ -187,9 +175,7 @@
                                             </nav>
                                         <div class="card-body">
                                             <div>
-                                                {{-- @foreach ($reviews as $review)
-                                                    <p>{{$review->body}}</p>
-                                                @endforeach --}}
+
                                             </div>
                                         </div>
                                         <div class="card-footer">
@@ -206,41 +192,5 @@
         </div>
         {{-- container fluid --}}
             {{-- Semplice verifica che l'id estrapolato dall'URI non sia superiore agli utenti totali del database --}}
-    {{-- @elseif($idInURL > count($users) || $idInURL === 0) --}}
-
-        <div class="container">
-            <div class="row">
-                <div class="margin-top-container text-left row">
-                    <div class="col-lg-7 col-md-7 text">
-                        <span>Spiacenti, il medico che hai richiesto non è presente nel nostro database.</span>
-                        <br>
-                        <span>Clicca <a href="/dashboard/{{$user->id}}">qui</a> per tornare alla tua dashboard.</span>
-                    </div>
-                    <div class="col-lg-5 col-md-5">
-                        <img class="img-fluid doctor-clipart" src="../img/doctor-clipart.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    {{-- @else --}}
 
 
-
-        <div class="container">
-            <div class="row">
-                <div class="margin-top-container text-left row">
-                    <div class="col-lg-7 col-md-7 text">
-                        <span>Stai cercando di visualizzare o modificare un profilo che non è il tuo.</span>
-                        <br>
-                        <span>Clicca <a href="/dashboard/{{$user->id}}">qui</a> per tornare alla tua dashboard.</span>
-                    </div>
-                    <div class="col-lg-5 col-md-5">
-                        <img class="img-fluid doctor-clipart" src="../img/doctor-clipart.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    {{-- @endif
-@endsection --}}

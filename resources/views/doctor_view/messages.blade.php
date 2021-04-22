@@ -35,7 +35,7 @@
                     <div class="row justify-content-md-center">
 
                             <div class="box-review">
-                                @foreach ($messages as $message)
+                                @foreach ($user->messages as $message)
                                    <div class="container-review">
                                        <div class="header-review d-flex justify-content-between">
                                        <h5><b>{{$message->name}}</b></h5>

@@ -30,7 +30,9 @@ class GuestController extends Controller
     public function advance()
 
     {
+
          return view('advanced');
+
     }
 
 

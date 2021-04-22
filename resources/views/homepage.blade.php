@@ -28,6 +28,7 @@
                     <div>
                         <h1 class="title-carousel">Dottori in evidenza </h1>
                     </div>
+
               @include('layouts/guest/partials/carousel')
                 </div>
             </div>

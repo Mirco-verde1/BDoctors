@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use App\User;
-use App\Review;
 
 
 class HomeController extends Controller
@@ -29,7 +28,9 @@ class HomeController extends Controller
     public function index(User $user)
     {
         $user = Auth::user();
-        return view('doctor_view.dashboard', compact('user'));
+        $review = Auth::user()->reviews()->orderBy('id', 'desc')->first();
+        $message = Auth::user()->messages()->orderBy('id', 'desc')->first();
+        return view('doctor_view.dashboard', compact('user', 'review', 'message'));
     }
 
     public function myReviews()

@@ -23,6 +23,8 @@ Vue.component('advance-component', require('./components/AdvanceComponent.vue').
 
 Vue.component('carousel-component', require('./components/CarouselComponent.vue').default);
 
+Vue.component('multiple-select-departments', require('./components/MultipleSelectDepartments.vue').default)
+
 
 
 

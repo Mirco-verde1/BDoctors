@@ -111,7 +111,7 @@ class UserController extends Controller
         $user->update($userData);
         $userDetail->update($userDetailData);
 
-        return redirect()->route('home');
+        return redirect()->route('dashboard');
 
     }
 

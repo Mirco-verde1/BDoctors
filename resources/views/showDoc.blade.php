@@ -122,9 +122,9 @@
                                                         </div>
                                                     <span>{{$review->body}}</>
 
-
+                                                    </div>
                                                 @endforeach
-                                            </div>
+
 
 
                                     </div>

@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Department;
+use App\Message;
 use App\User;
 use App\UserDetail;
 use App\Vote;
 use App\Review;
-
+use Illuminate\Support\Facades\Auth;
+use MessagesSeeder;
 
 class GuestController extends Controller
 {

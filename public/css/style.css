@@ -62,7 +62,7 @@ body {
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  background-color: #f8fafc;
+  background-color: #F6F6F6;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -475,7 +475,7 @@ mark,
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #f8fafc;
+  background-color: #F6F6F6;
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   max-width: 100%;
@@ -3735,13 +3735,13 @@ input[type=button].btn-block {
   outline: 0;
 }
 .custom-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0 1px #F6F6F6, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
 }
 .custom-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0 1px #F6F6F6, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
 }
 .custom-range:focus::-ms-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0 1px #F6F6F6, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
 }
 .custom-range::-moz-focus-outer {
   border: 0;
@@ -3915,8 +3915,8 @@ input[type=button].btn-block {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #f8fafc;
-  border-color: #dee2e6 #dee2e6 #f8fafc;
+  background-color: #F6F6F6;
+  border-color: #dee2e6 #dee2e6 #F6F6F6;
 }
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
@@ -16325,11 +16325,11 @@ readers do not read off random characters that represent icons */
 }
 
 #app {
-  background-color: #F5F8FA;
+  background-color: #F6F6F6;
 }
 
 .navbar-toggler {
-  background-color: #F5F8FA;
+  background-color: #F6F6F6;
 }
 
 .jumbotron-doc {
@@ -16347,7 +16347,7 @@ readers do not read off random characters that represent icons */
 .jumbotron-doc-container-title {
   margin: 0 auto;
   font-weight: bold;
-  color: #69afec;
+  color: #F6F6F6;
   text-shadow: 2px 2px #0c0c0c;
   text-align: center;
   -webkit-animation: jumbotron-container-title 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
@@ -16492,6 +16492,7 @@ readers do not read off random characters that represent icons */
   padding: 50px 25px;
   overflow-x: hidden;
   overflow-y: auto;
+  margin-top: 25px;
   /* Scrollable contents if viewport is shorter than content. */
 }
 .sidebar-sticky .nav-link {
@@ -16548,7 +16549,6 @@ readers do not read off random characters that represent icons */
 #secondary-nav {
   background-color: #2d3e4f;
   position: relative;
-  bottom: -3px;
   border-bottom: none;
   border-radius: 5px 5px 0 0;
   padding: 20px;
@@ -16607,6 +16607,25 @@ readers do not read off random characters that represent icons */
   color: #1DB487;
   font-weight: bold;
 }
+.box-general .profile .curriculum,
+.doctor-pic-show-container .profile .curriculum,
+.doctor-pic-dashboard-container .profile .curriculum {
+  margin: 0 auto;
+}
+.box-general .profile .curriculum h2,
+.doctor-pic-show-container .profile .curriculum h2,
+.doctor-pic-dashboard-container .profile .curriculum h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.box-general .container-review,
+.doctor-pic-show-container .container-review,
+.doctor-pic-dashboard-container .container-review {
+  background-color: #6c757d9a;
+  margin-bottom: 50px;
+  padding: 10px;
+  border-radius: 5px;
+}
 
 .nav-link:hover {
   font-weight: bold;
@@ -16614,4 +16633,15 @@ readers do not read off random characters that represent icons */
 
 .cotainer-box1 {
   width: 100vw;
+}
+
+.doctor-clipart {
+  text-align: right;
+}
+
+.text span {
+  font-size: 2em;
+}
+.text span a {
+  font-size: 1em;
 }

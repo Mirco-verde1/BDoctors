@@ -10,7 +10,7 @@
 
                     @if(isset($user->id))
 
-                        <div class="col-xl-10 col-lg-10 mx-auto">
+                        <div class="col-xl-12 col-lg-12 mx-auto">
                             <nav id="secondary-nav">
                                 <div>
                                     <ul>
@@ -34,25 +34,26 @@
                                             <img class="doctor-pic-show" src="{{ URL::asset('storage/'.$user->detail->pic) }}" alt="{{$user->name}} {{$user->lastname}}">
                                         </figure>
 
-                                        <div class="col-lg-7 col-md-8 info">
+                                        <div class="col-lg-7 offset-md-1 col-md-8 info">
                                             <h1>{{$user->name}} {{$user->lastname}}</h1>
 
                                             @foreach ($user->departments as $department)
                                                 <h5 class="department">{{$department->type}}</h5>
                                             @endforeach
-                                      
+
                                             @php
+
                                                 $voteSum = 0;
-                                                
+
                                                 foreach ($user->votes as $vote) {
                                                     $voteSum += $vote->value;
                                                 }
-                                                
+
                                                 $voteAverage = $voteSum / count($user->votes);
                                             @endphp
 
                                             <span>
-                                                Media voti: 
+                                                Media voti:
                                                 @for ($f = 0; $f < intval(ceil($voteAverage)); $f++)
                                                     <i class="fas fa-star"></i>
                                                 @endfor
@@ -66,40 +67,42 @@
                                                 @csrf
                                                 @method('POST')
 
-                                                <div>
-                                                    <label for="votes[]">Vota</label>
-                                                    <select class="form-control" id="votes[]" name="votes[]">
+                                                <div class="row">
+                                                    <label class="col-md-12" for="votes[]">Vota</label>
+                                                    <select class="form-control col-md-4" id="votes[]" name="votes[]">
                                                         @foreach ($votes as $vote)
                                                             <option value="{{ $vote->id }}">{{ $vote->value }}</option>
                                                         @endforeach
                                                     </select>
+                                                    <input class="btn btn-success offset-md-2 col-md-2"  type="submit" value="Invia">
                                                 </div>
-
-                                                <input type="submit" value="Send">
                                             </form>
 
-                                            <div>
-                                                @foreach ($reviews as $review)
-                                                    <p>{{$review->body}}</p>
-                                                @endforeach
-                                            </div>
                                             {{-------------------------------------------- qui inserire medical services --------------------------------------------}}
 
                                         </div>
 
                                     </div>
-
+                                    <div class="column">
+                                        <span><b>Indirizzo:</b> {{$user->address}}</span>
+                                         <br>
+                                        <span><b>Email:</b>{{$user->email}}</span>
+                                         <br>
+                                        <span><b>Telefono:</b>{{$user->detail->phone}}</span>
+                                    </div>
                                 </div>
                             </div>
 
 
                             {{--************ CONTATTI ************--}}
 
+
+
                             <nav id="secondary-nav" class="margin-top-container">
                                 <div>
                                     <ul class="justify-content-center">
                                         <li>
-                                            <b class="active-nav">Contatti</b>
+                                            <b class="active-nav">Recensioni</b>
                                         </li>
                                     </ul>
                                 </div>
@@ -108,14 +111,21 @@
                             <div class="box-general">
                                 <div class="profile">
 
-                                    <div class="row">
-                                        <div class="contacts">
-                                            <h2>Indirizzo: {{$user->address}}</h2>
+                                    <div class="row justify-content-md-center">
 
-                                            <h2>Email: {{$user->email}}</h2>
 
-                                            <h2>{{$user->detail->phone}}</h2>
-                                        </div>
+                                                @foreach ($user->reviews as $review)
+                                                   <div class="container-review col-md-11">
+                                                       <div class="header-review d-flex justify-content-between">
+                                                       <h5><b>{{$review->name}}</b></h5>
+                                                       <h5><b>{{ \Carbon\Carbon::parse($review->created_at)->format('d/m/Y')}}</b></h5>
+                                                        </div>
+                                                    <span>{{$review->body}}</>
+
+                                                    </div>
+                                                @endforeach
+
+
 
                                     </div>
 
@@ -139,7 +149,7 @@
                                 <div class="profile">
                                     <div class="row">
                                         <div class="curriculum">
-                                        <h3>{{$user->detail->curriculum}}</h3>
+                                        @markdown($user->detail->curriculum)
                                         </div>
                                     </div>
                                 </div>
@@ -165,8 +175,8 @@
                                             @method('POST')
 
                                             <div class="form-group position-relative">
-                                                <label for="name" class="form-label">Name</label>
-                                                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : ''}}" type="text" name="name" placeholder="Name">
+                                                <label for="name" class="form-label">Nome</label>
+                                                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : ''}}" type="text" name="name" placeholder="Nome">
                                                 <div class="invalid-tooltip">
                                                     {{ $errors->first('name') }}
                                                 </div>
@@ -181,14 +191,14 @@
                                             </div>
 
                                             <div class="form-group position-relative">
-                                                <label for="body">Body</label>
-                                                <textarea class="form-control {{ $errors->has('body') ? 'is-invalid' : ''}}" type="text" name="body" placeholder="Body" rows="6"></textarea>
+                                                <label for="body">Testo </label>
+                                                <textarea class="form-control {{ $errors->has('body') ? 'is-invalid' : ''}}" type="text" name="body" placeholder="Testo" rows="6"></textarea>
                                                 <div class="invalid-tooltip">
                                                     {{ $errors->first('body') }}
                                                 </div>
                                             </div>
 
-                                            <input type="submit" value="Send">
+                                            <input class="btn btn-success" type="submit" value="Invia">
                                         </form>
                                     </div>
                                 </div>

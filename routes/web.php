@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('dashboard', 'HomeController@index')->name('dashboard');
 Route::get('/myReviews/{id}', 'HomeController@myReviews')->name('myReviews');
 Route::get('/myMessages/{id}', 'HomeController@myMessages')->name('myMessages');
 

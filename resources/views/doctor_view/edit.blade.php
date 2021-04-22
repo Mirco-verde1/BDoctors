@@ -86,7 +86,8 @@
                                         <br>
 
                                         <label for="curriculum"><b>Curriculum</b></label>
-                                        <textarea class="form-control" id="curriculum" name="curriculum" rows="6"></textarea>
+                                        <textarea class="form-control" id="curriculum" name="curriculum" rows="6">{{$userDetail->curriculum}}</textarea>`
+
 
                                         <label for="pic"><b>Immagine del profilo</b></label>
                                         <input class="form-control" type="file" name="pic" id="pic">
@@ -105,7 +106,6 @@
             </form>
 
 
-                    <h2>{{$user->name}}</h2>
 
         </div>
 

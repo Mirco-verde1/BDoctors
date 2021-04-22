@@ -1928,6 +1928,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -38051,22 +38057,31 @@ var render = function() {
               "div",
               _vm._l(_vm.filteredResults, function(doctor, index) {
                 return _c("div", { key: index, staticClass: "strip-list" }, [
-                  _c("div", [
-                    _vm._v(
-                      "\n                                Nome: " +
-                        _vm._s(doctor.name) +
-                        " " +
-                        _vm._s(doctor.lastname) +
-                        "\n                            "
-                    )
-                  ]),
+                  _c(
+                    "div",
+                    { staticClass: "col-md-3 column align-self-center" },
+                    [
+                      _c("b", [_vm._v("Voto:")]),
+                      _vm._v(" "),
+                      _vm._l(doctor.votes, function(obj, index) {
+                        return _c("span", { key: index }, [
+                          _vm._v(
+                            "\n                                   " +
+                              _vm._s(obj.value) +
+                              "\n                                "
+                          )
+                        ])
+                      })
+                    ],
+                    2
+                  ),
                   _vm._v(" "),
                   _c(
                     "div",
+                    { staticClass: "col-md-3 column align-self-center" },
                     [
-                      _vm._v(
-                        "\n                                Specializzazioni:\n                                "
-                      ),
+                      _c("b", [_vm._v("Specializzazioni:")]),
+                      _vm._v(" "),
                       _vm._l(doctor.departments, function(obj, index) {
                         return _c("span", { key: index }, [
                           _vm._v(
@@ -38085,9 +38100,20 @@ var render = function() {
                     2
                   ),
                   _vm._v(" "),
+                  _c("div", { staticClass: "col-md-3 align-self-center" }, [
+                    _c("b", [_vm._v("Nome:")]),
+                    _vm._v(
+                      " " +
+                        _vm._s(doctor.name) +
+                        " " +
+                        _vm._s(doctor.lastname) +
+                        "\n                            "
+                    )
+                  ]),
+                  _vm._v(" "),
                   _c(
                     "figure",
-                    { staticClass: " doctor-pic-dashboard-container" },
+                    { staticClass: " doctor-pic-dashboard-container " },
                     [
                       _c("a", { attrs: { href: "doctor/" + doctor.id } }, [
                         _c("img", {

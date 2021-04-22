@@ -12,7 +12,7 @@
                         <div class="filters">
                             <b>Filtra per:</b>
                             <hr>
-                            
+
                             <div>
                                 <input @change="restoreResults(checkedVote)" type="checkbox" v-model="checkedVote">
                                 <small>Media voti</small>
@@ -43,24 +43,30 @@
 
             <div class="col-lg-9 col-md-8">
                 <div class="box-general">
-                    <div class="">                                  
+                    <div class="">
 
                         <!-- Mostriamo i risultati iniziali della ricerca effettuata nella homepage -->
                         <div>
                             <div class="strip-list" v-for="(doctor, index) in filteredResults" :key="index">
-
-                                <div>
-                                    Nome: {{doctor.name}} {{doctor.lastname}}
+                                  <div class="col-md-3 column align-self-center">
+                                    <b>Voto:</b>
+                                    <span v-for="(obj, index) in doctor.votes" :key="index">
+                                       {{obj.value}}
+                                    </span>
                                 </div>
-
-                                <div>
-                                    Specializzazioni:
+                                <div class="col-md-3 column align-self-center">
+                                    <b>Specializzazioni:</b>
                                     <span v-for="(obj, index) in doctor.departments" :key="index">
                                         {{obj.type}}{{(index !== doctor.departments.length - 1) ? ',' : ''}}
                                     </span>
                                 </div>
 
-                                <figure class=" doctor-pic-dashboard-container">
+                                <div class="col-md-3 align-self-center">
+                                    <b>Nome:</b> {{doctor.name}} {{doctor.lastname}}
+                                </div>
+
+
+                                <figure class=" doctor-pic-dashboard-container ">
                                     <a  :href="'doctor/'+ doctor.id">
                                         <img class="doctor-pic" :src="'storage/' + doctor.detail.pic" alt="profile pic">
                                     </a>
@@ -163,7 +169,7 @@
                 element.votes.forEach(elem => {
                     votesSum += elem.value;
                 });
-                
+
                 votesAverage = Math.ceil(votesSum / votesCount);
 
                 if (votesAverage === this.checkedVoteValue) {
@@ -185,8 +191,8 @@
             this.filteredResults.forEach(element => {
                 filteredByReviews.push(element);
 
-                filteredByReviews.sort((a, b) => (b.reviews.length > a.reviews.length) ? 1 : -1); 
-                    
+                filteredByReviews.sort((a, b) => (b.reviews.length > a.reviews.length) ? 1 : -1);
+
             });
 
             this.filteredResults = filteredByReviews;

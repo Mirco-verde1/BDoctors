@@ -20,12 +20,38 @@
         <div class="container">
 
 
-            <div>
-                @foreach ($reviews as $review)
-                    <h2>{{$review->name}}</h2>
-                    <h4>{{$review->email}}</h4>
-                    <p>{{$review->body}}</p>
-                @endforeach
+            <nav id="secondary-nav" class="margin-top-container">
+                <div>
+                    <ul class="justify-content-center">
+                        <li>
+                            <b class="active-nav">Messaggi ricevuti</b>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="box-general">
+                <div class="profile">
+
+                    <div class="row justify-content-md-center">
+
+                            <div class="box-review">
+                                @foreach ($reviews as $review)
+                                   <div class="container-review">
+                                       <div class="header-review d-flex justify-content-between">
+                                       <h5><b>{{$review->name}}</b></h5>
+                                       <h5><b>{{ \Carbon\Carbon::parse($review->created_at)->format('d/m/Y')}}</b></h5>
+                                        </div>
+                                    <span>{{$review->body}}</>
+                                   </div>
+
+                                @endforeach
+                            </div>
+
+
+                    </div>
+
+                </div>
             </div>
 
         </div>

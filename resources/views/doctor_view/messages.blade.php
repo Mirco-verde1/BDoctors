@@ -19,16 +19,40 @@
 
         <div class="container">
 
+            <nav id="secondary-nav" class="margin-top-container">
+                <div>
+                    <ul class="justify-content-center">
+                        <li>
+                            <b class="active-nav">Messaggi ricevuti</b>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
-            <div>
-                @foreach ($messages as $message)
-                    <h2>{{$message->name}}</h2>
-                    <h4>{{$message->email}}</h4>
-                    <p>{{$message->body}}</p>
-                @endforeach
+            <div class="box-general">
+                <div class="profile">
+
+                    <div class="row justify-content-md-center">
+
+                            <div class="box-review">
+                                @foreach ($messages as $message)
+                                   <div class="container-review">
+                                       <div class="header-review d-flex justify-content-between">
+                                       <h5><b>{{$message->name}}</b></h5>
+                                       <h5><b>{{ \Carbon\Carbon::parse($message->created_at)->format('d/m/Y')}}</b></h5>
+                                        </div>
+                                    <span>{{$message->body}}</>
+                                   </div>
+
+                                @endforeach
+                            </div>
+
+
+                    </div>
+
+                </div>
             </div>
 
-        </div>
 
     {{-- Semplice verifica che l'id estrapolato dall'URI non sia superiore agli utenti totali del database --}}
     @elseif($idInURL > count($users) || $idInURL === 0)

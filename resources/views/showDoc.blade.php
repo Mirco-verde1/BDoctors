@@ -44,19 +44,12 @@
                                             @php
 
                                                 $voteSum = 0;
-                                                $voteAverage = 0;
-
+                                                
                                                 foreach ($user->votes as $vote) {
                                                     $voteSum += $vote->value;
                                                 }
-
-                                                 if ($voteSum > 0) {
-                                                    $voteAverage = $voteSum / count($user->votes);
-                                                 }
-
-
-
-
+                                                
+                                                $voteAverage = $voteSum / count($user->votes);
                                             @endphp
 
                                             <span>
@@ -156,7 +149,7 @@
                                 <div class="profile">
                                     <div class="row">
                                         <div class="curriculum">
-                                        @markdown($user->detail->curriculum)
+                                        <h3>{{$user->detail->curriculum}}</h3>
                                         </div>
                                     </div>
                                 </div>

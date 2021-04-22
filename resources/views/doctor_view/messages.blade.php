@@ -5,16 +5,16 @@
 @section('content')
 
     @php
-        $slicedURI = $_SERVER['REQUEST_URI'];
+    $slicedURI = $_SERVER['REQUEST_URI'];
 
-        // Estrapoliamo dall'URI la posizione del valore numerico associato all'id
-        preg_match('/[0-9]/', $slicedURI, $matches, PREG_OFFSET_CAPTURE);
-        $idPosition = $matches[0][1];
-        $idInURL = intval(substr($slicedURI, $idPosition, (strlen($slicedURI) - $idPosition)));
+    // Estrapoliamo dall'URI la posizione del valore numerico associato all'id
+    preg_match('/[0-9]/', $slicedURI, $matches, PREG_OFFSET_CAPTURE);
+    $idPosition = $matches[0][1];
+    $idInURL = intval(substr($slicedURI, $idPosition, (strlen($slicedURI) - $idPosition)));
     @endphp
 
     {{-- Verifichiamo che l'id dell'utente che sta modificando il suo profilo si trovi
-    alla posizione estrapolata in precedenza --}}
+        alla posizione estrapolata in precedenza --}}
     @if($idInURL === $user->id)
 
         <div class="container">
@@ -34,24 +34,25 @@
 
                     <div class="row justify-content-md-center">
 
-                            <div class="box-review">
-                                @foreach ($messages as $message)
-                                   <div class="container-review">
-                                       <div class="header-review d-flex justify-content-between">
-                                       <h5><b>{{$message->name}}</b></h5>
-                                       <h5><b>{{ \Carbon\Carbon::parse($message->created_at)->format('d/m/Y')}}</b></h5>
-                                        </div>
-                                    <span>{{$message->body}}</>
-                                   </div>
-
-                                @endforeach
+                        <div class="box-review">
+                            @foreach ($messages as $message)
+                            <div class="container-review">
+                                <div class="header-review d-flex justify-content-between">
+                                    <h5 class="text-capitalize"><b>{{$message->name}}</b></h5>
+                                    <h5><b>{{ \Carbon\Carbon::parse($message->created_at)->format('d/m/Y')}}</b></h5>
+                                </div>
+                                <span>{{$message->body}}</>
                             </div>
 
+                            @endforeach
+                        </div>
 
                     </div>
 
                 </div>
             </div>
+
+        </div>
 
 
     {{-- Semplice verifica che l'id estrapolato dall'URI non sia superiore agli utenti totali del database --}}
@@ -63,7 +64,8 @@
                     <div class="col-lg-7 col-md-7 text">
                         <span>Spiacenti, il medico che hai richiesto non è presente nel nostro database.</span>
                         <br>
-                        <span class="bottom-text">Clicca <a href="/myMessages/{{$user->id}}">qui</a> per tornare ai messaggi del tuo profilo.</span>
+                        <span class="bottom-text">Clicca <a href="/myMessages/{{$user->id}}">qui</a> per tornare ai messaggi
+                            del tuo profilo.</span>
                     </div>
                     <div class="col-lg-5 col-md-5">
                         <img class="img-fluid doctor-clipart" src="../../../img/doctor-clipart.png" alt="">
@@ -80,7 +82,8 @@
                     <div class="col-lg-7 col-md-7 text">
                         <span>Stai cercando di visualizzare i dati di un profilo che non è il tuo!</span>
                         <br>
-                        <span class="bottom-text">Clicca <a href="/myMessages/{{$user->id}}">qui</a> per tornare ai messaggi del tuo profilo.</span>
+                        <span class="bottom-text">Clicca <a href="/myMessages/{{$user->id}}">qui</a> per tornare ai messaggi
+                            del tuo profilo.</span>
                     </div>
                     <div class="col-lg-5 col-md-5">
                         <img class="img-fluid doctor-clipart" src="../../../img/doctor-clipart.png" alt="">
@@ -92,4 +95,4 @@
     @endif
 
 
-    @endsection
+@endsection

@@ -16639,6 +16639,10 @@ readers do not read off random characters that represent icons */
   text-align: right;
 }
 
+.text .bottom-text {
+  line-height: 5em;
+  font-size: 1em;
+}
 .text span {
   font-size: 2em;
 }

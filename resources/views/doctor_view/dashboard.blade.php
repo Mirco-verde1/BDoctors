@@ -2,18 +2,18 @@
 
 @section('content')
 
-    @php
+    {{-- @php
         $slicedURI = $_SERVER['REQUEST_URI'];
 
         // Estrapoliamo dall'URI la posizione del valore numerico associato all'id
         preg_match('/[0-9]/', $slicedURI, $matches, PREG_OFFSET_CAPTURE);
         $idPosition = $matches[0][1];
         $idInURL = intval(substr($slicedURI, $idPosition, (strlen($slicedURI) - $idPosition)));
-    @endphp
+    @endphp --}}
 
     {{-- Verifichiamo che l'id dell'utente che sta modificando il suo profilo si trovi
     alla posizione estrapolata in precedenza --}}
-    @if($idInURL === $user->id)
+    {{-- @if($idInURL === $user->id) --}}
 
         <div class="container-fluid">
             <div class="row">
@@ -206,7 +206,7 @@
         </div>
         {{-- container fluid --}}
             {{-- Semplice verifica che l'id estrapolato dall'URI non sia superiore agli utenti totali del database --}}
-    @elseif($idInURL > count($users) || $idInURL === 0)
+    {{-- @elseif($idInURL > count($users) || $idInURL === 0) --}}
 
         <div class="container">
             <div class="row">
@@ -223,7 +223,7 @@
             </div>
         </div>
 
-    @else
+    {{-- @else --}}
 
 
 
@@ -242,5 +242,5 @@
             </div>
         </div>
 
-    @endif
-@endsection
+    {{-- @endif
+@endsection --}}

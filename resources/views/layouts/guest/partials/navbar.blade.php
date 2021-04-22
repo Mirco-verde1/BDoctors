@@ -41,7 +41,7 @@
                                 document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
-                        <a class="dropdown-item" href="/dashboard/{{ Auth::user()->id }}">
+                        <a class="dropdown-item" href="/dashboard">
                             {{ __('Dashboard')}}
                         </a>
 

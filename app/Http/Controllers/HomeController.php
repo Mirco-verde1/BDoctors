@@ -25,14 +25,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(User $user, $id)
+    public function index(User $user)
     {
         $user = Auth::user();
-        $users = User::all();
         $reviews = Auth::user()->reviews()->orderBy('id', 'desc')->get();
         $messages = Auth::user()->messages()->orderBy('id', 'asc')->get();
 
-        return view('doctor_view.dashboard/{id}', compact('user', 'reviews', 'messages'));
+        return view('doctor_view.dashboard', compact('user', 'reviews', 'messages'));
     }
 
     public function myReviews()

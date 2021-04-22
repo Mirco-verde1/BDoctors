@@ -45,15 +45,4 @@ class GuestController extends Controller
 
     }
 
-    public function showDash(User $user, $id){
-
-        $users = User::all();
-        $user = Auth::user();
-        $reviews = User::find(isset($id))->reviews()->orderBy('id', 'desc')->paginate(1);
-        $votes = Vote::all();
-        $messages = User::find(isset($id))->messages()->orderBy('id', 'desc')->paginate(1);
-        return view('doctor_view.dashboard', compact('user','users','votes', 'reviews','messages'));
-
-    }
-
 }

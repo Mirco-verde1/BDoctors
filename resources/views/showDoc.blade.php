@@ -44,11 +44,11 @@
                                             @php
 
                                                 $voteSum = 0;
-                                                
+
                                                 foreach ($user->votes as $vote) {
                                                     $voteSum += $vote->value;
                                                 }
-                                                
+
                                                 $voteAverage = $voteSum / count($user->votes);
                                             @endphp
 
@@ -114,7 +114,7 @@
                                     <div class="row justify-content-md-center">
 
                                             <div class="box-review">
-                                                @foreach ($reviews as $review)
+                                                @foreach ($user->reviews as $review)
                                                    <div class="container-review">
                                                        <div class="header-review d-flex justify-content-between">
                                                        <h5><b>{{$review->name}}</b></h5>
@@ -149,7 +149,7 @@
                                 <div class="profile">
                                     <div class="row">
                                         <div class="curriculum">
-                                        <h3>{{$user->detail->curriculum}}</h3>
+                                        @markdown($user->detail->curriculum)
                                         </div>
                                     </div>
                                 </div>

@@ -40,19 +40,27 @@
                                             @foreach ($user->departments as $department)
                                                 <h5 class="department">{{$department->type}}</h5>
                                             @endforeach
-                                      
+
                                             @php
+
                                                 $voteSum = 0;
-                                                
+                                                $voteAverage = 0;
+
                                                 foreach ($user->votes as $vote) {
                                                     $voteSum += $vote->value;
                                                 }
-                                                
-                                                $voteAverage = $voteSum / count($user->votes);
+
+                                                 if ($voteSum > 0) {
+                                                    $voteAverage = $voteSum / count($user->votes);
+                                                 }
+
+
+
+
                                             @endphp
 
                                             <span>
-                                                Media voti: 
+                                                Media voti:
                                                 @for ($f = 0; $f < intval(ceil($voteAverage)); $f++)
                                                     <i class="fas fa-star"></i>
                                                 @endfor

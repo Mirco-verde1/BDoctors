@@ -67,11 +67,11 @@
 //stile navbar e jumbotron ---------------------------------------------------
 
 #app{
-background-color: #F5F8FA;
+background-color: $body-bg;
 }
 
 .navbar-toggler{
-    background-color: #F5F8FA;
+    background-color: $body-bg;
 }
 .jumbotron-doc{
     width: calc(100vw - 13px);
@@ -88,7 +88,7 @@ background-color: #F5F8FA;
     &-container-title{
         margin: 0 auto;
         font-weight: bold;
-        color: rgb(105, 175, 236);
+        color: $body-bg;
         text-shadow: 2px 2px #0c0c0c;
         text-align: center;
         animation: jumbotron-container-title 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
@@ -162,9 +162,7 @@ background-color: #F5F8FA;
     box-shadow: 0 0 15px 0 rgb(0 0 0 / 5%);
 }
 
-.container-show-info{
 
-}
 
 .doctor-pic-dashboard-container {
 
@@ -251,6 +249,7 @@ background-color: #F5F8FA;
     padding: 50px 25px;
     overflow-x: hidden;
     overflow-y: auto;
+    margin-top: 25px;
     /* Scrollable contents if viewport is shorter than content. */
 
     .nav-link {
@@ -317,7 +316,7 @@ background-color: #F5F8FA;
 #secondary-nav {
     background-color: #2d3e4f;
     position: relative;
-    bottom: -3px;
+    // bottom: -3px;
     border-bottom: none;
     border-radius: 5px 5px 0 0;
     padding: 20px;
@@ -411,4 +410,11 @@ background-color: #F5F8FA;
 
 .cotainer-box1{
     width: 100vw;
+}
+
+
+// style messaggio di errore
+
+.doctor-clipart {
+    width: 200px;
 }

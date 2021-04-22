@@ -1,5 +1,5 @@
-<div class="container pb-0 mb-0 justify-content-center text-light ">
-    <footer>
+<footer>
+    <div class="container pb-0 mb-0 justify-content-center text-light ">
         <div class="row my-5 justify-content-center py-5 text-secondary">
             <div class="col-12">
                 <div class="row ">
@@ -59,5 +59,5 @@
                 </div>
             </div>
         </div>
-    </footer>
-</div>
+    </div>
+</footer>

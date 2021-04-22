@@ -416,5 +416,16 @@ background-color: $body-bg;
 // style messaggio di errore
 
 .doctor-clipart {
-    width: 200px;
+    text-align: right;
+}
+
+.text {
+    span {
+        font-size: 2em;
+
+        a {
+            font-size: 1em;
+        }
+    }
+    // line-height: 4em;
 }

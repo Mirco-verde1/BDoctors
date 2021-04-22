@@ -16636,5 +16636,12 @@ readers do not read off random characters that represent icons */
 }
 
 .doctor-clipart {
-  width: 200px;
+  text-align: right;
+}
+
+.text span {
+  font-size: 2em;
+}
+.text span a {
+  font-size: 1em;
 }

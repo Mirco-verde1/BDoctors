@@ -207,25 +207,39 @@
         {{-- container fluid --}}
             {{-- Semplice verifica che l'id estrapolato dall'URI non sia superiore agli utenti totali del database --}}
     @elseif($idInURL > count($users) || $idInURL === 0)
+
         <div class="container">
             <div class="row">
-                <div class="mx-auto">
-                    <img class="img-fluid " src="../img/doctor-clipart.png" alt="">
-                    <span>Spiacenti, il medico che hai richiesto non è presente nel nostro database.</span>
-                    <br>
-                    <span>Clicca <a href="/dashboard/{{$user->id}}">qui</a> per tornare alla tua dashboard.</span>
+                <div class="margin-top-container text-left row">
+                    <div class="col-lg-7 col-md-7 text">
+                        <span>Spiacenti, il medico che hai richiesto non è presente nel nostro database.</span>
+                        <br>
+                        <span>Clicca <a href="/dashboard/{{$user->id}}">qui</a> per tornare alla tua dashboard.</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5">
+                        <img class="img-fluid doctor-clipart" src="../img/doctor-clipart.png" alt="">
+                    </div>
                 </div>
-
             </div>
-
         </div>
 
     @else
 
-        <div class="col-xl-10 col-lg-10 mx-auto">
-            <span>Stai cercando di visualizzare o modificare un profilo che non è il tuo.</span>
-            <br>
-            <span>Clicca <a href="/dashboard/{{$user->id}}">qui</a> per tornare alla tua dashboard.</span>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="margin-top-container text-left row">
+                    <div class="col-lg-7 col-md-7 text">
+                        <span>Stai cercando di visualizzare o modificare un profilo che non è il tuo.</span>
+                        <br>
+                        <span>Clicca <a href="/dashboard/{{$user->id}}">qui</a> per tornare alla tua dashboard.</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5">
+                        <img class="img-fluid doctor-clipart" src="../img/doctor-clipart.png" alt="">
+                    </div>
+                </div>
+            </div>
         </div>
 
     @endif

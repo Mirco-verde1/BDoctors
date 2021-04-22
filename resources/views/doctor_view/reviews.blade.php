@@ -19,7 +19,8 @@
 
         <div class="container">
 
-            
+
+
             <div>
                 @foreach ($reviews as $review)
                     <h2>{{$review->name}}</h2>

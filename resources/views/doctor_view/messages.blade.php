@@ -13,6 +13,8 @@
         $idInURL = intval(substr($slicedURI, $idPosition, (strlen($slicedURI) - $idPosition)));
     @endphp
 
+    <h1> {{$lupo}}</h1>
+
     {{-- Verifichiamo che l'id dell'utente che sta modificando il suo profilo si trovi
     alla posizione estrapolata in precedenza --}}
     @if($idInURL === $user->id)

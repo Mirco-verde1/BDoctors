@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Review;
 
+
 class HomeController extends Controller
 {
     /**
@@ -33,11 +34,13 @@ class HomeController extends Controller
 
     public function myReviews()
     {
+
+
         $user = Auth::user();
         $users = User::all();
         $reviews = Auth::user()->reviews()->orderBy('id', 'desc')->get();
 
-        return view('doctor_view.reviews', compact('user', 'users', 'reviews'));
+        return view('doctor_view.reviews', compact('user', 'users', 'reviews','lupo','sponsor'));
     }
 
     public function myMessages()

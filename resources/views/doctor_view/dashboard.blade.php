@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/payment/make">
                     <span data-feather="users"></span>
                     Sponsorizzazione profilo
                     </a>

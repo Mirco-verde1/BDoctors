@@ -113,15 +113,15 @@
 
                                     <div class="row justify-content-md-center">
 
-                                            <div class="box-review">
+
                                                 @foreach ($user->reviews as $review)
-                                                   <div class="container-review">
+                                                   <div class="container-review col-md-11">
                                                        <div class="header-review d-flex justify-content-between">
                                                        <h5><b>{{$review->name}}</b></h5>
                                                        <h5><b>{{ \Carbon\Carbon::parse($review->created_at)->format('d/m/Y')}}</b></h5>
                                                         </div>
                                                     <span>{{$review->body}}</>
-                                                   </div>
+
 
                                                 @endforeach
                                             </div>

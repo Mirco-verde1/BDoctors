@@ -373,6 +373,7 @@ background-color: $body-bg;
 
     box-shadow: 0 0 0 rgb(45 62 79 / 35%),
     -1px 2px 20px 6px rgb(0 0 0 / 22%);
+}
 
 .profile {
     margin: 0 auto;
@@ -560,4 +561,42 @@ background-color: $body-bg;
         }
     }
 }
+
+
+// style checkout
+
+.style-radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+
+  .style-radio:hover input ~ .checkmark {
+    background-color: #1FB488;
+  }
+
+  .style-radio input:checked ~ .checkmark {
+    background-color:#2FA360;
+    color: #fff;
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .style-radio input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .title-checkout{
+    font-weight: bold;
+    text-align: center;
+    color: #1BB386;
+    text-shadow: 2px 2px #0c0c0c;
+    font-size:50px;
+    margin-top: 100px;
+    margin-bottom:100px;
 }

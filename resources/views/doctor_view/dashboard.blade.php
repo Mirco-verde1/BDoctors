@@ -17,7 +17,7 @@
                                 alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
                             </a>
 
-                        @else 
+                        @else
 
                             <a href="../doctor/{{$user->id}}"><img class="doctor-pic"
                                 src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
@@ -54,7 +54,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/payment/make">
                                     <span data-feather="users"></span>
                                     Sponsorizzazione profilo
                                 </a>
@@ -117,7 +117,7 @@
                                             alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
                                         </a>
 
-                                    @else 
+                                    @else
 
                                         <a href="../doctor/{{$user->id}}"><img class="doctor-pic"
                                             src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
@@ -209,7 +209,7 @@
 
                             @endif
                         </div>
-                        
+
                         <div class="card-footer">
                             @if(isset($message))
 
@@ -219,7 +219,7 @@
                                 <small class="text-muted">alle
                                     {{ \Carbon\Carbon::parse($message->updated_at)->format('H:i:s')}}
                                 </small>
-                                
+
                             @endif
 
                         </div>

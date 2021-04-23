@@ -28,7 +28,7 @@ class SponsorController extends Controller
         $user = Auth::user();
         $user->sponsors()->attach($request['sponsor']);
 
-        return redirect()->route('home');
+        return redirect()->route('dashboard');
 
     }
 }

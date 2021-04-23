@@ -1,3 +1,12 @@
+@extends('layouts.app')
+
+<title>{{ __('BDoctors - Checkout') }}</title>
+
+
+@section('content')
+
+
+
     <!doctype html>
     <html lang="{{ app()->getLocale() }}">
     <head>
@@ -12,50 +21,50 @@
     <body>
     <div class="container">
     <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-
-
-    <h1>Scelga la sua sponsorizzazione: </h1>
-    <br>
-
-    <form action="{{route('sponsorship.store')}}" method="post">
-
-        @csrf
+    <div class=" col-md-12 ">
+        <form action="{{route('sponsorship.store')}}" method="post">
+            @csrf
         @method('POST')
 
-        <div>
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h1 class="display-4">Scelga la sua sponsorizzazione:</h1>
+          </div>
 
-            <label for="sponsor">Scegli il tuo piano</label>
-
+            <div class="card-deck mb-3 text-center">
                 @foreach ($sponsors as $sponsor)
+              <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                  <h4 class="my-0 font-weight-normal">{{$sponsor->type}}</h4>
+                </div>
+                <div class="card-body">
+                  <h1 class="card-title pricing-card-title">{{$sponsor->price}}€ <small class="text-muted">/ {{$sponsor->duration}}h</small></h1>
+                  <ul class="list-unstyled mt-3 mb-4">
+                    <li>Il profilo verrá</li>
+                    <li>visualizzato per</li>
+                    <li>{{$sponsor->duration}}h in homepage</li>
+                  </ul>
+                   <span class="style-radio " role="group" aria-label="Basic radio toggle button group">
+                  <input type="radio" class="btn-check" name="sponsor" id="sponsor{{$sponsor->id}}" value="{{$sponsor->id}}" autocomplete="off" >
+                  <label class="btn btn-outline-primary checkmark " for="sponsor{{$sponsor->id}}">{{$sponsor->type}}</label>
+                </span>
 
-                <li> {{$sponsor->type}}: {{$sponsor->price}} duration: {{$sponsor->duration}}</li>
-
-                <input type="radio" name="sponsor" value="{{$sponsor->id}}">
-
-                @endforeach
-
-
-
-        </div>
-
-
-
-
-
-
+                </div>
+              </div>
+              @endforeach
+            </div>
 
     <div id="dropin-container"></div>
 
+    {{-- <input class="btn-check" type="radio" name="sponsor" value="{{$sponsor->id}}"> --}}
 
 
-
-    <button id="submit-button">Completa il tuo pagamento</button>
+    <button class="btn btn-success" id="submit-button">Completa il tuo pagamento</button>
 
 </form>
     </div>
-    </div>
-    </div>
+</div>
+
+
     <script>
     var button = document.querySelector('#submit-button');
     braintree.dropin.create({
@@ -76,5 +85,4 @@
     });
     });
     </script>
-    </body>
-    </html>
+    @endsection

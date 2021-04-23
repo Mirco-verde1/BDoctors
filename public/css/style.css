@@ -16732,6 +16732,36 @@ readers do not read off random characters that represent icons */
   background-color: #2fa360;
   border-color: #2d995b;
 }
+.box-general .style-radio input,
+.doctor-pic-show-container .style-radio input,
+.doctor-pic-dashboard-container .style-radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.box-general .style-radio:hover input ~ .checkmark,
+.doctor-pic-show-container .style-radio:hover input ~ .checkmark,
+.doctor-pic-dashboard-container .style-radio:hover input ~ .checkmark {
+  background-color: #1FB488;
+}
+.box-general .style-radio input:checked ~ .checkmark,
+.doctor-pic-show-container .style-radio input:checked ~ .checkmark,
+.doctor-pic-dashboard-container .style-radio input:checked ~ .checkmark {
+  background-color: #2FA360;
+  color: #fff;
+}
+.box-general .checkmark:after,
+.doctor-pic-show-container .checkmark:after,
+.doctor-pic-dashboard-container .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.box-general .style-radio input:checked ~ .checkmark:after,
+.doctor-pic-show-container .style-radio input:checked ~ .checkmark:after,
+.doctor-pic-dashboard-container .style-radio input:checked ~ .checkmark:after {
+  display: block;
+}
 .box-general .doctor-clipart,
 .doctor-pic-show-container .doctor-clipart,
 .doctor-pic-dashboard-container .doctor-clipart {

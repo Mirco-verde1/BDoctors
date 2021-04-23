@@ -492,7 +492,34 @@ background-color: $body-bg;
     border-color: #2d995b;
   }
 }
+// style checkout
 
+
+  .style-radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+
+  .style-radio:hover input ~ .checkmark {
+    background-color: #1FB488;
+  }
+
+  .style-radio input:checked ~ .checkmark {
+    background-color:#2FA360;
+    color: #fff;
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .style-radio input:checked ~ .checkmark:after {
+    display: block;
+  }
 
 // style messaggio di errore
 

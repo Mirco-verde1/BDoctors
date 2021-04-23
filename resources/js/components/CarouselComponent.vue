@@ -4,10 +4,10 @@
 
         <!--Controls-->
         <div class="controls-top">
-            <a class="btn-floating-prev" href="#multi-item-example" data-slide="prev">
+            <a class="btn-floating-prev color-chevron" href="#multi-item-example" data-slide="prev">
                 <i class="fas fa-chevron-left fa-3x"></i>
             </a>
-            <a class="btn-floating-next" href="#multi-item-example" data-slide="next">
+            <a class="btn-floating-next color-chevron" href="#multi-item-example" data-slide="next">
                 <i class="fas fa-chevron-right fa-3x"></i>
             </a>
         </div>
@@ -30,7 +30,7 @@
                 <div class="row container d-flex flex-row p-2 flex-wrap">
                     <div class="card col-md-4 p-2 bd-highlight doctor-card" :class="(i === 1) ? 'clearfix d-none d-md-block' : ''" v-for="doctor in carouselLoop(i, results)">
                         <div class="img-container">
-                            <img class="card-img-top" :src="doctor.detail.pic" alt="Card image cap">
+                            <img class="card-img-top" :src="`storage/${doctor.detail.pic}`" alt="Card image cap">
                         </div>
                         <div class="card-body">
                             <h4 class="card-title">{{doctor.name}} {{doctor.lastname}}</h4>
@@ -77,7 +77,7 @@
                 self.results = resp.data.data;
             });
         },
-        
+
         methods: {
 
             /* Scomponiamo l'array di risultati per recuperare di volta in volta

@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             DoctorsSeeder::class,
             MessagesSeeder::class,
             ReviewsSeeder::class,
+            SponsorSeeder::class,
 
         ]);
     }

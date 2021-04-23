@@ -30,7 +30,9 @@
 </head>
 <body>
     <div id="app">
-
+        
+        <go-top bg-color="#1DB487" :bottom="50"></go-top>
+        
         @include('layouts/guest/partials/navbar')
 
         <main class="py-4 margin-top-container">

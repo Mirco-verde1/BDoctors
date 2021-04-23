@@ -25,7 +25,7 @@
             @METHOD('PATCH')
             @csrf
 
-            <nav id="secondary-nav">
+            <nav class="secondary-nav">
                 <div>
                     <ul>
                         <li class="active-nav">
@@ -41,8 +41,17 @@
                             {{-- pic --}}
                             <div class="col-md-5 offset-col-md-2">
                                 <figure class=" doctor-pic-show-container">
-                                    <img class="doctor-pic-show" src="{{ URL::asset('storage/'.$user->detail->pic)}}"
-                                        alt="{{$user->name}} {{$user->lastname}}">
+                                    @if(file_exists('storage/'.$user->detail->pic))
+
+                                        <img class="doctor-pic-show" src="{{ URL::asset('storage/'.$user->detail->pic)}}"
+                                            alt="{{$user->name}} {{$user->lastname}}">
+
+                                    @else
+
+                                        <img class="doctor-pic-show" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
+                                            alt="{{$user->name}} {{$user->lastname}}">
+
+                                    @endif
                                 </figure>
                             </div>
                             {{-- name --}}

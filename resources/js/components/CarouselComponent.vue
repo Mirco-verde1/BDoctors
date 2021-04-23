@@ -36,7 +36,7 @@
                             <h4 class="card-title">{{doctor.name}} {{doctor.lastname}}</h4>
                             <h5 class="card-text">Specializzazioni:</h5>
                             <h6 class="card-text" v-for="department in doctor.departments">{{department.type}}</h6>
-                            <a :href="'doctor/' + doctor.id" class="query-submit btn btn-outline-success my-2 my-sm-0 btn-register">Info</a>
+                            <a :href="`doctor/${doctor.id}`" class="query-submit btn btn-outline-success my-2 my-sm-0 btn-register">Info</a>
                         </div>
                     </div>
                 </div>

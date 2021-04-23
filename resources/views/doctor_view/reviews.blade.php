@@ -19,7 +19,7 @@
 
         <div class="container">
 
-            <nav id="secondary-nav" class="margin-top-container">
+            <nav class="secondary-nav margin-top-container">
                 <div>
                     <ul class="justify-content-center">
                         <li>
@@ -34,18 +34,15 @@
 
                     <div class="row justify-content-md-center">
 
-                            <div class="box-review">
-                                @foreach ($user->reviews as $review)
-                                   <div class="container-review">
-                                       <div class="header-review d-flex justify-content-between">
-                                       <h5><b>{{$review->name}}</b></h5>
-                                       <h5><b>{{ \Carbon\Carbon::parse($review->created_at)->format('d/m/Y')}}</b></h5>
-                                        </div>
-                                    <span>{{$review->body}}</>
-                                   </div>
-
-                                @endforeach
-                            </div>
+                        <div class="box-review">
+                            @foreach ($user->reviews as $review)
+                                <div class="container-review">
+                                    <div class="header-review d-flex justify-content-between">
+                                    <h5><b>{{$review->name}}</b></h5>
+                                    <h5><b>{{ \Carbon\Carbon::parse($review->created_at)->format('d/m/Y')}}</b></h5>
+                                    </div>
+                                <span>{{$review->body}}</>
+                                </div>
 
                             @endforeach
                         </div>
@@ -53,9 +50,11 @@
                     </div>
 
                 </div>
-            </div>
 
+            </div>
         </div>
+
+    </div>
 
     {{-- Semplice verifica che l'id estrapolato dall'URI non sia superiore agli utenti totali del database --}}
     @elseif($idInURL > count($users) || $idInURL === 0)

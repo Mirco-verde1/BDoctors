@@ -5,15 +5,13 @@
 @section('content')
 
     @php
-    $slicedURI = $_SERVER['REQUEST_URI'];
+        $slicedURI = $_SERVER['REQUEST_URI'];
 
-    // Estrapoliamo dall'URI la posizione del valore numerico associato all'id
-    preg_match('/[0-9]/', $slicedURI, $matches, PREG_OFFSET_CAPTURE);
-    $idPosition = $matches[0][1];
-    $idInURL = intval(substr($slicedURI, $idPosition, (strlen($slicedURI) - $idPosition)));
+        // Estrapoliamo dall'URI la posizione del valore numerico associato all'id
+        preg_match('/[0-9]/', $slicedURI, $matches, PREG_OFFSET_CAPTURE);
+        $idPosition = $matches[0][1];
+        $idInURL = intval(substr($slicedURI, $idPosition, (strlen($slicedURI) - $idPosition)));
     @endphp
-
-    <h1> {{$lupo}}</h1>
 
     {{-- Verifichiamo che l'id dell'utente che sta modificando il suo profilo si trovi
         alla posizione estrapolata in precedenza --}}
@@ -21,7 +19,7 @@
 
         <div class="container">
 
-            <nav id="secondary-nav" class="margin-top-container">
+            <nav class="secondary-nav margin-top-container">
                 <div>
                     <ul class="justify-content-center">
                         <li>
@@ -36,28 +34,26 @@
 
                     <div class="row justify-content-md-center">
 
-                            <div class="box-review">
-                                @foreach ($user->messages as $message)
-                                   <div class="container-review">
-                                       <div class="header-review d-flex justify-content-between">
-                                       <h5><b>{{$message->name}}</b></h5>
-                                       <h5><b>{{ \Carbon\Carbon::parse($message->created_at)->format('d/m/Y')}}</b></h5>
-                                        </div>
-                                    <span>{{$message->body}}</>
-                                   </div>
-
-                                @endforeach
-                            </div>
-
+                        <div class="box-review">
+                            @foreach ($user->messages as $message)
+                                <div class="container-review">
+                                    <div class="header-review d-flex justify-content-between">
+                                    <h5><b>{{$message->name}}</b></h5>
+                                    <h5><b>{{ \Carbon\Carbon::parse($message->created_at)->format('d/m/Y')}}</b></h5>
+                                    </div>
+                                <span>{{$message->body}}</>
+                                </div>
                             @endforeach
-                        </div>
 
+                        </div>
                     </div>
 
                 </div>
-            </div>
 
+            </div>
         </div>
+
+    </div>
 
 
     {{-- Semplice verifica che l'id estrapolato dall'URI non sia superiore agli utenti totali del database --}}

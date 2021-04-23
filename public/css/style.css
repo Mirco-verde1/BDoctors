@@ -16534,31 +16534,31 @@ readers do not read off random characters that represent icons */
   font-weight: bold;
 }
 
-#secondary-nav {
+.secondary-nav {
   background-color: #2d3e4f;
   position: relative;
   border-bottom: none;
   border-radius: 5px 5px 0 0;
   padding: 20px;
 }
-#secondary-nav ul {
+.secondary-nav ul {
   list-style: none;
   display: flex;
   color: #1DB487;
   margin: 0;
   padding: 0;
 }
-#secondary-nav ul li:first-of-type {
+.secondary-nav ul li:first-of-type {
   margin-right: 20px;
 }
-#secondary-nav ul a {
+.secondary-nav ul a {
   cursor: pointer;
   text-decoration: none;
 }
-#secondary-nav ul a:hover {
+.secondary-nav ul a:hover {
   color: white;
 }
-#secondary-nav .active-nav {
+.secondary-nav .active-nav {
   color: white;
   font-weight: bold;
 }

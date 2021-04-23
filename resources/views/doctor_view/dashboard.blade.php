@@ -10,9 +10,21 @@
                 <div class="sidebar-sticky ">
 
                     <figure class="doctor-pic-dashboard-container ">
-                        <a href="../doctor/{{$user->id}}"><img class="doctor-pic"
+                        @if(file_exists('storage/'.$user->detail->pic))
+
+                            <a href="../doctor/{{$user->id}}"><img class="doctor-pic"
                                 src="{{ URL::asset('storage/'.$user->detail->pic) }}"
-                                alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}"></a>
+                                alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
+                            </a>
+
+                        @else 
+
+                            <a href="../doctor/{{$user->id}}"><img class="doctor-pic"
+                                src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
+                                alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
+                            </a>
+
+                        @endif
                     </figure>
 
                     <div class="collapse navbar-collapse margin-top-container" id="navbarSupportedContent">
@@ -98,9 +110,21 @@
                         <div class="bg-light p-4 row">
                             <div class="col-sm-4 col-auto">
                                 <figure class="doctor-pic-dashboard-container ">
-                                    <a href="../doctor/{{$user->id}}"><img class="doctor-pic"
+                                    @if(file_exists('storage/'.$user->detail->pic))
+
+                                        <a href="../doctor/{{$user->id}}"><img class="doctor-pic"
                                             src="{{ URL::asset('storage/'.$user->detail->pic) }}"
-                                            alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}"></a>
+                                            alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
+                                        </a>
+
+                                    @else 
+
+                                        <a href="../doctor/{{$user->id}}"><img class="doctor-pic"
+                                            src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
+                                            alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
+                                        </a>
+
+                                    @endif
                                 </figure>
                             </div>
                             <div class="col-sm-8 col-auto links">
@@ -159,7 +183,7 @@
 
                     {{-- card messaggi ricevuti --}}
                     <div class="card">
-                        <nav id="secondary-nav" class="text-center">
+                        <nav class="secondary-nav text-center">
                             <div>
                                 <ul>
                                     <li class="active-nav">
@@ -169,23 +193,41 @@
                             </div>
                         </nav>
                         <div class="card-body text-left">
-                            <div>
-                                <small class="text-muted text-capitalize d-block">Nome: {{$message->name}}</small>
-                                <small class="text-muted">Email: {{$message->email}}</small>
-                                <p class="margin-top-container">{{$message->body}}</p>
-                            </div>
+                            @if(isset($message))
+
+                                <div>
+                                    <small class="text-muted text-capitalize d-block">Nome: {{$message->name}}</small>
+                                    <small class="text-muted">Email: {{$message->email}}</small>
+                                    <p class="margin-top-container">{{$message->body}}</p>
+                                </div>
+
+                            @else
+
+                                <div>
+                                    <small class="text-muted">Nessun messaggio trovato.</small>
+                                </div>
+
+                            @endif
                         </div>
+                        
                         <div class="card-footer">
-                            <small class="text-muted">Ultimo messaggio ricevuto il
-                                {{ \Carbon\Carbon::parse($message->updated_at)->format('d/m/Y')}}</small>
-                            <small class="text-muted">alle
-                                {{ \Carbon\Carbon::parse($message->updated_at)->format('H:i:s')}}</small>
+                            @if(isset($message))
+
+                                <small class="text-muted">Ultimo messaggio ricevuto il
+                                    {{ \Carbon\Carbon::parse($message->updated_at)->format('d/m/Y')}}
+                                </small>
+                                <small class="text-muted">alle
+                                    {{ \Carbon\Carbon::parse($message->updated_at)->format('H:i:s')}}
+                                </small>
+                                
+                            @endif
+
                         </div>
                     </div>
 
                     {{-- card recensoni ricevute --}}
                     <div class="card">
-                        <nav id="secondary-nav" class="text-center">
+                        <nav class="secondary-nav text-center">
                             <div>
                                 <ul>
                                     <li class="active-nav">
@@ -195,23 +237,39 @@
                             </div>
                         </nav>
                         <div class="card-body text-left">
-                            <div>
-                                <small class="text-muted text-capitalize d-block">Nome: {{$review->name}}</small>
-                                <small class="text-muted">Email: {{$review->email}}</small>
-                                <p class="margin-top-container">{{$review->body}}</p>
-                            </div>
+                            @if(isset($review))
+
+                                <div>
+                                    <small class="text-muted text-capitalize d-block">Nome: {{$review->name}}</small>
+                                    <small class="text-muted">Email: {{$review->email}}</small>
+                                    <p class="margin-top-container">{{$review->body}}</p>
+                                </div>
+
+                            @else
+
+                                <div>
+                                    <small class="text-muted">Nessuna recensione trovata.</small>
+                                </div>
+
+                            @endif
                         </div>
                         <div class="card-footer">
-                            <small class="text-muted">Ultima recensione ricevuta il
-                                {{ \Carbon\Carbon::parse($review->created_at)->format('d/m/Y')}}</small>
-                            <small class="text-muted">alle
-                                {{ \Carbon\Carbon::parse($review->created_at)->format('H:i:s')}}</small>
+                            @if(isset($review))
+
+                                <small class="text-muted">Ultima recensione ricevuta il
+                                    {{ \Carbon\Carbon::parse($review->created_at)->format('d/m/Y')}}
+                                </small>
+                                <small class="text-muted">alle
+                                    {{ \Carbon\Carbon::parse($review->created_at)->format('H:i:s')}}
+                                </small>
+
+                            @endif
                         </div>
                     </div>
 
                     {{-- card sponsorizzazione profilo --}}
                     <div class="card">
-                        <nav id="secondary-nav" class="text-center">
+                        <nav class="secondary-nav text-center">
                             <div>
                                 <ul>
                                     <li class="active-nav">

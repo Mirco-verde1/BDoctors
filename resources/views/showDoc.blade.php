@@ -11,14 +11,20 @@
             @if(isset($user->id))
 
             <div class="col-xl-12 col-lg-12 mx-auto">
-                <nav id="secondary-nav">
+                <nav class="secondary-nav">
                     <div>
-                        <ul>
+                        <ul class="d-flex justify-content-around">
                             <li class="active-nav">
                                 Info Generali
                             </li>
                             <li>
-                                <a class="">Recensioni</a>
+                                <a href="#reviews-nav">Recensioni</a>
+                            </li>
+                            <li>
+                                <a href="#curriculum-nav">Curriculum</a>
+                            </li>
+                            <li>
+                                <a href="#add-reviews-nav">Lascia una recensione</a>
                             </li>
                         </ul>
                     </div>
@@ -39,28 +45,28 @@
                                 <h1>{{$user->name}} {{$user->lastname}}</h1>
 
                                 @foreach ($user->departments as $department)
-                                <h5 class="department">{{$department->type}}</h5>
+                                    <h5 class="department">{{$department->type}}</h5>
                                 @endforeach
 
                                 @php
+                                    $voteSum = 0;
 
-                                $voteSum = 0;
+                                    foreach ($user->votes as $vote) {
+                                        $voteSum += $vote->value;
+                                    }
 
-                                foreach ($user->votes as $vote) {
-                                $voteSum += $vote->value;
-                                }
-
-                                $voteAverage = $voteSum / count($user->votes);
+                                    $voteAverage = $voteSum / count($user->votes);
                                 @endphp
 
                                 <span>
                                     Media voti:
-                                    @for ($f = 0; $f < intval(ceil($voteAverage)); $f++) <i class="fas fa-star"></i>
-                                        @endfor
+                                    @for ($f = 0; $f < intval(ceil($voteAverage)); $f++)
+                                        <i class="fas fa-star"></i>
+                                    @endfor
 
-                                        @for ($e = 0; $e < (5 - intval(ceil($voteAverage))); $e++) <i
-                                            class="far fa-star"></i>
-                                            @endfor
+                                    @for ($e = 0; $e < (5 - intval(ceil($voteAverage))); $e++)
+                                        <i class="far fa-star"></i>
+                                    @endfor
                                 </span>
 
                                 <form action="{{ route('send.vote', $user->id) }}" method="post">
@@ -86,9 +92,9 @@
                         <div class="column">
                             <span><b>Indirizzo:</b> {{$user->address}}</span>
                             <br>
-                            <span><b>Email:</b>{{$user->email}}</span>
+                            <span><b>Email:</b> {{$user->email}}</span>
                             <br>
-                            <span><b>Telefono:</b>{{$user->detail->phone}}</span>
+                            <span><b>Telefono:</b> {{$user->detail->phone}}</span>
                         </div>
                     </div>
                 </div>
@@ -98,7 +104,7 @@
 
 
 
-                <nav id="secondary-nav" class="margin-top-container">
+                <nav id="reviews-nav" class="secondary-nav margin-top-container">
                     <div>
                         <ul class="justify-content-center">
                             <li>
@@ -113,19 +119,15 @@
 
                         <div class="row justify-content-md-center">
 
-
                             @foreach ($user->reviews as $review)
-                            <div class="container-review col-md-11">
-                                <div class="header-review d-flex justify-content-between">
-                                    <h5 class="text-capitalize"><b>{{$review->name}}</b></h5>
-                                    <h5><b>{{ \Carbon\Carbon::parse($review->created_at)->format('d/m/Y')}}</b></h5>
+                                <div class="container-review col-md-11">
+                                    <div class="header-review d-flex justify-content-between">
+                                        <h5 class="text-capitalize"><b>{{$review->name}}</b></h5>
+                                        <h5><b>{{ \Carbon\Carbon::parse($review->created_at)->format('d/m/Y')}}</b></h5>
+                                    </div>
+                                    <span>{{$review->body}}</>
                                 </div>
-                                <span>{{$review->body}}</>
-
-                            </div>
                             @endforeach
-
-
 
                         </div>
 
@@ -135,7 +137,7 @@
 
                 {{--************ CURRICULUM ************--}}
 
-                <nav id="secondary-nav" class="margin-top-container">
+                <nav id="curriculum-nav" class="secondary-nav margin-top-container">
                     <div>
                         <ul class="justify-content-center">
                             <li>
@@ -157,7 +159,7 @@
 
                 {{--************ RECENSIONE ************--}}
 
-                <nav id="secondary-nav" class="margin-top-container">
+                <nav id="add-reviews-nav" class="secondary-nav margin-top-container">
                     <div>
                         <ul class="justify-content-center">
                             <li>

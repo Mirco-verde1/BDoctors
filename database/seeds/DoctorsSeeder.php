@@ -20,53 +20,55 @@ class DoctorsSeeder extends Seeder
         $departments = Department::all();
         $votes = Vote::all();
 
-
+        function getRandomFromArray($array) {
+            return $array[rand(0, (count ($array) - 1))];
+        }
 
         $users = [
             [
                 'name' => 'Lorenzo',
                 'lastname' => 'Monaldo',
-                'department' => $departments[rand(1, count($departments))],
+                'department' => getRandomFromArray($departments),
                 'email' => 'monaldo@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via Campi Flegrei, 17',
-                'vote' => 5
+                'vote' => getRandomFromArray($votes)
             ],
             [
                 'name' => 'Palmira',
                 'lastname' => 'Fallaci',
-                'department' => $departments[rand(1, count($departments))],
+                'department' => getRandomFromArray($departments),
                 'email' => 'fallaci@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via Ponte In Valtellina, 2',
-                'vote' => 3
+                'vote' => getRandomFromArray($votes)
             ],
             [
                 'name' => 'Germano',
                 'lastname' => 'Nucci',
-                'department' => $departments[rand(1, count($departments))],
+                'department' => getRandomFromArray($departments),
                 'email' => 'nucci@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Piazza San Carlo, 13',
-                'vote' => 4
+                'vote' => getRandomFromArray($votes)
             ],
             [
                 'name' => 'Albina',
                 'lastname' => 'Giordano',
-                'department' => $departments[rand(1, count($departments))],
+                'department' => getRandomFromArray($departments),
                 'email' => 'giordano@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via Venezia, 56',
-                'vote' => 5
+                'vote' => getRandomFromArray($votes)
             ],
             [
                 'name' => 'Romilda',
                 'lastname' => 'Lo Duca',
-                'department' => $departments[rand(1, count($departments))],
+                'department' => getRandomFromArray($departments),
                 'email' => 'loduca@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via Catullo, 34',
-                'vote' => 4
+                'vote' => getRandomFromArray($votes)
             ]
         ];
 

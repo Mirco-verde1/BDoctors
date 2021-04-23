@@ -49,38 +49,50 @@
 </template>
 
 <script>
-export default {
+    export default {
 
-    data: function () {
+        data: function () {
 
-        return {
-            results: JSON.parse(localStorage.getItem('results')),
-            cardsPerSlide: ''
-        }
-    },
+            return {
+                results: [],
+                cardsPerSlide: ''
+            }
+        },
 
-    mounted() {
-        if (window.matchMedia('(max-width: 768px)').matches) {
-            this.cardsPerSlide = 1;
-        } else {
-            this.cardsPerSlide = 3;
-        }
-    },
+        mounted() {
+            const self = this;
 
-    methods: {
+            /* Se lo schermo è di grandezza inferiore a 768px lo slider
+            riporta 1 card per volta, altrimenti 3 */
+            if (window.matchMedia('(max-width: 768px)').matches) {
+                self.cardsPerSlide = 1;
+            } else {
+                self.cardsPerSlide = 3;
+            }
 
-        // Scomponiamo l'array di risultati per recuperare di volta in volta i valori con cui popolare le slide
-        carouselLoop: function(index, array) {
-            const limit = this.cardsPerSlide;
-            let start, end;
+            // Chiamata Axios all'API
+            axios.get('http://127.0.0.1:8000/api/doctors', {
+            })
+            .then((resp) => {
+                self.results = resp.data.data;
+            });
+        },
+        
+        methods: {
 
-            end = index * limit;
-            start = end - limit;
+            /* Scomponiamo l'array di risultati per recuperare di volta in volta
+            i valori con cui popolare le slide */
+            carouselLoop: function(index, array) {
+                const limit = this.cardsPerSlide;
+                let start, end;
 
-            return array.slice(start, end);
+                end = index * limit;
+                start = end - limit;
+
+                return array.slice(start, end);
+            }
         }
     }
-}
 </script>
 
 <style scoped>

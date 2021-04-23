@@ -2170,19 +2170,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      results: JSON.parse(localStorage.getItem('results')),
+      results: [],
       cardsPerSlide: ''
     };
   },
   mounted: function mounted() {
+    var self = this;
+    /* Se lo schermo è di grandezza inferiore a 768px lo slider
+    riporta 1 card per volta, altrimenti 3 */
+
     if (window.matchMedia('(max-width: 768px)').matches) {
-      this.cardsPerSlide = 1;
+      self.cardsPerSlide = 1;
     } else {
-      this.cardsPerSlide = 3;
-    }
+      self.cardsPerSlide = 3;
+    } // Chiamata Axios all'API
+
+
+    axios.get('http://127.0.0.1:8000/api/doctors', {}).then(function (resp) {
+      self.results = resp.data.data;
+    });
   },
   methods: {
-    // Scomponiamo l'array di risultati per recuperare di volta in volta i valori con cui popolare le slide
+    /* Scomponiamo l'array di risultati per recuperare di volta in volta
+    i valori con cui popolare le slide */
     carouselLoop: function carouselLoop(index, array) {
       var limit = this.cardsPerSlide;
       var start, end;

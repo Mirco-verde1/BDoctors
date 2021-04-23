@@ -9,12 +9,14 @@
 </template>
 
 <script>
+
 import Multiselect from 'vue-multiselect'
 
 export default {
   components: {
     Multiselect
   },
+
   data () {
     return {
       value: [
@@ -26,6 +28,7 @@ export default {
       ]
     }
   },
+
   methods: {
     addTag (newTag) {
       const tag = {
@@ -35,7 +38,9 @@ export default {
       this.value.push(tag)
     }
   }
+}
 
+</script>
 
 
 

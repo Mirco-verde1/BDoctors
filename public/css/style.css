@@ -16413,25 +16413,40 @@ readers do not read off random characters that represent icons */
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
 }
 
-.doctor-pic-dashboard-container {
-  width: 150px;
-  height: 150px;
+.doctor-pic-advance-container {
+  height: 200px;
   border-radius: 50%;
   border: 3px solid #1DB487;
   overflow: hidden;
 }
-.doctor-pic-dashboard-container .doctor-pic {
+.doctor-pic-advance-container .doctor-pic {
   width: 100%;
 }
 
+@media screen and (max-width: 993px) {
+  .doctor-pic-advance-container {
+    height: 0;
+    border-radius: 0;
+    border: 0;
+    display: none;
+  }
+
+  .doctor-pic {
+    display: none;
+  }
+}
 .carousel {
   overflow-x: visible;
+}
+
+.color-chevron {
+  color: #1BB386;
 }
 
 .title-carousel {
   font-weight: bold;
   text-align: center;
-  color: #69afec;
+  color: #1BB386;
   text-shadow: 2px 2px #0c0c0c;
   font-size: 50px;
   margin-top: 100px;
@@ -16468,6 +16483,18 @@ readers do not read off random characters that represent icons */
   width: 16px;
   height: 16px;
   vertical-align: text-bottom;
+}
+
+.doctor-pic-dashboard-container {
+  height: 250px;
+  border-radius: 50%;
+  border: 3px solid #1DB487;
+  overflow: hidden;
+}
+.doctor-pic-dashboard-container .doctor-pic {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 /*
@@ -16595,20 +16622,62 @@ readers do not read off random characters that represent icons */
   color: #1DB487;
   font-weight: bold;
 }
-.box-general .profile .curriculum,
-.doctor-pic-show-container .profile .curriculum,
-.doctor-pic-dashboard-container .profile .curriculum {
-  margin: 0 auto;
+.box-general .profile .info .votes-form,
+.doctor-pic-show-container .profile .info .votes-form,
+.doctor-pic-dashboard-container .profile .info .votes-form {
+  width: 15%;
 }
-.box-general .profile .curriculum h2,
-.doctor-pic-show-container .profile .curriculum h2,
-.doctor-pic-dashboard-container .profile .curriculum h2 {
+.box-general .profile .info label,
+.doctor-pic-show-container .profile .info label,
+.doctor-pic-dashboard-container .profile .info label {
+  margin-top: 10px;
+  padding: 0;
+}
+.box-general .profile .info .votes-input,
+.doctor-pic-show-container .profile .info .votes-input,
+.doctor-pic-dashboard-container .profile .info .votes-input {
+  width: 15%;
+  margin-left: 15px;
+}
+.box-general .profile h1, .box-general .profile h2, .box-general .profile h3, .box-general .profile h4, .box-general .profile h5, .box-general .profile h6,
+.doctor-pic-show-container .profile h1,
+.doctor-pic-show-container .profile h2,
+.doctor-pic-show-container .profile h3,
+.doctor-pic-show-container .profile h4,
+.doctor-pic-show-container .profile h5,
+.doctor-pic-show-container .profile h6,
+.doctor-pic-dashboard-container .profile h1,
+.doctor-pic-dashboard-container .profile h2,
+.doctor-pic-dashboard-container .profile h3,
+.doctor-pic-dashboard-container .profile h4,
+.doctor-pic-dashboard-container .profile h5,
+.doctor-pic-dashboard-container .profile h6 {
   text-align: center;
   margin-bottom: 20px;
 }
-.box-general .container-review,
-.doctor-pic-show-container .container-review,
-.doctor-pic-dashboard-container .container-review {
+.box-general .btn-primary,
+.doctor-pic-show-container .btn-primary,
+.doctor-pic-dashboard-container .btn-primary {
+  border-radius: 50px;
+}
+.box-general .btn-primary:hover,
+.doctor-pic-show-container .btn-primary:hover,
+.doctor-pic-dashboard-container .btn-primary:hover {
+  box-shadow: 0 0 0 rgba(45, 62, 79, 0.35), -1px 2px 10px 2px rgba(0, 0, 0, 0.22);
+}
+.box-general .curriculum,
+.doctor-pic-show-container .curriculum,
+.doctor-pic-dashboard-container .curriculum {
+  margin: 0 auto;
+}
+.box-general .curriculum h2,
+.doctor-pic-show-container .curriculum h2,
+.doctor-pic-dashboard-container .curriculum h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.container-review {
   background-color: #6c757d9a;
   margin-bottom: 50px;
   padding: 10px;
@@ -16624,7 +16693,28 @@ readers do not read off random characters that represent icons */
 }
 
 .height-input {
-  height: 60px;
+  height: 50px;
+}
+
+::-webkit-file-upload-button {
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+          user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: #fff;
+  background-color: #38c172;
+  border-color: #38c172;
+  border-radius: 4px;
+}
+::-webkit-file-upload-button ::-webkit-file-upload-button:hover {
+  color: #fff;
+  background-color: #2fa360;
+  border-color: #2d995b;
 }
 
 .doctor-clipart {

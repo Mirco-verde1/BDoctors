@@ -92,15 +92,15 @@
                             </div>
                         </div>
                         {{-- departments --}}
-                        <div class="text-center mt-4">
+                        {{-- <div class="text-center mt-4">
                         <label for="departments"><b>Departments</b></label>
                         <select class="form-control h-25" name="departments[]" id="departments" multiple>
                             @foreach($departments as $department)
                             <option value="{{$department->id}}">{{$department->type}}</option>
                             @endforeach
                         </select>
-                        </div>
-                        {{-- <multiple-select-departments></multiple-select-departments> --}}
+                        </div> --}}
+                        <multiple-select-departments></multiple-select-departments>
 
 
                         {{-- curriculum --}}

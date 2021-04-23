@@ -53,32 +53,37 @@
                         <!-- Mostriamo i risultati iniziali della ricerca effettuata nella homepage -->
                         <div>
                             <div class="strip-list" v-for="(doctor, index) in filteredResults" :key="index">
-                                <div class="col-md-3 column align-self-center">
-                                    <b>Numero di recensioni:</b>
+                                <div class="column col-md-3 col-sm-4 align-self-center">
+                                <div class="">
+                                    <b>Recensioni:</b>
                                     <span>{{doctor.reviews.length}}</span>
                                 </div>
 
-                                  <div class="col-md-3 column align-self-center">
+                                  <div class=" ">
                                     <b>Media Voto:</b>
+                                    <br>
                                     <i class="fas fa-star" v-for="vote in getVotesAverage(doctor)" v-if="getVotesAverage(doctor)"></i>
                                     <i class="far fa-star" v-for="vote in (5 - getVotesAverage(doctor))"></i>
                                 </div>
-                                <div class="col-md-3 column align-self-center">
+                            </div>
+                                <div class="col-md-3 col-sm-4 column align-self-center">
                                     <b>Specializzazioni:</b>
                                     <span v-for="(obj, index) in doctor.departments" :key="index">
                                         {{obj.type}}{{(index !== doctor.departments.length - 1) ? ',' : ''}}
                                     </span>
                                 </div>
 
-                                <div class="col-md-3 align-self-center">
-                                    <b>Nome:</b> {{doctor.name}} {{doctor.lastname}}
+                                <div class="col-md-3 col-sm-4 align-self-center">
+                                    <b>Nome:</b>
+                                    <br>
+                                    <a :href="`doctor/${doctor.id}`">{{doctor.name}} {{doctor.lastname}}</a>
                                 </div>
 
-                                <figure class=" doctor-pic-dashboard-container ">
-                                    <a :href="`doctor/${doctor.id}`">
+                                <div class=" doctor-pic-advance-container">
+                                    <a class="doctor-pic" :href="`doctor/${doctor.id}`">
                                         <img class="doctor-pic" :src="`storage/${doctor.detail.pic}`" alt="profile pic" onerror="this.onerror = null; this.src='https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png';">
                                     </a>
-                                </figure>
+                                </div>
 
                             </div>
                         </div>

@@ -35,7 +35,7 @@
                     <div class="profile">
 
                         <div class="row">
-
+                            {{-- immagine dottore --}}
                             <figure class="doctor-pic-show-container">
                                 @if(file_exists('storage/'.$user->detail->pic))
 
@@ -50,7 +50,8 @@
                                 @endif
                             </figure>
 
-                            <div class="col-lg-7 offset-md-1 col-md-8 info">
+                            {{-- nome cognome dottore --}}
+                            <div class="col-lg-6 offset-md-1 col-md-8 info">
                                 <h1>{{$user->name}} {{$user->lastname}}</h1>
 
                                 @foreach ($user->departments as $department)
@@ -72,6 +73,7 @@
 
                                 @endphp
 
+                                {{-- media voti dottore --}}
                                 <span>
                                     Media voti:
                                     @for ($f = 0; $f < intval(ceil($voteAverage)); $f++)
@@ -83,30 +85,104 @@
                                     @endfor
                                 </span>
 
+                                {{-- form per votare il dottore --}}
                                 <form action="{{ route('send.vote', $user->id) }}" method="post">
                                     @csrf
                                     @method('POST')
 
-                                    <div class="row">
-                                        <label class="col-md-12" for="votes[]">Vota</label>
-                                        <select class="form-control col-md-4" id="votes[]" name="votes[]">
-                                            @foreach ($votes as $vote)
-                                                <option value="{{ $vote->id }}"> {{ $vote->value }} </option>
-                                            @endforeach
-                                        </select>
-                                        <input class="btn btn-success offset-md-2 col-md-2" type="submit" value="Invia">
-                                    </div>
+                                    <label class="col-lg-12" for="votes[]">Vota dottore</label>
+                                    <select class="form-control votes-form col-md-2 d-inline-block" id="votes[]" name="votes[]">
+                                        @foreach ($votes as $vote)
+                                        <option value="{{ $vote->id }}">{{ $vote->value }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    <input class="btn btn-success votes-input offset-md-1 col-md-2" type="submit" value="Invia">
                                 </form>
 
-                                @foreach ($medicalServices as $medicalService)
-                                    <p>{{$medicalService->name}} {{$medicalService->price}}€</p>
-                                @endforeach
+                                {{-- form per inviare un messaggio al dottore --}}
+                                <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header text-center">
+                                            <h4 class="modal-title w-100 font-weight-bold">Scrivi un messaggio</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body mx-3">
+                                            <div class="md-form mb-5">
+                                            <i class="fas fa-user prefix grey-text"></i>
+                                            <input type="text" id="form34" class="form-control validate">
+                                            <label data-error="wrong" data-success="right" for="form34">Nome</label>
+                                            </div>
 
-                                {{-------------------------------------------- qui inserire medical services --------------------------------------------}}
+                                            <div class="md-form mb-5">
+                                            <i class="fas fa-envelope prefix grey-text"></i>
+                                            <input type="email" id="form29" class="form-control validate">
+                                            <label data-error="wrong" data-success="right" for="form29">E-mail</label>
+                                            </div>
+
+                                            <div class="md-form mb-5">
+                                            <i class="fas fa-tag prefix grey-text"></i>
+                                            <input type="text" id="form32" class="form-control validate">
+                                            <label data-error="wrong" data-success="right" for="form32">Oggetto</label>
+                                            </div>
+
+                                            <div class="md-form">
+                                            <i class="fas fa-pencil prefix grey-text"></i>
+                                            <textarea type="text" id="form8" class="md-textarea form-control" rows="4"></textarea>
+                                            <label data-error="wrong" data-success="right" for="form8">Messaggio</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer d-flex justify-content-center">
+                                            <button class="btn btn-success">Invia <i class="fas fa-paper-plane-o ml-1"></i></button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-left">
+                                <a href="" class="btn btn-primary btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm">Invia un messaggio a {{$user->name}} {{$user->lastname}}</a>
+                                </div>
+
+                                {{-- Servizi medici --}}
+                                <div class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header text-center">
+                                            <h4 class="modal-title w-100 font-weight-bold">Servizi medici</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body mx-3">
+                                            <div class="md-form mb-5">
+                                                @foreach ($medicalServices as $medicalService)
+                                                    <p>{{$medicalService->name}} {{$medicalService->price}}€</p> <hr>
+                                                @endforeach
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer d-flex justify-content-center">
+                                            <button class="btn btn-indigo">Send <i class="fas fa-paper-plane-o ml-1"></i></button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-left">
+                                <a href="" class="btn btn-secondary btn-rounded mb-4" data-toggle="modal" data-target="#modalSubscriptionForm">Visualizza tutte le prestazioni mediche</a>
+                                </div>
+
+                                <p>{{$medicalService->name}} {{$medicalService->price}}€</p> <hr>
 
                             </div>
 
                         </div>
+
+                        {{-- info dottore --}}
                         <div class="column">
                             <span><b>Indirizzo:</b> {{$user->address}}</span>
                             <br>
@@ -114,6 +190,7 @@
                             <br>
                             <span><b>Telefono:</b> {{$user->detail->phone}}</span>
                         </div>
+
                     </div>
                 </div>
 

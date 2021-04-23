@@ -4,11 +4,11 @@
 
         <!--Controls-->
         <div class="controls-top">
-            <a class="btn-floating-prev" href="#multi-item-example" data-slide="prev">
+            <a class="btn-floating-prev color-chevron" href="#multi-item-example" data-slide="prev">
                 <i class="fas fa-chevron-left fa-3x"></i>
             </a>
-            <a class="btn-floating-next" href="#multi-item-example" data-slide="next">
-                <i class="fas fa-chevron-right fa-3x" @click="Test()"></i>
+            <a class="btn-floating-next color-chevron" href="#multi-item-example" data-slide="next">
+                <i class="fas fa-chevron-right fa-3x"></i>
             </a>
         </div>
         <!--/.Controls-->
@@ -140,7 +140,8 @@
 
 
 
-    }
+
+}
 </script>
 
 <style scoped>

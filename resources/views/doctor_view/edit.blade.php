@@ -96,7 +96,7 @@
                         <label for="departments"><b>Departments</b></label>
                         <select class="form-control h-25" name="departments[]" id="departments" multiple>
                             @foreach($departments as $department)
-                            <option value="{{$department->id}}">{{$department->type}}</option>
+                                <option value="{{$department->id}}">{{$department->type}}</option>
                             @endforeach
                         </select>
                         </div> --}}

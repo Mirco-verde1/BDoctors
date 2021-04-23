@@ -374,84 +374,85 @@ background-color: $body-bg;
     box-shadow: 0 0 0 rgb(45 62 79 / 35%),
     -1px 2px 20px 6px rgb(0 0 0 / 22%);
 
+.profile {
+    margin: 0 auto;
 
-    .profile {
+    padding: 30px;
+    border-end-end-radius: 10px;
+    border-end-start-radius: 10px;
 
+    .doctor-pic-show-container {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        border: 3px solid $green-logo;
+        overflow: hidden;
 
-        padding: 30px;
-        border-end-end-radius: 10px;
-        border-end-start-radius: 10px;
+        .doctor-pic-show {
 
-        .doctor-pic-show-container {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            border: 3px solid $green-logo;
-            overflow: hidden;
-
-            .doctor-pic-show {
-
-                width: 100%;
-            }
-        }
-
-        .info {
-
-
-            .department {
-                color: $green-logo;
-                font-weight: bold;
-            }
-
-            .votes-form  {
-                width: 15%;
-            }
-
-            label {
-                margin-top: 10px;
-                padding: 0;
-            }
-
-            .votes-input {
-                width: 15%;
-                margin-left: 15px;
-            }
-        }
-
-          h1, h2, h3, h4, h5, h6 {
-              text-align: center;
-              margin-bottom: 20px;
-          }
-      }
-        .btn-primary {
-            border-radius: 50px;
-
-        }
-
-        .btn-primary:hover {
-            box-shadow: 0 0 0 rgb(45 62 79 / 35%),
-            -1px 2px 10px 2px rgb(0 0 0 / 22%);
-        }
-
-        .curriculum{
-            margin:0 auto;
-
-            h2{
-                text-align: center;
-                margin-bottom: 20px;
-            }
+            width: 100%;
         }
     }
 
-    .container-review{
-        background-color: #6c757d9a;
-        margin-bottom: 50px;
-        padding: 10px;
-        border-radius: 5px;
+    .info {
+        text-align: left;
 
+        .department {
+            color: $green-logo;
+            font-weight: bold;
+        }
+
+        .votes-form  {
+            width: 80px;
+        }
+
+        label {
+            margin-top: 10px;
+            padding: 0;
+        }
+
+        .votes-input {
+            width: auto;
+        }
     }
 
+    .btn-primary,
+    .btn-secondary,
+    .btn-success {
+        border-radius: 50px;
+        outline-width: 0;
+        border: none;
+        box-shadow: none;
+    }
 
+    .btn-success {
+        background-color: $green-logo;
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .btn-success:hover {
+        box-shadow: 0 0 0 rgb(45 62 79 / 35%),
+        -1px 2px 10px 2px rgb(0 0 0 / 22%);
+    }
+
+    .curriculum{
+        margin:0 auto;
+
+        h2{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.container-review{
+    background-color: #6c757d9a;
+    margin-bottom: 50px;
+    padding: 10px;
+    border-radius: 5px;
+
+}
 
 .nav-link:hover {
     font-weight: bold;
@@ -491,6 +492,8 @@ background-color: $body-bg;
     border-color: #2d995b;
   }
 }
+
+
 // style messaggio di errore
 
 .doctor-clipart {
@@ -531,8 +534,18 @@ background-color: $body-bg;
         }
     }
 
+    .profile {
+
+        .centering {
+            margin: 0 auto;
+            text-align: center;
+        }
+    }
+
+
 
 }
+
 
 // Stile 404
 .page {
@@ -546,4 +559,5 @@ background-color: $body-bg;
             height: 100%;
         }
     }
+}
 }

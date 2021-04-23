@@ -2176,6 +2176,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -38616,7 +38641,7 @@ var render = function() {
                             )
                           ]
                         )
-                      : _vm._e()
+                      : _c("div", [_vm._m(1, true)])
                   }),
                   0
                 )
@@ -38641,6 +38666,35 @@ var staticRenderFns = [
         attrs: { href: "#multi-item-example", "data-slide": "prev" }
       },
       [_c("i", { staticClass: "fas fa-chevron-left fa-3x" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "card col-md-4 p-2 bd-highlight doctor-card" },
+      [
+        _c("div", { staticClass: "img-container" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: {
+              src:
+                "https://fscomps.fotosearch.com/compc/CSP/CSP283/wort-schreibende-text-hallo-ich-stock-foto__k73203227.jpg",
+              alt: "Card image cap"
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("h4", { staticClass: "card-title" }, [
+            _vm._v("Sponsorizza il tuo profilo")
+          ]),
+          _vm._v(" "),
+          _c("h5", { staticClass: "card-text" }, [_vm._v("Specializzazioni:")])
+        ])
+      ]
     )
   }
 ]

@@ -32,8 +32,10 @@
             <div class="carousel-item" :class="(i === 1) ? 'active' : ''" v-for="i in Math.ceil(results.length / cardsPerSlide)"  >
 
                 <div class="row container d-flex flex-row p-2 flex-wrap">
-                    <div class="card col-md-4 p-2 bd-highlight doctor-card" :class="(i === 1) ? 'clearfix d-none d-md-block' : ''" v-for="doctor in carouselLoop(i, results)"
-                    v-if="doctor.sponsors.length > 0">
+
+                    <div class="card col-md-4 p-2 bd-highlight doctor-card" :class="(i === 1) ? 'clearfix d-none d-md-block' : ''"
+
+                     v-for="doctor in carouselLoop(i, results)"  v-if="doctor.sponsors.length > 0">
 
                         <div class="img-container" >
                             <img class="card-img-top" :src="`storage/${doctor.detail.pic}`" alt="Card image cap">
@@ -45,8 +47,31 @@
                             <a :href="`doctor/${doctor.id}`" class="query-submit btn btn-outline-success my-2 my-sm-0 btn-register">Info</a>
                         </div>
 
+                        </div>
+
+
+                <div v-else>
+
+                 <div class="card col-md-4 p-2 bd-highlight doctor-card" >
+                      <div class="img-container" >
+                            <img class="card-img-top" src="https://fscomps.fotosearch.com/compc/CSP/CSP283/wort-schreibende-text-hallo-ich-stock-foto__k73203227.jpg" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Sponsorizza il tuo profilo</h4>
+                            <h5 class="card-text">Specializzazioni:</h5>
+
+                        </div>
+
+                      </div>
+
+             </div>
                     </div>
+
                 </div>
+
+
+
+
             </div>
 
             </div>

@@ -162,31 +162,49 @@ background-color: $body-bg;
     box-shadow: 0 0 15px 0 rgb(0 0 0 / 5%);
 }
 
+.doctor-pic-advance-container {
 
-
-.doctor-pic-dashboard-container {
-
-    width: 150px;
-    height: 150px;
+    height: 200px;
     border-radius: 50%;
     border: 3px solid $green-logo;
     overflow: hidden;
 
     .doctor-pic {
-        width: 100%;
+
+       width: 100%;
         // align-self: flex-end;
     }
+
 }
+
+@media screen and (max-width: 993px) {
+    .doctor-pic-advance-container {
+        height: 0;
+        border-radius: 0;
+        border: 0;
+        display: none;
+    }
+
+    .doctor-pic {
+       display: none;
+    }
+
+}
+
+
+
 // carousel doctor
 
 .carousel {
     overflow-x: visible;
 }
-
+.color-chevron{
+    color: #1BB386;
+}
 .title-carousel{
     font-weight: bold;
     text-align: center;
-    color: rgb(105, 175, 236);
+    color: #1BB386;
     text-shadow: 2px 2px #0c0c0c;
     font-size:50px;
     margin-top: 100px;
@@ -224,6 +242,20 @@ background-color: $body-bg;
     width: 16px;
     height: 16px;
     vertical-align: text-bottom;
+}
+
+.doctor-pic-dashboard-container {
+    height: 250px;
+
+    border-radius: 50%;
+    border: 3px solid $green-logo;
+    overflow: hidden;
+
+    .doctor-pic {
+        width: 100%;
+        object-fit: contain;
+        // align-self: flex-end;
+    }
 }
 
 /*
@@ -341,52 +373,87 @@ background-color: $body-bg;
 
     box-shadow: 0 0 0 rgb(45 62 79 / 35%),
     -1px 2px 20px 6px rgb(0 0 0 / 22%);
+}
 
+.profile {
+    margin: 0 auto;
 
-    .profile {
+    padding: 30px;
+    border-end-end-radius: 10px;
+    border-end-start-radius: 10px;
 
+    .doctor-pic-show-container {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        border: 3px solid $green-logo;
+        overflow: hidden;
 
-        padding: 30px;
-        border-end-end-radius: 10px;
-        border-end-start-radius: 10px;
+        .doctor-pic-show {
 
-        .doctor-pic-show-container {
-
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            border: 3px solid $green-logo;
-            overflow: hidden;
-
-            .doctor-pic-show {
-                width: 100%;
-            }
+            width: 100%;
         }
-
-        .info {
-            .department {
-                color: $green-logo;
-                font-weight: bold;
-            }
-        }
-      .curriculum{
-          margin:0 auto;
-
-          h2{
-              text-align: center;
-              margin-bottom: 20px;
-          }
-      }
     }
-    .container-review{
-        background-color: #6c757d9a;
-        margin-bottom: 50px;
-        padding: 10px;
-        border-radius: 5px;
 
+    .info {
+        text-align: left;
+
+        .department {
+            color: $green-logo;
+            font-weight: bold;
+        }
+
+        .votes-form  {
+            width: 80px;
+        }
+
+        label {
+            margin-top: 10px;
+            padding: 0;
+        }
+
+        .votes-input {
+            width: auto;
+        }
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .btn-success {
+        border-radius: 50px;
+        outline-width: 0;
+        border: none;
+        box-shadow: none;
+    }
+
+    .btn-success {
+        background-color: $green-logo;
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .btn-success:hover {
+        box-shadow: 0 0 0 rgb(45 62 79 / 35%),
+        -1px 2px 10px 2px rgb(0 0 0 / 22%);
+    }
+
+    .curriculum{
+        margin:0 auto;
+
+        h2{
+            text-align: center;
+            margin-bottom: 20px;
+        }
     }
 }
 
+.container-review{
+    background-color: #6c757d9a;
+    margin-bottom: 50px;
+    padding: 10px;
+    border-radius: 5px;
+
+}
 
 .nav-link:hover {
     font-weight: bold;
@@ -399,8 +466,34 @@ background-color: $body-bg;
 }
 
 .height-input{
-    height: 60px;
+    height: 50px;
 }
+
+::-webkit-file-upload-button{
+    display: inline-block;
+  font-family: $btn-font-family;
+  font-weight: $btn-font-weight;
+  color: $body-color;
+  text-align: center;
+  text-decoration: if($link-decoration == none, null, none);
+  white-space: $btn-white-space;
+  vertical-align: middle;
+  user-select: none;
+  background-color: transparent;
+  border: $btn-border-width solid transparent;
+  color: #fff;
+  background-color: #38c172;
+  border-color: #38c172;
+  border-radius: 4px;
+
+
+  ::-webkit-file-upload-button:hover {
+    color: #fff;
+    background-color: #2fa360;
+    border-color: #2d995b;
+  }
+}
+
 
 // style messaggio di errore
 
@@ -442,8 +535,18 @@ background-color: $body-bg;
         }
     }
 
+    .profile {
+
+        .centering {
+            margin: 0 auto;
+            text-align: center;
+        }
+    }
+
+
 
 }
+
 
 // Stile 404
 .page {
@@ -457,4 +560,43 @@ background-color: $body-bg;
             height: 100%;
         }
     }
+}
+
+
+// style checkout
+
+.style-radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+
+  .style-radio:hover input ~ .checkmark {
+    background-color: #1FB488;
+  }
+
+  .style-radio input:checked ~ .checkmark {
+    background-color:#2FA360;
+    color: #fff;
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .style-radio input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .title-checkout{
+    font-weight: bold;
+    text-align: center;
+    color: #1BB386;
+    text-shadow: 2px 2px #0c0c0c;
+    font-size:50px;
+    margin-top: 100px;
+    margin-bottom:100px;
 }

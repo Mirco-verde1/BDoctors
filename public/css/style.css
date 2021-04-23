@@ -16413,25 +16413,40 @@ readers do not read off random characters that represent icons */
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
 }
 
-.doctor-pic-dashboard-container {
-  width: 150px;
-  height: 150px;
+.doctor-pic-advance-container {
+  height: 200px;
   border-radius: 50%;
   border: 3px solid #1DB487;
   overflow: hidden;
 }
-.doctor-pic-dashboard-container .doctor-pic {
+.doctor-pic-advance-container .doctor-pic {
   width: 100%;
 }
 
+@media screen and (max-width: 993px) {
+  .doctor-pic-advance-container {
+    height: 0;
+    border-radius: 0;
+    border: 0;
+    display: none;
+  }
+
+  .doctor-pic {
+    display: none;
+  }
+}
 .carousel {
   overflow-x: visible;
+}
+
+.color-chevron {
+  color: #1BB386;
 }
 
 .title-carousel {
   font-weight: bold;
   text-align: center;
-  color: #69afec;
+  color: #1BB386;
   text-shadow: 2px 2px #0c0c0c;
   font-size: 50px;
   margin-top: 100px;
@@ -16468,6 +16483,18 @@ readers do not read off random characters that represent icons */
   width: 16px;
   height: 16px;
   vertical-align: text-bottom;
+}
+
+.doctor-pic-dashboard-container {
+  height: 250px;
+  border-radius: 50%;
+  border: 3px solid #1DB487;
+  overflow: hidden;
+}
+.doctor-pic-dashboard-container .doctor-pic {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 /*
@@ -16568,47 +16595,65 @@ readers do not read off random characters that represent icons */
 .doctor-pic-dashboard-container {
   box-shadow: 0 0 0 rgba(45, 62, 79, 0.35), -1px 2px 20px 6px rgba(0, 0, 0, 0.22);
 }
-.box-general .profile,
-.doctor-pic-show-container .profile,
-.doctor-pic-dashboard-container .profile {
+
+.profile {
+  margin: 0 auto;
   padding: 30px;
   border-end-end-radius: 10px;
   border-end-start-radius: 10px;
 }
-.box-general .profile .doctor-pic-show-container,
-.doctor-pic-show-container .profile .doctor-pic-show-container,
-.doctor-pic-dashboard-container .profile .doctor-pic-show-container {
+.profile .doctor-pic-show-container {
   width: 250px;
   height: 250px;
   border-radius: 50%;
   border: 3px solid #1DB487;
   overflow: hidden;
 }
-.box-general .profile .doctor-pic-show-container .doctor-pic-show,
-.doctor-pic-show-container .profile .doctor-pic-show-container .doctor-pic-show,
-.doctor-pic-dashboard-container .profile .doctor-pic-show-container .doctor-pic-show {
+.profile .doctor-pic-show-container .doctor-pic-show {
   width: 100%;
 }
-.box-general .profile .info .department,
-.doctor-pic-show-container .profile .info .department,
-.doctor-pic-dashboard-container .profile .info .department {
+.profile .info {
+  text-align: left;
+}
+.profile .info .department {
   color: #1DB487;
   font-weight: bold;
 }
-.box-general .profile .curriculum,
-.doctor-pic-show-container .profile .curriculum,
-.doctor-pic-dashboard-container .profile .curriculum {
+.profile .info .votes-form {
+  width: 80px;
+}
+.profile .info label {
+  margin-top: 10px;
+  padding: 0;
+}
+.profile .info .votes-input {
+  width: auto;
+}
+.profile .btn-primary,
+.profile .btn-secondary,
+.profile .btn-success {
+  border-radius: 50px;
+  outline-width: 0;
+  border: none;
+  box-shadow: none;
+}
+.profile .btn-success {
+  background-color: #1DB487;
+}
+.profile .btn-primary:hover,
+.profile .btn-secondary:hover,
+.profile .btn-success:hover {
+  box-shadow: 0 0 0 rgba(45, 62, 79, 0.35), -1px 2px 10px 2px rgba(0, 0, 0, 0.22);
+}
+.profile .curriculum {
   margin: 0 auto;
 }
-.box-general .profile .curriculum h2,
-.doctor-pic-show-container .profile .curriculum h2,
-.doctor-pic-dashboard-container .profile .curriculum h2 {
+.profile .curriculum h2 {
   text-align: center;
   margin-bottom: 20px;
 }
-.box-general .container-review,
-.doctor-pic-show-container .container-review,
-.doctor-pic-dashboard-container .container-review {
+
+.container-review {
   background-color: #6c757d9a;
   margin-bottom: 50px;
   padding: 10px;
@@ -16624,7 +16669,28 @@ readers do not read off random characters that represent icons */
 }
 
 .height-input {
-  height: 60px;
+  height: 50px;
+}
+
+::-webkit-file-upload-button {
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+          user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: #fff;
+  background-color: #38c172;
+  border-color: #38c172;
+  border-radius: 4px;
+}
+::-webkit-file-upload-button ::-webkit-file-upload-button:hover {
+  color: #fff;
+  background-color: #2fa360;
+  border-color: #2d995b;
 }
 
 .doctor-clipart {
@@ -16653,6 +16719,11 @@ readers do not read off random characters that represent icons */
   .navbar-sidebar .links a {
     color: black;
   }
+
+  .profile .centering {
+    margin: 0 auto;
+    text-align: center;
+  }
 }
 .page {
   display: flex;
@@ -16663,4 +16734,39 @@ readers do not read off random characters that represent icons */
 }
 .page .img img {
   height: 100%;
+}
+
+.style-radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.style-radio:hover input ~ .checkmark {
+  background-color: #1FB488;
+}
+
+.style-radio input:checked ~ .checkmark {
+  background-color: #2FA360;
+  color: #fff;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.style-radio input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.title-checkout {
+  font-weight: bold;
+  text-align: center;
+  color: #1BB386;
+  text-shadow: 2px 2px #0c0c0c;
+  font-size: 50px;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }

@@ -18,7 +18,7 @@ class SponsorController extends Controller
 
         $user = Auth::user();
 
-        return view('doctor_view.sponsorization',compact('sponsors','user'));
+        return view('layouts.guest/partials.checkout',compact('sponsors','user'));
     }
 
 

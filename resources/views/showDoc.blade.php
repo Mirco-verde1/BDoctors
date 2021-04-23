@@ -163,6 +163,9 @@
                                         </div>
 
                                         {{-- form per inviare un messaggio al dottore --}}
+                                        <form action="{{ route('message.store') }}" method="post">
+                                            @csrf
+                                            @method('POST')
                                         <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog"
                                             aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
@@ -170,11 +173,12 @@
                                                     <div class="modal-header text-center">
                                                         <h4 class="modal-title w-100 font-weight-bold">Scrivi un
                                                             messaggio</h4>
-                                                        <button type="button" class="close" data-dismiss="modal"
+                                                        <button type="submit" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
+
                                                     <div class="modal-body mx-3">
                                                         <div class="md-form mb-5">
                                                             <input type="text" id="form34"
@@ -216,6 +220,8 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                    </form>
 
                                         <div>
                                             <a href="" class="btn btn-primary btn-rounded mb-4" data-toggle="modal"

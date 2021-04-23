@@ -2206,6 +2206,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -6857,7 +6858,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.img-container[data-v-4681a3bc] {\n    width: 300px;\n}\n.card-img-top[data-v-4681a3bc] {\n    width: 100%;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.img-container[data-v-4681a3bc] {\n    width: 300px;\n}\n.card-img-top[data-v-4681a3bc] {\n    width: 100%;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38674,7 +38675,14 @@ var render = function() {
                             )
                           ]
                         )
-                      : _c("div", [_vm._m(1, true)])
+                      : _c(
+                          "div",
+                          {
+                            staticClass:
+                              "card col-md-4 p-2 bd-highlight doctor-card"
+                          },
+                          [_vm._m(1, true), _vm._v(" "), _vm._m(2, true)]
+                        )
                   }),
                   0
                 )
@@ -38716,30 +38724,28 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card col-md-4 p-2 bd-highlight doctor-card" },
-      [
-        _c("div", { staticClass: "img-container" }, [
-          _c("img", {
-            staticClass: "card-img-top",
-            attrs: {
-              src:
-                "https://fscomps.fotosearch.com/compc/CSP/CSP283/wort-schreibende-text-hallo-ich-stock-foto__k73203227.jpg",
-              alt: "Card image cap"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("h4", { staticClass: "card-title" }, [
-            _vm._v("Sponsorizza il tuo profilo")
-          ]),
-          _vm._v(" "),
-          _c("h5", { staticClass: "card-text" }, [_vm._v("Specializzazioni:")])
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "img-container" }, [
+      _c("img", {
+        staticClass: "card-img-top",
+        attrs: {
+          src:
+            "https://fscomps.fotosearch.com/compc/CSP/CSP283/wort-schreibende-text-hallo-ich-stock-foto__k73203227.jpg",
+          alt: "Card image cap"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c("h4", { staticClass: "card-title" }, [
+        _vm._v("Sponsorizza il tuo profilo")
+      ]),
+      _vm._v(" "),
+      _c("h5", { staticClass: "card-text" }, [_vm._v("Specializzazioni:")])
+    ])
   }
 ]
 render._withStripped = true

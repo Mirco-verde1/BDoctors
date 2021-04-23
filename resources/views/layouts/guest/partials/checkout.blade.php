@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 <title>{{ __('BDoctors - Checkout') }}</title>
-
 @section('content')
     <div class="container">
     <div class="row">
@@ -9,12 +7,12 @@
         <form action="{{route('sponsorship.store')}}" method="post">
             @csrf
         @method('POST')
-
         <div class="pricing-header text-center">
             <h1 class="title-checkout">Scelga la sua sponsorizzazione:</h1>
           </div>
-
             <div class="card-deck mb-3 text-center">
+
+
                 @foreach ($sponsors as $sponsor)
               <div class="card mb-4 box-shadow">
                 <div class="card-header">
@@ -35,18 +33,10 @@
               </div>
               @endforeach
             </div>
-
     <div id="dropin-container"></div>
-
     {{-- <input class="btn-check" type="radio" name="sponsor" value="{{$sponsor->id}}"> --}}
-
-
     <button class="btn btn-success" id="submit-button">Completa il tuo pagamento</button>
-
 </form>
     </div>
 </div>
-
 @endsection
-
-

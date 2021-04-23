@@ -12,14 +12,14 @@
                     <figure class="doctor-pic-dashboard-container ">
                         @if(file_exists('storage/'.$user->detail->pic))
 
-                            <a href="../doctor/{{$user->id}}"><img class="doctor-pic"
+                            <a href="../doctor/{{$user->id}}"><img class="doctor-pic-dashboard"
                                 src="{{ URL::asset('storage/'.$user->detail->pic) }}"
                                 alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
                             </a>
 
                         @else
 
-                            <a href="../doctor/{{$user->id}}"><img class="doctor-pic"
+                            <a href="../doctor/{{$user->id}}"><img class="doctor-pic-dashboard"
                                 src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
                                 alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
                             </a>
@@ -54,13 +54,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/payment/make">
+                                <a class="nav-link" href="#">
                                     <span data-feather="users"></span>
                                     Sponsorizzazione profilo
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../admin/chart-js/{{$user->id}}">
+                                <a class="nav-link" href="#">
                                     <span data-feather="bar-chart-2"></span>
                                     Statistiche
                                 </a>
@@ -112,14 +112,14 @@
                                 <figure class="doctor-pic-dashboard-container ">
                                     @if(file_exists('storage/'.$user->detail->pic))
 
-                                        <a href="../doctor/{{$user->id}}"><img class="doctor-pic"
+                                        <a href="../doctor/{{$user->id}}"><img class="doctor-pic-dashboard"
                                             src="{{ URL::asset('storage/'.$user->detail->pic) }}"
                                             alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
                                         </a>
 
                                     @else
 
-                                        <a href="../doctor/{{$user->id}}"><img class="doctor-pic"
+                                        <a href="../doctor/{{$user->id}}"><img class="doctor-pic-dashboard"
                                             src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
                                             alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
                                         </a>
@@ -161,18 +161,14 @@
                         </div>
                     </div>
                     <nav class="navbar navbar-light bg-light">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="true" aria-label="Toggle navigation">
+                        <button class="navbar-toggler btn-navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="true" aria-label="Toggle navigation">
                         <span class="far fa-eye"> Visualizza info</span>
                         </button>
                     </nav>
                     <hr>
                 </div>
 
-
-
-
-            <main role="main" class="col-lg-10 col-md-9 ml-sm-auto px-6">
-
+            <main role="main" class="col-lg-10 col-md-12 ml-sm-auto px-6">
 
                 <div class="card-deck">
 

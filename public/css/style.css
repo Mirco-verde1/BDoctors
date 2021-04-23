@@ -16462,7 +16462,7 @@ readers do not read off random characters that represent icons */
 .btn-floating-next {
   position: absolute;
   top: 200px;
-  left: 1175px;
+  left: 1170px;
 }
 
 .img-container {
@@ -16486,15 +16486,19 @@ readers do not read off random characters that represent icons */
 }
 
 .doctor-pic-dashboard-container {
-  height: 250px;
   border-radius: 50%;
   border: 3px solid #1DB487;
   overflow: hidden;
 }
-.doctor-pic-dashboard-container .doctor-pic {
+.doctor-pic-dashboard-container .doctor-pic-dashboard {
   width: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+}
+
+.btn-navbar-toggler {
+  background-color: #1DB487;
+}
+.btn-navbar-toggler span {
+  color: white;
 }
 
 /*
@@ -16693,6 +16697,16 @@ readers do not read off random characters that represent icons */
   border-color: #2d995b;
 }
 
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.style-radio input:checked ~ .checkmark:after {
+  display: block;
+}
+
 .style-radio input {
   position: absolute;
   opacity: 0;
@@ -16738,6 +16752,13 @@ readers do not read off random characters that represent icons */
 }
 
 @media screen and (max-width: 768px) {
+  .navbar-toggler-button {
+    background-color: #1DB487;
+  }
+  .navbar-toggler-button span {
+    color: white;
+  }
+
   .navbar-sidebar {
     display: block;
   }
@@ -16748,6 +16769,25 @@ readers do not read off random characters that represent icons */
   .profile .centering {
     margin: 0 auto;
     text-align: center;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .container-fluid .row .sidebar, .container-sm .row .sidebar, .container-md .row .sidebar, .container-lg .row .sidebar, .container-xl .row .sidebar {
+    display: none !important;
+  }
+
+  .navbar-toggler-button {
+    background-color: #1DB487;
+  }
+  .navbar-toggler-button span {
+    color: white;
+  }
+
+  .navbar-sidebar {
+    display: block;
+  }
+  .navbar-sidebar .links a {
+    color: black;
   }
 }
 .page {

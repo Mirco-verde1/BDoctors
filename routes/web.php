@@ -48,5 +48,5 @@ Route::prefix('admin')
     Route::resource('doc', UserController::class);
     Route::get('sponsorship/{id}', 'SponsorController@index')->name('sponsorship');
     Route::post('sponsorship/{id}', 'SponsorController@store')->name('sponsorship.store');
-
+    Route::get('chart-js/{id}', 'ChartController@index')->name('chart');
 });

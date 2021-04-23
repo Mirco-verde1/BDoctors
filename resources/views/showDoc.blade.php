@@ -37,8 +37,17 @@
                         <div class="row">
 
                             <figure class="doctor-pic-show-container">
-                                <img class="doctor-pic-show" src="{{ URL::asset('storage/'.$user->detail->pic) }}"
-                                    alt="{{$user->name}} {{$user->lastname}}">
+                                @if(file_exists('storage/'.$user->detail->pic))
+
+                                    <img class="doctor-pic-show" src="{{ URL::asset('storage/'.$user->detail->pic)}}"
+                                        alt="{{$user->name}} {{$user->lastname}}">
+
+                                @else
+
+                                    <img class="doctor-pic-show" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
+                                        alt="{{$user->name}} {{$user->lastname}}">
+
+                                @endif
                             </figure>
 
                             <div class="col-lg-7 offset-md-1 col-md-8 info">
@@ -55,7 +64,12 @@
                                         $voteSum += $vote->value;
                                     }
 
-                                    $voteAverage = $voteSum / count($user->votes);
+                                    if(count($user->votes) > 0) {
+                                        $voteAverage = $voteSum / count($user->votes);
+                                    } else {
+                                        $voteAverage = 0;
+                                    }
+
                                 @endphp
 
                                 <span>
@@ -118,16 +132,23 @@
                     <div class="profile">
 
                         <div class="row justify-content-md-center">
+                            @if (count($user->reviews) > 0)
 
-                            @foreach ($user->reviews as $review)
-                                <div class="container-review col-md-11">
-                                    <div class="header-review d-flex justify-content-between">
-                                        <h5 class="text-capitalize"><b>{{$review->name}}</b></h5>
-                                        <h5><b>{{ \Carbon\Carbon::parse($review->created_at)->format('d/m/Y')}}</b></h5>
+                                @foreach ($user->reviews as $review)
+                                    <div class="container-review col-md-11">
+                                        <div class="header-review d-flex justify-content-between">
+                                            <h5 class="text-capitalize"><b>{{$review->name}}</b></h5>
+                                            <h5><b>{{ \Carbon\Carbon::parse($review->created_at)->format('d/m/Y')}}</b></h5>
+                                        </div>
+                                        <span>{{$review->body}}</>
                                     </div>
-                                    <span>{{$review->body}}</>
-                                </div>
-                            @endforeach
+                                @endforeach
+
+                            @else
+
+                                <span class="text-muted">Questo dottore non ha ancora recensioni.</span>
+
+                            @endif
 
                         </div>
 
@@ -151,7 +172,11 @@
                     <div class="profile">
                         <div class="row">
                             <div class="curriculum">
-                                @markdown($user->detail->curriculum)
+                                @if(isset($user->detail->curriculum))
+                                    @markdown($user->detail->curriculum)
+                                @else
+                                    <span class="text-muted">Questo dottore non ha ancora inserito un curriculum.</span>
+                                @endif
                             </div>
                         </div>
                     </div>

@@ -35,16 +35,21 @@
                     <div class="row justify-content-md-center">
 
                         <div class="box-review">
-                            @foreach ($user->reviews as $review)
-                                <div class="container-review">
-                                    <div class="header-review d-flex justify-content-between">
-                                    <h5><b>{{$review->name}}</b></h5>
-                                    <h5><b>{{ \Carbon\Carbon::parse($review->created_at)->format('d/m/Y')}}</b></h5>
+                            @if (count($user->reviews) > 0)
+                                @foreach ($user->reviews as $review)
+                                    <div class="container-review">
+                                        <div class="header-review d-flex justify-content-between">
+                                        <h5><b>{{$review->name}}</b></h5>
+                                        <h5><b>{{ \Carbon\Carbon::parse($review->created_at)->format('d/m/Y')}}</b></h5>
+                                        </div>
+                                    <span>{{$review->body}}</>
                                     </div>
-                                <span>{{$review->body}}</>
-                                </div>
 
-                            @endforeach
+                                @endforeach
+                            @else
+                                <h3>Non hai ancora ricevuto nessuna recensione.</h3>
+                                <h4>Clicca <a href="/dashboard">qui</a> per tornare alla tua dashboard.</h4>
+                            @endif
                         </div>
 
                     </div>

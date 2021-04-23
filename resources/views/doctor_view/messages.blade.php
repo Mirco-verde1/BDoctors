@@ -35,16 +35,20 @@
                     <div class="row justify-content-md-center">
 
                         <div class="box-review">
-                            @foreach ($user->messages as $message)
-                                <div class="container-review">
-                                    <div class="header-review d-flex justify-content-between">
-                                    <h5><b>{{$message->name}}</b></h5>
-                                    <h5><b>{{ \Carbon\Carbon::parse($message->created_at)->format('d/m/Y')}}</b></h5>
+                            @if (count($user->messages) > 0)
+                                @foreach ($user->messages as $message)
+                                    <div class="container-review">
+                                        <div class="header-review d-flex justify-content-between">
+                                        <h5><b>{{$message->name}}</b></h5>
+                                        <h5><b>{{ \Carbon\Carbon::parse($message->created_at)->format('d/m/Y')}}</b></h5>
+                                        </div>
+                                    <span>{{$message->body}}</>
                                     </div>
-                                <span>{{$message->body}}</>
-                                </div>
-                            @endforeach
-
+                                @endforeach
+                            @else
+                                <h3>Non hai ancora ricevuto nessun messaggio.</h3>
+                                <h4>Clicca <a href="/dashboard">qui</a> per tornare alla tua dashboard.</h4>
+                            @endif
                         </div>
                     </div>
 

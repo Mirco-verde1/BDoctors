@@ -14,7 +14,11 @@ class MedicalServicesSeeder extends Seeder
     {
         $medicalServices = [
             [
-                'name' => 'Assistenza Domiciliare',
+                'name' => 'Visita di Controllo',
+                'price' => 35.00
+            ],
+            [
+                'name' => 'Visita a Domicilio',
                 'price' => 50.00
             ],
             [
@@ -22,37 +26,13 @@ class MedicalServicesSeeder extends Seeder
                 'price' => 100.00
             ],
             [
-                'name' => 'Esami di Laboratorio',
-                'price' => 46.00
-            ],
-            [
-                'name' => 'Ginnastica di Riabilitazione',
-                'price' => 120.00
-            ],
-            [
-                'name' => 'Perizia Medico legale per Responsabilità',
-                'price' => 200.00
-            ],
-            [
                 'name' => 'Rilascio Certificati',
                 'price' => 45.00
-            ],
-            [
-                'name' => 'Seduta di Neuropsichiatria',
-                'price' => 60.00
             ],
             [
                 'name' => 'Video Consulto',
                 'price' => 25.00
             ],
-            [
-                'name' => 'Visita di Controllo',
-                'price' => 35.00
-            ],
-            [
-                'name' => 'Visita Specialistica',
-                'price' => 65.00
-            ]
         ];
 
         foreach ($medicalServices as $medicalService) {

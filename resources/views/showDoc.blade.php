@@ -91,12 +91,16 @@
                                         <label class="col-md-12" for="votes[]">Vota</label>
                                         <select class="form-control col-md-4" id="votes[]" name="votes[]">
                                             @foreach ($votes as $vote)
-                                            <option value="{{ $vote->id }}">{{ $vote->value }}</option>
+                                                <option value="{{ $vote->id }}"> {{ $vote->value }} </option>
                                             @endforeach
                                         </select>
                                         <input class="btn btn-success offset-md-2 col-md-2" type="submit" value="Invia">
                                     </div>
                                 </form>
+
+                                @foreach ($medicalServices as $medicalService)
+                                    <p>{{$medicalService->name}} {{$medicalService->price}}€</p>
+                                @endforeach
 
                                 {{-------------------------------------------- qui inserire medical services --------------------------------------------}}
 

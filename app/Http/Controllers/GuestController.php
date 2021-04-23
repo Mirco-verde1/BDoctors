@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Department;
+use App\MedicalService;
 use App\Message;
 use App\User;
 use App\UserDetail;
@@ -43,7 +44,8 @@ class GuestController extends Controller
         $user = User::where('id', $id)->first();
         $reviews = User::find(isset($id))->reviews()->orderBy('id', 'desc')->paginate(5);
         $votes = Vote::all();
-        return view('showDoc', compact('user', 'votes', 'reviews'));
+        $medicalServices = MedicalService::all();
+        return view('showDoc', compact('user', 'votes', 'reviews', 'medicalServices'));
 
     }
 

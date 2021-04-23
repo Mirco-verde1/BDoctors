@@ -24,12 +24,18 @@
         <div class="carousel-inner" role="listbox">
 
             <!-- Creiamo tante slide quanto il quoziente tra la lunghezza dell'array
-            e il numero di card in ogni slide -->
-            <div class="carousel-item" :class="(i === 1) ? 'active' : ''" v-for="i in Math.ceil(results.length / cardsPerSlide)">
+            e il numero di card in ogni slide, inoltre se il cliente è sponsorizzato verrà visualizzato o meno -->
+
+<div>
+
+
+            <div class="carousel-item" :class="(i === 1) ? 'active' : ''" v-for="i in Math.ceil(results.length / cardsPerSlide)"  >
 
                 <div class="row container d-flex flex-row p-2 flex-wrap">
-                    <div class="card col-md-4 p-2 bd-highlight doctor-card" :class="(i === 1) ? 'clearfix d-none d-md-block' : ''" v-for="doctor in carouselLoop(i, results)">
-                        <div class="img-container">
+                    <div class="card col-md-4 p-2 bd-highlight doctor-card" :class="(i === 1) ? 'clearfix d-none d-md-block' : ''" v-for="doctor in carouselLoop(i, results)"
+                    v-if="doctor.sponsors.length > 0">
+
+                        <div class="img-container" >
                             <img class="card-img-top" :src="`storage/${doctor.detail.pic}`" alt="Card image cap">
                         </div>
                         <div class="card-body">
@@ -38,8 +44,11 @@
                             <h6 class="card-text" v-for="department in doctor.departments">{{department.type}}</h6>
                             <a :href="`doctor/${doctor.id}`" class="query-submit btn btn-outline-success my-2 my-sm-0 btn-register">Info</a>
                         </div>
+
                     </div>
                 </div>
+            </div>
+
             </div>
         </div>
         <!--/.Slides-->
@@ -55,6 +64,7 @@
 
             return {
                 results: [],
+                sponsorized:[],
                 cardsPerSlide: ''
             }
         },
@@ -75,6 +85,7 @@
             })
             .then((resp) => {
                 self.results = resp.data.data;
+                console.log(self.results);
             });
         },
 
@@ -90,9 +101,22 @@
                 start = end - limit;
 
                 return array.slice(start, end);
-            }
+            },
+
+
+             Test:function(){
+
+            this.results.forEach(element => {
+                console.log(element.sponsors.length);
+            });
         }
-    }
+        },
+
+
+
+
+
+}
 </script>
 
 <style scoped>

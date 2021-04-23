@@ -444,3 +444,17 @@ background-color: $body-bg;
 
 
 }
+
+// Stile 404
+.page {
+    display: flex;
+    justify-content: center;
+
+    .img {
+        height: 50%;
+
+        img {
+            height: 100%;
+        }
+    }
+}

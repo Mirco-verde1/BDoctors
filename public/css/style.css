@@ -16595,122 +16595,84 @@ readers do not read off random characters that represent icons */
 .doctor-pic-dashboard-container {
   box-shadow: 0 0 0 rgba(45, 62, 79, 0.35), -1px 2px 20px 6px rgba(0, 0, 0, 0.22);
 }
-.box-general .profile,
-.doctor-pic-show-container .profile,
-.doctor-pic-dashboard-container .profile {
+
+.profile {
   margin: 0 auto;
   padding: 30px;
   border-end-end-radius: 10px;
   border-end-start-radius: 10px;
 }
-.box-general .profile .doctor-pic-show-container,
-.doctor-pic-show-container .profile .doctor-pic-show-container,
-.doctor-pic-dashboard-container .profile .doctor-pic-show-container {
+.profile .doctor-pic-show-container {
   width: 250px;
   height: 250px;
   border-radius: 50%;
   border: 3px solid #1DB487;
   overflow: hidden;
 }
-.box-general .profile .doctor-pic-show-container .doctor-pic-show,
-.doctor-pic-show-container .profile .doctor-pic-show-container .doctor-pic-show,
-.doctor-pic-dashboard-container .profile .doctor-pic-show-container .doctor-pic-show {
+.profile .doctor-pic-show-container .doctor-pic-show {
   width: 100%;
 }
-.box-general .profile .info,
-.doctor-pic-show-container .profile .info,
-.doctor-pic-dashboard-container .profile .info {
+.profile .info {
   text-align: left;
 }
-.box-general .profile .info .department,
-.doctor-pic-show-container .profile .info .department,
-.doctor-pic-dashboard-container .profile .info .department {
+.profile .info .department {
   color: #1DB487;
   font-weight: bold;
 }
-.box-general .profile .info .votes-form,
-.doctor-pic-show-container .profile .info .votes-form,
-.doctor-pic-dashboard-container .profile .info .votes-form {
+.profile .info .votes-form {
   width: 80px;
 }
-.box-general .profile .info label,
-.doctor-pic-show-container .profile .info label,
-.doctor-pic-dashboard-container .profile .info label {
+.profile .info label {
   margin-top: 10px;
   padding: 0;
 }
-.box-general .profile .info .votes-input,
-.doctor-pic-show-container .profile .info .votes-input,
-.doctor-pic-dashboard-container .profile .info .votes-input {
+.profile .info .votes-input {
   width: auto;
 }
-.box-general .profile .btn-primary,
-.box-general .profile .btn-secondary,
-.box-general .profile .btn-success,
-.doctor-pic-show-container .profile .btn-primary,
-.doctor-pic-show-container .profile .btn-secondary,
-.doctor-pic-show-container .profile .btn-success,
-.doctor-pic-dashboard-container .profile .btn-primary,
-.doctor-pic-dashboard-container .profile .btn-secondary,
-.doctor-pic-dashboard-container .profile .btn-success {
+.profile .btn-primary,
+.profile .btn-secondary,
+.profile .btn-success {
   border-radius: 50px;
   outline-width: 0;
   border: none;
   box-shadow: none;
 }
-.box-general .profile .btn-success,
-.doctor-pic-show-container .profile .btn-success,
-.doctor-pic-dashboard-container .profile .btn-success {
+.profile .btn-success {
   background-color: #1DB487;
 }
-.box-general .profile .btn-primary:hover,
-.box-general .profile .btn-secondary:hover,
-.box-general .profile .btn-success:hover,
-.doctor-pic-show-container .profile .btn-primary:hover,
-.doctor-pic-show-container .profile .btn-secondary:hover,
-.doctor-pic-show-container .profile .btn-success:hover,
-.doctor-pic-dashboard-container .profile .btn-primary:hover,
-.doctor-pic-dashboard-container .profile .btn-secondary:hover,
-.doctor-pic-dashboard-container .profile .btn-success:hover {
+.profile .btn-primary:hover,
+.profile .btn-secondary:hover,
+.profile .btn-success:hover {
   box-shadow: 0 0 0 rgba(45, 62, 79, 0.35), -1px 2px 10px 2px rgba(0, 0, 0, 0.22);
 }
-.box-general .profile .curriculum,
-.doctor-pic-show-container .profile .curriculum,
-.doctor-pic-dashboard-container .profile .curriculum {
+.profile .curriculum {
   margin: 0 auto;
 }
-.box-general .profile .curriculum h2,
-.doctor-pic-show-container .profile .curriculum h2,
-.doctor-pic-dashboard-container .profile .curriculum h2 {
+.profile .curriculum h2 {
   text-align: center;
   margin-bottom: 20px;
 }
-.box-general .container-review,
-.doctor-pic-show-container .container-review,
-.doctor-pic-dashboard-container .container-review {
+
+.container-review {
   background-color: #6c757d9a;
   margin-bottom: 50px;
   padding: 10px;
   border-radius: 5px;
 }
-.box-general .nav-link:hover,
-.doctor-pic-show-container .nav-link:hover,
-.doctor-pic-dashboard-container .nav-link:hover {
+
+.nav-link:hover {
   font-weight: bold;
 }
-.box-general .cotainer-box1,
-.doctor-pic-show-container .cotainer-box1,
-.doctor-pic-dashboard-container .cotainer-box1 {
+
+.cotainer-box1 {
   width: 100vw;
 }
-.box-general .height-input,
-.doctor-pic-show-container .height-input,
-.doctor-pic-dashboard-container .height-input {
+
+.height-input {
   height: 50px;
 }
-.box-general ::-webkit-file-upload-button,
-.doctor-pic-show-container ::-webkit-file-upload-button,
-.doctor-pic-dashboard-container ::-webkit-file-upload-button {
+
+::-webkit-file-upload-button {
   display: inline-block;
   font-weight: 400;
   color: #212529;
@@ -16725,100 +16687,111 @@ readers do not read off random characters that represent icons */
   border-color: #38c172;
   border-radius: 4px;
 }
-.box-general ::-webkit-file-upload-button ::-webkit-file-upload-button:hover,
-.doctor-pic-show-container ::-webkit-file-upload-button ::-webkit-file-upload-button:hover,
-.doctor-pic-dashboard-container ::-webkit-file-upload-button ::-webkit-file-upload-button:hover {
+::-webkit-file-upload-button ::-webkit-file-upload-button:hover {
   color: #fff;
   background-color: #2fa360;
   border-color: #2d995b;
 }
-.box-general .style-radio input,
-.doctor-pic-show-container .style-radio input,
-.doctor-pic-dashboard-container .style-radio input {
+
+.style-radio input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
 }
-.box-general .style-radio:hover input ~ .checkmark,
-.doctor-pic-show-container .style-radio:hover input ~ .checkmark,
-.doctor-pic-dashboard-container .style-radio:hover input ~ .checkmark {
+
+.style-radio:hover input ~ .checkmark {
   background-color: #1FB488;
 }
-.box-general .style-radio input:checked ~ .checkmark,
-.doctor-pic-show-container .style-radio input:checked ~ .checkmark,
-.doctor-pic-dashboard-container .style-radio input:checked ~ .checkmark {
+
+.style-radio input:checked ~ .checkmark {
   background-color: #2FA360;
   color: #fff;
 }
-.box-general .checkmark:after,
-.doctor-pic-show-container .checkmark:after,
-.doctor-pic-dashboard-container .checkmark:after {
+
+.checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
-.box-general .style-radio input:checked ~ .checkmark:after,
-.doctor-pic-show-container .style-radio input:checked ~ .checkmark:after,
-.doctor-pic-dashboard-container .style-radio input:checked ~ .checkmark:after {
+
+.style-radio input:checked ~ .checkmark:after {
   display: block;
 }
-.box-general .doctor-clipart,
-.doctor-pic-show-container .doctor-clipart,
-.doctor-pic-dashboard-container .doctor-clipart {
+
+.doctor-clipart {
   text-align: right;
 }
-.box-general .text .bottom-text,
-.doctor-pic-show-container .text .bottom-text,
-.doctor-pic-dashboard-container .text .bottom-text {
+
+.text .bottom-text {
   line-height: 5vw;
   font-size: 1vw;
 }
-.box-general .text span,
-.doctor-pic-show-container .text span,
-.doctor-pic-dashboard-container .text span {
+.text span {
   font-size: 2rem;
 }
-.box-general .text span a,
-.doctor-pic-show-container .text span a,
-.doctor-pic-dashboard-container .text span a {
+.text span a {
   font-size: 1vw;
 }
-.box-general .navbar-sidebar,
-.doctor-pic-show-container .navbar-sidebar,
-.doctor-pic-dashboard-container .navbar-sidebar {
+
+.navbar-sidebar {
   display: none;
 }
+
 @media screen and (max-width: 768px) {
-  .box-general .navbar-sidebar,
-.doctor-pic-show-container .navbar-sidebar,
-.doctor-pic-dashboard-container .navbar-sidebar {
+  .navbar-sidebar {
     display: block;
   }
-  .box-general .navbar-sidebar .links a,
-.doctor-pic-show-container .navbar-sidebar .links a,
-.doctor-pic-dashboard-container .navbar-sidebar .links a {
+  .navbar-sidebar .links a {
     color: black;
   }
-  .box-general .profile .centering,
-.doctor-pic-show-container .profile .centering,
-.doctor-pic-dashboard-container .profile .centering {
+
+  .profile .centering {
     margin: 0 auto;
     text-align: center;
   }
 }
-.box-general .page,
-.doctor-pic-show-container .page,
-.doctor-pic-dashboard-container .page {
+.page {
   display: flex;
   justify-content: center;
 }
-.box-general .page .img,
-.doctor-pic-show-container .page .img,
-.doctor-pic-dashboard-container .page .img {
+.page .img {
   height: 50%;
 }
-.box-general .page .img img,
-.doctor-pic-show-container .page .img img,
-.doctor-pic-dashboard-container .page .img img {
+.page .img img {
   height: 100%;
+}
+
+.style-radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.style-radio:hover input ~ .checkmark {
+  background-color: #1FB488;
+}
+
+.style-radio input:checked ~ .checkmark {
+  background-color: #2FA360;
+  color: #fff;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.style-radio input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.title-checkout {
+  font-weight: bold;
+  text-align: center;
+  color: #1BB386;
+  text-shadow: 2px 2px #0c0c0c;
+  font-size: 50px;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }

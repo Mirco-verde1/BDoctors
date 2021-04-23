@@ -2167,10 +2167,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       results: [],
+      sponsorized: [],
       cardsPerSlide: ''
     };
   },
@@ -2188,6 +2198,7 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get('http://127.0.0.1:8000/api/doctors', {}).then(function (resp) {
       self.results = resp.data.data;
+      console.log(self.results);
     });
   },
   methods: {
@@ -2199,6 +2210,11 @@ __webpack_require__.r(__webpack_exports__);
       end = index * limit;
       start = end - limit;
       return array.slice(start, end);
+    },
+    Test: function Test() {
+      this.results.forEach(function (element) {
+        console.log(element.sponsors.length);
+      });
     }
   }
 });
@@ -38488,7 +38504,27 @@ var render = function() {
       attrs: { id: "multi-item-example", "data-ride": "carousel" }
     },
     [
-      _vm._m(0),
+      _c("div", { staticClass: "controls-top" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn-floating-next",
+            attrs: { href: "#multi-item-example", "data-slide": "next" }
+          },
+          [
+            _c("i", {
+              staticClass: "fas fa-chevron-right fa-3x",
+              on: {
+                click: function($event) {
+                  return _vm.Test()
+                }
+              }
+            })
+          ]
+        )
+      ]),
       _vm._v(" "),
       _c(
         "ol",
@@ -38505,79 +38541,91 @@ var render = function() {
         0
       ),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "carousel-inner", attrs: { role: "listbox" } },
-        _vm._l(Math.ceil(_vm.results.length / _vm.cardsPerSlide), function(i) {
-          return _c(
-            "div",
-            { staticClass: "carousel-item", class: i === 1 ? "active" : "" },
-            [
-              _c(
-                "div",
-                { staticClass: "row container d-flex flex-row p-2 flex-wrap" },
-                _vm._l(_vm.carouselLoop(i, _vm.results), function(doctor) {
-                  return _c(
-                    "div",
-                    {
-                      staticClass: "card col-md-4 p-2 bd-highlight doctor-card",
-                      class: i === 1 ? "clearfix d-none d-md-block" : ""
-                    },
-                    [
-                      _c("div", { staticClass: "img-container" }, [
-                        _c("img", {
-                          staticClass: "card-img-top",
-                          attrs: {
-                            src: doctor.detail.pic,
-                            alt: "Card image cap"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "card-body" },
-                        [
-                          _c("h4", { staticClass: "card-title" }, [
-                            _vm._v(
-                              _vm._s(doctor.name) +
-                                " " +
-                                _vm._s(doctor.lastname)
+      _c("div", { staticClass: "carousel-inner", attrs: { role: "listbox" } }, [
+        _c(
+          "div",
+          _vm._l(Math.ceil(_vm.results.length / _vm.cardsPerSlide), function(
+            i
+          ) {
+            return _c(
+              "div",
+              { staticClass: "carousel-item", class: i === 1 ? "active" : "" },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "row container d-flex flex-row p-2 flex-wrap"
+                  },
+                  _vm._l(_vm.carouselLoop(i, _vm.results), function(doctor) {
+                    return doctor.sponsors.length > 0
+                      ? _c(
+                          "div",
+                          {
+                            staticClass:
+                              "card col-md-4 p-2 bd-highlight doctor-card",
+                            class: i === 1 ? "clearfix d-none d-md-block" : ""
+                          },
+                          [
+                            _c("div", { staticClass: "img-container" }, [
+                              _c("img", {
+                                staticClass: "card-img-top",
+                                attrs: {
+                                  src: "storage/" + doctor.detail.pic,
+                                  alt: "Card image cap"
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "card-body" },
+                              [
+                                _c("h4", { staticClass: "card-title" }, [
+                                  _vm._v(
+                                    _vm._s(doctor.name) +
+                                      " " +
+                                      _vm._s(doctor.lastname)
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("h5", { staticClass: "card-text" }, [
+                                  _vm._v("Specializzazioni:")
+                                ]),
+                                _vm._v(" "),
+                                _vm._l(doctor.departments, function(
+                                  department
+                                ) {
+                                  return _c(
+                                    "h6",
+                                    { staticClass: "card-text" },
+                                    [_vm._v(_vm._s(department.type))]
+                                  )
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass:
+                                      "query-submit btn btn-outline-success my-2 my-sm-0 btn-register",
+                                    attrs: { href: "doctor/" + doctor.id }
+                                  },
+                                  [_vm._v("Info")]
+                                )
+                              ],
+                              2
                             )
-                          ]),
-                          _vm._v(" "),
-                          _c("h5", { staticClass: "card-text" }, [
-                            _vm._v("Specializzazioni:")
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(doctor.departments, function(department) {
-                            return _c("h6", { staticClass: "card-text" }, [
-                              _vm._v(_vm._s(department.type))
-                            ])
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "a",
-                            {
-                              staticClass:
-                                "query-submit btn btn-outline-success my-2 my-sm-0 btn-register",
-                              attrs: { href: "doctor/" + doctor.id }
-                            },
-                            [_vm._v("Info")]
-                          )
-                        ],
-                        2
-                      )
-                    ]
-                  )
-                }),
-                0
-              )
-            ]
-          )
-        }),
-        0
-      )
+                          ]
+                        )
+                      : _vm._e()
+                  }),
+                  0
+                )
+              ]
+            )
+          }),
+          0
+        )
+      ])
     ]
   )
 }
@@ -38586,25 +38634,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "controls-top" }, [
-      _c(
-        "a",
-        {
-          staticClass: "btn-floating-prev",
-          attrs: { href: "#multi-item-example", "data-slide": "prev" }
-        },
-        [_c("i", { staticClass: "fas fa-chevron-left fa-3x" })]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "btn-floating-next",
-          attrs: { href: "#multi-item-example", "data-slide": "next" }
-        },
-        [_c("i", { staticClass: "fas fa-chevron-right fa-3x" })]
-      )
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "btn-floating-prev",
+        attrs: { href: "#multi-item-example", "data-slide": "prev" }
+      },
+      [_c("i", { staticClass: "fas fa-chevron-left fa-3x" })]
+    )
   }
 ]
 render._withStripped = true

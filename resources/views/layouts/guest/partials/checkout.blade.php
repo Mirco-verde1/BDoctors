@@ -13,15 +13,12 @@
     <div class="container">
     <div class="row">
     <div class="col-md-8 col-md-offset-2">
-    <div id="dropin-container"></div>
-
-
 
 
     <h1>Scelga la sua sponsorizzazione: </h1>
     <br>
 
-    <form action="{{route('sponsorship.store', $user->id)}}" method="post">
+    <form action="{{route('sponsorship.store')}}" method="post">
 
         @csrf
         @method('POST')
@@ -42,16 +39,20 @@
 
         </div>
 
-        <button id="submit-button">Completa il tuo pagamento</button>
-
-
-    </form>
 
 
 
 
 
 
+    <div id="dropin-container"></div>
+
+
+
+
+    <button id="submit-button">Completa il tuo pagamento</button>
+
+</form>
     </div>
     </div>
     </div>

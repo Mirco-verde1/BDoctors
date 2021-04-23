@@ -46,7 +46,7 @@ Route::prefix('admin')
 ->middleware('auth')
 ->group(function () {
     Route::resource('doc', UserController::class);
-    Route::get('sponsorship/{id}', 'SponsorController@index')->name('sponsorship');
-    Route::post('sponsorship/{id}', 'SponsorController@store')->name('sponsorship.store');
+    Route::get('sponsorship', 'SponsorController@index')->name('sponsorship');
+    Route::post('sponsorship', 'SponsorController@store')->name('sponsorship.store');
 
 });

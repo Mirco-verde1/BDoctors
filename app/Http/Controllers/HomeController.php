@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Sponsor;
 
 
 class HomeController extends Controller
@@ -25,12 +26,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(User $user)
+    public function index(User $user, Sponsor $sponsor)
     {
         $user = Auth::user();
         $review = Auth::user()->reviews()->orderBy('id', 'desc')->first();
         $message = Auth::user()->messages()->orderBy('id', 'desc')->first();
-        return view('doctor_view.dashboard', compact('user', 'review', 'message'));
+        $sponsor = Auth::user()->sponsors()->orderBy('id', 'desc')->first();
+        return view('doctor_view.dashboard', compact('user', 'review', 'message','sponsor'));
     }
 
     public function myReviews()

@@ -211,7 +211,7 @@
                                     {{ \Carbon\Carbon::parse($message->updated_at)->format('d/m/Y')}}
                                 </small>
                                 <small class="text-muted">alle
-                                    {{ \Carbon\Carbon::parse($message->updated_at)->format('H:i:s')}}
+                                    {{ \Carbon\Carbon::parse($message->updated_at)->format('H:i')}}
                                 </small>
 
                             @endif
@@ -254,7 +254,7 @@
                                     {{ \Carbon\Carbon::parse($review->created_at)->format('d/m/Y')}}
                                 </small>
                                 <small class="text-muted">alle
-                                    {{ \Carbon\Carbon::parse($review->created_at)->format('H:i:s')}}
+                                    {{ \Carbon\Carbon::parse($review->created_at)->format('H:i')}}
                                 </small>
 
                             @endif
@@ -263,6 +263,7 @@
 
                     {{-- card sponsorizzazione profilo --}}
                     <div class="card">
+
                         <nav class="secondary-nav text-center">
                             <div>
                                 <ul>
@@ -272,12 +273,46 @@
                                 </ul>
                             </div>
                         </nav>
+
                         <div class="card-body">
                             <div>
+
+                            @if(isset($sponsor))
+
+                                <div>
+                                    @foreach ($user->sponsors_user as $sponsor)
+                                        <small class="text-muted text-capitalize d-block">tipo sponsorizzazione: {{$sponsor}}</small>
+
+                                    @endforeach
+
+                                    <small class="text-muted">Scade il
+                                        {{$sponsor->user_id}}
+                                        {{-- {{ \Carbon\Carbon::parse($sponsor->updated_at)->format('H:i:s')}}
+                                        {{ \Carbon\Carbon::parse($sponsor->duration)->format('H:i:s')}} --}}
+                                    </small>
+
+
+                                </div>
+
+                            @else
+
+                                <div>
+                                    <small class="text-muted">Nessuna sponsorizzazione trovata.</small>
+                                </div>
+
+                            @endif
+
+
+
+
+
                             </div>
                         </div>
+
                         <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
+                            <small class="text-muted">Ultima sponsorizzazione il
+                                {{ \Carbon\Carbon::parse($sponsor->created_at)->format('d/m/Y')}}
+                            </small>
                         </div>
                     </div>
 

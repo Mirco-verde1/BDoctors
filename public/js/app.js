@@ -1974,7 +1974,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1982,47 +1981,70 @@ __webpack_require__.r(__webpack_exports__);
       checkedVote: '',
       checkedVoteValue: '',
       checkedReview: '',
-      votesAverage: '',
       results: [],
       filteredResults: []
     };
   },
   mounted: function mounted() {
+    var _this = this;
+
     // All doctors data filtererd by homepage research
-    var self = this;
-    /* Sostituiamo gli eventuali + derivanti dalla query string per poterla confrontare
-    con i risultati */
-
-    while (this.searchedDepartment.includes('+')) {
-      this.searchedDepartment = this.searchedDepartment.replace('+', ' ');
-    } // Chiamata Axios all'API per filtrare i risultati in base al department scelto in home
-
+    var self = this; // Chiamata Axios all'API dottori
 
     axios.get('http://127.0.0.1:8000/api/doctors', {}).then(function (resp) {
-      self.results = resp.data;
-      self.results.data.forEach(function (element) {
-        element.departments.forEach(function (item) {
-          if (item.type === self.searchedDepartment) {
-            self.filteredResults.push(element);
-          }
-        });
-      });
+      self.results = resp.data.data;
+
+      _this.initialFilters();
     });
   },
   methods: {
-    // Resettiamo i risultati; utile in caso di passaggio da un filtro ad un altro
-    restoreResults: function restoreResults(check) {
-      var _this = this;
+    initialFilters: function initialFilters() {
+      var _this2 = this;
 
-      if (!check) {
-        this.filteredResults = [];
-        this.results.data.forEach(function (element) {
-          element.departments.forEach(function (item) {
-            if (item.type === _this.searchedDepartment) {
-              _this.filteredResults.push(element);
+      var today = Date.parse(new Date());
+      var byDepartment = [];
+      this.results.forEach(function (element) {
+        /* Sostituiamo gli eventuali + derivanti dalla query string per poterla confrontare
+        con i risultati */
+        while (_this2.searchedDepartment.includes('+')) {
+          _this2.searchedDepartment = _this2.searchedDepartment.replace('+', ' ');
+        } // Filtro risultati in base al department scelto in home
+
+
+        element.departments.forEach(function (item) {
+          if (item.type === _this2.searchedDepartment) {
+            byDepartment.push(element);
+          }
+        });
+      });
+      var sponsored = [];
+      var notSponsored = [];
+      byDepartment.forEach(function (elem) {
+        if (elem.sponsors.length > 0) {
+          elem.sponsors.forEach(function (sponsor) {
+            /* Verifichiamo che il medico abbia una sponsorizzazione in corso
+            per visualizzarlo all'inizio dei risultati */
+            if (today < Date.parse(sponsor.created_at) + sponsor.duration * 3600000) {
+              sponsored.push(elem);
             }
           });
-        });
+        } else {
+          notSponsored.push(elem);
+        }
+      });
+      this.filteredResults = [].concat(sponsored, notSponsored);
+    },
+    // Resettiamo i risultati; utile in caso di passaggio da un filtro ad un altro
+    restoreResults: function restoreResults(check) {
+      if (!check) {
+        this.filteredResults = [];
+        this.initialFilters();
+
+        if (this.checkedVote && !this.checkedReview) {
+          this.filterByVote();
+        } else if (!this.checkedVote && this.checkedReview) {
+          this.filterByReviews();
+        }
       }
     },
     // Recuperiamo i voti di un dottore
@@ -2043,19 +2065,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     // Filtriamo i risultati per voto
     filterByVote: function filterByVote() {
-      var _this2 = this;
+      var _this3 = this;
 
       var filteredByVote = [];
-      this.restoreResults();
+      this.filteredResults = [];
+      this.initialFilters();
       this.filteredResults.forEach(function (element) {
-        var votesCount = element.votes.length;
-        var votesSum = 0;
-        element.votes.forEach(function (elem) {
-          votesSum += elem.value;
-        });
-        _this2.votesAverage = Math.ceil(votesSum / votesCount);
-
-        if (_this2.votesAverage === _this2.checkedVoteValue) {
+        if (_this3.getVotesAverage(element) === _this3.checkedVoteValue) {
           filteredByVote.push(element);
         }
       });
@@ -38433,7 +38449,6 @@ var render = function() {
                               ? _c("i", { staticClass: "fas fa-star" })
                               : _vm._e()
                           }),
-                          _vm._v(" "),
                           _vm._l(5 - _vm.getVotesAverage(doctor), function(
                             vote
                           ) {

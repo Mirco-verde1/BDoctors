@@ -62,8 +62,7 @@
                                   <div class=" ">
                                     <b>Media Voto:</b>
                                     <br>
-                                    <i class="fas fa-star" v-for="vote in getVotesAverage(doctor)" v-if="getVotesAverage(doctor)"></i>
-                                    <i class="far fa-star" v-for="vote in (5 - getVotesAverage(doctor))"></i>
+                                    <i class="fas fa-star" v-for="vote in getVotesAverage(doctor)" v-if="getVotesAverage(doctor)"></i><i class="far fa-star" v-for="vote in (5 - getVotesAverage(doctor))"></i>
                                 </div>
                             </div>
                                 <div class="col-md-3 col-sm-4 column align-self-center">
@@ -112,7 +111,6 @@
                 checkedVote: '',
                 checkedVoteValue: '',
                 checkedReview: '',
-                votesAverage: '',
 
                 results: [],
                 filteredResults: []
@@ -120,53 +118,76 @@
         },
 
         mounted() {
-
             // All doctors data filtererd by homepage research
-
+            
             const self = this;
 
-            /* Sostituiamo gli eventuali + derivanti dalla query string per poterla confrontare
-            con i risultati */
-            while (this.searchedDepartment.includes('+')) {
-                this.searchedDepartment = this.searchedDepartment.replace('+', ' ');
-            }
-
-            // Chiamata Axios all'API per filtrare i risultati in base al department scelto in home
+            // Chiamata Axios all'API dottori
             axios.get('http://127.0.0.1:8000/api/doctors', {
             })
             .then((resp) => {
-                self.results = resp.data;
+                self.results = resp.data.data;
 
-                self.results.data.forEach(element => {
-
-                    element.departments.forEach(item => {
-                        if(item.type === self.searchedDepartment) {
-                            self.filteredResults.push(element);
-                        }
-                    });
-
-                });
+                this.initialFilters();
             });
-
         },
 
         methods: {
 
-            // Resettiamo i risultati; utile in caso di passaggio da un filtro ad un altro
-            restoreResults: function(check) {
-                if (!check) {
+            initialFilters: function() {
+                const today = Date.parse(new Date());                 
+                const byDepartment = [];
 
-                    this.filteredResults = [];
+                this.results.forEach(element => {
 
-                    this.results.data.forEach(element => {
+                    /* Sostituiamo gli eventuali + derivanti dalla query string per poterla confrontare
+                    con i risultati */
+                    while (this.searchedDepartment.includes('+')) {
+                        this.searchedDepartment = this.searchedDepartment.replace('+', ' ');
+                    }
 
-                        element.departments.forEach(item => {
-                            if(item.type === this.searchedDepartment) {
-                                this.filteredResults.push(element);
+                    // Filtro risultati in base al department scelto in home
+                    element.departments.forEach(item => {
+                        if(item.type === this.searchedDepartment) {
+                            byDepartment.push(element);
+                        }
+                    });
+                });
+
+                const sponsored = [];
+                const notSponsored = [];
+
+                byDepartment.forEach(elem => {
+                    if(elem.sponsors.length > 0) {
+
+                        elem.sponsors.forEach(sponsor => {
+
+                            /* Verifichiamo che il medico abbia una sponsorizzazione in corso
+                            per visualizzarlo all'inizio dei risultati */
+                            if(today < (Date.parse(sponsor.created_at) + (sponsor.duration * 3600000))) {
+                                sponsored.push(elem);
                             }
                         });
 
-                    });
+                    } else {
+                        notSponsored.push(elem);
+                    }
+                });
+                                            
+                this.filteredResults = [...sponsored,...notSponsored];
+            },
+
+            // Resettiamo i risultati; utile in caso di passaggio da un filtro ad un altro
+            restoreResults: function(check) {
+                if (!check) {
+                    this.filteredResults = [];
+                    this.initialFilters();
+
+                    if (this.checkedVote && !this.checkedReview) {
+                        this.filterByVote();
+                    } else if (!this.checkedVote && this.checkedReview) {
+                        this.filterByReviews();
+                    }
                 }
             },
 
@@ -193,27 +214,21 @@
             filterByVote: function () {
                 const filteredByVote = [];
 
-                this.restoreResults();
+                this.filteredResults = [];
+                this.initialFilters();
 
                 this.filteredResults.forEach(element => {
-                    const votesCount = element.votes.length;
-                    let votesSum = 0;
 
-                    element.votes.forEach(elem => {
-                        votesSum += elem.value;
-                    });
-
-                    this.votesAverage = Math.ceil(votesSum / votesCount);
-
-                    if (this.votesAverage === this.checkedVoteValue) {
+                    if (this.getVotesAverage(element) === this.checkedVoteValue) {
                         filteredByVote.push(element);
                     }
+
                 });
 
                 this.filteredResults = filteredByVote;
 
                 if (this.checkedReview) {
-                    this.filterByReviews()
+                    this.filterByReviews();
                 }
             },
 

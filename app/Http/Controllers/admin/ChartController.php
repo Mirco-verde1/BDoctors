@@ -50,23 +50,9 @@ class ChartController extends Controller
         $data1['chart1_data'] = json_encode($data1);
 
 
-        /* DIO LUPO VOTI */
-        $record2 = Auth::user()->votes()->select(DB::raw("COUNT(*) as count"), DB::raw("DAYNAME(user_vote.created_at) as day_name"), DB::raw("DAY(user_vote.created_at) as day"))
-        ->where('user_vote.created_at', '>', Carbon::today()->subDay(6))
-        ->groupBy('day_name', 'day')
-        ->orderBy('day')
-        ->get();
 
-        $data2 = [];
 
-        foreach ($record2 as $row2) {
-            $data2['label'][] = $row2->day_name;
-            $data2['data'][] = (int) $row2->count;
-        }
-
-        $data2['chart2_data'] = json_encode($data2);
-
-        return view('chart-js-reviews', $data, $data1, $data2);
+        return view('chart-js-reviews', $data, $data1);
     }
 
    /*  public function messagesChart()

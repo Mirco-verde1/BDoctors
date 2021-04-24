@@ -264,7 +264,7 @@
                         <div class="row justify-content-md-center">
                             @if (count($user->reviews) > 0)
 
-                            @foreach ($user->reviews as $review)
+                            @foreach ($reviews as $review)
                             <div class="container-review col-md-11">
                                 <div class="header-review d-flex justify-content-between">
                                     <h5 class="text-capitalize"><b>{{$review->name}}</b></h5>

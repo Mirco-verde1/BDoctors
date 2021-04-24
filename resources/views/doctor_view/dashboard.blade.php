@@ -60,7 +60,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../admin/chart-js/{{$user->id}}">
+                                <a class="nav-link" href="../admin/chart-js/reviews/{{$user->id}}">
                                     <span data-feather="bar-chart-2"></span>
                                     Statistiche
                                 </a>

@@ -16,11 +16,10 @@ use Illuminate\Mail\Events\MessageSending;
 
 class ChartController extends Controller
 {
-    public function index()
+    public function reviewsChart()
     {
 
-        $user = Auth::user();
-        $record = Review::select(DB::raw("COUNT(*) as count"), DB::raw("DAYNAME(created_at) as day_name"), DB::raw("DAY(created_at) as day"))
+        $record = Auth::user()->reviews()->select(DB::raw("COUNT(*) as count"), DB::raw("DAYNAME(created_at) as day_name"), DB::raw("DAY(created_at) as day"))
         ->where('created_at', '>', Carbon::today()->subDay(6))
         ->groupBy('day_name', 'day')
         ->orderBy('day')
@@ -34,6 +33,40 @@ class ChartController extends Controller
         }
 
         $data['chart_data'] = json_encode($data);
-        return view('chart-js', $data);
+
+        $record1 = Auth::user()->messages()->select(DB::raw("COUNT(*) as count"), DB::raw("DAYNAME(created_at) as day_name"), DB::raw("DAY(created_at) as day"))
+        ->where('created_at', '>', Carbon::today()->subDay(6))
+            ->groupBy('day_name', 'day')
+            ->orderBy('day')
+            ->get();
+
+        $data1 = [];;
+        foreach ($record1 as $row1) {
+            $data1['label'][] = $row1->day_name;
+            $data1['data'][] = (int) $row1->count;
+        }
+
+        $data1['chart1_data'] = json_encode($data1);
+        return view('chart-js-reviews', $data, $data1);
     }
+
+   /*  public function messagesChart()
+    {
+
+        $record1 = Auth::user()->messages()->select(DB::raw("COUNT(*) as count"), DB::raw("DAYNAME(created_at) as day_name"), DB::raw("DAY(created_at) as day"))
+        ->where('created_at', '>', Carbon::today()->subDay(6))
+            ->groupBy('day_name', 'day')
+            ->orderBy('day')
+            ->get();
+
+        $data1 = [];
+
+;       foreach ($record1 as $row1) {
+            $data1['label'][] = $row1->day_name;
+            $data1['data'][] = (int) $row1->count;
+        }
+
+        $data1['chart1_data'] = json_encode($data1);
+        return view('chart-js-reviews', $data1);
+    } */
 }

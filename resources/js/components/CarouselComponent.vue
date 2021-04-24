@@ -16,7 +16,7 @@
         <!--Indicators-->
         <ol class="carousel-indicators">
             <!-- Creiamo tanti indicatori quante le slide -->
-            <li v-for="i in Math.ceil(sponsored.length / cardsPerSlide)" data-target="#multi-item-example"
+            <li v-for="i in slidesNumber" data-target="#multi-item-example"
                 :data-slide-to="(i - 1)" :class="(i === 1) ? 'active' : ''"></li>
         </ol>
         <!--/.Indicators-->
@@ -24,13 +24,11 @@
         <!--Slides-->
         <div class="carousel-inner" role="listbox">
 
-            <!-- Creiamo tante slide quanto il quoziente tra la lunghezza dell'array
-            e il numero di card in ogni slide, inoltre se il cliente è sponsorizzato verrà visualizzato o meno -->
-
+            <!-- Creiamo le slide, inoltre se il cliente è sponsorizzato verrà visualizzato o meno -->
             <div>
 
                 <div class="carousel-item" :class="(i === 1) ? 'active' : ''"
-                    v-for="i, index in (Math.ceil(sponsored.length / cardsPerSlide) === 0) ? 1 : Math.ceil(sponsored.length / cardsPerSlide)">
+                    v-for="(i, index) in slidesNumber">
 
                     <div class="row container d-flex flex-row p-2 flex-wrap">
 
@@ -40,7 +38,7 @@
 
                             <div class="doctor-pic-dashboard-container">
                                 <a :href="`doctor/${doctor.id}`">
-                                    <img class="doctor-pic-dashboard" :src="`storage/${doctor.detail.pic}`" alt="Card image cap">
+                                    <img @error="correctPicUrl(doctor, index)" class="doctor-pic-dashboard" :src="`storage/${doctor.detail.pic}`" alt="Card image cap">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -52,6 +50,7 @@
 
                         </div>
 
+                        <!-- Cards placeholder nel caso in cui non vi sia nessun medico sponsorizzato -->
                         <div class="card col-md-4 p-2 bd-highlight doctor-card" v-if="sponsored.length === 0" v-for="n in cardsPerSlide">
 
                             <div class="img-container">
@@ -60,7 +59,9 @@
                                     alt="Card image cap">
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title">Sponsorizza il tuo profilo</h4>
+                                <h4 class="card-title">
+                                    <button class="btn btn-success" onclick="location.href='payment/make'">Sponsorizza il tuo profilo</button>
+                                </h4>
                             </div>
 
                         </div>
@@ -86,7 +87,9 @@
             return {
                 results: [],
                 sponsored: [],
-                cardsPerSlide: ''
+
+                cardsPerSlide: '',
+                slidesNumber: ''
             }
         },
 
@@ -105,6 +108,8 @@
             axios.get('http://127.0.0.1:8000/api/doctors', {
             })
             .then((resp) => {
+
+                // Convertiamo la data corrente in millisecondi UNIX
                 const today = Date.parse(new Date());
 
                 self.results = resp.data.data;
@@ -112,8 +117,10 @@
                 self.results.forEach(elem => {
                     if(elem.sponsors.length > 0) {
                         elem.sponsors.forEach(sponsor => {
-                            console.log(sponsor.pivot.created_at)
-                            // Verifichiamo che il medico abbia una sponsorizzazione in corso //
+
+                            /* Verifichiamo che il medico abbia una sponsorizzazione in corso
+                            per visualizzarlo all'inizio dei risultati, comparando i millisecondi correnti
+                            con quelli della somma tra la creazione della sponsorship e la sua durata */
                             if(today <= (Date.parse(sponsor.pivot['created_at']) + (sponsor.duration * 3600000))) {
                                 self.sponsored.push(elem);
                             }
@@ -121,9 +128,27 @@
                     }
                 });
             });
+
+            // Se non vi sono sponsorizzati, creiamo comunque una slide
+            if (self.sponsored.length === 0) {
+                self.slidesNumber = 1;
+            } else {
+
+                /* Creiamo tante slide quanto il quoziente tra la lunghezza dell'array
+                e il numero di card in ogni slide */
+                self.slidesNumber = Math.ceil(self.sponsored.length / self.cardsPerSlide);
+            }
         },
 
         methods: {
+
+            /* Diamo l'URL corretto all'immagine del profilo, nel caso in cui questa non provenga
+            dal seeder */
+            correctPicUrl: function(element, index) {
+                const allPics = document.getElementsByClassName('doctor-pic-dashboard');
+
+                allPics[index].src = element.detail.pic;
+            },
 
             /* Scomponiamo l'array di risultati per recuperare di volta in volta
             i valori con cui popolare le slide */

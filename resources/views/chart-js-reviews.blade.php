@@ -9,11 +9,12 @@
 </head>
 <body>
   <div class="chart-container">
-    <div class="bar-chart-container" style="display: flex">
+    <div class="bar-chart-container" style="display: flex" >
      <div> <canvas id="bar-chart" width="700" height="400"></canvas> </div>
       <canvas id="bar1-chart" width="700" height="400"></canvas>
       <canvas id="bar2-chart"></canvas>
     </div>
+    <a href="{{route('dashboard')}}"><button>Torna alla Dashboard</button></a>
   </div>
 
   <!-- javascript -->

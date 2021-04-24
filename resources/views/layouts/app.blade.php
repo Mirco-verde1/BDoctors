@@ -41,7 +41,7 @@
 
         @include('layouts/guest/partials/navbar')
 
-        <main class="py-4 margin-top-container">
+        <main class="py-3 margin-top-container">
 
             @yield('content')
 

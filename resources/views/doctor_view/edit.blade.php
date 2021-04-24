@@ -96,15 +96,25 @@
                             </div>
                         </div>
                         {{-- departments --}}
-                        {{-- <div class="text-center mt-4">
-                        <label for="departments"><b>Departments</b></label>
+                        <div class="text-center mt-4">
+                            <div><b>Specializzazioni attuali:</b></div>
+                            <div>
+                            @foreach ($user->departments as $department)
+                            <span class="department">{{$department->type}}</span>
+                        @endforeach
+                    </div>
+                        <label for="departments"><b>Lista specializzazioni disponibili</b></label>
                         <select class="form-control h-25" name="departments[]" id="departments" multiple>
                             @foreach($departments as $department)
-                                <option value="{{$department->id}}">{{$department->type}}</option>
+                                @foreach($user->departments as $userDepartment)
+                                    @if($userDepartment->id !== $department->id)
+                                        <option value="{{$department->id}}">{{$department->type}}</option>
+                                    @endif
+                                @endforeach
                             @endforeach
                         </select>
-                        </div> --}}
-                        <multiple-select-departments></multiple-select-departments>
+                        </div>
+                        {{-- <multiple-select-departments></multiple-select-departments> --}}
 
 
                         {{-- curriculum --}}

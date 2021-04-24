@@ -112,7 +112,7 @@
                                                 @endforeach
                                             </select>
 
-                                            <input class="btn btn-success votes-input offset-md-1 col-md-2"
+                                             <input class="btn btn-success votes-input offset-md-1 col-md-2"
                                                 type="submit" value="Invia">
                                         </form>
                                     </div>
@@ -319,7 +319,7 @@
                     <div>
                         <ul class="justify-content-center">
                             <li>
-                                <h1 class="active-nav">Lascia una recensione</h1>
+                                <b class="active-nav">Lascia una recensione</b>
                             </li>
                         </ul>
                     </div>

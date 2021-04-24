@@ -108,69 +108,68 @@
                 </div>
             </nav>
 
+            <div class="container-fluid navbar-sidebar">
+                <div class="collapse" id="navbarToggleExternalContent">
+                    <div class="bg-light p-4 row">
+                        <div class="col-sm-4 col-auto">
+                            <figure class="doctor-pic-dashboard-container ">
+                                @if(file_exists('storage/'.$user->detail->pic))
 
-                <div class="container-fluid navbar-sidebar">
-                    <div class="collapse" id="navbarToggleExternalContent">
-                        <div class="bg-light p-4 row">
-                            <div class="col-sm-4 col-auto">
-                                <figure class="doctor-pic-dashboard-container ">
-                                    @if(file_exists('storage/'.$user->detail->pic))
+                                    <a href="../doctor/{{$user->id}}"><img class="doctor-pic-dashboard"
+                                        src="{{ URL::asset('storage/'.$user->detail->pic) }}"
+                                        alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
+                                    </a>
 
-                                        <a href="../doctor/{{$user->id}}"><img class="doctor-pic-dashboard"
-                                            src="{{ URL::asset('storage/'.$user->detail->pic) }}"
-                                            alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
-                                        </a>
+                                @else
 
-                                    @else
+                                    <a href="../doctor/{{$user->id}}"><img class="doctor-pic-dashboard"
+                                        src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
+                                        alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
+                                    </a>
 
-                                        <a href="../doctor/{{$user->id}}"><img class="doctor-pic-dashboard"
-                                            src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
-                                            alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
-                                        </a>
+                                @endif
+                            </figure>
+                        </div>
+                        <div class="col-sm-8 col-auto links">
 
-                                    @endif
-                                </figure>
-                            </div>
-                            <div class="col-sm-8 col-auto links">
-
-                                <a class="nav-link active" href="#">
-                                    <span data-feather="home"></span>
-                                    Dashboard <span class="sr-only">(current)</span>
-                                </a>
-                                <a class="nav-link" href="../admin/doc/{{$user->id}}/edit ">
-                                    <span data-feather="home"></span>
-                                    Modifica il profilo
-                                </a>
-                                <a class="nav-link" href="../myMessages/{{$user->id}}">
-                                    <span data-feather="file"></span>
-                                    Messaggi ricevuti
-                                </a>
-                                <a class="nav-link" href="../myReviews/{{$user->id}}">
-                                    <span data-feather="shopping-cart"></span>
-                                    Recensioni ricevute
-                                </a>
-                                <a class="nav-link" href="payment/make">
-                                    <span data-feather="users"></span>
-                                    Sponsorizzazione profilo
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <span data-feather="bar-chart-2"></span>
-                                    Statistiche
-                                </a>
-                                <button type="button" class="btn btn-danger" data-toggle="modal"
-                                    data-target="#exampleModalCenter{{ $user->id }}">
-                                    ELIMINA PROFILO
-                                </button>
-                            </div>
+                            <a class="nav-link active" href="#">
+                                <span data-feather="home"></span>
+                                Dashboard <span class="sr-only">(current)</span>
+                            </a>
+                            <a class="nav-link" href="../admin/doc/{{$user->id}}/edit ">
+                                <span data-feather="home"></span>
+                                Modifica il profilo
+                            </a>
+                            <a class="nav-link" href="../myMessages/{{$user->id}}">
+                                <span data-feather="file"></span>
+                                Messaggi ricevuti
+                            </a>
+                            <a class="nav-link" href="../myReviews/{{$user->id}}">
+                                <span data-feather="shopping-cart"></span>
+                                Recensioni ricevute
+                            </a>
+                            <a class="nav-link" href="payment/make">
+                                <span data-feather="users"></span>
+                                Sponsorizzazione profilo
+                            </a>
+                            <a class="nav-link" href="#">
+                                <span data-feather="bar-chart-2"></span>
+                                Statistiche
+                            </a>
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#exampleModalCenter{{ $user->id }}">
+                                ELIMINA PROFILO
+                            </button>
                         </div>
                     </div>
-                    <nav class="navbar navbar-light bg-light">
-                        <button class="navbar-toggler btn-navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="true" aria-label="Toggle navigation">
-                        <span class="far fa-eye"> Visualizza info</span>
-                        </button>
-                    </nav>
-                    <hr>
                 </div>
+                <nav class="navbar navbar-light bg-light">
+                    <button class="navbar-toggler btn-navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="true" aria-label="Toggle navigation">
+                    <span class="far fa-eye"> Visualizza info</span>
+                    </button>
+                </nav>
+                <hr>
+            </div>
 
             <main role="main" class="col-lg-10 col-md-12 ml-sm-auto px-6">
 
@@ -212,7 +211,7 @@
                                     {{ \Carbon\Carbon::parse($message->updated_at)->format('d/m/Y')}}
                                 </small>
                                 <small class="text-muted">alle
-                                    {{ \Carbon\Carbon::parse($message->updated_at)->format('H:i:s')}}
+                                    {{ \Carbon\Carbon::parse($message->updated_at)->format('H:i')}}
                                 </small>
 
                             @endif
@@ -255,7 +254,7 @@
                                     {{ \Carbon\Carbon::parse($review->created_at)->format('d/m/Y')}}
                                 </small>
                                 <small class="text-muted">alle
-                                    {{ \Carbon\Carbon::parse($review->created_at)->format('H:i:s')}}
+                                    {{ \Carbon\Carbon::parse($review->created_at)->format('H:i')}}
                                 </small>
 
                             @endif
@@ -264,6 +263,7 @@
 
                     {{-- card sponsorizzazione profilo --}}
                     <div class="card">
+
                         <nav class="secondary-nav text-center">
                             <div>
                                 <ul>
@@ -273,12 +273,58 @@
                                 </ul>
                             </div>
                         </nav>
+
                         <div class="card-body">
                             <div>
+
+                                @if(isset($sponsor))
+
+                                <div>
+                                    {{-- @foreach ($user->sponsors_user as $sponsor)
+                                        <small class="text-muted text-capitalize d-block">tipo sponsorizzazione: {{$sponsor}}</small>
+
+                                    @endforeach --}}
+
+                                        <small class="text-muted">Scade il
+                                            {{ \Carbon\Carbon::parse($sponsor['created_at'])->addHour($lastSponsor->duration)->format('d/m/y')}}
+                                            alle
+                                            {{ \Carbon\Carbon::parse($sponsor['created_at'])->addHour($lastSponsor->duration)->format('H:i')}}
+
+                                        </small>
+
+
+                                    </div>
+
+                                @else
+
+                                    <div>
+                                        <small class="text-muted">Nessuna sponsorizzazione trovata.</small>
+                                    </div>
+
+                                @endif
+
                             </div>
                         </div>
+
+                        @if (isset($sponsor))
+                            <div class="card-footer">
+                                <small class="text-muted">Ultima sponsorizzazione il
+                                    {{ \Carbon\Carbon::parse($sponsor['created_at'])->format('d/m/y')}}
+                                    alle
+                                    {{ \Carbon\Carbon::parse($sponsor['created_at'])->format('H:i')}}
+                                </small>
+                            </div>
+
+                        @else
+                            <div class="card-footer">
+                                <small class="text-muted">Nessuna sponsorizzazione trovata.</small>
+                            </div>
+                        @endif
+
                         <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
+                            <small class="text-muted">Ultima sponsorizzazione il
+                                {{-- {{ \Carbon\Carbon::parse($sponsor->created_at)->format('d/m/Y')}} --}}
+                            </small>
                         </div>
                     </div>
 

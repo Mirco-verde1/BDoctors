@@ -36,7 +36,7 @@ class User extends Authenticatable
     }
 
     public function sponsors() {
-        return $this->belongsToMany(Sponsor::class);
+        return $this->belongsToMany(Sponsor::class)->withTimestamps();
     }
 
     // getting details to get the picture into dashboard

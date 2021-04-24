@@ -12,6 +12,7 @@
     <div class="bar-chart-container">
       <canvas id="bar-chart" width="600"></canvas>
       <canvas id="bar1-chart"></canvas>
+      <canvas id="bar2-chart"></canvas>
     </div>
   </div>
 
@@ -22,8 +23,11 @@
       //get the bar chart canvas
       var cData = JSON.parse(`<?php echo $chart_data; ?>`);
       var cDataM = JSON.parse(`<?php echo $chart1_data; ?>`);
+      var cDataV = JSON.parse(`<?php echo $chart2_data; ?>`);
+      console.log(cdataV);
       var ctx = $("#bar-chart");
       var ctx1 = $("#bar1-chart");
+      var ctx2 = $("#bar2-chart");
       /* console.log(cDataM); */
       //bar chart data
       var data = {
@@ -126,6 +130,57 @@
         }
       };
 
+      // DA QUA INIZIANO I VOTI!!
+
+      var dataV = {
+        labels: cDataV.label,
+        datasets: [
+          {
+            label: "Recensioni",
+            data: cDataV.data,
+            backgroundColor: [
+              "#DEB887",
+              "#A9A9A9",
+              "#DC143C",
+              "#F4A460",
+              "#2E8B57",
+              "#1D7A46",
+              "#CDA776",
+            ],
+            borderColor: [
+              "#CDA776",
+              "#989898",
+              "#CB252B",
+              "#E39371",
+              "#1D7A46",
+              "#F4A460",
+              "#CDA776",
+            ],
+            borderWidth: [1, 1, 1, 1, 1,1,1]
+          }
+        ]
+      };
+
+      //options
+      var optionsV = {
+        responsive: false,
+        title: {
+          display: false,
+          position: "top",
+          text: "Last Week Registered Users -  Day Wise Count",
+          fontSize: 18,
+          fontColor: "#111"
+        },
+        legend: {
+          display: false,
+          position: "bottom",
+          labels: {
+            fontColor: "#333",
+            fontSize: 16
+          }
+        }
+      };
+
       //create bar Chart class object
       var chart1 = new Chart(ctx, {
         type: "bar",
@@ -136,6 +191,11 @@
           type: "pie",
           data: dataM,
           options: optionsM
+      });
+      var chart3 = new Chart(ctx2, {
+          type: "pie",
+          data: dataV,
+          options: optionsV
       });
 
   });

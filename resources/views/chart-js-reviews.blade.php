@@ -7,12 +7,13 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
+
 <body>
+    @include('layouts.guest\partials.navbar')
   <div class="chart-container">
     <div class="bar-chart-container" style="display: flex" >
      <div> <canvas id="bar-chart" width="700" height="400"></canvas> </div>
       <canvas id="bar1-chart" width="700" height="400"></canvas>
-      <canvas id="bar2-chart"></canvas>
     </div>
     <a href="{{route('dashboard')}}"><button>Torna alla Dashboard</button></a>
   </div>
@@ -59,7 +60,7 @@
 
       //options
       var options = {
-        responsive: false,
+        responsive: true,
         title: {
           display: true,
           position: "top",
@@ -110,7 +111,7 @@
 
       //options
       var optionsM = {
-        responsive: false,
+        responsive: true,
         title: {
           display: true,
           position: "top",

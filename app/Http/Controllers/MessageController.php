@@ -52,7 +52,8 @@ class MessageController extends Controller
 
         Message::create($data);
 
-        return redirect()->route('public.homepage');
+        return redirect()->route('show.doctor',$id);
+
 
     }
 

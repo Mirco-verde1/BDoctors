@@ -1974,6 +1974,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2000,7 +2036,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     /*filename: function(element) {
-        return (this.imgError) 
+        return (this.imgError)
     ? `storage/${element.detail.pic}` : element.detail.pic;
     },*/
     imgErr: function imgErr() {
@@ -2146,6 +2182,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
 //
 //
 //
@@ -38244,10 +38281,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container margin-top-container" }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-3 col-md-8" }, [
-        _c("div", { staticClass: "box-general" }, [
-          _c("div", { staticClass: "profile" }, [
-            _c("div", { staticClass: "filters" }, [
+      _c("div", { staticClass: "col-lg-3" }, [
+        _c("div", { staticClass: "box-general " }, [
+          _c("div", { staticClass: "profile profile-filters" }, [
+            _c("div", { staticClass: "filters " }, [
               _c("b", [_vm._v("Filtra per:")]),
               _vm._v(" "),
               _c("hr"),
@@ -38409,137 +38446,319 @@ var render = function() {
                     )
                   : _vm._e()
               ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "container-fluid filters-navbar" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "collapse",
+                  attrs: { id: "navbarToggleExternalContent" }
+                },
+                [
+                  _c("div", { staticClass: " p-4 row" }, [
+                    _c("div", { staticClass: "col-sm-12" }, [
+                      _c("div", {}, [
+                        _c("b", [_vm._v("Filtra per:")]),
+                        _vm._v(" "),
+                        _c("hr"),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.checkedVote,
+                                  expression: "checkedVote"
+                                }
+                              ],
+                              attrs: { type: "checkbox" },
+                              domProps: {
+                                checked: Array.isArray(_vm.checkedVote)
+                                  ? _vm._i(_vm.checkedVote, null) > -1
+                                  : _vm.checkedVote
+                              },
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$a = _vm.checkedVote,
+                                      $$el = $event.target,
+                                      $$c = $$el.checked ? true : false
+                                    if (Array.isArray($$a)) {
+                                      var $$v = null,
+                                        $$i = _vm._i($$a, $$v)
+                                      if ($$el.checked) {
+                                        $$i < 0 &&
+                                          (_vm.checkedVote = $$a.concat([$$v]))
+                                      } else {
+                                        $$i > -1 &&
+                                          (_vm.checkedVote = $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1)))
+                                      }
+                                    } else {
+                                      _vm.checkedVote = $$c
+                                    }
+                                  },
+                                  function($event) {
+                                    return _vm.restoreResults(_vm.checkedVote)
+                                  }
+                                ]
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("small", [_vm._v("Media voti")]),
+                            _vm._v(" "),
+                            _vm._l(5, function(i) {
+                              return _vm.checkedVote
+                                ? _c("div", [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.checkedVoteValue,
+                                          expression: "checkedVoteValue"
+                                        }
+                                      ],
+                                      attrs: { type: "radio" },
+                                      domProps: {
+                                        value: i,
+                                        checked: _vm._q(_vm.checkedVoteValue, i)
+                                      },
+                                      on: {
+                                        change: [
+                                          function($event) {
+                                            _vm.checkedVoteValue = i
+                                          },
+                                          function($event) {
+                                            return _vm.filterByVote()
+                                          }
+                                        ]
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "span",
+                                      _vm._l(i, function(number) {
+                                        return _c("i", {
+                                          staticClass: "fas fa-star"
+                                        })
+                                      }),
+                                      0
+                                    )
+                                  ])
+                                : _vm._e()
+                            })
+                          ],
+                          2
+                        ),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.checkedReview,
+                                expression: "checkedReview"
+                              }
+                            ],
+                            attrs: { type: "checkbox" },
+                            domProps: {
+                              checked: Array.isArray(_vm.checkedReview)
+                                ? _vm._i(_vm.checkedReview, null) > -1
+                                : _vm.checkedReview
+                            },
+                            on: {
+                              change: [
+                                function($event) {
+                                  var $$a = _vm.checkedReview,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = null,
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        (_vm.checkedReview = $$a.concat([$$v]))
+                                    } else {
+                                      $$i > -1 &&
+                                        (_vm.checkedReview = $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1)))
+                                    }
+                                  } else {
+                                    _vm.checkedReview = $$c
+                                  }
+                                },
+                                function($event) {
+                                  return _vm.restoreResults(_vm.checkedReview)
+                                }
+                              ]
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("small", [_vm._v("Numero di recensioni")]),
+                          _vm._v(" "),
+                          _vm.checkedReview
+                            ? _c(
+                                "div",
+                                {
+                                  on: {
+                                    change: function($event) {
+                                      return _vm.filterByReviews()
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("input", { attrs: { type: "radio" } }),
+                                  _vm._v(" "),
+                                  _c("i", { staticClass: "far fa-edit" }),
+                                  _vm._v(" "),
+                                  _c("span", [_vm._v("In ordine decrescente")])
+                                ]
+                              )
+                            : _vm._e()
+                        ])
+                      ])
+                    ])
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(0),
+              _vm._v(" "),
+              _c("hr")
             ])
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-lg-9 col-md-8" }, [
-        _c("div", { staticClass: "box-general" }, [
-          _c("div", {}, [
-            _vm.filteredResults.length === 0
-              ? _c("div", [
-                  _c("h3", [
-                    _vm._v("La tua ricerca non ha prodotto risultati.")
+      _c(
+        "div",
+        { staticClass: "col-lg-9" },
+        [
+          _vm.filteredResults.length === 0
+            ? _c("div", [
+                _c("h3", [_vm._v("La tua ricerca non ha prodotto risultati.")]),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm._l(_vm.filteredResults, function(doctor, index) {
+            return _c("div", { key: index, staticClass: "strip-list" }, [
+              _c(
+                "div",
+                { staticClass: "col-md-3 col-sm-4 align-self-center" },
+                [
+                  _c("div", {}, [
+                    _c("b", [_vm._v("Recensioni:")]),
+                    _vm._v(" "),
+                    _c("span", [_vm._v(_vm._s(doctor.reviews.length))])
                   ]),
                   _vm._v(" "),
-                  _vm._m(0)
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _c(
-              "div",
-              _vm._l(_vm.filteredResults, function(doctor, index) {
-                return _c("div", { key: index, staticClass: "strip-list" }, [
                   _c(
                     "div",
-                    {
-                      staticClass: "column col-md-3 col-sm-4 align-self-center"
-                    },
                     [
-                      _c("div", {}, [
-                        _c("b", [_vm._v("Recensioni:")]),
-                        _vm._v(" "),
-                        _c("span", [_vm._v(_vm._s(doctor.reviews.length))])
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: " " },
-                        [
-                          _c("b", [_vm._v("Media Voto:")]),
-                          _vm._v(" "),
-                          _c("br"),
-                          _vm._v(" "),
-                          _vm._l(_vm.getVotesAverage(doctor), function(vote) {
-                            return _vm.getVotesAverage(doctor)
-                              ? _c("i", { staticClass: "fas fa-star" })
-                              : _vm._e()
-                          }),
-                          _vm._l(5 - _vm.getVotesAverage(doctor), function(
-                            vote
-                          ) {
-                            return _c("i", { staticClass: "far fa-star" })
-                          })
-                        ],
-                        2
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "col-md-3 col-sm-4 column align-self-center"
-                    },
-                    [
-                      _c("b", [_vm._v("Specializzazioni:")]),
-                      _vm._v(" "),
-                      _vm._l(doctor.departments, function(obj, index) {
-                        return _c("span", { key: index }, [
-                          _vm._v(
-                            "\n                                    " +
-                              _vm._s(obj.type) +
-                              _vm._s(
-                                index !== doctor.departments.length - 1
-                                  ? ","
-                                  : ""
-                              ) +
-                              "\n                                "
-                          )
-                        ])
+                      _vm._l(_vm.getVotesAverage(doctor), function(vote) {
+                        return _vm.getVotesAverage(doctor)
+                          ? _c("i", { staticClass: "fas fa-star" })
+                          : _vm._e()
+                      }),
+                      _vm._l(5 - _vm.getVotesAverage(doctor), function(vote) {
+                        return _c("i", { staticClass: "far fa-star" })
                       })
                     ],
                     2
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-md-3 col-sm-4 align-self-center" },
-                    [
-                      _c("b", [_vm._v("Nome:")]),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("a", { attrs: { href: "doctor/" + doctor.id } }, [
-                        _vm._v(
-                          _vm._s(doctor.name) + " " + _vm._s(doctor.lastname)
-                        )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: " doctor-pic-advance-container" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "doctor-pic",
-                        attrs: { href: "doctor/" + doctor.id }
-                      },
-                      [
-                        _c("img", {
-                          staticClass: "doctor-pic",
-                          attrs: { src: doctor.detail.pic, alt: "profile pic" },
-                          on: {
-                            error: function($event) {
-                              return _vm.imgErr()
-                            }
-                          }
-                        })
-                      ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "col-md-3 col-sm-4 align-self-center department"
+                },
+                _vm._l(doctor.departments, function(obj, index) {
+                  return _c("span", { key: index }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(obj.type) +
+                        _vm._s(
+                          index !== doctor.departments.length - 1 ? "," : ""
+                        ) +
+                        "\n                    "
                     )
                   ])
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-md-3 col-sm-2 align-self-center" },
+                [
+                  _c("span", [
+                    _vm._v(_vm._s(doctor.name) + " " + _vm._s(doctor.lastname))
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "doctor-pic-dashboard-container" }, [
+                _c("a", { attrs: { href: "doctor/" + doctor.id } }, [
+                  _c("img", {
+                    staticClass: "doctor-pic-dashboard",
+                    attrs: {
+                      src: "storage/" + doctor.detail.pic,
+                      alt: "profile pic"
+                    },
+                    on: {
+                      error: function($event) {
+                        return _vm.imgErr()
+                      }
+                    }
+                  })
                 ])
-              }),
-              0
-            )
-          ])
-        ])
-      ])
+              ])
+            ])
+          })
+        ],
+        2
+      )
     ])
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("nav", { staticClass: "navbar navbar-light bg-light" }, [
+      _c(
+        "button",
+        {
+          staticClass: "navbar-toggler btn-navbar-toggler",
+          attrs: {
+            type: "button",
+            "data-toggle": "collapse",
+            "data-target": "#navbarToggleExternalContent",
+            "aria-controls": "navbarToggleExternalContent",
+            "aria-expanded": "true",
+            "aria-label": "Toggle navigation"
+          }
+        },
+        [
+          _c("span", [_vm._v("Filtra ")]),
+          _c("i", { staticClass: "fas fa-sliders-h" })
+        ]
+      )
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -38646,19 +38865,29 @@ var render = function() {
                           "div",
                           {
                             staticClass:
-                              "card col-md-4 p-2 bd-highlight doctor-card",
+                              "card col-md-4 p-5 bd-highlight doctor-card",
                             class: i === 1 ? "clearfix d-none d-md-block" : ""
                           },
                           [
-                            _c("div", { staticClass: "img-container" }, [
-                              _c("img", {
-                                staticClass: "card-img-top",
-                                attrs: {
-                                  src: "storage/" + doctor.detail.pic,
-                                  alt: "Card image cap"
-                                }
-                              })
-                            ]),
+                            _c(
+                              "div",
+                              { staticClass: "doctor-pic-dashboard-container" },
+                              [
+                                _c(
+                                  "a",
+                                  { attrs: { href: "doctor/" + doctor.id } },
+                                  [
+                                    _c("img", {
+                                      staticClass: "doctor-pic-dashboard",
+                                      attrs: {
+                                        src: "storage/" + doctor.detail.pic,
+                                        alt: "Card image cap"
+                                      }
+                                    })
+                                  ]
+                                )
+                              ]
+                            ),
                             _vm._v(" "),
                             _c(
                               "div",
@@ -38672,16 +38901,12 @@ var render = function() {
                                   )
                                 ]),
                                 _vm._v(" "),
-                                _c("h5", { staticClass: "card-text" }, [
-                                  _vm._v("Specializzazioni:")
-                                ]),
-                                _vm._v(" "),
                                 _vm._l(doctor.departments, function(
                                   department
                                 ) {
                                   return _c(
                                     "h6",
-                                    { staticClass: "card-text" },
+                                    { staticClass: "card-text department" },
                                     [_vm._v(_vm._s(department.type))]
                                   )
                                 }),

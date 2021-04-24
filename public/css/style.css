@@ -16413,26 +16413,21 @@ readers do not read off random characters that represent icons */
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
 }
 
-.doctor-pic-advance-container {
-  height: 200px;
-  border-radius: 50%;
-  border: 3px solid #1DB487;
-  overflow: hidden;
-}
-.doctor-pic-advance-container .doctor-pic {
-  width: 100%;
+.filters-navbar {
+  display: none;
 }
 
-@media screen and (max-width: 993px) {
-  .doctor-pic-advance-container {
-    height: 0;
-    border-radius: 0;
-    border: 0;
+@media screen and (max-width: 768px) {
+  .filters {
     display: none;
   }
 
-  .doctor-pic {
-    display: none;
+  .filters-navbar {
+    display: block;
+  }
+
+  .profile-filters {
+    padding: 0 !important;
   }
 }
 .carousel {
@@ -16469,11 +16464,6 @@ readers do not read off random characters that represent icons */
   margin-left: auto;
   margin-right: auto;
 }
-.img-container .card-img-top {
-  border-radius: 50%;
-  border: 3px solid #1DB487;
-  height: 300px;
-}
 
 .card-body {
   text-align: center;
@@ -16486,6 +16476,8 @@ readers do not read off random characters that represent icons */
 }
 
 .doctor-pic-dashboard-container {
+  width: 100%;
+  aspect-ratio: 50/50;
   border-radius: 50%;
   border: 3px solid #1DB487;
   overflow: hidden;
@@ -16497,7 +16489,8 @@ readers do not read off random characters that represent icons */
 .btn-navbar-toggler {
   background-color: #1DB487;
 }
-.btn-navbar-toggler span {
+.btn-navbar-toggler span,
+.btn-navbar-toggler i {
   color: white;
 }
 
@@ -16597,7 +16590,7 @@ readers do not read off random characters that represent icons */
 .box-general,
 .doctor-pic-show-container,
 .doctor-pic-dashboard-container {
-  box-shadow: 0 0 0 rgba(45, 62, 79, 0.35), -1px 2px 20px 6px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 0 0 rgba(45, 62, 79, 0.35), 0px 0px 15px 2px rgba(0, 0, 0, 0.22);
 }
 
 .profile {
@@ -16618,10 +16611,6 @@ readers do not read off random characters that represent icons */
 }
 .profile .info {
   text-align: left;
-}
-.profile .info .department {
-  color: #1DB487;
-  font-weight: bold;
 }
 .profile .info .votes-form {
   width: 80px;
@@ -16655,6 +16644,11 @@ readers do not read off random characters that represent icons */
 .profile .curriculum h2 {
   text-align: center;
   margin-bottom: 20px;
+}
+
+.department {
+  color: #1DB487;
+  font-weight: bold;
 }
 
 .container-review {

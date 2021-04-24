@@ -162,35 +162,23 @@ background-color: $body-bg;
     box-shadow: 0 0 15px 0 rgb(0 0 0 / 5%);
 }
 
-.doctor-pic-advance-container {
-
-    height: 200px;
-    border-radius: 50%;
-    border: 3px solid $green-logo;
-    overflow: hidden;
-
-    .doctor-pic {
-
-       width: 100%;
-        // align-self: flex-end;
-    }
-
+.filters-navbar {
+    display: none;
 }
 
-@media screen and (max-width: 993px) {
-    .doctor-pic-advance-container {
-        height: 0;
-        border-radius: 0;
-        border: 0;
+@media screen and (max-width: 768px) {
+    .filters {
         display: none;
     }
-
-    .doctor-pic {
-       display: none;
+    .filters-navbar {
+        display: block;
+    }
+    .profile-filters {
+        padding: 0 !important;
     }
 
-}
 
+}
 
 
 // carousel doctor
@@ -225,12 +213,6 @@ background-color: $body-bg;
 .img-container{
     margin-left: auto;
     margin-right: auto;
-
-    .card-img-top{
-        border-radius: 50%;
-        border: 3px solid $green-logo;
-        height: 300px;
-    }
 }
 .card-body{
     text-align: center;
@@ -247,6 +229,8 @@ background-color: $body-bg;
 }
 
 .doctor-pic-dashboard-container {
+    width: 100%;
+    aspect-ratio: 50 / 50;
     border-radius: 50%;
     border: 3px solid $green-logo;
     overflow: hidden;
@@ -260,9 +244,11 @@ background-color: $body-bg;
 .btn-navbar-toggler {
     background-color: $green-logo;
 
-    span {
+    span,
+    i {
         color: white;
     }
+
 }
 
 
@@ -382,7 +368,7 @@ background-color: $body-bg;
 .doctor-pic-dashboard-container {
 
     box-shadow: 0 0 0 rgb(45 62 79 / 35%),
-    -1px 2px 20px 6px rgb(0 0 0 / 22%);
+    0px 0px 15px 2px rgb(0 0 0 / 22%);
 }
 
 .profile {
@@ -400,18 +386,12 @@ background-color: $body-bg;
         overflow: hidden;
 
         .doctor-pic-show {
-
             width: 100%;
         }
     }
 
     .info {
         text-align: left;
-
-        .department {
-            color: $green-logo;
-            font-weight: bold;
-        }
 
         .votes-form  {
             width: 80px;
@@ -455,6 +435,11 @@ background-color: $body-bg;
             margin-bottom: 20px;
         }
     }
+}
+
+.department {
+    color: $green-logo;
+    font-weight: bold;
 }
 
 .container-review{

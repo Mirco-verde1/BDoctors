@@ -34,17 +34,18 @@
 
                     <div class="row container d-flex flex-row p-2 flex-wrap">
 
-                        <div class="card col-md-4 p-2 bd-highlight doctor-card"
+                        <div class="card col-md-4 p-5 bd-highlight doctor-card"
                             :class="(i === 1) ? 'clearfix d-none d-md-block' : ''"
                             v-for="doctor in carouselLoop(i, sponsored)" v-if="doctor.sponsors.length > 0">
 
-                            <div class="img-container">
-                                <img class="card-img-top" :src="`storage/${doctor.detail.pic}`" alt="Card image cap">
+                            <div class="doctor-pic-dashboard-container">
+                                <a :href="`doctor/${doctor.id}`">
+                                    <img class="doctor-pic-dashboard" :src="`storage/${doctor.detail.pic}`" alt="Card image cap">
+                                </a>
                             </div>
                             <div class="card-body">
                                 <h4 class="card-title">{{doctor.name}} {{doctor.lastname}}</h4>
-                                <h5 class="card-text">Specializzazioni:</h5>
-                                <h6 class="card-text" v-for="department in doctor.departments">{{department.type}}</h6>
+                                <h6 class="card-text department" v-for="department in doctor.departments">{{department.type}}</h6>
                                 <a :href="`doctor/${doctor.id}`"
                                     class="query-submit btn btn-outline-success my-2 my-sm-0 btn-register">Info</a>
                             </div>
@@ -118,7 +119,7 @@
                             }
                         });
                     }
-                });                                      
+                });
             });
         },
 

@@ -106,7 +106,11 @@
                         <label for="departments"><b>Lista specializzazioni disponibili</b></label>
                         <select class="form-control h-25" name="departments[]" id="departments" multiple>
                             @foreach($departments as $department)
-                                <option value="{{$department->id}}">{{$department->type}}</option>
+                                @foreach($user->departments as $userDepartment)
+                                    @if($userDepartment->id !== $department->id)
+                                        <option value="{{$department->id}}">{{$department->type}}</option>
+                                    @endif
+                                @endforeach
                             @endforeach
                         </select>
                         </div>

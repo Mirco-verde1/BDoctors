@@ -210,7 +210,7 @@
 
                             /* Verifichiamo che il medico abbia una sponsorizzazione in corso
                             per visualizzarlo all'inizio dei risultati */
-                            if(today <= (Date.parse(sponsor.created_at) + (sponsor.duration * 3600000))) {
+                            if(today <= (Date.parse(sponsor.pivot['created_at']) + (sponsor.duration * 3600000))) {
                                 sponsored.push(elem);
                             }
                         });

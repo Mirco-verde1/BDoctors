@@ -2068,7 +2068,7 @@ __webpack_require__.r(__webpack_exports__);
           elem.sponsors.forEach(function (sponsor) {
             /* Verifichiamo che il medico abbia una sponsorizzazione in corso
             per visualizzarlo all'inizio dei risultati */
-            if (today <= Date.parse(sponsor.created_at) + sponsor.duration * 3600000) {
+            if (today <= Date.parse(sponsor.pivot['created_at']) + sponsor.duration * 3600000) {
               sponsored.push(elem);
             }
           });
@@ -2288,8 +2288,9 @@ __webpack_require__.r(__webpack_exports__);
       self.results.forEach(function (elem) {
         if (elem.sponsors.length > 0) {
           elem.sponsors.forEach(function (sponsor) {
-            // Verifichiamo che il medico abbia una sponsorizzazione in corso //
-            if (today <= Date.parse(sponsor.created_at) + sponsor.duration * 3600000) {
+            console.log(sponsor.pivot.created_at); // Verifichiamo che il medico abbia una sponsorizzazione in corso //
+
+            if (today <= Date.parse(sponsor.pivot['created_at']) + sponsor.duration * 3600000) {
               self.sponsored.push(elem);
             }
           });
@@ -38846,22 +38847,28 @@ var render = function() {
       _c("div", { staticClass: "carousel-inner", attrs: { role: "listbox" } }, [
         _c(
           "div",
-          _vm._l(Math.ceil(_vm.sponsored.length / _vm.cardsPerSlide), function(
-            i,
-            index
-          ) {
-            return _c(
-              "div",
-              { staticClass: "carousel-item", class: i === 1 ? "active" : "" },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass: "row container d-flex flex-row p-2 flex-wrap"
-                  },
-                  _vm._l(_vm.carouselLoop(i, _vm.sponsored), function(doctor) {
-                    return doctor.sponsors.length > 0
-                      ? _c(
+          _vm._l(
+            Math.ceil(_vm.sponsored.length / _vm.cardsPerSlide) === 0
+              ? 1
+              : Math.ceil(_vm.sponsored.length / _vm.cardsPerSlide),
+            function(i, index) {
+              return _c(
+                "div",
+                {
+                  staticClass: "carousel-item",
+                  class: i === 1 ? "active" : ""
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "row container d-flex flex-row p-2 flex-wrap"
+                    },
+                    [
+                      _vm._l(_vm.carouselLoop(i, _vm.sponsored), function(
+                        doctor
+                      ) {
+                        return _c(
                           "div",
                           {
                             staticClass:
@@ -38925,20 +38932,27 @@ var render = function() {
                             )
                           ]
                         )
-                      : _c(
-                          "div",
-                          {
-                            staticClass:
-                              "card col-md-4 p-2 bd-highlight doctor-card"
-                          },
-                          [_vm._m(1, true), _vm._v(" "), _vm._m(2, true)]
-                        )
-                  }),
-                  0
-                )
-              ]
-            )
-          }),
+                      }),
+                      _vm._v(" "),
+                      _vm._l(_vm.cardsPerSlide, function(n) {
+                        return _vm.sponsored.length === 0
+                          ? _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "card col-md-4 p-2 bd-highlight doctor-card"
+                              },
+                              [_vm._m(1, true), _vm._v(" "), _vm._m(2, true)]
+                            )
+                          : _vm._e()
+                      })
+                    ],
+                    2
+                  )
+                ]
+              )
+            }
+          ),
           0
         )
       ])

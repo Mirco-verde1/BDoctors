@@ -30,13 +30,13 @@
             <div>
 
                 <div class="carousel-item" :class="(i === 1) ? 'active' : ''"
-                    v-for="i, index in Math.ceil(sponsored.length / cardsPerSlide)">
+                    v-for="i, index in (Math.ceil(sponsored.length / cardsPerSlide) === 0) ? 1 : Math.ceil(sponsored.length / cardsPerSlide)">
 
                     <div class="row container d-flex flex-row p-2 flex-wrap">
 
                         <div class="card col-md-4 p-5 bd-highlight doctor-card"
                             :class="(i === 1) ? 'clearfix d-none d-md-block' : ''"
-                            v-for="doctor in carouselLoop(i, sponsored)" v-if="doctor.sponsors.length > 0">
+                            v-for="doctor in carouselLoop(i, sponsored)">
 
                             <div class="doctor-pic-dashboard-container">
                                 <a :href="`doctor/${doctor.id}`">
@@ -52,7 +52,7 @@
 
                         </div>
 
-                        <div class="card col-md-4 p-2 bd-highlight doctor-card" v-else>
+                        <div class="card col-md-4 p-2 bd-highlight doctor-card" v-if="sponsored.length === 0" v-for="n in cardsPerSlide">
 
                             <div class="img-container">
                                 <img class="card-img-top"
@@ -112,9 +112,9 @@
                 self.results.forEach(elem => {
                     if(elem.sponsors.length > 0) {
                         elem.sponsors.forEach(sponsor => {
-
+                            console.log(sponsor.pivot.created_at)
                             // Verifichiamo che il medico abbia una sponsorizzazione in corso //
-                            if(today <= (Date.parse(sponsor.created_at) + (sponsor.duration * 3600000))) {
+                            if(today <= (Date.parse(sponsor.pivot['created_at']) + (sponsor.duration * 3600000))) {
                                 self.sponsored.push(elem);
                             }
                         });

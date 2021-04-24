@@ -24,7 +24,7 @@ class VoteController extends Controller
         $user = User::where('id', $id)->first();
         $user->votes()->attach($request['votes']);
 
-        return redirect()->route('public.homepage');
+        return redirect()->route('show.doctor',$id);
     }
 
 }

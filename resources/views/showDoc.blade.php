@@ -112,7 +112,7 @@
                                                 @endforeach
                                             </select>
 
-                                            <input class="btn btn-success votes-input offset-md-1 col-md-2"
+                                             <input class="btn btn-success votes-input offset-md-1 col-md-2"
                                                 type="submit" value="Invia">
                                         </form>
                                     </div>

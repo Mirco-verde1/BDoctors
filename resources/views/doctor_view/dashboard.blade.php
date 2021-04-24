@@ -277,46 +277,47 @@
                         <div class="card-body">
                             <div>
 
-                            @if(isset($sponsor))
-
-                                <div>
-                                    {{-- @foreach ($user->sponsors as $sponsor) --}}
+                                @if(isset($sponsor))
 
 
-                                    {{-- @endforeach --}}
+                                    <div>
 
-                                    <small class="text-muted">Scade il
-                                        {{ \Carbon\Carbon::parse($sponsor['created_at'])->addHour($lastSponsor->duration)->format('d/m/y')}}
-                                        alle
-                                        {{ \Carbon\Carbon::parse($sponsor['created_at'])->addHour($lastSponsor->duration)->format('H:i')}}
+                                        <small class="text-muted">Scade il
+                                            {{ \Carbon\Carbon::parse($sponsor['created_at'])->addHour($lastSponsor->duration)->format('d/m/y')}}
+                                            alle
+                                            {{ \Carbon\Carbon::parse($sponsor['created_at'])->addHour($lastSponsor->duration)->format('H:i')}}
 
-                                    </small>
-
-
-                                </div>
-
-                            @else
-
-                                <div>
-                                    <small class="text-muted">Nessuna sponsorizzazione trovata.</small>
-                                </div>
-
-                            @endif
+                                        </small>
 
 
+                                    </div>
 
+                                @else
 
+                                    <div>
+                                        <small class="text-muted">Nessuna sponsorizzazione trovata.</small>
+                                    </div>
+
+                                @endif
 
                             </div>
                         </div>
 
-                        <div class="card-footer">
-                            <small class="text-muted">Ultima sponsorizzazione il
-                                {{ \Carbon\Carbon::parse($sponsor['created_at'])->format('d/m/y')}}
-                                alle
-                                {{ \Carbon\Carbon::parse($sponsor['created_at'])->format('H:i')}}
-                            </small>
-                        </div>
+                        @if (isset($sponsor))
+                            <div class="card-footer">
+                                <small class="text-muted">Ultima sponsorizzazione il
+                                    {{ \Carbon\Carbon::parse($sponsor['created_at'])->format('d/m/y')}}
+                                    alle
+                                    {{ \Carbon\Carbon::parse($sponsor['created_at'])->format('H:i')}}
+                                </small>
+                            </div>
+
+                        @else
+                            <div class="card-footer">
+                                <small class="text-muted">Nessuna sponsorizzazione trovata.</small>
+                            </div>
+                        @endif
+
                     </div>
 
                 </div>

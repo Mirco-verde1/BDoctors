@@ -31,8 +31,9 @@ class HomeController extends Controller
         $user = Auth::user();
         $review = Auth::user()->reviews()->orderBy('id', 'desc')->first();
         $message = Auth::user()->messages()->orderBy('id', 'desc')->first();
+        $sponsor = Auth::user()->sponsors()->orderBy('id', 'desc')->first();
 
-        if (Auth::user()->sponsors()) {
+        if ($sponsor != null ) {
             $sponsor = Auth::user()->sponsors()->orderBy('id', 'desc')->first()->pivot;
         }
 

@@ -319,7 +319,7 @@
                     <div>
                         <ul class="justify-content-center">
                             <li>
-                                <h1 class="active-nav">Lascia una recensione</h1>
+                                <b class="active-nav">Lascia una recensione</b>
                             </li>
                         </ul>
                     </div>

@@ -20,7 +20,7 @@ class DepartmentsSeeder extends Seeder
             'Dietologia',
             'Endocrinologia',
             'Fisioterapia',
-            'Ginecologia',
+            'Ginecologipa',
             'Infettivologia',
             'Medicina dello Sport',
             'Medico Legale',

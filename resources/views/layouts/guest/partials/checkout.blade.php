@@ -33,9 +33,14 @@
               </div>
               @endforeach
             </div>
-    <div id="dropin-container"></div>
+    <div id="dropin-container">
+
+    </div>
     {{-- <input class="btn-check" type="radio" name="sponsor" value="{{$sponsor->id}}"> --}}
-    <button class="btn btn-success" id="submit-button">Completa il tuo pagamento</button>
+    <div>
+        <button class="btn btn-success button-pay" id="submit-button">Completa il tuo pagamento</button>
+    </div>
+
 </form>
     </div>
 </div>

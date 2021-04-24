@@ -279,8 +279,11 @@
 
                                 @if(isset($sponsor))
 
+                                <div>
+                                    {{-- @foreach ($user->sponsors_user as $sponsor)
+                                        <small class="text-muted text-capitalize d-block">tipo sponsorizzazione: {{$sponsor}}</small>
 
-                                    <div>
+                                    @endforeach --}}
 
                                         <small class="text-muted">Scade il
                                             {{ \Carbon\Carbon::parse($sponsor['created_at'])->addHour($lastSponsor->duration)->format('d/m/y')}}
@@ -318,6 +321,11 @@
                             </div>
                         @endif
 
+                        <div class="card-footer">
+                            <small class="text-muted">Ultima sponsorizzazione il
+                                {{-- {{ \Carbon\Carbon::parse($sponsor->created_at)->format('d/m/Y')}} --}}
+                            </small>
+                        </div>
                     </div>
 
                 </div>

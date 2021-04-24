@@ -220,7 +220,7 @@ background-color: $body-bg;
 .btn-floating-next{
     position: absolute;
     top:200px;
-    left:1175px;
+    left:1170px;
 }
 .img-container{
     margin-left: auto;
@@ -236,6 +236,8 @@ background-color: $body-bg;
     text-align: center;
 }
 
+
+
 // Dashboard dottore ---------------------------------------------------
 
 .feather {
@@ -245,18 +247,24 @@ background-color: $body-bg;
 }
 
 .doctor-pic-dashboard-container {
-    height: 250px;
-
     border-radius: 50%;
     border: 3px solid $green-logo;
     overflow: hidden;
 
-    .doctor-pic {
+    .doctor-pic-dashboard {
         width: 100%;
-        object-fit: contain;
-        // align-self: flex-end;
+
     }
 }
+
+.btn-navbar-toggler {
+    background-color: $green-logo;
+
+    span {
+        color: white;
+    }
+}
+
 
 /*
  * Sidebar
@@ -327,6 +335,8 @@ background-color: $body-bg;
 .nav-link:hover {
     font-weight: bold;
 }
+
+
 
 // show dottore ---------------------------------------------------
 
@@ -493,7 +503,43 @@ background-color: $body-bg;
     border-color: #2d995b;
   }
 }
+// style checkout
 
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .style-radio input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .style-radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+
+  .style-radio:hover input ~ .checkmark {
+    background-color: #1FB488;
+  }
+
+  .style-radio input:checked ~ .checkmark {
+    background-color:#2FA360;
+    color: #fff;
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .style-radio input:checked ~ .checkmark:after {
+    display: block;
+  }
 
 // style messaggio di errore
 
@@ -524,14 +570,21 @@ background-color: $body-bg;
 
 @media screen and (max-width: 768px) {
 
+    .navbar-toggler-button {
+        background-color: $green-logo;
+        span {
+            color: white;
+        }
+    }
+
     .navbar-sidebar {
         display: block;
 
         .links {
 
-                a {
-                    color: black;
-                }
+            a {
+                color: black;
+            }
         }
     }
 
@@ -543,8 +596,35 @@ background-color: $body-bg;
         }
     }
 
+}
+@media screen and (min-width: 768px) and (max-width: 992px ) {
+    .container-fluid {
 
+        .row {
 
+            .sidebar {
+                display: none !important;
+            }
+        }
+    }
+
+    .navbar-toggler-button {
+        background-color: $green-logo;
+        span {
+            color: white;
+        }
+    }
+
+    .navbar-sidebar {
+        display: block;
+
+        .links {
+
+            a {
+                color: black;
+            }
+        }
+    }
 }
 
 
@@ -562,41 +642,44 @@ background-color: $body-bg;
     }
 }
 
-
 // style checkout
 
 .style-radio input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
-  }
+}
 
 
-  .style-radio:hover input ~ .checkmark {
+.style-radio:hover input~.checkmark {
     background-color: #1FB488;
-  }
+}
 
-  .style-radio input:checked ~ .checkmark {
-    background-color:#2FA360;
+.style-radio input:checked~.checkmark {
+    background-color: #2FA360;
     color: #fff;
-  }
+}
 
-  .checkmark:after {
+.checkmark:after {
     content: "";
     position: absolute;
     display: none;
-  }
+}
 
-  .style-radio input:checked ~ .checkmark:after {
+.style-radio input:checked~.checkmark:after {
     display: block;
-  }
+}
 
-  .title-checkout{
+.title-checkout {
     font-weight: bold;
     text-align: center;
     color: #1BB386;
     text-shadow: 2px 2px #0c0c0c;
-    font-size:50px;
+    font-size: 50px;
     margin-top: 100px;
-    margin-bottom:100px;
+    margin-bottom: 100px;
 }
+
+
+
+

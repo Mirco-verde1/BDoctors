@@ -16285,6 +16285,20 @@ readers do not read off random characters that represent icons */
   box-shadow: inset 7px 10px 12px #f0f0f0;
 }
 
+::-moz-selection {
+  background: #1DB487;
+  color: white;
+}
+
+::selection {
+  background: #1DB487;
+  color: white;
+}
+
+a {
+  color: #1DB487;
+}
+
 .btn-register {
   margin-left: 10px;
 }

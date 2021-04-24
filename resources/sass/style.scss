@@ -24,6 +24,19 @@
     box-shadow: inset 7px 10px 12px #f0f0f0;
 }
 
+::-moz-selection {
+    background: #1DB487;
+    color: white;
+  }
+
+  ::selection {
+    background: #1DB487;
+    color: white;
+  }
+
+  a {
+    color: #1DB487;
+  }
 
 // Stile div search-bar ---------------------------------------------------
 

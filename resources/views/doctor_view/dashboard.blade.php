@@ -17,6 +17,10 @@
                                 alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
                             </a>
 
+                        @elseif(file_exists($user->detail->pic))
+                            <img class="doctor-pic-show" src="{{ URL::asset($user->detail->pic)}}"
+                            alt="{{$user->name}} {{$user->lastname}}">
+
                         @else
 
                             <a href="../doctor/{{$user->id}}"><img class="doctor-pic-dashboard"

@@ -80,7 +80,7 @@
 
                                 <div class=" doctor-pic-advance-container">
                                     <a class="doctor-pic" :href="`doctor/${doctor.id}`">
-                                        <img class="doctor-pic" :src="`storage/${doctor.detail.pic}`" alt="profile pic" onerror="this.onerror = null; this.src='https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png';">
+                                        <img class="doctor-pic" :src="doctor.detail.pic" alt="profile pic" @error="imgErr()">
                                     </a>
                                 </div>
 
@@ -111,6 +111,7 @@
                 checkedVote: '',
                 checkedVoteValue: '',
                 checkedReview: '',
+                imgError: false,
 
                 results: [],
                 filteredResults: []
@@ -133,6 +134,15 @@
         },
 
         methods: {
+
+            /*filename: function(element) {
+                return (this.imgError) 
+? `storage/${element.detail.pic}` : element.detail.pic;
+            },*/
+
+            imgErr: function() {
+                this.imgError = true;
+            },
 
             initialFilters: function() {
                 const today = Date.parse(new Date());                 

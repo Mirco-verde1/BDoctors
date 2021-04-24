@@ -1981,6 +1981,7 @@ __webpack_require__.r(__webpack_exports__);
       checkedVote: '',
       checkedVoteValue: '',
       checkedReview: '',
+      imgError: false,
       results: [],
       filteredResults: []
     };
@@ -1998,6 +1999,13 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
+    /*filename: function(element) {
+        return (this.imgError) 
+    ? `storage/${element.detail.pic}` : element.detail.pic;
+    },*/
+    imgErr: function imgErr() {
+      this.imgError = true;
+    },
     initialFilters: function initialFilters() {
       var _this2 = this;
 
@@ -38511,11 +38519,11 @@ var render = function() {
                       [
                         _c("img", {
                           staticClass: "doctor-pic",
-                          attrs: {
-                            src: "storage/" + doctor.detail.pic,
-                            alt: "profile pic",
-                            onerror:
-                              "this.onerror = null; this.src='https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png';"
+                          attrs: { src: doctor.detail.pic, alt: "profile pic" },
+                          on: {
+                            error: function($event) {
+                              return _vm.imgErr()
+                            }
                           }
                         })
                       ]

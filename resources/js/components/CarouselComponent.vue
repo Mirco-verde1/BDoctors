@@ -16,7 +16,7 @@
         <!--Indicators-->
         <ol class="carousel-indicators">
             <!-- Creiamo tanti indicatori quante le slide -->
-            <li v-for="i in Math.ceil(results.length / cardsPerSlide)" data-target="#multi-item-example"
+            <li v-for="i in Math.ceil(sponsored.length / cardsPerSlide)" data-target="#multi-item-example"
                 :data-slide-to="(i - 1)" :class="(i === 1) ? 'active' : ''"></li>
         </ol>
         <!--/.Indicators-->
@@ -30,13 +30,13 @@
             <div>
 
                 <div class="carousel-item" :class="(i === 1) ? 'active' : ''"
-                    v-for="i in Math.ceil(results.length / cardsPerSlide)">
+                    v-for="i, index in Math.ceil(sponsored.length / cardsPerSlide)">
 
                     <div class="row container d-flex flex-row p-2 flex-wrap">
 
                         <div class="card col-md-4 p-2 bd-highlight doctor-card"
                             :class="(i === 1) ? 'clearfix d-none d-md-block' : ''"
-                            v-for="doctor in carouselLoop(i, results)" v-if="doctor.sponsors.length > 0">
+                            v-for="doctor in carouselLoop(i, sponsored)" v-if="doctor.sponsors.length > 0">
 
                             <div class="img-container">
                                 <img class="card-img-top" :src="`storage/${doctor.detail.pic}`" alt="Card image cap">
@@ -51,7 +51,6 @@
 
                         </div>
 
-
                         <div class="card col-md-4 p-2 bd-highlight doctor-card" v-else>
 
                             <div class="img-container">
@@ -61,17 +60,12 @@
                             </div>
                             <div class="card-body">
                                 <h4 class="card-title">Sponsorizza il tuo profilo</h4>
-                                <h5 class="card-text">Specializzazioni:</h5>
-
                             </div>
 
                         </div>
                     </div>
 
                 </div>
-
-
-
 
             </div>
 
@@ -90,7 +84,7 @@
 
             return {
                 results: [],
-                sponsorized: [],
+                sponsored: [],
                 cardsPerSlide: ''
             }
         },
@@ -98,7 +92,7 @@
         mounted() {
             const self = this;
 
-            /* Se lo schermo è di grandezza inferiore a 768px lo slider
+            /* Se lo schermo, al caricamento pagina, è di grandezza inferiore a 768px lo slider
             riporta 1 card per volta, altrimenti 3 */
             if (window.matchMedia('(max-width: 768px)').matches) {
                 self.cardsPerSlide = 1;
@@ -107,11 +101,25 @@
             }
 
             // Chiamata Axios all'API
-            axios.get('http://127.0.0.1:8000/api/doctors', {})
-                .then((resp) => {
-                    self.results = resp.data.data;
-                    console.log(self.results);
-                });
+            axios.get('http://127.0.0.1:8000/api/doctors', {
+            })
+            .then((resp) => {
+                const today = Date.parse(new Date());
+
+                self.results = resp.data.data;
+
+                self.results.forEach(elem => {
+                    if(elem.sponsors.length > 0) {
+                        elem.sponsors.forEach(sponsor => {
+
+                            // Verifichiamo che il medico abbia una sponsorizzazione in corso //
+                            if(today <= (Date.parse(sponsor.created_at) + (sponsor.duration * 3600000))) {
+                                self.sponsored.push(elem);
+                            }
+                        });
+                    }
+                });                                      
+            });
         },
 
         methods: {
@@ -127,20 +135,7 @@
 
                 return array.slice(start, end);
             },
-
-
-            Test: function () {
-
-                this.results.forEach(element => {
-                    console.log(element.sponsors.length);
-                });
-            }
-        },
-
-
-
-
-
+        }
     }
 
 </script>
@@ -153,5 +148,4 @@
     .card-img-top {
         width: 100%;
     }
-
 </style>

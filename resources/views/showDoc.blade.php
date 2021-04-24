@@ -45,11 +45,14 @@
                                     <img class="doctor-pic-show" src="{{ URL::asset('storage/'.$user->detail->pic)}}"
                                         alt="{{$user->name}} {{$user->lastname}}">
 
-                                    @else
-
-                                    <img class="doctor-pic-show"
-                                        src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
+                                    @elseif(file_exists($user->detail->pic))
+                                            <img class="doctor-pic-show" src="{{ URL::asset($user->detail->pic)}}"
                                         alt="{{$user->name}} {{$user->lastname}}">
+
+                                    @else
+                                        <img class="doctor-pic-show"
+                                            src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
+                                            alt="{{$user->name}} {{$user->lastname}}">
 
                                     @endif
                                 </figure>
@@ -163,6 +166,9 @@
                                         </div>
 
                                         {{-- form per inviare un messaggio al dottore --}}
+                                        <form action="{{ route('message.store', [ 'user_id' => $user->id]) }}" method="post">
+                                            @csrf
+                                            @method('POST')
                                         <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog"
                                             aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
@@ -170,42 +176,38 @@
                                                     <div class="modal-header text-center">
                                                         <h4 class="modal-title w-100 font-weight-bold">Scrivi un
                                                             messaggio</h4>
-                                                        <button type="button" class="close" data-dismiss="modal"
+                                                        <button type="submit" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
+
                                                     <div class="modal-body mx-3">
                                                         <div class="md-form mb-5">
-                                                            <input type="text" id="form34"
-                                                            class="form-control validate">
                                                             <i class="fas fa-user prefix grey-text"></i>
-                                                            <label data-error="wrong" data-success="right"
-                                                                for="form34">Nome</label>
+                                                            <label for="name" data-error="wrong"
+                                                             data-success="right">Nome</label>
+                                                                <input type="text" name="name" id="form34"
+                                                                class="form-control validate">
                                                         </div>
 
                                                         <div class="md-form mb-5">
-                                                            <input type="email" id="form29"
-                                                            class="form-control validate">
                                                             <i class="fas fa-envelope prefix grey-text"></i>
-                                                            <label data-error="wrong" data-success="right"
-                                                                for="form29">E-mail</label>
+                                                            <label for="email" data-error="wrong"
+                                                            data-success="right">E-mail</label>
+                                                                <input type="email" name="email" value="email" id="form29"
+                                                                class="form-control validate">
                                                         </div>
 
-                                                        <div class="md-form mb-5">
-                                                            <input type="text" id="form32"
-                                                            class="form-control validate">
-                                                            <i class="fas fa-tag prefix grey-text"></i>
-                                                            <label data-error="wrong" data-success="right"
-                                                                for="form32">Oggetto</label>
-                                                        </div>
 
                                                         <div class="md-form">
-                                                            <textarea type="text" id="form8"
-                                                            class="md-textarea form-control" rows="4"></textarea>
+
                                                             <i class="fas fa-pencil prefix grey-text"></i>
-                                                            <label data-error="wrong" data-success="right"
-                                                                for="form8">Messaggio</label>
+                                                            <label for="body" data-error="wrong"
+                                                             data-success="right">Messaggio</label>
+                                                            <textarea name="body" type="text" id="form8"
+                                                            class="md-textarea form-control" rows="4"></textarea>
+
                                                         </div>
 
                                                     </div>
@@ -216,6 +218,8 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                    </form>
 
                                         <div>
                                             <a href="" class="btn btn-primary btn-rounded mb-4" data-toggle="modal"

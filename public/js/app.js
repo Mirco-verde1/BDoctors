@@ -1974,7 +1974,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1982,47 +1981,78 @@ __webpack_require__.r(__webpack_exports__);
       checkedVote: '',
       checkedVoteValue: '',
       checkedReview: '',
-      votesAverage: '',
+      imgError: false,
       results: [],
       filteredResults: []
     };
   },
   mounted: function mounted() {
+    var _this = this;
+
     // All doctors data filtererd by homepage research
-    var self = this;
-    /* Sostituiamo gli eventuali + derivanti dalla query string per poterla confrontare
-    con i risultati */
-
-    while (this.searchedDepartment.includes('+')) {
-      this.searchedDepartment = this.searchedDepartment.replace('+', ' ');
-    } // Chiamata Axios all'API per filtrare i risultati in base al department scelto in home
-
+    var self = this; // Chiamata Axios all'API dottori
 
     axios.get('http://127.0.0.1:8000/api/doctors', {}).then(function (resp) {
-      self.results = resp.data;
-      self.results.data.forEach(function (element) {
-        element.departments.forEach(function (item) {
-          if (item.type === self.searchedDepartment) {
-            self.filteredResults.push(element);
-          }
-        });
-      });
+      self.results = resp.data.data;
+
+      _this.initialFilters();
     });
   },
   methods: {
-    // Resettiamo i risultati; utile in caso di passaggio da un filtro ad un altro
-    restoreResults: function restoreResults(check) {
-      var _this = this;
+    /*filename: function(element) {
+        return (this.imgError) 
+    ? `storage/${element.detail.pic}` : element.detail.pic;
+    },*/
+    imgErr: function imgErr() {
+      this.imgError = true;
+    },
+    initialFilters: function initialFilters() {
+      var _this2 = this;
 
-      if (!check) {
-        this.filteredResults = [];
-        this.results.data.forEach(function (element) {
-          element.departments.forEach(function (item) {
-            if (item.type === _this.searchedDepartment) {
-              _this.filteredResults.push(element);
+      var today = Date.parse(new Date());
+      var byDepartment = [];
+      this.results.forEach(function (element) {
+        /* Sostituiamo gli eventuali + derivanti dalla query string per poterla confrontare
+        con i risultati */
+        while (_this2.searchedDepartment.includes('+')) {
+          _this2.searchedDepartment = _this2.searchedDepartment.replace('+', ' ');
+        } // Filtro risultati in base al department scelto in home
+
+
+        element.departments.forEach(function (item) {
+          if (item.type === _this2.searchedDepartment) {
+            byDepartment.push(element);
+          }
+        });
+      });
+      var sponsored = [];
+      var notSponsored = [];
+      byDepartment.forEach(function (elem) {
+        if (elem.sponsors.length > 0) {
+          elem.sponsors.forEach(function (sponsor) {
+            /* Verifichiamo che il medico abbia una sponsorizzazione in corso
+            per visualizzarlo all'inizio dei risultati */
+            if (today <= Date.parse(sponsor.created_at) + sponsor.duration * 3600000) {
+              sponsored.push(elem);
             }
           });
-        });
+        } else {
+          notSponsored.push(elem);
+        }
+      });
+      this.filteredResults = [].concat(sponsored, notSponsored);
+    },
+    // Resettiamo i risultati; utile in caso di passaggio da un filtro ad un altro
+    restoreResults: function restoreResults(check) {
+      if (!check) {
+        this.filteredResults = [];
+        this.initialFilters();
+
+        if (this.checkedVote && !this.checkedReview) {
+          this.filterByVote();
+        } else if (!this.checkedVote && this.checkedReview) {
+          this.filterByReviews();
+        }
       }
     },
     // Recuperiamo i voti di un dottore
@@ -2043,19 +2073,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     // Filtriamo i risultati per voto
     filterByVote: function filterByVote() {
-      var _this2 = this;
+      var _this3 = this;
 
       var filteredByVote = [];
-      this.restoreResults();
+      this.filteredResults = [];
+      this.initialFilters();
       this.filteredResults.forEach(function (element) {
-        var votesCount = element.votes.length;
-        var votesSum = 0;
-        element.votes.forEach(function (elem) {
-          votesSum += elem.value;
-        });
-        _this2.votesAverage = Math.ceil(votesSum / votesCount);
-
-        if (_this2.votesAverage === _this2.checkedVoteValue) {
+        if (_this3.getVotesAverage(element) === _this3.checkedVoteValue) {
           filteredByVote.push(element);
         }
       });
@@ -2201,23 +2225,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       results: [],
-      sponsorized: [],
+      sponsored: [],
       cardsPerSlide: ''
     };
   },
   mounted: function mounted() {
     var self = this;
-    /* Se lo schermo è di grandezza inferiore a 768px lo slider
+    /* Se lo schermo, al caricamento pagina, è di grandezza inferiore a 768px lo slider
     riporta 1 card per volta, altrimenti 3 */
 
     if (window.matchMedia('(max-width: 768px)').matches) {
@@ -2228,8 +2246,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
     axios.get('http://127.0.0.1:8000/api/doctors', {}).then(function (resp) {
+      var today = Date.parse(new Date());
       self.results = resp.data.data;
-      console.log(self.results);
+      self.results.forEach(function (elem) {
+        if (elem.sponsors.length > 0) {
+          elem.sponsors.forEach(function (sponsor) {
+            // Verifichiamo che il medico abbia una sponsorizzazione in corso //
+            if (today <= Date.parse(sponsor.created_at) + sponsor.duration * 3600000) {
+              self.sponsored.push(elem);
+            }
+          });
+        }
+      });
     });
   },
   methods: {
@@ -2241,11 +2269,6 @@ __webpack_require__.r(__webpack_exports__);
       end = index * limit;
       start = end - limit;
       return array.slice(start, end);
-    },
-    Test: function Test() {
-      this.results.forEach(function (element) {
-        console.log(element.sponsors.length);
-      });
     }
   }
 });
@@ -6858,7 +6881,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.img-container[data-v-4681a3bc] {\n    width: 300px;\n}\n.card-img-top[data-v-4681a3bc] {\n    width: 100%;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.img-container[data-v-4681a3bc] {\n    width: 300px;\n}\n.card-img-top[data-v-4681a3bc] {\n    width: 100%;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38433,7 +38456,6 @@ var render = function() {
                               ? _c("i", { staticClass: "fas fa-star" })
                               : _vm._e()
                           }),
-                          _vm._v(" "),
                           _vm._l(5 - _vm.getVotesAverage(doctor), function(
                             vote
                           ) {
@@ -38497,11 +38519,11 @@ var render = function() {
                       [
                         _c("img", {
                           staticClass: "doctor-pic",
-                          attrs: {
-                            src: "storage/" + doctor.detail.pic,
-                            alt: "profile pic",
-                            onerror:
-                              "this.onerror = null; this.src='https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png';"
+                          attrs: { src: doctor.detail.pic, alt: "profile pic" },
+                          on: {
+                            error: function($event) {
+                              return _vm.imgErr()
+                            }
                           }
                         })
                       ]
@@ -38588,7 +38610,9 @@ var render = function() {
       _c(
         "ol",
         { staticClass: "carousel-indicators" },
-        _vm._l(Math.ceil(_vm.results.length / _vm.cardsPerSlide), function(i) {
+        _vm._l(Math.ceil(_vm.sponsored.length / _vm.cardsPerSlide), function(
+          i
+        ) {
           return _c("li", {
             class: i === 1 ? "active" : "",
             attrs: {
@@ -38603,8 +38627,9 @@ var render = function() {
       _c("div", { staticClass: "carousel-inner", attrs: { role: "listbox" } }, [
         _c(
           "div",
-          _vm._l(Math.ceil(_vm.results.length / _vm.cardsPerSlide), function(
-            i
+          _vm._l(Math.ceil(_vm.sponsored.length / _vm.cardsPerSlide), function(
+            i,
+            index
           ) {
             return _c(
               "div",
@@ -38615,7 +38640,7 @@ var render = function() {
                   {
                     staticClass: "row container d-flex flex-row p-2 flex-wrap"
                   },
-                  _vm._l(_vm.carouselLoop(i, _vm.results), function(doctor) {
+                  _vm._l(_vm.carouselLoop(i, _vm.sponsored), function(doctor) {
                     return doctor.sponsors.length > 0
                       ? _c(
                           "div",
@@ -38742,9 +38767,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-body" }, [
       _c("h4", { staticClass: "card-title" }, [
         _vm._v("Sponsorizza il tuo profilo")
-      ]),
-      _vm._v(" "),
-      _c("h5", { staticClass: "card-text" }, [_vm._v("Specializzazioni:")])
+      ])
     ])
   }
 ]

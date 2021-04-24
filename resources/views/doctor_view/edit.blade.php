@@ -46,6 +46,10 @@
                                         <img class="doctor-pic-show" src="{{ URL::asset('storage/'.$user->detail->pic)}}"
                                             alt="{{$user->name}} {{$user->lastname}}">
 
+                                    @elseif(file_exists($user->detail->pic))
+                                        <img class="doctor-pic-show" src="{{ URL::asset($user->detail->pic)}}"
+                                        alt="{{$user->name}} {{$user->lastname}}">
+
                                     @else
 
                                         <img class="doctor-pic-show" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"

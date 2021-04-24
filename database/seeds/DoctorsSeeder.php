@@ -91,31 +91,31 @@ class DoctorsSeeder extends Seeder
         $userDetails = [
             [
                 'user_id' => '1',
-                'pic' => '../img/doc_1.jpg',
+                'pic' => 'img/doc_1.jpg',
                 'phone' => '+3903564039188',
                 'curriculum' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
             ],
             [
                 'user_id' => '2',
-                'pic' => '../img/dottssa_1.jpg',
+                'pic' => 'img/dottssa_1.jpg',
                 'phone' => '+3903561325788',
                 'curriculum' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
             ],
             [
                 'user_id' => '3',
-                'pic' => '../img/doc_2.jpg',
+                'pic' => 'img/doc_2.jpg',
                 'phone' => '+3903546289475',
                 'curriculum' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
             ],
             [
                 'user_id' => '4',
-                'pic' => '../img/dottssa_2.jpg',
+                'pic' => 'img/dottssa_2.jpg',
                 'phone' => '+39035675632545',
                 'curriculum' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
             ],
             [
                 'user_id' => '5',
-                'pic' => '../img/dottssa_3.jpg',
+                'pic' => 'img/dottssa_3.jpg',
                 'phone' => '+3903564598665',
                 'curriculum' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
             ],

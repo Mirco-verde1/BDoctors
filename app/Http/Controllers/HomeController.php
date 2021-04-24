@@ -26,13 +26,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(User $user, Sponsor $sponsor)
+    public function index(User $user)
     {
         $user = Auth::user();
         $review = Auth::user()->reviews()->orderBy('id', 'desc')->first();
         $message = Auth::user()->messages()->orderBy('id', 'desc')->first();
-        $sponsor = Auth::user()->sponsors()->orderBy('id', 'desc')->first();
-        return view('doctor_view.dashboard', compact('user', 'review', 'message','sponsor'));
+
+        if (Auth::user()->sponsors()) {
+            $sponsor = Auth::user()->sponsors()->orderBy('id', 'desc')->first()->pivot;
+        }
+
+        $lastSponsor = Auth::user()->sponsors()->orderBy('id', 'desc')->first();
+        return view('doctor_view.dashboard', compact('user', 'review', 'message','sponsor','lastSponsor'));
     }
 
     public function myReviews()

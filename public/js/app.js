@@ -2024,7 +2024,7 @@ __webpack_require__.r(__webpack_exports__);
           elem.sponsors.forEach(function (sponsor) {
             /* Verifichiamo che il medico abbia una sponsorizzazione in corso
             per visualizzarlo all'inizio dei risultati */
-            if (today < Date.parse(sponsor.created_at) + sponsor.duration * 3600000) {
+            if (today <= Date.parse(sponsor.created_at) + sponsor.duration * 3600000) {
               sponsored.push(elem);
             }
           });
@@ -2217,23 +2217,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       results: [],
-      sponsorized: [],
+      sponsored: [],
       cardsPerSlide: ''
     };
   },
   mounted: function mounted() {
     var self = this;
-    /* Se lo schermo è di grandezza inferiore a 768px lo slider
+    /* Se lo schermo, al caricamento pagina, è di grandezza inferiore a 768px lo slider
     riporta 1 card per volta, altrimenti 3 */
 
     if (window.matchMedia('(max-width: 768px)').matches) {
@@ -2244,8 +2238,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
     axios.get('http://127.0.0.1:8000/api/doctors', {}).then(function (resp) {
+      var today = Date.parse(new Date());
       self.results = resp.data.data;
-      console.log(self.results);
+      self.results.forEach(function (elem) {
+        if (elem.sponsors.length > 0) {
+          elem.sponsors.forEach(function (sponsor) {
+            // Verifichiamo che il medico abbia una sponsorizzazione in corso //
+            if (today <= Date.parse(sponsor.created_at) + sponsor.duration * 3600000) {
+              self.sponsored.push(elem);
+            }
+          });
+        }
+      });
     });
   },
   methods: {
@@ -2257,11 +2261,6 @@ __webpack_require__.r(__webpack_exports__);
       end = index * limit;
       start = end - limit;
       return array.slice(start, end);
-    },
-    Test: function Test() {
-      this.results.forEach(function (element) {
-        console.log(element.sponsors.length);
-      });
     }
   }
 });
@@ -6874,7 +6873,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.img-container[data-v-4681a3bc] {\n    width: 300px;\n}\n.card-img-top[data-v-4681a3bc] {\n    width: 100%;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.img-container[data-v-4681a3bc] {\n    width: 300px;\n}\n.card-img-top[data-v-4681a3bc] {\n    width: 100%;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38603,7 +38602,9 @@ var render = function() {
       _c(
         "ol",
         { staticClass: "carousel-indicators" },
-        _vm._l(Math.ceil(_vm.results.length / _vm.cardsPerSlide), function(i) {
+        _vm._l(Math.ceil(_vm.sponsored.length / _vm.cardsPerSlide), function(
+          i
+        ) {
           return _c("li", {
             class: i === 1 ? "active" : "",
             attrs: {
@@ -38618,8 +38619,9 @@ var render = function() {
       _c("div", { staticClass: "carousel-inner", attrs: { role: "listbox" } }, [
         _c(
           "div",
-          _vm._l(Math.ceil(_vm.results.length / _vm.cardsPerSlide), function(
-            i
+          _vm._l(Math.ceil(_vm.sponsored.length / _vm.cardsPerSlide), function(
+            i,
+            index
           ) {
             return _c(
               "div",
@@ -38630,7 +38632,7 @@ var render = function() {
                   {
                     staticClass: "row container d-flex flex-row p-2 flex-wrap"
                   },
-                  _vm._l(_vm.carouselLoop(i, _vm.results), function(doctor) {
+                  _vm._l(_vm.carouselLoop(i, _vm.sponsored), function(doctor) {
                     return doctor.sponsors.length > 0
                       ? _c(
                           "div",
@@ -38757,9 +38759,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-body" }, [
       _c("h4", { staticClass: "card-title" }, [
         _vm._v("Sponsorizza il tuo profilo")
-      ]),
-      _vm._v(" "),
-      _c("h5", { staticClass: "card-text" }, [_vm._v("Specializzazioni:")])
+      ])
     ])
   }
 ]

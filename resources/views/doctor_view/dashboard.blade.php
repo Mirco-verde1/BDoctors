@@ -216,9 +216,12 @@
                                 </div>
 
                             @endif
+                            @if (isset($message))
+
                             <a href="mailto:{{$message->email}}" class="btn btn-navbar-toggler">
                                 <span>Rispondi a <span class="text-capitalize">{{$message->name}}</span></span>
                             </a>
+                            @endif
                         </div>
 
                         <div class="card-footer">

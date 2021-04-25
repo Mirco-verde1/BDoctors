@@ -38,13 +38,14 @@ class GuestController extends Controller
 
 
 
-    public function show(User $user, $id){
-
+    public function show($id)
+    {
 
         $user = User::where('id', $id)->first();
-        $reviews = User::find(isset($id))->reviews()->orderBy('id', 'desc')->paginate(5);
+        $reviews = Review::where('user_id', $id)->orderBy('id', 'desc')->paginate(5);
         $votes = Vote::all();
         $medicalServices = MedicalService::all();
+
         return view('showDoc', compact('user', 'votes', 'reviews', 'medicalServices'));
 
     }

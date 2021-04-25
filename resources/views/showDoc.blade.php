@@ -183,30 +183,40 @@
                                                     </div>
 
                                                     <div class="modal-body mx-3">
-                                                        <div class="md-form mb-5">
+                                                        <div class="md-form mb-5 position-relative">
                                                             <i class="fas fa-user prefix grey-text"></i>
                                                             <label for="name" data-error="wrong"
                                                              data-success="right">Nome</label>
-                                                                <input type="text" name="name" id="form34"
-                                                                class="form-control validate">
+                                                                <input type="text" name="name" id="form34" placeholder="Nome"
+                                                                class="form-control {{ $errors->has('name') ? 'is-invalid' : ''}}">
+                                                                <div class="invalid-tooltip">
+                                                                    {{ $errors->first('name') }}
+                                                                </div>
                                                         </div>
 
-                                                        <div class="md-form mb-5">
+                                                        <div class="md-form mb-5 position-relative">
                                                             <i class="fas fa-envelope prefix grey-text"></i>
                                                             <label for="email" data-error="wrong"
                                                             data-success="right">E-mail</label>
-                                                                <input type="email" name="email" value="email" id="form29"
-                                                                class="form-control validate">
+                                                            <input type="email" name="email" id="form29" placeholder="Email"
+                                                            class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}">
+                                                            <div class="invalid-tooltip">
+                                                                {{ $errors->first('email') }}
+                                                            </div>
+
                                                         </div>
 
 
-                                                        <div class="md-form">
+                                                        <div class="md-form position-relatative">
 
                                                             <i class="fas fa-pencil prefix grey-text"></i>
                                                             <label for="body" data-error="wrong"
                                                              data-success="right">Messaggio</label>
-                                                            <textarea name="body" type="text" id="form8"
-                                                            class="md-textarea form-control" rows="4"></textarea>
+                                                            <textarea name="body" type="text" id="form8" placeholder="Messaggio"
+                                                            class="md-textarea form-control {{ $errors->has('body') ? 'is-invalid' : ''}}" rows="4" required></textarea>
+                                                             <div class="invalid-tooltip">
+                                                                {{ $errors->first('body') }}
+                                                            </div>
 
                                                         </div>
 
@@ -269,13 +279,13 @@
                             @if (count($user->reviews) > 0)
 
                             @foreach ($reviews as $review)
-                            <div class="container-review col-md-11">
-                                <div class="header-review d-flex justify-content-between">
-                                    <h5 class="text-capitalize"><b>{{$review->name}}</b></h5>
-                                    <h5><b>{{ \Carbon\Carbon::parse($review->created_at)->format('d/m/Y')}}</b></h5>
+                                <div class="container-review col-md-11">
+                                    <div class="header-review d-flex justify-content-between">
+                                        <h5 class="text-capitalize"><b>{{$review->name}}</b></h5>
+                                        <h5><b>{{ \Carbon\Carbon::parse($review->created_at)->format('d/m/Y')}}</b></h5>
+                                    </div>
+                                    <span>{{$review->body}}</>
                                 </div>
-                                <span>{{$review->body}}</>
-                            </div>
                             @endforeach
 
                             @else

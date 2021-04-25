@@ -99,18 +99,32 @@
                         <div class="text-center mt-4">
                             <div><b>Specializzazioni attuali:</b></div>
                             <div>
-                            @foreach ($user->departments as $department)
-                            <span class="department">{{$department->type}}</span>
+                            @foreach ($user->departments as $index => $department)
+                                @if(($index + 1) !== count($user->departments))
+                                    <span class="department">{{$department->type}},</span>
+                                @else
+                                    <span class="department">{{$department->type}}</span>
+                                @endif
                         @endforeach
                     </div>
+
+                        @php
+                            $takenDepartments = [];
+                            foreach($user->departments as $index => $userDepartment) {
+                                foreach($departments as $department) {
+                                    if($department->id === $userDepartment->id) {
+                                        array_push($takenDepartments, $index);
+                                    }
+                                }
+                            }
+                        @endphp
+
                         <label for="departments"><b>Lista specializzazioni disponibili</b></label>
                         <select class="form-control h-25" name="departments[]" id="departments" multiple>
-                            @foreach($departments as $department)
-                                @foreach($user->departments as $userDepartment)
-                                    @if($userDepartment->id !== $department->id)
+                            @foreach($departments as $index => $department)
+                                    @if(!in_array($index, $takenDepartments))
                                         <option value="{{$department->id}}">{{$department->type}}</option>
                                     @endif
-                                @endforeach
                             @endforeach
                         </select>
                         </div>

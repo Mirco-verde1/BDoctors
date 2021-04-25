@@ -33,8 +33,9 @@
               </div>
               @endforeach
             </div>
-            
-            @if(!isset($activeSponsor))
+            {{-- Permette al medico di sponsorizzarsi solo se non ha mai avuto una sponsorizzazione
+            o se la precedente è scaduta --}}
+            @if(!isset($activeSponsor) || \Carbon\Carbon::parse($activeSponsor['created_at'])->addHour($chosenSponsor->duration)->lte(\Carbon\Carbon::now()))
               <div id="dropin-container">
 
               </div>

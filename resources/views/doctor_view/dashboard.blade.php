@@ -279,15 +279,17 @@
 
                                 @if(isset($activeSponsor))
 
-                                <div>
-
-                                    <span class="text-muted">Data scadenza:
-                                        {{ \Carbon\Carbon::parse($activeSponsor['created_at'])->addHour($chosenSponsor->duration)->format('d/m/y')}}
-                                        alle
-                                        {{ \Carbon\Carbon::parse($activeSponsor['created_at'])->addHour($chosenSponsor->duration)->format('H:i')}}
-
-                                    </span>
-
+                                    <div>
+                                        @if(\Carbon\Carbon::parse($activeSponsor['created_at'])->addHour($chosenSponsor->duration)->gte(\Carbon\Carbon::now()))
+                                            <span class="text-muted">
+                                                Data scadenza:
+                                                {{ \Carbon\Carbon::parse($activeSponsor['created_at'])->addHour($chosenSponsor->duration)->format('d/m/y')}}
+                                                alle
+                                                {{ \Carbon\Carbon::parse($activeSponsor['created_at'])->addHour($chosenSponsor->duration)->format('H:i')}}
+                                            </span>
+                                        @else
+                                            <span class="text-muted">La tua ultima sponsorizzazione è scaduta!</span>
+                                        @endif
 
                                     </div>
 

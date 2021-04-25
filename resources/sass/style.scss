@@ -93,6 +93,8 @@ background-color: $body-bg;
     background-image: url("https://www.doctors-365.de/home_slider_bg.95b2004ae0c9ce8f3a0b.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    object-fit: fill;
+    object-position: center;
     background-position: center center;
     background-attachment: fixed;
     display: flex;
@@ -121,6 +123,7 @@ background-color: $body-bg;
         }
 
         @media screen and (max-width: 768px) {
+
             .title{
                 font-size:60px;
                 display: block;
@@ -130,6 +133,7 @@ background-color: $body-bg;
                 font-size:30px;
             }
             @media (max-width: 576px) {
+
                 .title{
                     font-size:40px;
                     display: block;
@@ -138,10 +142,23 @@ background-color: $body-bg;
                 .subtitle{
                     font-size:20px;
                 }
+
              }
         }
     }
+    @media screen and (max-width:768px) {
+        background-position: -710px;
+
+    }
+    @media screen and (max-width:576px) {
+        background-position: -810px;
+
+    }
 }
+
+
+
+
 .jumbotron-overlay {
     overflow-x: hidden;
     width: inherit;
@@ -335,6 +352,14 @@ background-color: $body-bg;
     font-weight: bold;
 }
 
+.chosen_sponsor {
+    font-size: 1.2rem;
+
+    small {
+        color: black;
+    }
+}
+
 
 
 // show dottore ---------------------------------------------------
@@ -343,7 +368,6 @@ background-color: $body-bg;
 .secondary-nav {
     background-color: #2d3e4f;
     position: relative;
-    // bottom: -3px;
     border-bottom: none;
     border-radius: 5px 5px 0 0;
     padding: 20px;
@@ -406,17 +430,21 @@ background-color: $body-bg;
     .info {
         text-align: left;
 
-        .votes-form  {
-            width: 80px;
-        }
+        form {
 
-        label {
-            margin-top: 10px;
-            padding: 0;
-        }
+            .votes-form  {
+                width: auto;
+                margin-right: 10px;
+            }
 
-        .votes-input {
-            width: auto;
+            label {
+                margin-top: 10px;
+                padding: 0;
+            }
+
+            .votes-input {
+                width: auto;
+            }
         }
     }
 
@@ -684,5 +712,14 @@ background-color: $body-bg;
     margin: 0 auto;
 }
 
+// stile chart-js
 
+.margin-top-chart {
+    margin-top: 100px;
+}
+
+.doughnut {
+    width: 100%;
+    height: 100%;
+}
 

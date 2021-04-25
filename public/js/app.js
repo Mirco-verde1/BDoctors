@@ -2010,6 +2010,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2017,7 +2018,6 @@ __webpack_require__.r(__webpack_exports__);
       checkedVote: '',
       checkedVoteValue: '',
       checkedReview: '',
-      imgError: false,
       results: [],
       filteredResults: []
     };
@@ -2025,7 +2025,6 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    // All doctors data filtererd by homepage research
     var self = this; // Chiamata Axios all'API dottori
 
     axios.get('http://127.0.0.1:8000/api/doctors', {}).then(function (resp) {
@@ -2035,16 +2034,17 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    /*filename: function(element) {
-        return (this.imgError)
-    ? `storage/${element.detail.pic}` : element.detail.pic;
-    },*/
-    imgErr: function imgErr() {
-      this.imgError = true;
+    /* Diamo l'URL corretto all'immagine del profilo, nel caso in cui questa non provenga
+    dal seeder */
+    correctPicUrl: function correctPicUrl(element, index) {
+      var allPics = document.getElementsByClassName('doctor-pic-dashboard');
+      allPics[index].src = element.detail.pic;
     },
+    // Parametri di ricerca iniziali
     initialFilters: function initialFilters() {
       var _this2 = this;
 
+      // Convertiamo la data corrente in millisecondi UNIX
       var today = Date.parse(new Date());
       var byDepartment = [];
       this.results.forEach(function (element) {
@@ -2067,8 +2067,9 @@ __webpack_require__.r(__webpack_exports__);
         if (elem.sponsors.length > 0) {
           elem.sponsors.forEach(function (sponsor) {
             /* Verifichiamo che il medico abbia una sponsorizzazione in corso
-            per visualizzarlo all'inizio dei risultati */
-            if (today <= Date.parse(sponsor.created_at) + sponsor.duration * 3600000) {
+            per visualizzarlo all'inizio dei risultati, comparando i millisecondi correnti
+            con quelli della somma tra la creazione della sponsorship e la sua durata */
+            if (today <= Date.parse(sponsor.pivot['created_at']) + sponsor.duration * 3600000) {
               sponsored.push(elem);
             }
           });
@@ -2078,7 +2079,9 @@ __webpack_require__.r(__webpack_exports__);
       });
       this.filteredResults = [].concat(sponsored, notSponsored);
     },
-    // Resettiamo i risultati; utile in caso di passaggio da un filtro ad un altro
+
+    /* Ripristiniamo i risultati a quelli iniziali;
+    utile in caso di passaggio da un filtro ad un altro */
     restoreResults: function restoreResults(check) {
       if (!check) {
         this.filteredResults = [];
@@ -2091,7 +2094,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       }
     },
-    // Recuperiamo i voti di un dottore
+    // Recuperiamo la media voti di un dottore, arrotondata per eccesso
     getVotesAverage: function getVotesAverage(element) {
       var votesCount = element.votes.length;
       var votesSum = 0;
@@ -2099,7 +2102,7 @@ __webpack_require__.r(__webpack_exports__);
       element.votes.forEach(function (elem) {
         votesSum += elem.value;
       });
-      votesAverage = Math.ceil(votesSum / votesCount);
+      votesAverage = Math.ceil(votesSum / votesCount); // Se il medico non ha ancora ricevuto voti la divisione sarà tra due zeri, restituendo NaN
 
       if (!isNaN(votesAverage)) {
         return votesAverage;
@@ -2120,6 +2123,8 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
       this.filteredResults = filteredByVote;
+      /* Se il filtro per review è attivo contemporaneamente a quello per voti, continua
+      ad ordinare anche per review */
 
       if (this.checkedReview) {
         this.filterByReviews();
@@ -2130,6 +2135,9 @@ __webpack_require__.r(__webpack_exports__);
       var filteredByReviews = [];
       this.filteredResults.forEach(function (element) {
         filteredByReviews.push(element);
+        /* Ordine decrescente:
+        Posizioniamo i risultati con più review all'inizio dell'array */
+
         filteredByReviews.sort(function (a, b) {
           return b.reviews.length > a.reviews.length ? 1 : -1;
         });
@@ -2262,12 +2270,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       results: [],
       sponsored: [],
-      cardsPerSlide: ''
+      cardsPerSlide: '',
+      slidesNumber: ''
     };
   },
   mounted: function mounted() {
@@ -2283,21 +2294,39 @@ __webpack_require__.r(__webpack_exports__);
 
 
     axios.get('http://127.0.0.1:8000/api/doctors', {}).then(function (resp) {
+      // Convertiamo la data corrente in millisecondi UNIX
       var today = Date.parse(new Date());
       self.results = resp.data.data;
       self.results.forEach(function (elem) {
         if (elem.sponsors.length > 0) {
           elem.sponsors.forEach(function (sponsor) {
-            // Verifichiamo che il medico abbia una sponsorizzazione in corso //
-            if (today <= Date.parse(sponsor.created_at) + sponsor.duration * 3600000) {
+            /* Verifichiamo che il medico abbia una sponsorizzazione in corso
+            per visualizzarlo all'inizio dei risultati, comparando i millisecondi correnti
+            con quelli della somma tra la creazione della sponsorship e la sua durata */
+            if (today <= Date.parse(sponsor.pivot['created_at']) + sponsor.duration * 3600000) {
               self.sponsored.push(elem);
             }
           });
         }
       });
-    });
+    }); // Se non vi sono sponsorizzati, creiamo comunque una slide
+
+    if (self.sponsored.length === 0) {
+      self.slidesNumber = 1;
+    } else {
+      /* Creiamo tante slide quanto il quoziente tra la lunghezza dell'array
+      e il numero di card in ogni slide */
+      self.slidesNumber = Math.ceil(self.sponsored.length / self.cardsPerSlide);
+    }
   },
   methods: {
+    /* Diamo l'URL corretto all'immagine del profilo, nel caso in cui questa non provenga
+    dal seeder */
+    correctPicUrl: function correctPicUrl(element, index) {
+      var allPics = document.getElementsByClassName('doctor-pic-dashboard');
+      allPics[index].src = element.detail.pic;
+    },
+
     /* Scomponiamo l'array di risultati per recuperare di volta in volta
     i valori con cui popolare le slide */
     carouselLoop: function carouselLoop(index, array) {
@@ -38719,7 +38748,7 @@ var render = function() {
                     },
                     on: {
                       error: function($event) {
-                        return _vm.imgErr()
+                        return _vm.correctPicUrl(doctor, index)
                       }
                     }
                   })
@@ -38829,9 +38858,7 @@ var render = function() {
       _c(
         "ol",
         { staticClass: "carousel-indicators" },
-        _vm._l(Math.ceil(_vm.sponsored.length / _vm.cardsPerSlide), function(
-          i
-        ) {
+        _vm._l(_vm.slidesNumber, function(i) {
           return _c("li", {
             class: i === 1 ? "active" : "",
             attrs: {
@@ -38846,10 +38873,7 @@ var render = function() {
       _c("div", { staticClass: "carousel-inner", attrs: { role: "listbox" } }, [
         _c(
           "div",
-          _vm._l(Math.ceil(_vm.sponsored.length / _vm.cardsPerSlide), function(
-            i,
-            index
-          ) {
+          _vm._l(_vm.slidesNumber, function(i, index) {
             return _c(
               "div",
               { staticClass: "carousel-item", class: i === 1 ? "active" : "" },
@@ -38859,82 +38883,93 @@ var render = function() {
                   {
                     staticClass: "row container d-flex flex-row p-2 flex-wrap"
                   },
-                  _vm._l(_vm.carouselLoop(i, _vm.sponsored), function(doctor) {
-                    return doctor.sponsors.length > 0
-                      ? _c(
-                          "div",
-                          {
-                            staticClass:
-                              "card col-md-4 p-5 bd-highlight doctor-card",
-                            class: i === 1 ? "clearfix d-none d-md-block" : ""
-                          },
-                          [
-                            _c(
-                              "div",
-                              { staticClass: "doctor-pic-dashboard-container" },
-                              [
-                                _c(
-                                  "a",
-                                  { attrs: { href: "doctor/" + doctor.id } },
-                                  [
-                                    _c("img", {
-                                      staticClass: "doctor-pic-dashboard",
-                                      attrs: {
-                                        src: "storage/" + doctor.detail.pic,
-                                        alt: "Card image cap"
+                  [
+                    _vm._l(_vm.carouselLoop(i, _vm.sponsored), function(
+                      doctor
+                    ) {
+                      return _c(
+                        "div",
+                        {
+                          staticClass:
+                            "card col-md-4 p-5 bd-highlight doctor-card",
+                          class: i === 1 ? "clearfix d-none d-md-block" : ""
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "doctor-pic-dashboard-container" },
+                            [
+                              _c(
+                                "a",
+                                { attrs: { href: "doctor/" + doctor.id } },
+                                [
+                                  _c("img", {
+                                    staticClass: "doctor-pic-dashboard",
+                                    attrs: {
+                                      src: "storage/" + doctor.detail.pic,
+                                      alt: "Card image cap"
+                                    },
+                                    on: {
+                                      error: function($event) {
+                                        return _vm.correctPicUrl(doctor, index)
                                       }
-                                    })
-                                  ]
+                                    }
+                                  })
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "card-body" },
+                            [
+                              _c("h4", { staticClass: "card-title" }, [
+                                _vm._v(
+                                  _vm._s(doctor.name) +
+                                    " " +
+                                    _vm._s(doctor.lastname)
                                 )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "card-body" },
-                              [
-                                _c("h4", { staticClass: "card-title" }, [
-                                  _vm._v(
-                                    _vm._s(doctor.name) +
-                                      " " +
-                                      _vm._s(doctor.lastname)
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _vm._l(doctor.departments, function(
-                                  department
-                                ) {
-                                  return _c(
-                                    "h6",
-                                    { staticClass: "card-text department" },
-                                    [_vm._v(_vm._s(department.type))]
-                                  )
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass:
-                                      "query-submit btn btn-outline-success my-2 my-sm-0 btn-register",
-                                    attrs: { href: "doctor/" + doctor.id }
-                                  },
-                                  [_vm._v("Info")]
+                              ]),
+                              _vm._v(" "),
+                              _vm._l(doctor.departments, function(department) {
+                                return _c(
+                                  "h6",
+                                  { staticClass: "card-text department" },
+                                  [_vm._v(_vm._s(department.type))]
                                 )
-                              ],
-                              2
-                            )
-                          ]
-                        )
-                      : _c(
-                          "div",
-                          {
-                            staticClass:
-                              "card col-md-4 p-2 bd-highlight doctor-card"
-                          },
-                          [_vm._m(1, true), _vm._v(" "), _vm._m(2, true)]
-                        )
-                  }),
-                  0
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "query-submit btn btn-outline-success my-2 my-sm-0 btn-register",
+                                  attrs: { href: "doctor/" + doctor.id }
+                                },
+                                [_vm._v("Info")]
+                              )
+                            ],
+                            2
+                          )
+                        ]
+                      )
+                    }),
+                    _vm._v(" "),
+                    _vm._l(_vm.cardsPerSlide, function(n) {
+                      return _vm.sponsored.length === 0
+                        ? _c(
+                            "div",
+                            {
+                              staticClass:
+                                "card col-md-4 p-2 bd-highlight doctor-card"
+                            },
+                            [_vm._m(1, true), _vm._v(" "), _vm._m(2, true)]
+                          )
+                        : _vm._e()
+                    })
+                  ],
+                  2
                 )
               ]
             )
@@ -38977,11 +39012,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "img-container" }, [
       _c("img", {
         staticClass: "card-img-top",
-        attrs: {
-          src:
-            "https://fscomps.fotosearch.com/compc/CSP/CSP283/wort-schreibende-text-hallo-ich-stock-foto__k73203227.jpg",
-          alt: "Card image cap"
-        }
+        attrs: { src: "img/logosponsor.png", alt: "Card image cap" }
       })
     ])
   },
@@ -38991,7 +39022,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-body" }, [
       _c("h4", { staticClass: "card-title" }, [
-        _vm._v("Sponsorizza il tuo profilo")
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success",
+            attrs: { onclick: "location.href='login'" }
+          },
+          [_vm._v("Sponsorizza il tuo profilo")]
+        )
       ])
     ])
   }

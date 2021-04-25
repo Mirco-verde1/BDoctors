@@ -110,6 +110,8 @@
 
                     <div class="col-md-3 col-sm-4 align-self-center department">
                         <span v-for="(obj, index) in doctor.departments" :key="index">
+
+                            <!-- Non mettiamo la virgola se è l'ultimo elemento della lista -->
                             {{obj.type}}{{(index !== doctor.departments.length - 1) ? ',' : ''}}
                         </span>
                     </div>
@@ -120,13 +122,12 @@
 
                     <div class="doctor-pic-dashboard-container">
                         <a :href="`doctor/${doctor.id}`">
-                            <img class="doctor-pic-dashboard" :src="`storage/${doctor.detail.pic}`" alt="profile pic" @error="imgErr()">
+                            <img @error="correctPicUrl(doctor, index)" class="doctor-pic-dashboard" :src="`storage/${doctor.detail.pic}`" alt="profile pic">
                         </a>
                     </div>
                 </div>
 
             </div>
-
 
         </div>
         <!-- row -->
@@ -147,7 +148,6 @@
                 checkedVote: '',
                 checkedVoteValue: '',
                 checkedReview: '',
-                imgError: false,
 
                 results: [],
                 filteredResults: []
@@ -155,7 +155,6 @@
         },
 
         mounted() {
-            // All doctors data filtererd by homepage research
 
             const self = this;
 
@@ -171,16 +170,18 @@
 
         methods: {
 
-            /*filename: function(element) {
-                return (this.imgError)
-? `storage/${element.detail.pic}` : element.detail.pic;
-            },*/
+            /* Diamo l'URL corretto all'immagine del profilo, nel caso in cui questa non provenga
+            dal seeder */
+            correctPicUrl: function(element, index) {
+                const allPics = document.getElementsByClassName('doctor-pic-dashboard');
 
-            imgErr: function() {
-                this.imgError = true;
+                allPics[index].src = element.detail.pic;
             },
 
+            // Parametri di ricerca iniziali
             initialFilters: function() {
+
+                // Convertiamo la data corrente in millisecondi UNIX
                 const today = Date.parse(new Date());
                 const byDepartment = [];
 
@@ -209,8 +210,9 @@
                         elem.sponsors.forEach(sponsor => {
 
                             /* Verifichiamo che il medico abbia una sponsorizzazione in corso
-                            per visualizzarlo all'inizio dei risultati */
-                            if(today <= (Date.parse(sponsor.created_at) + (sponsor.duration * 3600000))) {
+                            per visualizzarlo all'inizio dei risultati, comparando i millisecondi correnti
+                            con quelli della somma tra la creazione della sponsorship e la sua durata */
+                            if(today <= (Date.parse(sponsor.pivot['created_at']) + (sponsor.duration * 3600000))) {
                                 sponsored.push(elem);
                             }
                         });
@@ -223,7 +225,8 @@
                 this.filteredResults = [...sponsored,...notSponsored];
             },
 
-            // Resettiamo i risultati; utile in caso di passaggio da un filtro ad un altro
+            /* Ripristiniamo i risultati a quelli iniziali;
+            utile in caso di passaggio da un filtro ad un altro */
             restoreResults: function(check) {
                 if (!check) {
                     this.filteredResults = [];
@@ -237,7 +240,7 @@
                 }
             },
 
-            // Recuperiamo i voti di un dottore
+            // Recuperiamo la media voti di un dottore, arrotondata per eccesso
             getVotesAverage: function(element) {
                 const votesCount = element.votes.length;
                 let votesSum = 0;
@@ -249,6 +252,7 @@
 
                 votesAverage = Math.ceil(votesSum / votesCount);
 
+                // Se il medico non ha ancora ricevuto voti la divisione sarà tra due zeri, restituendo NaN
                 if(!isNaN(votesAverage)) {
                     return votesAverage;
                 } else {
@@ -273,6 +277,8 @@
 
                 this.filteredResults = filteredByVote;
 
+                /* Se il filtro per review è attivo contemporaneamente a quello per voti, continua
+                ad ordinare anche per review */
                 if (this.checkedReview) {
                     this.filterByReviews();
                 }
@@ -285,6 +291,8 @@
                 this.filteredResults.forEach(element => {
                     filteredByReviews.push(element);
 
+                    /* Ordine decrescente:
+                    Posizioniamo i risultati con più review all'inizio dell'array */
                     filteredByReviews.sort((a, b) => (b.reviews.length > a.reviews.length) ? 1 : -1);
 
                 });

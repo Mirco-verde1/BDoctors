@@ -18,6 +18,9 @@
     @if($idInURL === $user->id)
 
         <div class="container">
+            <div class="col-xl-12 mt-5">
+                <a href="{{route('dashboard')}}"><button class="btn btn-navbar-toggler"><i class="far fa-hand-point-left"></i> <span>Torna alla Dashboard</span></button></a>
+            </div>
 
             <nav class="secondary-nav margin-top-container">
                 <div>
@@ -64,7 +67,7 @@
     {{-- Semplice verifica che l'id estrapolato dall'URI non sia superiore agli utenti totali del database --}}
     @elseif($idInURL > count($users) || $idInURL === 0)
 
-        <div class="col-xl-10 col-lg-10 mx-auto">
+        <div class="col-xl-10 col-lg-10 mx-auto mt-4">
             <div class="container">
                 <div class="row">
                     <div class="text-left row">
@@ -72,7 +75,9 @@
                             <span>Spiacenti, il medico che hai richiesto non è presente nel nostro database.</span>
                             <br>
                             <br>
-                            <span>Clicca <a href="/admin/doc/{{$user->id}}/edit">qui</a> per tornare alle modifiche del tuo profilo.</span>
+                            <h5>clicca <button class="btn btn-navbar-toggler" onclick="window.history.back();"><i>qui</i></button>
+                                per tornare a quello che stavi facendo.
+                            </h5>
                         </div>
                         <div class="col-lg-5 col-md-5 col-sm-11">
                             <img class="img-fluid doctor-clipart" src="../../../img/doctor-clipart.png" alt="">
@@ -84,7 +89,7 @@
 
     @else
 
-        <div class="col-xl-10 col-lg-10 mx-auto">
+        <div class="col-xl-10 col-lg-10 mx-auto mt-4">
             <div class="col-xl-10 col-lg-10 mx-auto">
                 <div class="container">
                     <div class="row">
@@ -93,7 +98,9 @@
                                 <span>Stai cercando di modificare un profilo che non è il tuo.</span>
                                 <br>
                                 <br>
-                                <span>Clicca <a href="/admin/doc/{{$user->id}}/edit">qui</a> per tornare alle modifiche del tuo profilo.</span>
+                            <h5>clicca <button class="btn btn-navbar-toggler" onclick="window.history.back();"><i>qui</i></button>
+                                per tornare a quello che stavi facendo.
+                            </h5>
                             </div>
                             <div class="col-lg-5 col-md-5 col-sm-11">
                                 <img class="img-fluid doctor-clipart" src="../../../img/doctor-clipart.png" alt="">

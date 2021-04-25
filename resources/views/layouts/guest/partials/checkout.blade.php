@@ -21,7 +21,7 @@
                 <div class="card-body">
                   <h1 class="card-title pricing-card-title">{{$sponsor->price}}€ <small class="text-muted">/ {{$sponsor->duration}}h</small></h1>
                   <ul class="list-unstyled mt-3 mb-4">
-                    <li>Il profilo verrá</li>
+                    <li>Il profilo verrà</li>
                     <li>visualizzato per</li>
                     <li>{{$sponsor->duration}}h in homepage</li>
                   </ul>
@@ -33,13 +33,19 @@
               </div>
               @endforeach
             </div>
-    <div id="dropin-container">
+            {{-- Permette al medico di sponsorizzarsi solo se non ha mai avuto una sponsorizzazione
+            o se la precedente è scaduta --}}
+            @if(!isset($activeSponsor) || \Carbon\Carbon::parse($activeSponsor['created_at'])->addHour($chosenSponsor->duration)->lte(\Carbon\Carbon::now()))
+              <div id="dropin-container">
 
-    </div>
-    {{-- <input class="btn-check" type="radio" name="sponsor" value="{{$sponsor->id}}"> --}}
-    <div>
-        <button class="btn btn-success button-pay" id="submit-button">Completa il tuo pagamento</button>
-    </div>
+              </div>
+              {{-- <input class="btn-check" type="radio" name="sponsor" value="{{$sponsor->id}}"> --}}
+              <div>
+                  <button class="btn btn-success button-pay" id="submit-button">Completa il tuo pagamento</button>
+              </div>
+            @else
+              <h2 class="text-center text-bold">Hai già una sponsorizzazione in corso!</h2>
+            @endif
 
 </form>
     </div>

@@ -52,23 +52,25 @@
 
     <script>
         var button = document.querySelector('#submit-button');
-        braintree.dropin.create({
-        authorization: "sandbox_x6mvdvj5_r7czy6mhvckbb4v2",
-        container: '#dropin-container'
-        }, function (createErr, instance) {
-        button.addEventListener('click', function () {
-        instance.requestPaymentMethod(function (err, payload) {
-        $.get('{{ route('payment.make') }}', {payload}, function (response) {
-        if (response.success) {
-        alert('Payment successfull!');
-        } else {
-        alert('Payment failed');
+        if(location.href === 'http://127.0.0.1:8000/payment/make') {
+            braintree.dropin.create({
+            authorization: "sandbox_x6mvdvj5_r7czy6mhvckbb4v2",
+            container: '#dropin-container'
+            }, function (createErr, instance) {
+            button.addEventListener('click', function () {
+            instance.requestPaymentMethod(function (err, payload) {
+            $.get('{{ route('payment.make') }}', {payload}, function (response) {
+            if (response.success) {
+            alert('Payment successfull!');
+            } else {
+            alert('Payment failed');
+            }
+            }, 'json');
+            console.log(err);
+            });
+            });
+            });
         }
-        }, 'json');
-        console.log(err);
-        });
-        });
-        });
         </script>
 </body>
 </html>

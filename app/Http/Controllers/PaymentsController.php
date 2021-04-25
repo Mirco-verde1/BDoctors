@@ -12,11 +12,26 @@ use Braintree\Transaction as Braintree_Transaction;
 
 class PaymentsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function make(Request $request)
 
     {
         $user = Auth::user();
         $sponsors = Sponsor::all();
+
+        $activeSponsor = Auth::user()->sponsors()->orderBy('id', 'desc')->first();
+
+        if ($activeSponsor != null) {
+            $activeSponsor = Auth::user()->sponsors()->orderBy('id', 'desc')->first()->pivot;
+        }
+
+        $chosenSponsor = Auth::user()->sponsors()->orderBy('id', 'desc')->first();
+
         $payload = $request->input('payload', false);
         $payment_method_nonce = $request->get('payment_method_nonce');
         $status = Braintree_Transaction::sale([
@@ -27,6 +42,6 @@ class PaymentsController extends Controller
             ]
         ]);
 
-        return view('layouts.guest/partials.checkout', compact('status','user','sponsors'));
+        return view('layouts.guest/partials.checkout', compact('status','user','activeSponsor','chosenSponsor','sponsors'));
     }
 }

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+<title>{{ __('BDoctors - Dashboard') }}</title>
+
 @section('content')
 
 
@@ -8,17 +10,18 @@
 
             <nav class="col-lg-2 col-md-3 d-none d-md-block bg-light sidebar navbar-expand-md">
                 <div class="sidebar-sticky ">
-
+                    {{-- immagine di profilo --}}
                     <figure class="doctor-pic-dashboard-container ">
+                        <a href="../doctor/{{$user->id}}">
                         @if(file_exists('storage/'.$user->detail->pic))
 
-                            <a href="../doctor/{{$user->id}}"><img class="doctor-pic-dashboard"
+                        <img class="doctor-pic-dashboard"
                                 src="{{ URL::asset('storage/'.$user->detail->pic) }}"
                                 alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
                             </a>
 
                         @elseif(file_exists($user->detail->pic))
-                            <img class="doctor-pic-show" src="{{ URL::asset($user->detail->pic)}}"
+                            <img class="doctor-pic-dashboard" src="{{ URL::asset($user->detail->pic)}}"
                             alt="{{$user->name}} {{$user->lastname}}">
 
                         @else
@@ -108,17 +111,24 @@
                 </div>
             </nav>
 
+            {{-- dropdown attivo da 992px in giù --}}
             <div class="container-fluid navbar-sidebar">
                 <div class="collapse" id="navbarToggleExternalContent">
                     <div class="bg-light p-4 row">
-                        <div class="col-sm-4 col-auto">
+                        {{-- immagine di profilo --}}
+                        <div class="col-sm-4">
+
                             <figure class="doctor-pic-dashboard-container ">
                                 @if(file_exists('storage/'.$user->detail->pic))
 
-                                    <a href="../doctor/{{$user->id}}"><img class="doctor-pic-dashboard"
-                                        src="{{ URL::asset('storage/'.$user->detail->pic) }}"
+                                    <a href="../doctor/{{$user->id}}">
+                                        <img class="doctor-pic-dashboard" src="{{ URL::asset('storage/'.$user->detail->pic) }}"
                                         alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
                                     </a>
+
+                                @elseif(file_exists($user->detail->pic))
+                                    <img class="doctor-pic-dashboard" src="{{ URL::asset($user->detail->pic)}}"
+                                    alt="{{$user->name}} {{$user->lastname}}">
 
                                 @else
 
@@ -129,7 +139,10 @@
 
                                 @endif
                             </figure>
+
                         </div>
+
+                        {{-- dropdown visalizza info --}}
                         <div class="col-sm-8 col-auto links">
 
                             <a class="nav-link active" href="#">
@@ -171,7 +184,7 @@
                 <hr>
             </div>
 
-            <main role="main" class="col-lg-10 col-md-12 ml-sm-auto px-6">
+            <section role="main" class="margin-top-container col-lg-10 col-md-12 ml-sm-auto ml-md-auto px-6">
 
                 <div class="card-deck">
 
@@ -187,6 +200,7 @@
                             </div>
                         </nav>
                         <div class="card-body text-left">
+
                             @if(isset($message))
 
                                 <div>
@@ -202,6 +216,9 @@
                                 </div>
 
                             @endif
+                            <a href="mailto:{{$message->email}}" class="btn btn-navbar-toggler">
+                                <span>Rispondi a <span class="text-capitalize">{{$message->name}}</span></span>
+                            </a>
                         </div>
 
                         <div class="card-footer">
@@ -281,12 +298,18 @@
 
                                     <div>
                                         @if(\Carbon\Carbon::parse($activeSponsor['created_at'])->addHour($chosenSponsor->duration)->gte(\Carbon\Carbon::now()))
-                                            <span class="text-muted">
+                                            <h4 class="mb-4">
+                                                Sponsorizzazione in corso:
+                                                <span class="department chosen_sponsor">{{$chosenSponsor->type}}</span>
+                                            </h4>
+                                            <h4>
                                                 Data scadenza:
-                                                {{ \Carbon\Carbon::parse($activeSponsor['created_at'])->addHour($chosenSponsor->duration)->format('d/m/y')}}
-                                                alle
-                                                {{ \Carbon\Carbon::parse($activeSponsor['created_at'])->addHour($chosenSponsor->duration)->format('H:i')}}
-                                            </span>
+                                                <span class="department chosen_sponsor">
+                                                    {{ \Carbon\Carbon::parse($activeSponsor['created_at'])->addHour($chosenSponsor->duration)->format('d M y')}}
+                                                    <small>alle</small>
+                                                    {{ \Carbon\Carbon::parse($activeSponsor['created_at'])->addHour($chosenSponsor->duration)->format('H:i')}}
+                                                </span>
+                                            </h4>
                                         @else
                                             <span class="text-muted">La tua ultima sponsorizzazione è scaduta!</span>
                                         @endif
@@ -304,26 +327,24 @@
                             </div>
                         </div>
 
-                        @if (isset($activeSponsor))
-                            <div class="card-footer">
+                        <div class="card-footer">
+                            @if (isset($activeSponsor))
                                 <small class="text-muted">Ultima sponsorizzazione il
                                     {{ \Carbon\Carbon::parse($activeSponsor['created_at'])->format('d/m/y')}}
                                     alle
                                     {{ \Carbon\Carbon::parse($activeSponsor['created_at'])->format('H:i')}}
                                 </small>
-                            </div>
 
-                        @else
-                            <div class="card-footer">
-                                <small class="text-muted">Nessuna sponsorizzazione trovata.</small>
-                            </div>
-                        @endif
+                            @endif
+                        </div>
+
 
                     </div>
 
+
                 </div>
 
-            </main>
+            </section>
 
         </div>
         {{-- row --}}

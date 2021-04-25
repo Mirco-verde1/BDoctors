@@ -55,11 +55,12 @@
 
                             <div class="img-container">
                                 <img class="card-img-top"
-                                    src="https://fscomps.fotosearch.com/compc/CSP/CSP283/wort-schreibende-text-hallo-ich-stock-foto__k73203227.jpg"
+                                    src="img/logosponsor.png"
                                     alt="Card image cap">
                             </div>
                             <div class="card-body">
                                 <h4 class="card-title">
+
                                     <button class="btn btn-success" onclick="location.href='payment/make'">Sponsorizza il tuo profilo</button>
                                 </h4>
                             </div>
@@ -161,6 +162,8 @@
 
                 return array.slice(start, end);
             },
+
+
         }
     }
 

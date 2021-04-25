@@ -61,7 +61,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">
 
-                                    <button class="btn btn-success" onclick="location.href='payment/make'">Sponsorizza il tuo profilo</button>
+                                    <button class="btn btn-success" onclick="location.href='login'">Sponsorizza il tuo profilo</button>
                                 </h4>
                             </div>
 

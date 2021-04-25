@@ -39026,7 +39026,7 @@ var staticRenderFns = [
           "button",
           {
             staticClass: "btn btn-success",
-            attrs: { onclick: "location.href='payment/make'" }
+            attrs: { onclick: "location.href='login'" }
           },
           [_vm._v("Sponsorizza il tuo profilo")]
         )

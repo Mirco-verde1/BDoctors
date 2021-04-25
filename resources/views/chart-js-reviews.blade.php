@@ -2,9 +2,7 @@
 <html>
 
     <head>
-        <title>Laravel Chart JS Example Tutorial - Pie Chart - Tutsmake.com</title>
-        <!-- Latest CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <title>{{ __('BDoctors - Grafico') }}</title>
             <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
@@ -21,15 +19,21 @@
             <go-top bg-color="#1DB487" :bottom="50"></go-top>
             @include('layouts/guest/partials/navbar')
 
-            <div class="chart-container margin-top-chart">
-                <div class="row">
-                    <a href="{{route('dashboard')}}"><button>Torna alla Dashboard</button></a>
+            <div class="margin-top-chart overflow-hidden">
 
-                    <div class="bar-chart-container" style="display: flex">
-                        <div> <canvas id="bar-chart" width="700" height="400"></canvas> </div>
-                        <canvas id="bar1-chart" width="700" height="400"></canvas>
-                        <canvas id="bar2-chart"></canvas>
+                <div class="row p-4">
+
+                    <div class="col-xl-2 col-md-12">
+                        <a href="{{route('dashboard')}}"><button class="btn btn-navbar-toggler"><i class="far fa-hand-point-left"></i> <span>Torna alla Dashboard</span></button></a>
                     </div>
+
+                    <div class="col-xl-5 col-md-6">
+                        <canvas id="bar-chart" width="400" height="400"></canvas>
+                    </div>
+                    <div class="col-xl-5 col-md-6">
+                        <canvas id="bar1-chart" width="400" height="400"></canvas>
+                    </div>
+
                 </div>
 
             </div>
@@ -147,13 +151,13 @@
 
                 //create bar Chart class object
                 var chart1 = new Chart(ctx, {
-                    type: "pie",
+                    type: "doughnut",
                     data: data,
                     options: options
                 });
 
                 var chart2 = new Chart(ctx1, {
-                    type: "pie",
+                    type: "doughnut",
                     data: dataM,
                     options: optionsM
                 });

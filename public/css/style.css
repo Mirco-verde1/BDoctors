@@ -16353,6 +16353,10 @@ a {
   background-image: url("https://www.doctors-365.de/home_slider_bg.95b2004ae0c9ce8f3a0b.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  -o-object-fit: fill;
+     object-fit: fill;
+  -o-object-position: center;
+     object-position: center;
   background-position: center center;
   background-attachment: fixed;
   display: flex;
@@ -16394,6 +16398,16 @@ a {
   }
   .jumbotron-doc-container-title .subtitle {
     font-size: 20px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .jumbotron-doc {
+    background-position: -710px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .jumbotron-doc {
+    background-position: -810px;
   }
 }
 
@@ -16570,6 +16584,13 @@ a {
 
 .nav-link:hover {
   font-weight: bold;
+}
+
+.chosen_sponsor {
+  font-size: 1.2rem;
+}
+.chosen_sponsor small {
+  color: black;
 }
 
 .secondary-nav {
@@ -16853,4 +16874,9 @@ a {
 
 .margin-top-chart {
   margin-top: 100px;
+}
+
+.doughnut {
+  width: 100%;
+  height: 100%;
 }

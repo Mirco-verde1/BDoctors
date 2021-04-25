@@ -2271,6 +2271,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -39011,11 +39012,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "img-container" }, [
       _c("img", {
         staticClass: "card-img-top",
-        attrs: {
-          src:
-            "https://fscomps.fotosearch.com/compc/CSP/CSP283/wort-schreibende-text-hallo-ich-stock-foto__k73203227.jpg",
-          alt: "Card image cap"
-        }
+        attrs: { src: "img/logosponsor.png", alt: "Card image cap" }
       })
     ])
   },

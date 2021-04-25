@@ -4,7 +4,7 @@
 
 
         @section('content')
-            <div id="app">
+            <div id="app" class="overflow-hidden">
                 <div class="jumbotron-doc">
                     <div class="jumbotron-overlay">
                     </div>

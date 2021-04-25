@@ -93,6 +93,8 @@ background-color: $body-bg;
     background-image: url("https://www.doctors-365.de/home_slider_bg.95b2004ae0c9ce8f3a0b.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    object-fit: fill;
+    object-position: center;
     background-position: center center;
     background-attachment: fixed;
     display: flex;
@@ -121,6 +123,7 @@ background-color: $body-bg;
         }
 
         @media screen and (max-width: 768px) {
+
             .title{
                 font-size:60px;
                 display: block;
@@ -130,6 +133,7 @@ background-color: $body-bg;
                 font-size:30px;
             }
             @media (max-width: 576px) {
+
                 .title{
                     font-size:40px;
                     display: block;
@@ -138,10 +142,23 @@ background-color: $body-bg;
                 .subtitle{
                     font-size:20px;
                 }
+
              }
         }
     }
+    @media screen and (max-width:768px) {
+        background-position: -710px;
+
+    }
+    @media screen and (max-width:576px) {
+        background-position: -810px;
+
+    }
 }
+
+
+
+
 .jumbotron-overlay {
     overflow-x: hidden;
     width: inherit;
@@ -333,6 +350,14 @@ background-color: $body-bg;
 
 .nav-link:hover {
     font-weight: bold;
+}
+
+.chosen_sponsor {
+    font-size: 1.2rem;
+
+    small {
+        color: black;
+    }
 }
 
 
@@ -691,5 +716,10 @@ background-color: $body-bg;
 
 .margin-top-chart {
     margin-top: 100px;
+}
+
+.doughnut {
+    width: 100%;
+    height: 100%;
 }
 

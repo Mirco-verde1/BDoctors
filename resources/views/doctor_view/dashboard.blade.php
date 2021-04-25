@@ -277,14 +277,14 @@
                         <div class="card-body text-left">
                             <div>
 
-                                @if(isset($sponsor))
+                                @if(isset($activeSponsor))
 
                                 <div>
 
                                     <span class="text-muted">Data scadenza:
-                                        {{ \Carbon\Carbon::parse($sponsor['created_at'])->addHour($lastSponsor->duration)->format('d/m/y')}}
+                                        {{ \Carbon\Carbon::parse($activeSponsor['created_at'])->addHour($chosenSponsor->duration)->format('d/m/y')}}
                                         alle
-                                        {{ \Carbon\Carbon::parse($sponsor['created_at'])->addHour($lastSponsor->duration)->format('H:i')}}
+                                        {{ \Carbon\Carbon::parse($activeSponsor['created_at'])->addHour($chosenSponsor->duration)->format('H:i')}}
 
                                     </span>
 
@@ -302,12 +302,12 @@
                             </div>
                         </div>
 
-                        @if (isset($sponsor))
+                        @if (isset($activeSponsor))
                             <div class="card-footer">
                                 <small class="text-muted">Ultima sponsorizzazione il
-                                    {{ \Carbon\Carbon::parse($sponsor['created_at'])->format('d/m/y')}}
+                                    {{ \Carbon\Carbon::parse($activeSponsor['created_at'])->format('d/m/y')}}
                                     alle
-                                    {{ \Carbon\Carbon::parse($sponsor['created_at'])->format('H:i')}}
+                                    {{ \Carbon\Carbon::parse($activeSponsor['created_at'])->format('H:i')}}
                                 </small>
                             </div>
 

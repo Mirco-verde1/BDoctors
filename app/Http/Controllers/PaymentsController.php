@@ -12,6 +12,12 @@ use Braintree\Transaction as Braintree_Transaction;
 
 class PaymentsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function make(Request $request)
 
     {

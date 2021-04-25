@@ -16626,14 +16626,15 @@ a {
 .profile .info {
   text-align: left;
 }
-.profile .info .votes-form {
-  width: 80px;
+.profile .info form .votes-form {
+  width: auto;
+  margin-right: 10px;
 }
-.profile .info label {
+.profile .info form label {
   margin-top: 10px;
   padding: 0;
 }
-.profile .info .votes-input {
+.profile .info form .votes-input {
   width: auto;
 }
 .profile .btn-primary,

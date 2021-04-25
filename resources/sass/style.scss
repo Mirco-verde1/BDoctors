@@ -343,7 +343,6 @@ background-color: $body-bg;
 .secondary-nav {
     background-color: #2d3e4f;
     position: relative;
-    // bottom: -3px;
     border-bottom: none;
     border-radius: 5px 5px 0 0;
     padding: 20px;
@@ -406,17 +405,21 @@ background-color: $body-bg;
     .info {
         text-align: left;
 
-        .votes-form  {
-            width: 80px;
-        }
+        form {
 
-        label {
-            margin-top: 10px;
-            padding: 0;
-        }
+            .votes-form  {
+                width: auto;
+                margin-right: 10px;
+            }
 
-        .votes-input {
-            width: auto;
+            label {
+                margin-top: 10px;
+                padding: 0;
+            }
+
+            .votes-input {
+                width: auto;
+            }
         }
     }
 

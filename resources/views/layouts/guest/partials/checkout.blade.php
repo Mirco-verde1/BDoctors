@@ -4,6 +4,7 @@
     <div class="container">
     <div class="row">
     <div class=" col-md-12 ">
+        <a href="{{route('dashboard')}}"><button>Dashboard</button></a>
         <form action="{{route('sponsorship.store')}}" method="post">
             @csrf
         @method('POST')

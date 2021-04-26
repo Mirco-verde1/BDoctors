@@ -351,7 +351,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group position-relative">
+                                <div class="form-group position-relative mt-5">
                                     <label for="email">Email</label>
                                     <input class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}"
                                         type="text" name="email" placeholder="Email">
@@ -360,7 +360,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group position-relative">
+                                <div class="form-group position-relative mt-5">
                                     <label for="body">Testo </label>
                                     <textarea class="form-control {{ $errors->has('body') ? 'is-invalid' : ''}}"
                                         type="text" name="body" placeholder="Testo" rows="6"></textarea>
@@ -369,7 +369,7 @@
                                     </div>
                                 </div>
 
-                                <input class="btn btn-success" type="submit" value="Invia">
+                                <input class="btn btn-success mt-4" type="submit" value="Invia">
                             </form>
                         </div>
                     </div>

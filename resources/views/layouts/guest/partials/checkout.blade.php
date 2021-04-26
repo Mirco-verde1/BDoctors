@@ -4,7 +4,9 @@
     <div class="container">
     <div class="row">
     <div class=" col-md-12 ">
-        <a href="{{route('dashboard')}}"><button>Dashboard</button></a>
+        <div class="col-xl-12 mt-5">
+            <a href="{{route('dashboard')}}"><button class="btn btn-navbar-toggler"><i class="far fa-hand-point-left"></i> <span>Torna alla Dashboard</span></button></a>
+        </div>
         <form action="{{route('sponsorship.store')}}" method="post">
             @csrf
         @method('POST')
@@ -41,8 +43,8 @@
 
               </div>
               {{-- <input class="btn-check" type="radio" name="sponsor" value="{{$sponsor->id}}"> --}}
-              <div>
-                  <button class="btn btn-success button-pay" id="submit-button">Completa il tuo pagamento</button>
+              <div class="container-button-pay">
+                  <button class="btn btn-success button-pay mt-3" id="submit-button">Completa il tuo pagamento</button>
               </div>
             @else
               <h2 class="text-center text-bold">Hai già una sponsorizzazione in corso!</h2>

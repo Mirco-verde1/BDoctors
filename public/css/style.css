@@ -16866,9 +16866,12 @@ a {
   margin-bottom: 100px;
 }
 
-.button-pay {
-  position: relative;
-  float: center;
+.container-button-pay {
+  display: flex;
+  width: 100%;
+}
+.container-button-pay .button-pay {
+  justify-content: center;
   margin: 0 auto;
 }
 

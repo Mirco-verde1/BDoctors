@@ -705,13 +705,15 @@ background-color: $body-bg;
     margin-top: 100px;
     margin-bottom: 100px;
 }
+.container-button-pay{
+    display: flex;
+    width: 100%;
 
 .button-pay{
-    position: relative;
-    float: center;
+    justify-content: center;
     margin: 0 auto;
 }
-
+}
 // stile chart-js
 
 .margin-top-chart {

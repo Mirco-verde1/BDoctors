@@ -238,12 +238,12 @@ background-color: $body-bg;
     overflow-x: visible;
 }
 .color-chevron{
-    color: #1BB386;
+    color: $green-logo;
 }
 .title-carousel{
     font-weight: bold;
     text-align: center;
-    color: #1BB386;
+    color: $green-logo;
     text-shadow: 2px 2px #0c0c0c;
     font-size:50px;
     margin-top: 100px;
@@ -568,7 +568,6 @@ background-color: $body-bg;
     cursor: pointer;
   }
 
-
   .style-radio:hover input ~ .checkmark {
     background-color: #1FB488;
   }
@@ -586,6 +585,19 @@ background-color: $body-bg;
 
   .style-radio input:checked ~ .checkmark:after {
     display: block;
+  }
+
+  .pro-plain {
+      background-color: $gold;
+      color: white;
+  }
+  .premium-plain {
+      background-color: $green;
+      color: white;
+  }
+  .standard-plain {
+      background-color: $blue;
+      color: white;
   }
 
 // style messaggio di errore
@@ -698,12 +710,29 @@ background-color: $body-bg;
 }
 
 
-.style-radio:hover input~.checkmark {
-    background-color: #1FB488;
+.style-radio:hover input~.checkmark-standard {
+    background-color: $blue;
+    color: #fff;
+}
+.style-radio:hover input~.checkmark-premium {
+    background-color: $green;
+    color: #fff;
+}
+.style-radio:hover input~.checkmark-pro {
+    background-color: $gold;
+    color: #fff;
 }
 
-.style-radio input:checked~.checkmark {
-    background-color: #2FA360;
+.style-radio input:checked~.checkmark-standard {
+    background-color: $blue;
+    color: #fff;
+}
+.style-radio input:checked~.checkmark-premium {
+    background-color: $green;
+    color: #fff;
+}
+.style-radio input:checked~.checkmark-pro {
+    background-color: $gold;
     color: #fff;
 }
 
@@ -720,11 +749,11 @@ background-color: $body-bg;
 .title-checkout {
     font-weight: bold;
     text-align: center;
-    color: #1BB386;
+    color: $green-logo;
     text-shadow: 2px 2px #0c0c0c;
     font-size: 50px;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 .container-button-pay{
     display: flex;

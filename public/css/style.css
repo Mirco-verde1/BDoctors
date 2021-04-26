@@ -16476,13 +16476,13 @@ a {
 }
 
 .color-chevron {
-  color: #1BB386;
+  color: #1DB487;
 }
 
 .title-carousel {
   font-weight: bold;
   text-align: center;
-  color: #1BB386;
+  color: #1DB487;
   text-shadow: 2px 2px #0c0c0c;
   font-size: 50px;
   margin-top: 100px;
@@ -16775,6 +16775,21 @@ a {
   display: block;
 }
 
+.pro-plain {
+  background-color: #FFD700;
+  color: white;
+}
+
+.premium-plain {
+  background-color: #38c172;
+  color: white;
+}
+
+.standard-plain {
+  background-color: #3490dc;
+  color: white;
+}
+
 .doctor-clipart {
   text-align: right;
 }
@@ -16850,12 +16865,33 @@ a {
   cursor: pointer;
 }
 
-.style-radio:hover input ~ .checkmark {
-  background-color: #1FB488;
+.style-radio:hover input ~ .checkmark-standard {
+  background-color: #3490dc;
+  color: #fff;
 }
 
-.style-radio input:checked ~ .checkmark {
-  background-color: #2FA360;
+.style-radio:hover input ~ .checkmark-premium {
+  background-color: #38c172;
+  color: #fff;
+}
+
+.style-radio:hover input ~ .checkmark-pro {
+  background-color: #FFD700;
+  color: #fff;
+}
+
+.style-radio input:checked ~ .checkmark-standard {
+  background-color: #3490dc;
+  color: #fff;
+}
+
+.style-radio input:checked ~ .checkmark-premium {
+  background-color: #38c172;
+  color: #fff;
+}
+
+.style-radio input:checked ~ .checkmark-pro {
+  background-color: #FFD700;
   color: #fff;
 }
 
@@ -16872,11 +16908,11 @@ a {
 .title-checkout {
   font-weight: bold;
   text-align: center;
-  color: #1BB386;
+  color: #1DB487;
   text-shadow: 2px 2px #0c0c0c;
   font-size: 50px;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .container-button-pay {

@@ -496,8 +496,11 @@ background-color: $body-bg;
     }
 
     .btn-success:hover{
-
         background-color: rgb(67, 116, 97);
+    }
+
+    .btn-danger:hover {
+        background-color: rgb(117, 53, 48);
     }
 
     .curriculum{

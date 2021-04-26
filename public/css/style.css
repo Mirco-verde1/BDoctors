@@ -16694,6 +16694,9 @@ a {
 .profile .btn-success:hover {
   background-color: #437461;
 }
+.profile .btn-danger:hover {
+  background-color: #753530;
+}
 .profile .curriculum {
   margin: 0 auto;
 }

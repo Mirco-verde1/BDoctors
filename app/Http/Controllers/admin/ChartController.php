@@ -18,6 +18,8 @@ class ChartController extends Controller
 {
     public function reviewsChart()
     {
+        $user = Auth::user();
+        $users = User::all();
 
         $record = Auth::user()->reviews()->select(DB::raw("COUNT(*) as count"), DB::raw("DAYNAME(created_at) as day_name"), DB::raw("DAY(created_at) as day"))
         ->where('created_at', '>', Carbon::today()->subDay(6))
@@ -41,7 +43,7 @@ class ChartController extends Controller
             ->orderBy('day')
             ->get();
 
-        $data1 = [];;
+        $data1 = [];
         foreach ($record1 as $row1) {
             $data1['label'][] = $row1->day_name;
             $data1['data'][] = (int) $row1->count;
@@ -49,7 +51,25 @@ class ChartController extends Controller
 
         $data1['chart1_data'] = json_encode($data1);
 
-        return view('chart-js-reviews', $data, $data1);
+
+        $record2 = DB::table('user_vote')->select(DB::raw("COUNT(*) as count"), DB::raw("DAYNAME(created_at) as day_name"), DB::raw("DAY(created_at) as day"))
+            ->where('created_at', '>', Carbon::today()->subDay(6))
+            ->where('user_id', '=', $user->id) 
+                ->groupBy('day_name', 'day')
+                ->orderBy('day')
+                ->get();
+
+        $data2 = [];
+        foreach ($record2 as $row2) {
+            $data2['label'][] = $row2->day_name;
+            $data2['data'][] = (int) $row2->count;
+        }
+
+        $data2['chart2_data'] = json_encode($data2);
+
+        $dataCollection = [$data, $data1, $data2];
+
+        return view('chart-js-reviews', compact('user', 'users', 'dataCollection'));
     }
 
    /*  public function messagesChart()

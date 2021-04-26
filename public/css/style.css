@@ -16413,7 +16413,7 @@ a {
     font-size: 20px;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 76font-weight-bold8px) {
   .jumbotron-doc {
     background-position: -710px;
   }
@@ -16746,6 +16746,12 @@ a {
   display: none;
 }
 
+.checkmark-standard,
+.checkmark-premium,
+.checkmark-pro {
+  width: 35%;
+}
+
 .style-radio input:checked ~ .checkmark:after {
   display: block;
 }
@@ -16776,7 +16782,7 @@ a {
 }
 
 .pro-plain {
-  background-color: #FFD700;
+  background-color: #eba91d;
   color: white;
 }
 
@@ -16788,6 +16794,11 @@ a {
 .standard-plain {
   background-color: #3490dc;
   color: white;
+}
+
+.border-pro {
+  border-color: #eba91d;
+  color: #eba91d;
 }
 
 .doctor-clipart {
@@ -16876,7 +16887,7 @@ a {
 }
 
 .style-radio:hover input ~ .checkmark-pro {
-  background-color: #FFD700;
+  background-color: #eba91d;
   color: #fff;
 }
 
@@ -16891,7 +16902,7 @@ a {
 }
 
 .style-radio input:checked ~ .checkmark-pro {
-  background-color: #FFD700;
+  background-color: #eba91d;
   color: #fff;
 }
 

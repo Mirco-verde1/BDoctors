@@ -167,7 +167,7 @@ background-color: $body-bg;
              }
         }
     }
-    @media screen and (max-width:768px) {
+    @media screen and (max-width:76font-weight-bold8px) {
         background-position: -710px;
 
     }
@@ -558,6 +558,12 @@ background-color: $body-bg;
     display: none;
   }
 
+  .checkmark-standard,
+  .checkmark-premium,
+  .checkmark-pro{
+    width: 35%;
+  }
+
   .style-radio input:checked ~ .checkmark:after {
     display: block;
   }
@@ -598,6 +604,11 @@ background-color: $body-bg;
   .standard-plain {
       background-color: $blue;
       color: white;
+  }
+
+  .border-pro{
+      border-color: $gold;
+      color: $gold;
   }
 
 // style messaggio di errore

@@ -63,9 +63,9 @@
 
             <div class="col-xl-10 col-lg-10 mx-auto mt-4">
                 <div class="container">
-                    <div class="row">
-                        <div class="text-left row">
-                            <div class="col-lg-7 col-md-7 col-sm-11 text">
+                    <div class="row margin-top-container">
+                        <div class="text-left row margin-top-container">
+                            <div class="col-lg-7 col-md-7 col-sm-11 text margin-top-container">
                                 <span>Spiacenti, il medico che hai richiesto non è presente nel nostro database.</span>
                                 <br>
                                 <br>
@@ -221,6 +221,7 @@
                 var dataV = {
                     labels: cDataV.label,
                     datasets: [{
+                        axis: 'y',
                         label: cDataV.label,
                         data: cDataV.data,
                         backgroundColor: [
@@ -248,6 +249,7 @@
                 //options
                 var optionsV = {
                     responsive: false,
+                    indexAxis: 'y',
                     title: {
                         display: true,
                         position: "top",
@@ -281,7 +283,7 @@
                 });
 
                 var chart3 = new Chart(ctx2, {
-                    type: "doughnut",
+                    type: "bar",
                     data: dataV,
                     options: optionsV
                 });

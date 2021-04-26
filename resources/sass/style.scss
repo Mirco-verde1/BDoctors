@@ -39,17 +39,27 @@
   }
 
 // Stile div search-bar ---------------------------------------------------
-.doctor-smallpic-dashboard-container {
-    width: 50px;
-    aspect-ratio: 50 / 50;
-    border-radius: 50%;
-    border: 3px solid $green-logo;
-    overflow: hidden;
 
-    .doctor-smallpic-dashboard {
-        width: 100%;
+.nav-item{
+
+
+    .doctor-smallpic-dashboard-container {
+        width: 50px;
+        aspect-ratio: 50 / 50;
+        border-radius: 50%;
+        border: 3px solid $green-logo;
+        margin-top: 15px;
+        overflow: hidden;
+
+        .doctor-smallpic-dashboard {
+            width: 100%;
+            vertical-align: middle;
+        }
     }
+
 }
+
+
 
 .btn-register{
     margin-left: 10px;

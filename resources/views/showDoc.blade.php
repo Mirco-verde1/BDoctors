@@ -166,7 +166,7 @@
                                         </div>
 
                                         {{-- form per inviare un messaggio al dottore --}}
-                                        <form action="{{ route('message.store', [ 'user_id' => $user->id]) }}" method="post">
+                                        <form action="{{ route('message.store', [ 'user_id' => $user->id]) }}" method="post" class="needs-validation" novalidate>
                                             @csrf
                                             @method('POST')
                                         <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog"
@@ -183,31 +183,25 @@
                                                     </div>
 
                                                     <div class="modal-body mx-3">
-                                                        <div class="md-form mb-5 position-relative">
+                                                        <div class="md-form mb-5 position-relative form-group">
                                                             <i class="fas fa-user prefix grey-text"></i>
                                                             <label for="name" data-error="wrong"
                                                              data-success="right">Nome</label>
                                                                 <input type="text" name="name" id="form34" placeholder="Nome"
-                                                                class="form-control {{ $errors->has('name') ? 'is-invalid' : ''}}">
-                                                                <div class="invalid-tooltip">
-                                                                    {{ $errors->first('name') }}
-                                                                </div>
+                                                                class="form-control">
                                                         </div>
 
-                                                        <div class="md-form mb-5 position-relative">
+                                                        <div class="md-form mb-5 position-relative form-group">
                                                             <i class="fas fa-envelope prefix grey-text"></i>
                                                             <label for="email" data-error="wrong"
                                                             data-success="right">E-mail</label>
                                                             <input type="email" name="email" id="form29" placeholder="Email"
-                                                            class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}">
-                                                            <div class="invalid-tooltip">
-                                                                {{ $errors->first('email') }}
-                                                            </div>
+                                                            class="form-control">
 
                                                         </div>
 
 
-                                                        <div class="md-form position-relatative">
+                                                        <div class="md-form position-relatative form-group">
 
                                                             <i class="fas fa-pencil prefix grey-text"></i>
                                                             <label for="body" data-error="wrong"
@@ -215,7 +209,7 @@
                                                             <textarea name="body" type="text" id="form8" placeholder="Messaggio"
                                                             class="md-textarea form-control {{ $errors->has('body') ? 'is-invalid' : ''}}" rows="4" required></textarea>
                                                              <div class="invalid-tooltip">
-                                                                {{ $errors->first('body') }}
+                                                                <span>Questo campo è obbligatorio.</span>
                                                             </div>
 
                                                         </div>

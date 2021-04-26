@@ -16883,3 +16883,12 @@ a {
   width: 100%;
   height: 100%;
 }
+
+.invalid input:required:invalid {
+  background: #BE4C54;
+}
+
+/* Mark valid inputs during .invalid state */
+.invalid input:required:valid {
+  background: #17D654;
+}

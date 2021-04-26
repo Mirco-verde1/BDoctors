@@ -458,7 +458,7 @@ background-color: $body-bg;
         form {
 
             .votes-form  {
-                width: 30%;
+                width: auto;
                 margin-right: 10px;
             }
 
@@ -796,9 +796,4 @@ background-color: $body-bg;
 
 .invalid input:required:invalid {
   background: #BE4C54;
-}
-
-/* Mark valid inputs during .invalid state */
-.invalid input:required:valid {
-  background: #17D654;
 }

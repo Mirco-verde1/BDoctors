@@ -108,11 +108,11 @@
                                             <select class="form-control votes-form col-lg-3 col-md-3 d-inline-block" id="votes[]"
                                                 name="votes[]">
                                                 @foreach ($votes as $vote)
-                                                    <option value="{{ $vote->id }}">{{ $vote->value }}</option>
+                                                <option value="{{ $vote->id }}">{{ $vote->value }}</option>
                                                 @endforeach
                                             </select>
 
-                                             <input class="btn btn-success votes-input col-md-2"
+                                             <input class="btn btn-success votes-input offset-md-1 col-md-2"
                                                 type="submit" value="Invia">
                                         </form>
                                     </div>
@@ -188,7 +188,10 @@
                                                             <label for="name" data-error="wrong"
                                                              data-success="right">Nome</label>
                                                                 <input type="text" name="name" id="form34" placeholder="Nome"
-                                                                class="form-control">
+                                                                class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}" required>
+                                                                <div class="invalid-tooltip">
+                                                                    <span>Questo campo è obbligatorio.</span>
+                                                                </div>
                                                         </div>
 
                                                         <div class="md-form mb-5 position-relative form-group">
@@ -196,8 +199,10 @@
                                                             <label for="email" data-error="wrong"
                                                             data-success="right">E-mail</label>
                                                             <input type="email" name="email" id="form29" placeholder="Email"
-                                                            class="form-control">
-
+                                                            class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}" required>
+                                                             <div class="invalid-tooltip">
+                                                                <span>Questo campo è obbligatorio.</span>
+                                                            </div>
                                                         </div>
 
 
@@ -208,7 +213,7 @@
                                                              data-success="right">Messaggio</label>
                                                             <textarea name="body" type="text" id="form8" placeholder="Messaggio"
                                                             class="md-textarea form-control {{ $errors->has('body') ? 'is-invalid' : ''}}" rows="4" required></textarea>
-                                                             <div class="invalid-tooltip">
+                                                            <div class="invalid-tooltip">
                                                                 <span>Questo campo è obbligatorio.</span>
                                                             </div>
 
@@ -341,7 +346,7 @@
                                     <input class="form-control {{ $errors->has('name') ? 'is-invalid' : ''}}"
                                         type="text" name="name" placeholder="Nome">
                                     <div class="invalid-tooltip">
-                                        {{ $errors->first('name') }}
+                                        <span>Questo campo è obbligatorio.</span>
                                     </div>
                                 </div>
 
@@ -350,7 +355,7 @@
                                     <input class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}"
                                         type="text" name="email" placeholder="Email">
                                     <div class="invalid-tooltip">
-                                        {{ $errors->first('email') }}
+                                        <span>Questo campo è obbligatorio.</span>
                                     </div>
                                 </div>
 
@@ -359,7 +364,7 @@
                                     <textarea class="form-control {{ $errors->has('body') ? 'is-invalid' : ''}}"
                                         type="text" name="body" placeholder="Testo" rows="6"></textarea>
                                     <div class="invalid-tooltip">
-                                        {{ $errors->first('body') }}
+                                        <span>Questo campo è obbligatorio.</span>
                                     </div>
                                 </div>
 

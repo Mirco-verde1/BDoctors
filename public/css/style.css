@@ -16530,6 +16530,9 @@ a {
 .btn-navbar-toggler {
   background-color: #1DB487;
 }
+.btn-navbar-toggler:hover {
+  background-color: #437461;
+}
 .btn-navbar-toggler span,
 .btn-navbar-toggler i {
   color: white;
@@ -16661,7 +16664,7 @@ a {
   text-align: left;
 }
 .profile .info form .votes-form {
-  width: 30%;
+  width: auto;
   margin-right: 10px;
 }
 .profile .info form label {
@@ -16948,9 +16951,4 @@ a {
 
 .invalid input:required:invalid {
   background: #BE4C54;
-}
-
-/* Mark valid inputs during .invalid state */
-.invalid input:required:valid {
-  background: #17D654;
 }

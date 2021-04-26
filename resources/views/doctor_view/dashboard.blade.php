@@ -231,7 +231,7 @@
                                     {{ \Carbon\Carbon::parse($message->updated_at)->format('d/m/Y')}}
                                 </small>
                                 <small class="text-muted">alle
-                                    {{ \Carbon\Carbon::parse($message->updated_at)->format('H:i')}}
+                                    {{ \Carbon\Carbon::parse($message->updated_at)->addHour(2)->format('H:i')}}
                                 </small>
 
                             @endif
@@ -274,7 +274,7 @@
                                     {{ \Carbon\Carbon::parse($review->created_at)->format('d/m/Y')}}
                                 </small>
                                 <small class="text-muted">alle
-                                    {{ \Carbon\Carbon::parse($review->created_at)->format('H:i')}}
+                                    {{ \Carbon\Carbon::parse($review->created_at)->addHour(2)->format('H:i')}}
                                 </small>
 
                             @endif
@@ -335,7 +335,7 @@
                                 <small class="text-muted">Ultima sponsorizzazione il
                                     {{ \Carbon\Carbon::parse($activeSponsor['created_at'])->format('d/m/y')}}
                                     alle
-                                    {{ \Carbon\Carbon::parse($activeSponsor['created_at'])->format('H:i')}}
+                                    {{ \Carbon\Carbon::parse($activeSponsor['created_at'])->addHour(2)->format('H:i')}}
                                 </small>
 
                             @endif

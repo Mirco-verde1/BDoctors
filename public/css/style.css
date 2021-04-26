@@ -16299,6 +16299,17 @@ a {
   color: #1DB487;
 }
 
+.doctor-smallpic-dashboard-container {
+  width: 100px;
+  aspect-ratio: 50/50;
+  border-radius: 50%;
+  border: 3px solid #1DB487;
+  overflow: hidden;
+}
+.doctor-smallpic-dashboard-container .doctor-smallpic-dashboard {
+  width: 100%;
+}
+
 .btn-register {
   margin-left: 10px;
 }

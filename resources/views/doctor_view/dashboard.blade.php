@@ -12,21 +12,21 @@
                 <div class="sidebar-sticky ">
                     {{-- immagine di profilo --}}
                     <figure class="doctor-pic-dashboard-container ">
-                        <a href="../doctor/{{$user->id}}">
-                        @if(file_exists('storage/'.$user->detail->pic))
+                        <a href="../doctor/{{Auth::user()->id}}">
+                        @if(file_exists('storage/'.Auth::user()->detail->pic))
 
                         <img class="doctor-pic-dashboard"
-                                src="{{ URL::asset('storage/'.$user->detail->pic) }}"
+                                src="{{ URL::asset('storage/'.Auth::user()->detail->pic) }}"
                                 alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
                             </a>
 
-                        @elseif(file_exists($user->detail->pic))
-                            <img class="doctor-pic-dashboard" src="{{ URL::asset($user->detail->pic)}}"
-                            alt="{{$user->name}} {{$user->lastname}}">
+                        @elseif(file_exists(Auth::user()->detail->pic))
+                            <img class="doctor-pic-dashboard" src="{{ URL::asset(Auth::user()->detail->pic)}}"
+                            alt="{{Auth::user()->name}} {{Auth::user()->lastname}}">
 
                         @else
 
-                            <a href="../doctor/{{$user->id}}"><img class="doctor-pic-dashboard"
+                            <a href="../doctor/{{Auth::user()->id}}"><img class="doctor-pic-dashboard"
                                 src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
                                 alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
                             </a>

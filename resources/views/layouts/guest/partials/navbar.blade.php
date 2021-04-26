@@ -32,7 +32,7 @@
                 <li class="nav-item dropdown">
                     <div class="d-flex align-items-center">
                             <figure class="doctor-smallpic-dashboard-container ">
-                                <a href="../doctor/{{Auth::user()->id}}">
+                                <a href="/doctor/{{Auth::user()->id}}">
                                 @if(file_exists('storage/'.Auth::user()->detail->pic))
 
                                 <img class="doctor-smallpic-dashboard"

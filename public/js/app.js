@@ -38313,7 +38313,7 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-lg-3" }, [
         _c("div", { staticClass: "box-general " }, [
-          _c("div", { staticClass: "profile profile-filters" }, [
+          _c("div", { staticClass: "profile profile-filters mb-5" }, [
             _c("div", { staticClass: "filters " }, [
               _c("b", [_vm._v("Filtra per:")]),
               _vm._v(" "),

@@ -7,7 +7,7 @@
             <!-- colonna sinistra -->
             <div class="col-lg-3">
                 <div class="box-general ">
-                    <div class="profile profile-filters">
+                    <div class="profile profile-filters mb-5">
 
                         <!-- Filter results part -->
                         <div class="filters ">

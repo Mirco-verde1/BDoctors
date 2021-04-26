@@ -34,22 +34,24 @@
 
 
             <div class="margin-top-chart overflow-hidden">
-
-                <div class="row p-4 flex-row">
-
-                    <div class="col-xl-2 col-md-12">
+                <div class="row p-4">
+                    <div class="col-xl-2 col-md-3 col-md-12">
                         <a href="{{route('dashboard')}}"><button class="btn btn-navbar-toggler"><i class="far fa-hand-point-left"></i> <span>Torna alla Dashboard</span></button></a>
                     </div>
 
-                    <div class="col-xl-5 col-md-6">
-                        <canvas id="bar-chart" width="400" height="400"></canvas>
+                </div>
+
+                <div class="row p-4">
+
+                    <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12  ">
+                        <canvas id="bar-chart" width="500" height="500"></canvas>
                     </div>
-                    <div class="col-xl-5 col-md-6">
-                        <canvas id="bar1-chart" width="400" height="400"></canvas>
+                    <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 ">
+                        <canvas id="bar1-chart" width="500" height="500"></canvas>
                     </div>
 
-                    <div class="col-xl-5 col-md-6">
-                        <canvas id="bar2-chart" width="400" height="400"></canvas>
+                    <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 ">
+                        <canvas id="bar2-chart" width="500" height="500"></canvas>
                     </div>
 
                 </div>

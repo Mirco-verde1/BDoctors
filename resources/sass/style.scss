@@ -39,6 +39,17 @@
   }
 
 // Stile div search-bar ---------------------------------------------------
+.doctor-smallpic-dashboard-container {
+    width: 50px;
+    aspect-ratio: 50 / 50;
+    border-radius: 50%;
+    border: 3px solid $green-logo;
+    overflow: hidden;
+
+    .doctor-smallpic-dashboard {
+        width: 100%;
+    }
+}
 
 .btn-register{
     margin-left: 10px;
@@ -725,3 +736,11 @@ background-color: $body-bg;
     height: 100%;
 }
 
+.invalid input:required:invalid {
+  background: #BE4C54;
+}
+
+/* Mark valid inputs during .invalid state */
+.invalid input:required:valid {
+  background: #17D654;
+}

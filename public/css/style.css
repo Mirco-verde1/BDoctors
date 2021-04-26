@@ -16299,6 +16299,17 @@ a {
   color: #1DB487;
 }
 
+.doctor-smallpic-dashboard-container {
+  width: 50px;
+  aspect-ratio: 50/50;
+  border-radius: 50%;
+  border: 3px solid #1DB487;
+  overflow: hidden;
+}
+.doctor-smallpic-dashboard-container .doctor-smallpic-dashboard {
+  width: 100%;
+}
+
 .btn-register {
   margin-left: 10px;
 }
@@ -16882,4 +16893,13 @@ a {
 .doughnut {
   width: 100%;
   height: 100%;
+}
+
+.invalid input:required:invalid {
+  background: #BE4C54;
+}
+
+/* Mark valid inputs during .invalid state */
+.invalid input:required:valid {
+  background: #17D654;
 }

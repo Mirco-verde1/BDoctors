@@ -30,24 +30,49 @@
                 @endauth
                 @auth
                 <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->lastname }}
-                        {{ Auth::user()->name }}
-                    </a>
+                    <div class="d-flex align-items-center">
+                            <figure class="doctor-smallpic-dashboard-container ">
+                                <a href="../doctor/{{Auth::user()->id}}">
+                                @if(file_exists('storage/'.Auth::user()->detail->pic))
 
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/dashboard">
-                            {{ __('Dashboard')}}
-                        </a>
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                                <img class="doctor-smallpic-dashboard"
+                                        src="{{ URL::asset('storage/'.Auth::user()->detail->pic) }}"
+                                        alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
+                                    </a>
+
+                                @elseif(file_exists(Auth::user()->detail->pic))
+                                    <img class="doctor-smallpic-dashboard" src="{{ URL::asset(Auth::user()->detail->pic)}}"
+                                    alt="{{Auth::user()->name}} {{Auth::user()->lastname}}">
+
+                                @else
+
+                                    <a href="../doctor/{{Auth::user()->id}}"><img class="doctor-smallpic-dashboard"
+                                        src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
+                                        alt="{{ Auth::user()->name }} {{ Auth::user()->lastname }}">
+                                    </a>
+
+                                @endif
+                            </figure>
+
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->lastname }}
+                            {{ Auth::user()->name }}
                         </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/dashboard">
+                                {{ __('Dashboard')}}
+                            </a>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
                     </div>
                 </li>
                 @endauth

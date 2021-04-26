@@ -307,7 +307,7 @@
                 <div class="box-general">
                     <div class="profile">
                         <div class="row">
-                            <div class="curriculum">
+                            <div class="curriculum p-4">
                                 @if(isset($user->detail->curriculum))
                                 @markdown($user->detail->curriculum)
                                 @else

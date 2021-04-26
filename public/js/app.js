@@ -2065,17 +2065,19 @@ __webpack_require__.r(__webpack_exports__);
       var notSponsored = [];
       byDepartment.forEach(function (elem) {
         if (elem.sponsors.length > 0) {
-          elem.sponsors.forEach(function (sponsor) {
-            /* Verifichiamo che il medico abbia una sponsorizzazione in corso
-            per visualizzarlo all'inizio dei risultati, comparando i millisecondi correnti
-            con quelli della somma tra la creazione della sponsorship e la sua durata */
-            if (today <= Date.parse(sponsor.pivot['created_at']) + sponsor.duration * 3600000) {
-              sponsored.push(elem);
-            }
-          });
+          /* Verifichiamo che il medico abbia una sponsorizzazione in corso
+          per visualizzarlo all'inizio dei risultati, comparando i millisecondi correnti
+          con quelli della somma tra la creazione della sponsorship e la sua durata */
+          if (today <= Date.parse(elem.sponsors[elem.sponsors.length - 1].pivot['created_at']) + elem.sponsors[elem.sponsors.length - 1].duration * 3600000) {
+            sponsored.push(elem);
+          }
         } else {
           notSponsored.push(elem);
         }
+      }); // Posizioniamo gli sponsorizzati più recenti all'inizio
+
+      sponsored.sort(function (a, b) {
+        return b.sponsors[b.sponsors.length - 1].pivot['created_at'] > a.sponsors[a.sponsors.length - 1].pivot['created_at'] ? 1 : -1;
       });
       this.filteredResults = [].concat(sponsored, notSponsored);
     },
@@ -2299,15 +2301,17 @@ __webpack_require__.r(__webpack_exports__);
       self.results = resp.data.data;
       self.results.forEach(function (elem) {
         if (elem.sponsors.length > 0) {
-          elem.sponsors.forEach(function (sponsor) {
-            /* Verifichiamo che il medico abbia una sponsorizzazione in corso
-            per visualizzarlo all'inizio dei risultati, comparando i millisecondi correnti
-            con quelli della somma tra la creazione della sponsorship e la sua durata */
-            if (today <= Date.parse(sponsor.pivot['created_at']) + sponsor.duration * 3600000) {
-              self.sponsored.push(elem);
-            }
-          });
+          /* Verifichiamo che il medico abbia una sponsorizzazione in corso
+          per visualizzarlo all'inizio dei risultati, comparando i millisecondi correnti
+          con quelli della somma tra la creazione della sponsorship e la sua durata */
+          if (today <= Date.parse(elem.sponsors[elem.sponsors.length - 1].pivot['created_at']) + elem.sponsors[elem.sponsors.length - 1].duration * 3600000) {
+            self.sponsored.push(elem);
+          }
         }
+      }); // Posizioniamo gli sponsorizzati più recenti all'inizio
+
+      self.sponsored.sort(function (a, b) {
+        return b.sponsors[b.sponsors.length - 1].pivot['created_at'] > a.sponsors[a.sponsors.length - 1].pivot['created_at'] ? 1 : -1;
       }); // Se non vi sono sponsorizzati, creiamo comunque una slide
 
       if (self.sponsored.length === 0) {
@@ -2323,9 +2327,8 @@ __webpack_require__.r(__webpack_exports__);
     /* Diamo l'URL corretto all'immagine del profilo, nel caso in cui questa non provenga
     dallo storage */
     correctPicUrl: function correctPicUrl(element, slideIndex, doctorIndex) {
-      var allPics = document.getElementsByClassName('doctor-pic-dashboard');
-      allPics[doctorIndex + this.slidesNumber * slideIndex].src = element.detail.pic;
-      console.log(allPics[doctorIndex + this.slidesNumber * slideIndex]);
+      var slidePics = document.getElementsByClassName('carousel-item')[slideIndex].getElementsByClassName('doctor-pic-dashboard');
+      slidePics[doctorIndex].src = element.detail.pic;
     },
 
     /* Scomponiamo l'array di risultati per recuperare di volta in volta

@@ -117,17 +117,19 @@
 
                 self.results.forEach(elem => {
                     if(elem.sponsors.length > 0) {
-                        elem.sponsors.forEach(sponsor => {
 
-                            /* Verifichiamo che il medico abbia una sponsorizzazione in corso
-                            per visualizzarlo all'inizio dei risultati, comparando i millisecondi correnti
-                            con quelli della somma tra la creazione della sponsorship e la sua durata */
-                            if(today <= (Date.parse(sponsor.pivot['created_at']) + (sponsor.duration * 3600000))) {
-                                self.sponsored.push(elem);
-                            }
-                        });
+                        /* Verifichiamo che il medico abbia una sponsorizzazione in corso
+                        per visualizzarlo all'inizio dei risultati, comparando i millisecondi correnti
+                        con quelli della somma tra la creazione della sponsorship e la sua durata */
+                        if(today <= (Date.parse(elem.sponsors[elem.sponsors.length - 1].pivot['created_at']) + (elem.sponsors[elem.sponsors.length - 1].duration * 3600000))) {
+                            self.sponsored.push(elem);
+                        }
                     }
                 });
+
+                // Posizioniamo gli sponsorizzati più recenti all'inizio
+                self.sponsored.sort((a, b) => (b.sponsors[b.sponsors.length - 1].pivot['created_at'] > a.sponsors[a.sponsors.length - 1].pivot['created_at']) ? 1 : -1);
+
 
                 // Se non vi sono sponsorizzati, creiamo comunque una slide
                 if (self.sponsored.length === 0) {
@@ -147,10 +149,9 @@
             /* Diamo l'URL corretto all'immagine del profilo, nel caso in cui questa non provenga
             dallo storage */
             correctPicUrl: function(element, slideIndex, doctorIndex) {
-                const allPics = document.getElementsByClassName('doctor-pic-dashboard');
+                const slidePics = document.getElementsByClassName('carousel-item')[slideIndex].getElementsByClassName('doctor-pic-dashboard');
 
-                allPics[doctorIndex + (this.slidesNumber * slideIndex)].src = element.detail.pic;
-                console.log(allPics[doctorIndex + (this.slidesNumber * slideIndex)])
+                slidePics[doctorIndex].src = element.detail.pic;
             },
 
             /* Scomponiamo l'array di risultati per recuperare di volta in volta

@@ -310,7 +310,7 @@
                                                 <span class="department chosen_sponsor">
                                                     {{ \Carbon\Carbon::parse($activeSponsor['created_at'])->addHour($chosenSponsor->duration)->format('d M y')}}
                                                     <small>alle</small>
-                                                    {{ \Carbon\Carbon::parse($activeSponsor['created_at'])->addHour($chosenSponsor->duration)->format('H:i')}}
+                                                    {{ \Carbon\Carbon::parse($activeSponsor['created_at'])->addHour($chosenSponsor->duration)->addHour(2)->format('H:i')}}
                                                 </span>
                                             </h4>
                                         @else

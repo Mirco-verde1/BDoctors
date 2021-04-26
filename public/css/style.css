@@ -16648,7 +16648,7 @@ a {
   text-align: left;
 }
 .profile .info form .votes-form {
-  width: 20%;
+  width: 30%;
   margin-right: 10px;
 }
 .profile .info form label {
@@ -16717,8 +16717,8 @@ a {
   background-color: transparent;
   border: 1px solid transparent;
   color: #fff;
-  background-color: #38c172;
-  border-color: #38c172;
+  background-color: #1EB487;
+  border-color: #1EB487;
   border-radius: 4px;
 }
 ::-webkit-file-upload-button ::-webkit-file-upload-button:hover {

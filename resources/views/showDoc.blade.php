@@ -105,7 +105,7 @@
                                             @method('POST')
 
                                             <label class="col-lg-12" for="votes[]">Vota dottore</label>
-                                            <select class="form-control votes-form col-md-3 d-inline-block" id="votes[]"
+                                            <select class="form-control votes-form col-lg-3 col-md-3 d-inline-block" id="votes[]"
                                                 name="votes[]">
                                                 @foreach ($votes as $vote)
                                                     <option value="{{ $vote->id }}">{{ $vote->value }}</option>

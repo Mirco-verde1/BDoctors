@@ -18,7 +18,7 @@
         alla posizione estrapolata in precedenza --}}
     @if($idInURL === $user->id)
 
-    <div class="container">
+    <div class="container margin-top-container">
         <div class="col-xl-12 mt-4 mb-4">
             <a href="{{route('dashboard')}}"><button class="btn btn-navbar-toggler"><i class="far fa-hand-point-left"></i> <span>Torna alla Dashboard</span></button></a>
         </div>

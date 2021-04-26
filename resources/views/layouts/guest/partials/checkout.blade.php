@@ -36,7 +36,7 @@
                 </div>
                 <span class="style-radio" role="group" aria-label="Basic radio toggle button group">
                     <input type="radio" class="btn-check" name="sponsor" id="sponsor{{$sponsor->id}}" value="{{$sponsor->id}}" autocomplete="off" >
-                    <label class="btn btn-outline{{($sponsor->type === 'Standard') ? '-primary' : ($sponsor->type === 'Premium' ? '-success' : ' border-pro')}} {{($sponsor->type === 'Standard') ? 'checkmark-standard' : ($sponsor->type === 'Premium' ? 'checkmark-premium' : 'checkmark-pro')}} " for="sponsor{{$sponsor->id}}">{{$sponsor->type}}</label>
+                    <label class="plan-label btn btn-outline{{($sponsor->type === 'Standard') ? '-primary' : ($sponsor->type === 'Premium' ? '-success' : ' border-pro')}} {{($sponsor->type === 'Standard') ? 'checkmark-standard' : ($sponsor->type === 'Premium' ? 'checkmark-premium' : 'checkmark-pro')}} " for="sponsor{{$sponsor->id}}">{{$sponsor->type}}</label>
                   </span>
               </div>
               @endforeach
@@ -49,7 +49,7 @@
               </div>
               {{-- <input class="btn-check" type="radio" name="sponsor" value="{{$sponsor->id}}"> --}}
               <div class="container-button-pay">
-                  <button class="btn btn-success button-pay mt-3" id="submit-button">Completa il tuo pagamento</button>
+                  <button class="btn btn-success button-pay mt-3" id="submit-payment-button">Completa il tuo pagamento</button>
               </div>
             @else
               <h2 class="text-center text-bold text-danger font-weight-bold">Hai già una sponsorizzazione in corso!</h2>

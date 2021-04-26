@@ -10,10 +10,6 @@
 
     <title>{{ __('BDoctors') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -50,51 +46,14 @@
         @include('layouts/guest/partials/footer')
     </div>
 
-    <script>
-        var button = document.querySelector('#submit-button');
-        if(location.href === 'http://127.0.0.1:8000/payment/make') {
-            braintree.dropin.create({
-            authorization: "sandbox_x6mvdvj5_r7czy6mhvckbb4v2",
-            container: '#dropin-container'
-            }, function (createErr, instance) {
-            button.addEventListener('click', function () {
-            instance.requestPaymentMethod(function (err, payload) {
-            $.get('{{ route('payment.make') }}', {payload}, function (response) {
-            if (response.success) {
-            alert('Payment successfull!');
-            } else {
-            alert('Payment failed');
-            }
-            }, 'json');
-            console.log(err);
-            });
-            });
-            });
-        }
+    <!-- Script generale -->
+    <script src="{{ asset('js/app.js') }}"></script>
 
+    <!-- Script Braintree -->
+    <script src="{{ asset('js/braintree.js') }}"></script>
 
-
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function() {
-            'use strict';
-            window.addEventListener('load', function() {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-                form.addEventListener('submit', function(event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-                }, false);
-            });
-            }, false);
-        })();
-        </script>
-
-        
+    <!-- Script Bootstrap Validation -->
+    <script src="{{ asset('js/bootstrapValidation.js') }}"></script>
 
 </body>
 </html>

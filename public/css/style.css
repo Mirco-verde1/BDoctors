@@ -16936,8 +16936,12 @@ a {
   margin-bottom: 50px;
 }
 
+#dropin-container {
+  display: none;
+}
+
 .container-button-pay {
-  display: flex;
+  display: none;
   width: 100%;
 }
 .container-button-pay .button-pay {

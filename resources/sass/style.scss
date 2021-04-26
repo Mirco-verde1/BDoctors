@@ -781,8 +781,12 @@ background-color: $body-bg;
     margin-top: 50px;
     margin-bottom: 50px;
 }
+
+#dropin-container {
+    display: none;
+}
 .container-button-pay{
-    display: flex;
+    display: none;
     width: 100%;
 
 .button-pay{

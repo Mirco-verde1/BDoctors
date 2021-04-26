@@ -86,9 +86,9 @@
             <div class="col-xl-10 col-lg-10 mx-auto mt-4">
                 <div class="col-xl-10 col-lg-10 mx-auto">
                     <div class="container">
-                        <div class="row">
-                            <div class="text-left row">
-                                <div class="col-lg-7 col-md-7 col-sm-11 text">
+                        <div class="row margin-top-container">
+                            <div class="text-left row margin-top-container">
+                                <div class="col-lg-7 col-md-7 col-sm-11 text margin-top-container">
                                     <span>Stai cercando di modificare un profilo che non è il tuo.</span>
                                     <br>
                                     <br>

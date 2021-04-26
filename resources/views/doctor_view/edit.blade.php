@@ -147,7 +147,8 @@
                             <label for="pic"><b>Immagine del profilo</b></label>
                             <input class="form-control p-2 height-input " type="file" name="pic" id="pic">
 
-                            <button type="submit" class="btn btn-success mt-4">Edit</button>
+                            <button onclick="window.history.back();" class="btn btn-danger mt-4 mr-3">Annulla</button>
+                            <button type="submit" class="btn btn-success mt-4">Conferma</button>
                         </div>
 
 

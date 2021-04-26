@@ -16,7 +16,7 @@
                         </h5>
                     </div>
                     <div class="col-lg-5 col-md-5">
-                        <img class="img-fluid doctor-clipart" src="../../img/404.png" alt="404 error">
+                        <img class="img-fluid doctor-clipart" src="/img/404.png" alt="404 error">
                     </div>
                 </div>
             </div>

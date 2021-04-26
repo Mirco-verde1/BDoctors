@@ -54,7 +54,7 @@
                                 @endif
                             </figure>
 
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle ml-2" href="#" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->lastname }}
                             {{ Auth::user()->name }}

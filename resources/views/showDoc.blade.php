@@ -186,7 +186,7 @@
                                                         <div class="md-form mb-5 position-relative form-group">
                                                             <i class="fas fa-user prefix grey-text"></i>
                                                             <label for="name" data-error="wrong"
-                                                             data-success="right">Nome</label>
+                                                             data-success="right"> Nome</label>
                                                                 <input type="text" name="name" id="form34" placeholder="Nome"
                                                                 class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}" required>
                                                                 <div class="invalid-tooltip">
@@ -197,7 +197,7 @@
                                                         <div class="md-form mb-5 position-relative form-group">
                                                             <i class="fas fa-envelope prefix grey-text"></i>
                                                             <label for="email" data-error="wrong"
-                                                            data-success="right">E-mail</label>
+                                                            data-success="right"> E-mail</label>
                                                             <input type="email" name="email" id="form29" placeholder="Email"
                                                             class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}" required>
                                                              <div class="invalid-tooltip">
@@ -206,13 +206,12 @@
                                                         </div>
 
 
-                                                        <div class="md-form position-relatative form-group">
-
-                                                            <i class="fas fa-pencil prefix grey-text"></i>
+                                                        <div class="md-form mb-5 position-relative form-group">
+                                                            <i class="fas fa-pencil-alt"></i>
                                                             <label for="body" data-error="wrong"
-                                                             data-success="right">Messaggio</label>
+                                                             data-success="right"> Messaggio</label>
                                                             <textarea name="body" type="text" id="form8" placeholder="Messaggio"
-                                                            class="md-textarea form-control {{ $errors->has('body') ? 'is-invalid' : ''}}" rows="4" required></textarea>
+                                                                class="md-textarea form-control {{ $errors->has('body') ? 'is-invalid' : ''}}" rows="4" required></textarea>
                                                             <div class="invalid-tooltip">
                                                                 <span>Questo campo è obbligatorio.</span>
                                                             </div>
@@ -221,8 +220,8 @@
 
                                                     </div>
                                                     <div class="modal-footer d-flex justify-content-center">
-                                                        <button class="btn btn-success">Invia <i
-                                                                class="fas fa-paper-plane-o ml-1"></i></button>
+
+                                                        <button class="btn btn-success"><i class="far fa-paper-plane"></i> Invia</button>
                                                     </div>
                                                 </div>
                                             </div>

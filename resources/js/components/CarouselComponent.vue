@@ -34,11 +34,11 @@
 
                         <div class="card col-md-4 p-5 bd-highlight doctor-card"
                             :class="(i === 1) ? 'clearfix d-none d-md-block' : ''"
-                            v-for="doctor in carouselLoop(i, sponsored)">
+                            v-for="(doctor, ind) in carouselLoop(i, sponsored)">
 
                             <div class="doctor-pic-dashboard-container">
                                 <a :href="`doctor/${doctor.id}`">
-                                    <img @error="correctPicUrl(doctor, index)" class="doctor-pic-dashboard" :src="`storage/${doctor.detail.pic}`" alt="Card image cap">
+                                    <img @error="correctPicUrl(doctor, index, ind)" class="doctor-pic-dashboard" :src="`storage/${doctor.detail.pic}`" alt="Card image cap">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -128,27 +128,29 @@
                         });
                     }
                 });
+
+                // Se non vi sono sponsorizzati, creiamo comunque una slide
+                if (self.sponsored.length === 0) {
+                    self.slidesNumber = 1;
+                } else {
+
+                    /* Creiamo tante slide quanto il quoziente tra la lunghezza dell'array
+                    e il numero di card in ogni slide */
+                    self.slidesNumber = Math.ceil(self.sponsored.length / self.cardsPerSlide);
+                }
+
             });
-
-            // Se non vi sono sponsorizzati, creiamo comunque una slide
-            if (self.sponsored.length === 0) {
-                self.slidesNumber = 1;
-            } else {
-
-                /* Creiamo tante slide quanto il quoziente tra la lunghezza dell'array
-                e il numero di card in ogni slide */
-                self.slidesNumber = Math.ceil(self.sponsored.length / self.cardsPerSlide);
-            }
         },
 
         methods: {
 
             /* Diamo l'URL corretto all'immagine del profilo, nel caso in cui questa non provenga
-            dal seeder */
-            correctPicUrl: function(element, index) {
+            dallo storage */
+            correctPicUrl: function(element, slideIndex, doctorIndex) {
                 const allPics = document.getElementsByClassName('doctor-pic-dashboard');
 
-                allPics[index].src = element.detail.pic;
+                allPics[doctorIndex + (this.slidesNumber * slideIndex)].src = element.detail.pic;
+                console.log(allPics[doctorIndex + (this.slidesNumber * slideIndex)])
             },
 
             /* Scomponiamo l'array di risultati per recuperare di volta in volta

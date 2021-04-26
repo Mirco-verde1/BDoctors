@@ -2035,7 +2035,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     /* Diamo l'URL corretto all'immagine del profilo, nel caso in cui questa non provenga
-    dal seeder */
+    dallo storage */
     correctPicUrl: function correctPicUrl(element, index) {
       var allPics = document.getElementsByClassName('doctor-pic-dashboard');
       allPics[index].src = element.detail.pic;
@@ -2308,23 +2308,24 @@ __webpack_require__.r(__webpack_exports__);
             }
           });
         }
-      });
-    }); // Se non vi sono sponsorizzati, creiamo comunque una slide
+      }); // Se non vi sono sponsorizzati, creiamo comunque una slide
 
-    if (self.sponsored.length === 0) {
-      self.slidesNumber = 1;
-    } else {
-      /* Creiamo tante slide quanto il quoziente tra la lunghezza dell'array
-      e il numero di card in ogni slide */
-      self.slidesNumber = Math.ceil(self.sponsored.length / self.cardsPerSlide);
-    }
+      if (self.sponsored.length === 0) {
+        self.slidesNumber = 1;
+      } else {
+        /* Creiamo tante slide quanto il quoziente tra la lunghezza dell'array
+        e il numero di card in ogni slide */
+        self.slidesNumber = Math.ceil(self.sponsored.length / self.cardsPerSlide);
+      }
+    });
   },
   methods: {
     /* Diamo l'URL corretto all'immagine del profilo, nel caso in cui questa non provenga
-    dal seeder */
-    correctPicUrl: function correctPicUrl(element, index) {
+    dallo storage */
+    correctPicUrl: function correctPicUrl(element, slideIndex, doctorIndex) {
       var allPics = document.getElementsByClassName('doctor-pic-dashboard');
-      allPics[index].src = element.detail.pic;
+      allPics[doctorIndex + this.slidesNumber * slideIndex].src = element.detail.pic;
+      console.log(allPics[doctorIndex + this.slidesNumber * slideIndex]);
     },
 
     /* Scomponiamo l'array di risultati per recuperare di volta in volta
@@ -38885,7 +38886,8 @@ var render = function() {
                   },
                   [
                     _vm._l(_vm.carouselLoop(i, _vm.sponsored), function(
-                      doctor
+                      doctor,
+                      ind
                     ) {
                       return _c(
                         "div",
@@ -38911,7 +38913,11 @@ var render = function() {
                                     },
                                     on: {
                                       error: function($event) {
-                                        return _vm.correctPicUrl(doctor, index)
+                                        return _vm.correctPicUrl(
+                                          doctor,
+                                          index,
+                                          ind
+                                        )
                                       }
                                     }
                                   })

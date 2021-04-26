@@ -171,7 +171,7 @@
         methods: {
 
             /* Diamo l'URL corretto all'immagine del profilo, nel caso in cui questa non provenga
-            dal seeder */
+            dallo storage */
             correctPicUrl: function(element, index) {
                 const allPics = document.getElementsByClassName('doctor-pic-dashboard');
 

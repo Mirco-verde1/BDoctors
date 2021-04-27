@@ -42,7 +42,7 @@ class GuestController extends Controller
     {
 
         $user = User::where('id', $id)->first();
-        $reviews = Review::where('user_id', $id)->orderBy('id', 'desc')->paginate(5);
+        $reviews = Review::where('user_id', $id)->orderBy('created_at', 'desc')->paginate(5);
         $votes = Vote::all();
         $medicalServices = MedicalService::all();
 

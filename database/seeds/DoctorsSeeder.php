@@ -6,6 +6,7 @@ use App\Department;
 use App\Vote;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Faker\Generator as Faker;
 
 class DoctorsSeeder extends Seeder
 {
@@ -14,7 +15,7 @@ class DoctorsSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
 
         $departments = Department::all();
@@ -79,10 +80,6 @@ class DoctorsSeeder extends Seeder
                 'address' => 'Via della Borgata, 44',
                 'vote' => getRandomFromArray($votes)
             ],
-
-
-
-
 
             [
                 'name' => 'Germano',
@@ -152,9 +149,15 @@ class DoctorsSeeder extends Seeder
             $newUser->save();
 
             $newUser->departments()->attach($user['department']);
-            $newUser->votes()->attach($user['vote']);
+
+            for ($i=0; $i < 30; $i++) {
+                $newUser->votes()->attach($user['vote']);
+            }
+
 
         }
+
+
 
         $userDetails = [
             [

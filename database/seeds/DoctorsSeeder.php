@@ -150,7 +150,7 @@ class DoctorsSeeder extends Seeder
 
             $newUser->departments()->attach($user['department']);
 
-            for ($i=0; $i < 30; $i++) {
+            for ($i=0; $i < 120; $i++) {
                 $newUser->votes()->attach($user['vote']);
             }
 

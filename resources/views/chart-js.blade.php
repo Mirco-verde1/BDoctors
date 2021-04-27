@@ -49,8 +49,8 @@
                     <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 mt-3 mb-5">
                         <canvas id="bar1-chart" width="500" height="500"></canvas>
                     </div>
-                    <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mt-5">
-                        <canvas id="bar2-chart" width="1000" height="400"></canvas>
+                    <div class="col-xl-12 mt-5 p-5">
+                        <canvas id="bar2-chart" width="1000" height="300"></canvas>
                     </div>
 
                 </div>
@@ -150,7 +150,7 @@
 
                 //options
                 var options = {
-                    responsive: false,
+                    responsive: true,
                     title: {
                         display: true,
                         position: "top",
@@ -199,7 +199,7 @@
 
                 //options
                 var optionsM = {
-                    responsive: false,
+                    responsive: true,
                     title: {
                         display: true,
                         position: "top",
@@ -221,7 +221,6 @@
                     labels: cDataV.label,
                     datasets: [{
                         axis: 'y',
-                        label: cDataV.label,
                         data: cDataV.data,
                         backgroundColor: [
                             "#DEB887",
@@ -231,6 +230,11 @@
                             "#2E8B57",
                             "#1D7A46",
                             "#CDA776",
+                            "#FC143C",
+                            "#A4A369",
+                            "#6E8B59",
+                            "#9D7A36",
+                            "#CEA994",
                         ],
                         borderColor: [
                             "#CDA776",
@@ -248,7 +252,13 @@
                 //options
                 var optionsV = {
                     responsive: true,
-                    indexAxis: 'y',
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
                     title: {
                         display: true,
                         position: "top",

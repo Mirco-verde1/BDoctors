@@ -49,8 +49,8 @@
                     <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 mt-3 mb-5">
                         <canvas id="bar1-chart" width="500" height="500"></canvas>
                     </div>
-                    <div class="col-xl-5 offset-xl-1 col-lg-6 col-md-12 col-sm-12 mt-5">
-                        <canvas id="bar2-chart" width="500" height="500"></canvas>
+                    <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mt-5">
+                        <canvas id="bar2-chart" width="1000" height="400"></canvas>
                     </div>
 
                 </div>
@@ -247,7 +247,7 @@
 
                 //options
                 var optionsV = {
-                    responsive: false,
+                    responsive: true,
                     indexAxis: 'y',
                     title: {
                         display: true,

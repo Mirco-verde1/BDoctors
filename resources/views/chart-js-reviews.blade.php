@@ -253,12 +253,12 @@
                     title: {
                         display: true,
                         position: "top",
-                        text: "Voti ricevuti nell'ultima settimana",
+                        text: "Voti ricevuti nell'ultimo anno",
                         fontSize: 18,
                         fontColor: "#111"
                     },
                     legend: {
-                        display: true,
+                        display: false,
                         position: "bottom",
                         labels: {
                             fontColor: "#333",

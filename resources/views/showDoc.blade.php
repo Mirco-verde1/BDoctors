@@ -169,65 +169,65 @@
                                         <form action="{{ route('message.store', [ 'user_id' => $user->id]) }}" method="post" class="needs-validation" novalidate>
                                             @csrf
                                             @method('POST')
-                                        <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog"
-                                            aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header text-center">
-                                                        <h4 class="modal-title w-100 font-weight-bold">Scrivi un
-                                                            messaggio</h4>
-                                                        <button type="submit" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
+                                            <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog"
+                                                aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header text-center">
+                                                            <h4 class="modal-title w-100 font-weight-bold">Scrivi un
+                                                                messaggio</h4>
+                                                            <button type="submit" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
 
-                                                    <div class="modal-body mx-3">
-                                                        <div class="md-form mb-5 position-relative form-group">
-                                                            <i class="fas fa-user prefix grey-text"></i>
-                                                            <label for="name" data-error="wrong"
-                                                             data-success="right"> Nome</label>
-                                                                <input type="text" name="name" id="form34" placeholder="Nome"
+                                                        <div class="modal-body mx-3">
+                                                            <div class="md-form mb-5 position-relative form-group">
+                                                                <i class="fas fa-user prefix grey-text"></i>
+                                                                <label for="name" data-error="wrong"
+                                                                data-success="right"> Nome</label>
+                                                                    <input type="text" name="name" id="form34" placeholder="Nome"
+                                                                    class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}" required>
+                                                                    <div class="invalid-tooltip">
+                                                                        <span>Questo campo è obbligatorio.</span>
+                                                                    </div>
+                                                            </div>
+
+                                                            <div class="md-form mb-5 position-relative form-group">
+                                                                <i class="fas fa-envelope prefix grey-text"></i>
+                                                                <label for="email" data-error="wrong"
+                                                                data-success="right"> E-mail</label>
+                                                                <input type="email" name="email" id="form29" placeholder="Email"
                                                                 class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}" required>
                                                                 <div class="invalid-tooltip">
                                                                     <span>Questo campo è obbligatorio.</span>
                                                                 </div>
-                                                        </div>
-
-                                                        <div class="md-form mb-5 position-relative form-group">
-                                                            <i class="fas fa-envelope prefix grey-text"></i>
-                                                            <label for="email" data-error="wrong"
-                                                            data-success="right"> E-mail</label>
-                                                            <input type="email" name="email" id="form29" placeholder="Email"
-                                                            class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}" required>
-                                                             <div class="invalid-tooltip">
-                                                                <span>Questo campo è obbligatorio.</span>
                                                             </div>
-                                                        </div>
 
 
-                                                        <div class="md-form mb-5 position-relative form-group">
-                                                            <i class="fas fa-pencil-alt"></i>
-                                                            <label for="body" data-error="wrong"
-                                                             data-success="right"> Messaggio</label>
-                                                            <textarea name="body" type="text" id="form8" placeholder="Messaggio"
-                                                                class="md-textarea form-control {{ $errors->has('body') ? 'is-invalid' : ''}}" rows="4" required></textarea>
-                                                            <div class="invalid-tooltip">
-                                                                <span>Questo campo è obbligatorio.</span>
+                                                            <div class="md-form mb-5 position-relative form-group">
+                                                                <i class="fas fa-pencil-alt"></i>
+                                                                <label for="body" data-error="wrong"
+                                                                data-success="right"> Messaggio</label>
+                                                                <textarea name="body" type="text" id="form8" placeholder="Messaggio"
+                                                                    class="md-textarea form-control {{ $errors->has('body') ? 'is-invalid' : ''}}" rows="4" required></textarea>
+                                                                <div class="invalid-tooltip">
+                                                                    <span>Questo campo è obbligatorio.</span>
+                                                                </div>
+
                                                             </div>
 
                                                         </div>
+                                                        <div class="modal-footer d-flex justify-content-center">
 
-                                                    </div>
-                                                    <div class="modal-footer d-flex justify-content-center">
-
-                                                        <button class="btn btn-success"><i class="far fa-paper-plane"></i> Invia</button>
+                                                            <button class="btn btn-success"><i class="far fa-paper-plane"></i> Invia</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                    </form>
+                                        </form>
 
                                         <div>
                                             <a href="" class="btn btn-primary btn-rounded mb-4" data-toggle="modal"

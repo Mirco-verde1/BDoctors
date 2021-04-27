@@ -20,6 +20,12 @@ class MessagesSeeder extends Seeder
                 'body' => 'Salve dottore. Vorrei fissare una visita medica per la prossima settimana. Può indicarmi le sue disponibilità?'
             ],
             [
+                'user_id' => '1',
+                'name' => 'paolo',
+                'email' => 'paolo.bianchi@gmail.com',
+                'body' => 'Buongiorno dottore. Vorrei fare una visita specialistica con lei. La prossima settimana è disponibile?'
+            ],
+            [
                 'user_id' => '2',
                 'name' => 'paolo',
                 'email' => 'paolo.bianchi@gmail.com',
@@ -29,6 +35,12 @@ class MessagesSeeder extends Seeder
                 'user_id' => '3',
                 'name' => 'paolo',
                 'email' => 'paolo.bianchi@gmail.com',
+                'body' => 'Buongiorno dottore. Vorrei fare una visita specialistica con lei. La prossima settimana è disponibile?'
+            ],
+            [
+                'user_id' => '3',
+                'name' => 'guido',
+                'email' => 'guido.verdi@gmail.com',
                 'body' => 'Buongiorno dottore. Quando possiamo fissare un appuntamento per una visita di controllo?'
             ],
             [
@@ -39,6 +51,18 @@ class MessagesSeeder extends Seeder
             ],
             [
                 'user_id' => '4',
+                'name' => 'maria',
+                'email' => 'maria.berti@gmail.com',
+                'body' => 'Dottore dimenticavo: la prossima settimana io non sono disponibile. Per la settimana successiva lei ha disponibilità?'
+            ],
+            [
+                'user_id' => '5',
+                'name' => 'maria',
+                'email' => 'maria.berti@gmail.com',
+                'body' => 'Buongiorno dottore. Quando possiamo fissare un appuntamento per una visita di controllo?'
+            ],
+            [
+                'user_id' => '5',
                 'name' => 'maria',
                 'email' => 'maria.berti@gmail.com',
                 'body' => 'Dottore dimenticavo: la prossima settimana io non sono disponibile. Per la settimana successiva lei ha disponibilità?'
@@ -57,6 +81,12 @@ class MessagesSeeder extends Seeder
                 'name' => 'mario',
                 'email' => 'mario.rossi@gmail.com',
                 'body' => 'Salve dottore. Vorrei fissare una visita medica per la prossima settimana. Può indicarmi le sue disponibilità?'
+            ],
+            [
+                'user_id' => '6',
+                'name' => 'paolo',
+                'email' => 'paolo.bianchi@gmail.com',
+                'body' => 'Buongiorno dottore. Vorrei fare una visita specialistica con lei. La prossima settimana è disponibile?'
             ],
             [
                 'user_id' => '7',

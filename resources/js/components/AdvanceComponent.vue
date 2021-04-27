@@ -94,7 +94,11 @@
 
                 <!-- Mostriamo i risultati iniziali della ricerca effettuata nella homepage -->
 
-                <div class="strip-list" v-for="(doctor, index) in filteredResults" :key="index">
+                <div class="strip-list position-relative" v-for="(doctor, index) in filteredResults" :key="index">
+                    <div class="sponsored-doc position-absolute" v-if="doctor.sponsors.length > 0 && isSponsored(doctor)">
+                        <i class="fas fa-medal"></i> <span>Sponsorizzato</span>
+                    </div>
+
                     <div class="col-md-3 col-sm-4 align-self-center">
 
                         <div class="">
@@ -178,11 +182,23 @@
                 allPics[index].src = element.detail.pic;
             },
 
+            /* Verifichiamo che il medico abbia una sponsorizzazione in corso
+            per visualizzarlo all'inizio dei risultati, comparando i millisecondi correnti
+            con quelli della somma tra la creazione della sponsorship e la sua durata */
+            isSponsored: function(doctor) {
+                const today = Date.parse(new Date());
+
+                if(today <= Date.parse(doctor.sponsors[doctor.sponsors.length - 1].pivot['created_at']) + (doctor.sponsors[doctor.sponsors.length - 1].duration * 3600000)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            },
+
             // Parametri di ricerca iniziali
             initialFilters: function() {
 
                 // Convertiamo la data corrente in millisecondi UNIX
-                const today = Date.parse(new Date());
                 const byDepartment = [];
 
                 this.results.forEach(element => {
@@ -207,10 +223,7 @@
                 byDepartment.forEach(elem => {
                     if(elem.sponsors.length > 0) {
 
-                        /* Verifichiamo che il medico abbia una sponsorizzazione in corso
-                        per visualizzarlo all'inizio dei risultati, comparando i millisecondi correnti
-                        con quelli della somma tra la creazione della sponsorship e la sua durata */
-                        if(today <= (Date.parse(elem.sponsors[elem.sponsors.length - 1].pivot['created_at']) + (elem.sponsors[elem.sponsors.length - 1].duration * 3600000))) {
+                        if(this.isSponsored(elem)) {
                             sponsored.push(elem);
                         }
 

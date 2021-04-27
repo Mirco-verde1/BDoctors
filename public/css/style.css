@@ -16450,8 +16450,16 @@ a {
   background-color: #fff;
   padding: 15px;
   border-radius: 5px;
-  position: relative;
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
+}
+
+.sponsored-doc {
+  background-color: #7ad6bc;
+  color: white;
+  height: 30px;
+  border-radius: 5px;
+  top: 0;
+  right: 0;
 }
 
 .filters-navbar {
@@ -16936,8 +16944,12 @@ a {
   margin-bottom: 50px;
 }
 
+#dropin-container {
+  display: none;
+}
+
 .container-button-pay {
-  display: flex;
+  display: none;
   width: 100%;
 }
 .container-button-pay .button-pay {

@@ -2011,6 +2011,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2040,12 +2044,24 @@ __webpack_require__.r(__webpack_exports__);
       var allPics = document.getElementsByClassName('doctor-pic-dashboard');
       allPics[index].src = element.detail.pic;
     },
+
+    /* Verifichiamo che il medico abbia una sponsorizzazione in corso
+    per visualizzarlo all'inizio dei risultati, comparando i millisecondi correnti
+    con quelli della somma tra la creazione della sponsorship e la sua durata */
+    isSponsored: function isSponsored(doctor) {
+      var today = Date.parse(new Date());
+
+      if (today <= Date.parse(doctor.sponsors[doctor.sponsors.length - 1].pivot['created_at']) + doctor.sponsors[doctor.sponsors.length - 1].duration * 3600000) {
+        return true;
+      } else {
+        return false;
+      }
+    },
     // Parametri di ricerca iniziali
     initialFilters: function initialFilters() {
       var _this2 = this;
 
       // Convertiamo la data corrente in millisecondi UNIX
-      var today = Date.parse(new Date());
       var byDepartment = [];
       this.results.forEach(function (element) {
         /* Sostituiamo gli eventuali + derivanti dalla query string per poterla confrontare
@@ -2065,10 +2081,7 @@ __webpack_require__.r(__webpack_exports__);
       var notSponsored = [];
       byDepartment.forEach(function (elem) {
         if (elem.sponsors.length > 0) {
-          /* Verifichiamo che il medico abbia una sponsorizzazione in corso
-          per visualizzarlo all'inizio dei risultati, comparando i millisecondi correnti
-          con quelli della somma tra la creazione della sponsorship e la sua durata */
-          if (today <= Date.parse(elem.sponsors[elem.sponsors.length - 1].pivot['created_at']) + elem.sponsors[elem.sponsors.length - 1].duration * 3600000) {
+          if (_this2.isSponsored(elem)) {
             sponsored.push(elem);
           }
         } else {
@@ -38684,81 +38697,100 @@ var render = function() {
             : _vm._e(),
           _vm._v(" "),
           _vm._l(_vm.filteredResults, function(doctor, index) {
-            return _c("div", { key: index, staticClass: "strip-list" }, [
-              _c(
-                "div",
-                { staticClass: "col-md-3 col-sm-4 align-self-center" },
-                [
-                  _c("div", {}, [
-                    _c("b", [_vm._v("Recensioni:")]),
-                    _vm._v(" "),
-                    _c("span", [_vm._v(_vm._s(doctor.reviews.length))])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    [
-                      _vm._l(_vm.getVotesAverage(doctor), function(vote) {
-                        return _vm.getVotesAverage(doctor)
-                          ? _c("i", { staticClass: "fas fa-star" })
-                          : _vm._e()
-                      }),
-                      _vm._l(5 - _vm.getVotesAverage(doctor), function(vote) {
-                        return _c("i", { staticClass: "far fa-star" })
-                      })
-                    ],
-                    2
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "col-md-3 col-sm-4 align-self-center department"
-                },
-                _vm._l(doctor.departments, function(obj, index) {
-                  return _c("span", { key: index }, [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(obj.type) +
-                        _vm._s(
-                          index !== doctor.departments.length - 1 ? "," : ""
-                        ) +
-                        "\n                    "
+            return _c(
+              "div",
+              { key: index, staticClass: "strip-list position-relative" },
+              [
+                doctor.sponsors.length > 0 && _vm.isSponsored(doctor)
+                  ? _c(
+                      "div",
+                      { staticClass: "sponsored-doc position-absolute" },
+                      [
+                        _c("i", { staticClass: "fas fa-medal" }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Sponsorizzato")])
+                      ]
                     )
-                  ])
-                }),
-                0
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-md-3 col-sm-2 align-self-center" },
-                [
-                  _c("span", [
-                    _vm._v(_vm._s(doctor.name) + " " + _vm._s(doctor.lastname))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "doctor-pic-dashboard-container" }, [
-                _c("a", { attrs: { href: "doctor/" + doctor.id } }, [
-                  _c("img", {
-                    staticClass: "doctor-pic-dashboard",
-                    attrs: {
-                      src: "storage/" + doctor.detail.pic,
-                      alt: "profile pic"
-                    },
-                    on: {
-                      error: function($event) {
-                        return _vm.correctPicUrl(doctor, index)
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-3 col-sm-4 align-self-center" },
+                  [
+                    _c("div", {}, [
+                      _c("b", [_vm._v("Recensioni:")]),
+                      _vm._v(" "),
+                      _c("span", [_vm._v(_vm._s(doctor.reviews.length))])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      [
+                        _vm._l(_vm.getVotesAverage(doctor), function(vote) {
+                          return _vm.getVotesAverage(doctor)
+                            ? _c("i", { staticClass: "fas fa-star" })
+                            : _vm._e()
+                        }),
+                        _vm._l(5 - _vm.getVotesAverage(doctor), function(vote) {
+                          return _c("i", { staticClass: "far fa-star" })
+                        })
+                      ],
+                      2
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "col-md-3 col-sm-4 align-self-center department"
+                  },
+                  _vm._l(doctor.departments, function(obj, index) {
+                    return _c("span", { key: index }, [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(obj.type) +
+                          _vm._s(
+                            index !== doctor.departments.length - 1 ? "," : ""
+                          ) +
+                          "\n                    "
+                      )
+                    ])
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-3 col-sm-2 align-self-center" },
+                  [
+                    _c("span", [
+                      _vm._v(
+                        _vm._s(doctor.name) + " " + _vm._s(doctor.lastname)
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "doctor-pic-dashboard-container" }, [
+                  _c("a", { attrs: { href: "doctor/" + doctor.id } }, [
+                    _c("img", {
+                      staticClass: "doctor-pic-dashboard",
+                      attrs: {
+                        src: "storage/" + doctor.detail.pic,
+                        alt: "profile pic"
+                      },
+                      on: {
+                        error: function($event) {
+                          return _vm.correctPicUrl(doctor, index)
+                        }
                       }
-                    }
-                  })
+                    })
+                  ])
                 ])
-              ])
-            ])
+              ]
+            )
           })
         ],
         2

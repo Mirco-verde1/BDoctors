@@ -221,6 +221,7 @@
                 var dataV = {
                     labels: cDataV.label,
                     datasets: [{
+                        axis: 'y',
                         label: cDataV.label,
                         data: cDataV.data,
                         backgroundColor: [
@@ -248,6 +249,7 @@
                 //options
                 var optionsV = {
                     responsive: false,
+                    indexAxis: 'y',
                     title: {
                         display: true,
                         position: "top",
@@ -281,7 +283,7 @@
                 });
 
                 var chart3 = new Chart(ctx2, {
-                    type: "doughnut",
+                    type: "bar",
                     data: dataV,
                     options: optionsV
                 });

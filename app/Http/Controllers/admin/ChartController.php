@@ -52,16 +52,16 @@ class ChartController extends Controller
         $data1['chart1_data'] = json_encode($data1);
 
 
-        $record2 = DB::table('user_vote')->select(DB::raw("COUNT(*) as count"), DB::raw("DAYNAME(created_at) as day_name"), DB::raw("DAY(created_at) as day"))
-            ->where('created_at', '>', Carbon::today()->subDay(6))
-            ->where('user_id', '=', $user->id) 
-                ->groupBy('day_name', 'day')
-                ->orderBy('day')
+        $record2 = DB::table('user_vote')->select(DB::raw("COUNT(*) as count"), DB::raw("MONTHNAME(created_at) as month_name"), DB::raw("MONTH(created_at) as month"))
+            ->where('created_at', '>', Carbon::today()->subMonth(12))
+            ->where('user_id', '=', $user->id)
+                ->groupBy('month_name', 'month')
+                ->orderBy('month')
                 ->get();
 
         $data2 = [];
         foreach ($record2 as $row2) {
-            $data2['label'][] = $row2->day_name;
+            $data2['label'][] = $row2->month_name;
             $data2['data'][] = (int) $row2->count;
         }
 

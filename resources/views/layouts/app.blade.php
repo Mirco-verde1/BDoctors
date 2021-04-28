@@ -14,6 +14,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://cdn0.iconfinder.com/data/icons/medical-services-2-1/256/Doctor-512.png">
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{asset('css/app.css')}}">

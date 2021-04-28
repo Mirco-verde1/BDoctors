@@ -13,7 +13,7 @@
                         </ul>
                     </div>
                     <div class="col-xl-4 col-md-4 col-sm-4 col-12">
-                        <h6 class="mb-3 mb-lg-4 bold-text text-dark mt-sm-0 mt-5"><b>ADDRESS</b></h6>
+                        <h6 class="mb-3 mb-lg-4 bold-text text-dark mt-sm-0 mt-5"><b>INDIRIZZO</b></h6>
                         <p class="mb-1">605, RATAN ICON BUILDING</p>
                         <p>SEAWOODS SECTOR</p>
                     </div>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="col-xl-4 col-md-4 col-sm-4 col-auto order-2 align-self-end mt-3 ">
                         <h6 class="text-dark bold-text"><b>SOCIAL</b></h6>
-                        <p class="social text-muted mb-0 pb-0 bold-text">
+                        <p class=" text-muted mb-0 pb-0 bold-text">
                             <span>
                                 <a href="#"><i class="fab fa-facebook"></i></a>
                             </span>
@@ -49,10 +49,10 @@
                                 <a href="#"><i class="fab fa-linkedin"></i></a>
                             </span>
                             <span>
-                                <a href="#"><i class="fab fa-twitter-square"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
                             </span>
                             <span>
-                                <a href="#"><i class="fab fa-instagram-square"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
                             </span>
                         </p>
                     </div>

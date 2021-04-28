@@ -328,8 +328,10 @@ background-color: $body-bg;
 }
 
 .carousel-indicators {
+    display: none;
 
     @media screen and(max-width: 768px) {
+        display: inline-block;
         position: absolute;
         right: 0;
         bottom: 0;
@@ -346,7 +348,9 @@ background-color: $body-bg;
 }
 
 .carousel-indicators li {
+    display: none;
     @media screen and(max-width: 768px) {
+        display: inline-block;
         box-sizing: content-box;
         flex: 0 1 auto;
         width: 30px;
@@ -906,4 +910,5 @@ background-color: $body-bg;
 .invalid input:required:invalid {
   background: #BE4C54;
 }
+
 

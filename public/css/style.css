@@ -16560,8 +16560,12 @@ a {
   }
 }
 
+.carousel-indicators {
+  display: none;
+}
 @media screen and (max-width: 768px) {
   .carousel-indicators {
+    display: inline-block;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -16576,8 +16580,12 @@ a {
   }
 }
 
+.carousel-indicators li {
+  display: none;
+}
 @media screen and (max-width: 768px) {
   .carousel-indicators li {
+    display: inline-block;
     box-sizing: content-box;
     flex: 0 1 auto;
     width: 30px;

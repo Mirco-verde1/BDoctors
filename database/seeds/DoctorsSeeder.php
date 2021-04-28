@@ -136,7 +136,7 @@ class DoctorsSeeder extends Seeder
             $newUser->departments()->attach($user['department']);
 
             for ($i=0; $i < 120; $i++) {
-                $newUser->votes()->attach(getRandomFromArray($votes), ['created_at' => $faker->dateTimeInInterval('-11 months', '+11 months')]);
+                $newUser->votes()->attach(getRandomFromArray($votes), ['created_at' => $faker->dateTimeInInterval('-12 months', '+12 months')]);
             }
 
 

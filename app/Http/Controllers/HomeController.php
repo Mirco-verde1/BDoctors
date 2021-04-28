@@ -45,7 +45,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $users = User::all();
-        $reviews = Auth::user()->reviews()->orderBy('id', 'desc')->get();
+        $reviews = Auth::user()->reviews()->orderBy('created_at', 'desc')->get();
 
         return view('doctor_view.reviews', compact('user', 'users', 'reviews'));
     }
@@ -54,7 +54,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $users = User::all();
-        $messages = Auth::user()->messages()->orderBy('id', 'desc')->get();
+        $messages = Auth::user()->messages()->orderBy('created_at', 'desc')->get();
 
         return view('doctor_view.messages', compact('user', 'users', 'messages'));
     }

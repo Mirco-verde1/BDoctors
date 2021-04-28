@@ -22,7 +22,7 @@ class ChartController extends Controller
         $users = User::all();
 
         $record = Auth::user()->reviews()->select(DB::raw("COUNT(*) as count"), DB::raw("DAYNAME(created_at) as day_name"), DB::raw("DAY(created_at) as day"))
-        ->where('created_at', '>', Carbon::today()->subDay(6))
+        ->where('created_at', '>', Carbon::today()->subDay(7))
         ->groupBy('day_name', 'day')
         ->orderBy('day')
         ->get();
@@ -38,7 +38,7 @@ class ChartController extends Controller
 
 
         $record1 = Auth::user()->messages()->select(DB::raw("COUNT(*) as count"), DB::raw("DAYNAME(created_at) as day_name"), DB::raw("DAY(created_at) as day"))
-        ->where('created_at', '>', Carbon::today()->subDay(6))
+        ->where('created_at', '>', Carbon::today()->subDay(7))
             ->groupBy('day_name', 'day')
             ->orderBy('day')
             ->get();
@@ -53,7 +53,7 @@ class ChartController extends Controller
 
 
         $record2 = DB::table('user_vote')->select(DB::raw("COUNT(*) as count"), DB::raw("MONTHNAME(created_at) as month_name"), DB::raw("YEAR(created_at) as year"), DB::raw("MONTH(created_at) as month"))
-            ->where('created_at', '>', Carbon::today()->subMonth(11))
+            ->where('created_at', '>', Carbon::today()->subMonth(12))
             ->where('user_id', '=', $user->id)
                 ->groupBy('month_name', 'year', 'month')
                 ->orderBy('year')

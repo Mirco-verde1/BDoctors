@@ -39,7 +39,7 @@
 
                         <div class="box-review">
                             @if (count($user->reviews) > 0)
-                                @foreach ($user->reviews as $review)
+                                @foreach ($reviews as $review)
                                     <div class="container-review">
                                         <div class="header-review d-flex justify-content-between">
                                         <h5><b>{{$review->name}}</b></h5>

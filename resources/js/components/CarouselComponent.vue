@@ -33,7 +33,7 @@
                     <div class="row container d-flex flex-row p-2 flex-wrap">
 
                         <div class="card col-md-4 p-5 bd-highlight doctor-card"
-                            :class="(i === 1) ? 'clearfix d-none d-md-block' : ''"
+                            :class="(i === 1) ? 'clearfix d-md-block' : ''"
                             v-for="(doctor, ind) in carouselLoop(i, sponsored)">
 
                             <div class="doctor-pic-dashboard-container">

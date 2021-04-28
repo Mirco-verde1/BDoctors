@@ -39,7 +39,7 @@
 
                         <div class="box-review">
                             @if (count($user->messages) > 0)
-                                @foreach ($user->messages as $message)
+                                @foreach ($messages as $message)
                                     <div class="container-review">
                                         <div class="header-review d-flex justify-content-between">
                                             <span class="text-capitalize"><b>{{$message->name}}</b></span>

@@ -38948,7 +38948,7 @@ var render = function() {
                         {
                           staticClass:
                             "card col-md-4 p-5 bd-highlight doctor-card",
-                          class: i === 1 ? "clearfix d-none d-md-block" : ""
+                          class: i === 1 ? "clearfix d-md-block" : ""
                         },
                         [
                           _c(

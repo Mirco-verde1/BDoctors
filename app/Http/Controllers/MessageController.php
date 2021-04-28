@@ -41,9 +41,9 @@ class MessageController extends Controller
 
         $data = $request->validate([
 
-            'name' => 'required',
-            'email' => 'required',
-            'body' => 'required',
+            'guest_name' => 'required',
+            'guest_email' => 'required',
+            'content' => 'required',
 
         ]);
 
@@ -52,7 +52,7 @@ class MessageController extends Controller
 
         Message::create($data);
 
-        return redirect()->route('show.doctor',$id);
+        return redirect()->route('show.doctor', $id);
 
 
     }

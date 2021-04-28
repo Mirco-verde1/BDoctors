@@ -191,8 +191,8 @@
                                                                 <i class="fas fa-user prefix grey-text"></i>
                                                                 <label for="name" data-error="wrong"
                                                                 data-success="right"> Nome</label>
-                                                                    <input type="text" name="name" id="form34" placeholder="Nome"
-                                                                    class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}" required>
+                                                                    <input type="text" name="guest_name" id="form34" placeholder="Nome"
+                                                                    class="form-control {{ $errors->has('guest_name') ? 'is-invalid' : ''}}" required>
                                                                     <div class="invalid-tooltip">
                                                                         <span>Questo campo è obbligatorio.</span>
                                                                     </div>
@@ -202,8 +202,8 @@
                                                                 <i class="fas fa-envelope prefix grey-text"></i>
                                                                 <label for="email" data-error="wrong"
                                                                 data-success="right"> E-mail</label>
-                                                                <input type="email" name="email" id="form29" placeholder="Email"
-                                                                class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}" required>
+                                                                <input type="email" name="guest_email" id="form29" placeholder="Email"
+                                                                class="form-control {{ $errors->has('guest_email') ? 'is-invalid' : ''}}" required>
                                                                 <div class="invalid-tooltip">
                                                                     <span>Questo campo è obbligatorio.</span>
                                                                 </div>
@@ -214,8 +214,8 @@
                                                                 <i class="fas fa-pencil-alt"></i>
                                                                 <label for="body" data-error="wrong"
                                                                 data-success="right"> Messaggio</label>
-                                                                <textarea name="body" type="text" id="form8" placeholder="Messaggio"
-                                                                    class="md-textarea form-control {{ $errors->has('body') ? 'is-invalid' : ''}}" rows="4" required></textarea>
+                                                                <textarea name="content" type="text" id="form8" placeholder="Messaggio"
+                                                                    class="md-textarea form-control {{ $errors->has('content') ? 'is-invalid' : ''}}" rows="4" required></textarea>
                                                                 <div class="invalid-tooltip">
                                                                     <span>Questo campo è obbligatorio.</span>
                                                                 </div>

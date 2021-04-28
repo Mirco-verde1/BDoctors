@@ -16,185 +16,185 @@ class MessagesSeeder extends Seeder
         $messages = [
             [
                 'user_id' => '1',
-                'name' => 'mario',
-                'email' => 'mario.rossi@gmail.com',
-                'body' => 'Salve dottore. Vorrei fissare una visita medica per la prossima settimana. Può indicarmi le sue disponibilità?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'mario',
+                'guest_email' => 'mario.rossi@gmail.com',
+                'content' => 'Salve dottore. Vorrei fissare una visita medica per la prossima settimana. Può indicarmi le sue disponibilità?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '1',
-                'name' => 'paolo',
-                'email' => 'paolo.bianchi@gmail.com',
-                'body' => 'Buongiorno dottore. Vorrei fare una visita specialistica con lei. La prossima settimana è disponibile?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'paolo',
+                'guest_email' => 'paolo.bianchi@gmail.com',
+                'content' => 'Buongiorno dottore. Vorrei fare una visita specialistica con lei. La prossima settimana è disponibile?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '2',
-                'name' => 'mario',
-                'email' => 'mario.rossi@gmail.com',
-                'body' => 'Salve dottore. Vorrei fissare una visita medica per la prossima settimana. Può indicarmi le sue disponibilità?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'mario',
+                'guest_email' => 'mario.rossi@gmail.com',
+                'content' => 'Salve dottore. Vorrei fissare una visita medica per la prossima settimana. Può indicarmi le sue disponibilità?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '2',
-                'name' => 'paolo',
-                'email' => 'paolo.bianchi@gmail.com',
-                'body' => 'Buongiorno dottore. Vorrei fare una visita specialistica con lei. La prossima settimana è disponibile?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'paolo',
+                'guest_email' => 'paolo.bianchi@gmail.com',
+                'content' => 'Buongiorno dottore. Vorrei fare una visita specialistica con lei. La prossima settimana è disponibile?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '3',
-                'name' => 'paolo',
-                'email' => 'paolo.bianchi@gmail.com',
-                'body' => 'Buongiorno dottore. Vorrei fare una visita specialistica con lei. La prossima settimana è disponibile?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'paolo',
+                'guest_email' => 'paolo.bianchi@gmail.com',
+                'content' => 'Buongiorno dottore. Vorrei fare una visita specialistica con lei. La prossima settimana è disponibile?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '3',
-                'name' => 'guido',
-                'email' => 'guido.verdi@gmail.com',
-                'body' => 'Buongiorno dottore. Quando possiamo fissare un appuntamento per una visita di controllo?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'guido',
+                'guest_email' => 'guido.verdi@gmail.com',
+                'content' => 'Buongiorno dottore. Quando possiamo fissare un appuntamento per una visita di controllo?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '4',
-                'name' => 'maria',
-                'email' => 'maria.berti@gmail.com',
-                'body' => 'Buongiorno dottore. Quando possiamo fissare un appuntamento per una visita di controllo?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'maria',
+                'guest_email' => 'maria.berti@gmail.com',
+                'content' => 'Buongiorno dottore. Quando possiamo fissare un appuntamento per una visita di controllo?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '4',
-                'name' => 'maria',
-                'email' => 'maria.berti@gmail.com',
-                'body' => 'Dottore dimenticavo: la prossima settimana io non sono disponibile. Per la settimana successiva lei ha disponibilità?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'maria',
+                'guest_email' => 'maria.berti@gmail.com',
+                'content' => 'Dottore dimenticavo: la prossima settimana io non sono disponibile. Per la settimana successiva lei ha disponibilità?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '5',
-                'name' => 'maria',
-                'email' => 'maria.berti@gmail.com',
-                'body' => 'Buongiorno dottore. Quando possiamo fissare un appuntamento per una visita di controllo?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'maria',
+                'guest_email' => 'maria.berti@gmail.com',
+                'content' => 'Buongiorno dottore. Quando possiamo fissare un appuntamento per una visita di controllo?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '5',
-                'name' => 'maria',
-                'email' => 'maria.berti@gmail.com',
-                'body' => 'Dottore dimenticavo: la prossima settimana io non sono disponibile. Per la settimana successiva lei ha disponibilità?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'maria',
+                'guest_email' => 'maria.berti@gmail.com',
+                'content' => 'Dottore dimenticavo: la prossima settimana io non sono disponibile. Per la settimana successiva lei ha disponibilità?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '5',
-                'name' => 'anna',
-                'email' => 'anna.verdi@gmail.com',
-                'body' => 'Buonasera dottore. Se possibile vorrei fissare una visita presso il suo studio di Bologna per la prossima settimana',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'anna',
+                'guest_email' => 'anna.verdi@gmail.com',
+                'content' => 'Buonasera dottore. Se possibile vorrei fissare una visita presso il suo studio di Bologna per la prossima settimana',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '6',
-                'name' => 'mario',
-                'email' => 'mario.rossi@gmail.com',
-                'body' => 'Salve dottore. Vorrei fissare una visita medica per la prossima settimana. Può indicarmi le sue disponibilità?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'mario',
+                'guest_email' => 'mario.rossi@gmail.com',
+                'content' => 'Salve dottore. Vorrei fissare una visita medica per la prossima settimana. Può indicarmi le sue disponibilità?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '6',
-                'name' => 'paolo',
-                'email' => 'paolo.bianchi@gmail.com',
-                'body' => 'Buongiorno dottore. Vorrei fare una visita specialistica con lei. La prossima settimana è disponibile?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'paolo',
+                'guest_email' => 'paolo.bianchi@gmail.com',
+                'content' => 'Buongiorno dottore. Vorrei fare una visita specialistica con lei. La prossima settimana è disponibile?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '7',
-                'name' => 'mario',
-                'email' => 'mario.rossi@gmail.com',
-                'body' => 'Salve dottore. Vorrei fissare una visita medica per la prossima settimana. Può indicarmi le sue disponibilità?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'mario',
+                'guest_email' => 'mario.rossi@gmail.com',
+                'content' => 'Salve dottore. Vorrei fissare una visita medica per la prossima settimana. Può indicarmi le sue disponibilità?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '7',
-                'name' => 'paolo',
-                'email' => 'paolo.bianchi@gmail.com',
-                'body' => 'Buongiorno dottore. Vorrei fare una visita specialistica con lei. La prossima settimana è disponibile?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'paolo',
+                'guest_email' => 'paolo.bianchi@gmail.com',
+                'content' => 'Buongiorno dottore. Vorrei fare una visita specialistica con lei. La prossima settimana è disponibile?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '8',
-                'name' => 'mario',
-                'email' => 'mario.rossi@gmail.com',
-                'body' => 'Salve dottore. Vorrei fissare una visita medica per la prossima settimana. Può indicarmi le sue disponibilità?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'mario',
+                'guest_email' => 'mario.rossi@gmail.com',
+                'content' => 'Salve dottore. Vorrei fissare una visita medica per la prossima settimana. Può indicarmi le sue disponibilità?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '8',
-                'name' => 'paolo',
-                'email' => 'paolo.bianchi@gmail.com',
-                'body' => 'Buongiorno dottore. Quando possiamo fissare un appuntamento per una visita di controllo?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'paolo',
+                'guest_email' => 'paolo.bianchi@gmail.com',
+                'content' => 'Buongiorno dottore. Quando possiamo fissare un appuntamento per una visita di controllo?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '9',
-                'name' => 'maria',
-                'email' => 'maria.berti@gmail.com',
-                'body' => 'Buongiorno dottore. Quando possiamo fissare un appuntamento per una visita di controllo?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'maria',
+                'guest_email' => 'maria.berti@gmail.com',
+                'content' => 'Buongiorno dottore. Quando possiamo fissare un appuntamento per una visita di controllo?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '9',
-                'name' => 'maria',
-                'email' => 'maria.berti@gmail.com',
-                'body' => 'Dottore dimenticavo: la prossima settimana io non sono disponibile. Per la settimana successiva lei ha disponibilità?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'maria',
+                'guest_email' => 'maria.berti@gmail.com',
+                'content' => 'Dottore dimenticavo: la prossima settimana io non sono disponibile. Per la settimana successiva lei ha disponibilità?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '10',
-                'name' => 'anna',
-                'email' => 'anna.verdi@gmail.com',
-                'body' => 'Buonasera dottore. Se possibile vorrei fissare una visita presso il suo studio di Bologna per la prossima settimana',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'anna',
+                'guest_email' => 'anna.verdi@gmail.com',
+                'content' => 'Buonasera dottore. Se possibile vorrei fissare una visita presso il suo studio di Bologna per la prossima settimana',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '10',
-                'name' => 'maria',
-                'email' => 'maria.berti@gmail.com',
-                'body' => 'Buongiorno dottore. Quando possiamo fissare un appuntamento per una visita di controllo?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'maria',
+                'guest_email' => 'maria.berti@gmail.com',
+                'content' => 'Buongiorno dottore. Quando possiamo fissare un appuntamento per una visita di controllo?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '11',
-                'name' => 'maria',
-                'email' => 'maria.berti@gmail.com',
-                'body' => 'Buongiorno dottore. Quando possiamo fissare un appuntamento per una visita di controllo?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'maria',
+                'guest_email' => 'maria.berti@gmail.com',
+                'content' => 'Buongiorno dottore. Quando possiamo fissare un appuntamento per una visita di controllo?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '11',
-                'name' => 'maria',
-                'email' => 'maria.berti@gmail.com',
-                'body' => 'Dottore dimenticavo: la prossima settimana io non sono disponibile. Per la settimana successiva lei ha disponibilità?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'maria',
+                'guest_email' => 'maria.berti@gmail.com',
+                'content' => 'Dottore dimenticavo: la prossima settimana io non sono disponibile. Per la settimana successiva lei ha disponibilità?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '12',
-                'name' => 'mario',
-                'email' => 'mario.rossi@gmail.com',
-                'body' => 'Salve dottore. Vorrei fissare una visita medica per la prossima settimana. Può indicarmi le sue disponibilità?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'mario',
+                'guest_email' => 'mario.rossi@gmail.com',
+                'content' => 'Salve dottore. Vorrei fissare una visita medica per la prossima settimana. Può indicarmi le sue disponibilità?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '12',
-                'name' => 'paolo',
-                'email' => 'paolo.bianchi@gmail.com',
-                'body' => 'Buongiorno dottore. Vorrei fare una visita specialistica con lei. La prossima settimana è disponibile?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'paolo',
+                'guest_email' => 'paolo.bianchi@gmail.com',
+                'content' => 'Buongiorno dottore. Vorrei fare una visita specialistica con lei. La prossima settimana è disponibile?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
             [
                 'user_id' => '12',
-                'name' => 'paolo',
-                'email' => 'paolo.bianchi@gmail.com',
-                'body' => 'Buongiorno dottore. Quando possiamo fissare un appuntamento per una visita di controllo?',
-                'created_at' => $faker->dateTimeInInterval('-7 days', '+7 days')
+                'guest_name' => 'paolo',
+                'guest_email' => 'paolo.bianchi@gmail.com',
+                'content' => 'Buongiorno dottore. Quando possiamo fissare un appuntamento per una visita di controllo?',
+                'created_at' => $faker->dateTimeInInterval('-6 days', '+6 days')
             ],
 
         ];
@@ -203,9 +203,9 @@ class MessagesSeeder extends Seeder
             $newMessage = new Message();
 
             $newMessage->user_id = $message['user_id'];
-            $newMessage->name = $message['name'];
-            $newMessage->email = $message['email'];
-            $newMessage->body = $message['body'];
+            $newMessage->guest_name = $message['guest_name'];
+            $newMessage->guest_email = $message['guest_email'];
+            $newMessage->content = $message['content'];
             $newMessage->created_at = $message['created_at'];
 
             $newMessage->save();

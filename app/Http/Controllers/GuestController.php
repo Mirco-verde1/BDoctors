@@ -45,8 +45,14 @@ class GuestController extends Controller
         $reviews = Review::where('user_id', $id)->orderBy('created_at', 'desc')->paginate(5);
         $votes = Vote::all();
         $medicalServices = MedicalService::all();
+        $activeSponsor = $user->sponsors()->orderBy('id', 'desc')->first();
 
-        return view('showDoc', compact('user', 'votes', 'reviews', 'medicalServices'));
+        if ($activeSponsor != null ) {
+            $activeSponsor = $user->sponsors()->orderBy('id', 'desc')->first()->pivot;
+        }
+
+        $chosenSponsor = $user->sponsors()->orderBy('id', 'desc')->first();
+        return view('showDoc', compact('user', 'votes', 'reviews', 'activeSponsor', 'chosenSponsor', 'medicalServices'));
 
     }
 

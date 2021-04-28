@@ -66,7 +66,11 @@
                                     <div class="col-xl-6 col-lg-6 info centering">
 
                                         {{-- nome cognome dottore --}}
-                                        <h1>{{$user->name}} {{$user->lastname}}</h1>
+                                        @if(isset($activeSponsor) && \Carbon\Carbon::parse($activeSponsor['created_at'])->addHour($chosenSponsor->duration)->gte(\Carbon\Carbon::now()))
+                                          <h1>{{$user->name}} {{$user->lastname}}<i class="fas fa-medal fa-sm ml-2 icon-sponsorshow" alt="badge-sponsorizzazione"></i></h1>
+                                          @else
+                                          <h1>{{$user->name}} {{$user->lastname}}</h1>
+                                         @endif
 
                                         @foreach ($user->departments as $department)
                                             <h5 class="department">{{$department->type}}</h5>

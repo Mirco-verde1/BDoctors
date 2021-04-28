@@ -2,7 +2,6 @@
 
 use App\User;
 use App\UserDetail;
-use App\Department;
 use App\Vote;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -17,8 +16,6 @@ class DoctorsSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-
-        $departments = Department::all();
         $votes = Vote::all();
 
         function getRandomFromArray($array) {
@@ -33,7 +30,6 @@ class DoctorsSeeder extends Seeder
                 'email' => 'monaldo@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via Campi Flegrei, 17',
-                'vote' => getRandomFromArray($votes)
             ],
             [
                 'name' => 'Palmira',
@@ -42,7 +38,6 @@ class DoctorsSeeder extends Seeder
                 'email' => 'fallaci@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via Ponte In Valtellina, 2',
-                'vote' => getRandomFromArray($votes)
             ],
             [
                 'name' => 'Germano',
@@ -51,7 +46,6 @@ class DoctorsSeeder extends Seeder
                 'email' => 'nucci@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Piazza San Carlo, 13',
-                'vote' => getRandomFromArray($votes)
             ],
             [
                 'name' => 'Albina',
@@ -60,7 +54,6 @@ class DoctorsSeeder extends Seeder
                 'email' => 'giordano@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via Venezia, 56',
-                'vote' => getRandomFromArray($votes)
             ],
             [
                 'name' => 'Romilda',
@@ -69,7 +62,6 @@ class DoctorsSeeder extends Seeder
                 'email' => 'loduca@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via Catullo, 34',
-                'vote' => getRandomFromArray($votes)
             ],
             [
                 'name' => 'Carmela',
@@ -78,7 +70,6 @@ class DoctorsSeeder extends Seeder
                 'email' => 'carmela-amara@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via della Borgata, 44',
-                'vote' => getRandomFromArray($votes)
             ],
 
             [
@@ -88,7 +79,6 @@ class DoctorsSeeder extends Seeder
                 'email' => 'genovesi@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via del Caggio, 17',
-                'vote' => getRandomFromArray($votes)
             ],
             [
                 'name' => 'Albertino',
@@ -97,7 +87,6 @@ class DoctorsSeeder extends Seeder
                 'email' => 'milani@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Vicolo Cieco Fondachetto, 28',
-                'vote' => getRandomFromArray($votes)
             ],
             [
                 'name' => 'Domenico',
@@ -106,7 +95,6 @@ class DoctorsSeeder extends Seeder
                 'email' => 'ferri@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via Nuova Agnano, 53',
-                'vote' => getRandomFromArray($votes)
             ],
             [
                 'name' => 'Ausilia',
@@ -115,7 +103,6 @@ class DoctorsSeeder extends Seeder
                 'email' => 'trentini@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via Francesco Girardi, 133',
-                'vote' => getRandomFromArray($votes)
             ],
             [
                 'name' => 'Luce',
@@ -124,7 +111,6 @@ class DoctorsSeeder extends Seeder
                 'email' => 'mazzi@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via Antonio da Legnago, 24',
-                'vote' => getRandomFromArray($votes)
             ],
             [
                 'name' => 'Martina',
@@ -133,7 +119,6 @@ class DoctorsSeeder extends Seeder
                 'email' => 'gallo@bdoctors.it',
                 'password' => Hash::make("12345678"),
                 'address' => 'Via Matteo Schilizzi, 142',
-                'vote' => getRandomFromArray($votes)
             ]
         ];
 
@@ -151,7 +136,7 @@ class DoctorsSeeder extends Seeder
             $newUser->departments()->attach($user['department']);
 
             for ($i=0; $i < 120; $i++) {
-                $newUser->votes()->attach($user['vote']);
+                $newUser->votes()->attach(getRandomFromArray($votes), ['created_at' => $faker->dateTimeInInterval('-11 months', '+11 months')]);
             }
 
 

@@ -95,40 +95,41 @@
                 <!-- Mostriamo i risultati iniziali della ricerca effettuata nella homepage -->
 
                 <div class="strip-list position-relative" v-for="(doctor, index) in filteredResults" :key="index">
-                    <div class="sponsored-doc position-absolute" v-if="doctor.sponsors.length > 0 && isSponsored(doctor)">
-                        <i class="fas fa-medal"></i> <span>Sponsorizzato</span>
-                    </div>
+                    <a :href="`doctor/${doctor.id}`" class="doc-element">
+                        <div class="sponsored-doc position-absolute" v-if="doctor.sponsors.length > 0 && isSponsored(doctor)">
 
-                    <div class="col-md-3 col-sm-4 align-self-center">
-
-                        <div class="">
-                            <b>Recensioni:</b>
-                            <span>{{doctor.reviews.length}}</span>
+                            <i class="fas fa-medal"></i> <span>Sponsorizzato</span>
                         </div>
 
-                        <div>
-                            <i class="fas fa-star" v-for="vote in getVotesAverage(doctor)" v-if="getVotesAverage(doctor)"></i><i class="far fa-star" v-for="vote in (5 - getVotesAverage(doctor))"></i>
+                        <div class="col-md-3 col-sm-4 align-self-center">
+
+                            <div class="">
+                                <b>Recensioni:</b>
+                                <span>{{doctor.reviews.length}}</span>
+                            </div>
+
+                            <div>
+                                <i class="fas fa-star" v-for="vote in getVotesAverage(doctor)" v-if="getVotesAverage(doctor)"></i><i class="far fa-star" v-for="vote in (5 - getVotesAverage(doctor))"></i>
+                            </div>
+
                         </div>
 
-                    </div>
+                        <div class="col-md-3 col-sm-4 align-self-center department">
+                            <span v-for="(obj, index) in doctor.departments" :key="index">
 
-                    <div class="col-md-3 col-sm-4 align-self-center department">
-                        <span v-for="(obj, index) in doctor.departments" :key="index">
+                                <!-- Non mettiamo la virgola se è l'ultimo elemento della lista -->
+                                {{obj.type}}{{(index !== doctor.departments.length - 1) ? ',' : ''}}
+                            </span>
+                        </div>
 
-                            <!-- Non mettiamo la virgola se è l'ultimo elemento della lista -->
-                            {{obj.type}}{{(index !== doctor.departments.length - 1) ? ',' : ''}}
-                        </span>
-                    </div>
+                        <div class="col-md-3 col-sm-2 align-self-center doc-name">
+                            <span>{{doctor.name}} {{doctor.lastname}}</span>
+                        </div>
 
-                    <div class="col-md-3 col-sm-2 align-self-center">
-                        <span>{{doctor.name}} {{doctor.lastname}}</span>
-                    </div>
-
-                    <div class="doctor-pic-dashboard-container">
-                        <a :href="`doctor/${doctor.id}`">
+                        <div class="doctor-pic-dashboard-container">
                             <img @error="correctPicUrl(doctor, index)" class="doctor-pic-dashboard" :src="`storage/${doctor.detail.pic}`" alt="profile pic">
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </div>
 
             </div>

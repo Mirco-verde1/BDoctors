@@ -16442,7 +16442,7 @@ a {
   color: #38c172;
 }
 
-.strip-list {
+.strip-list .doc-element {
   display: flex;
   flex-flow: row-reverse;
   justify-content: space-around;
@@ -16451,15 +16451,22 @@ a {
   padding: 15px;
   border-radius: 5px;
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
+  text-decoration: none;
 }
-
-.sponsored-doc {
+.strip-list .doc-element:hover {
+  border: 2px solid #7ad6bc;
+  color: #1DB487;
+}
+.strip-list .doc-element .sponsored-doc {
   background-color: #7ad6bc;
   color: white;
   height: 30px;
   border-radius: 5px;
   top: 0;
   right: 0;
+}
+.strip-list .doc-element .doc-name {
+  color: #212529;
 }
 
 .filters-navbar {

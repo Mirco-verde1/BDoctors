@@ -2015,6 +2015,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -38701,94 +38702,112 @@ var render = function() {
               "div",
               { key: index, staticClass: "strip-list position-relative" },
               [
-                doctor.sponsors.length > 0 && _vm.isSponsored(doctor)
-                  ? _c(
-                      "div",
-                      { staticClass: "sponsored-doc position-absolute" },
-                      [
-                        _c("i", { staticClass: "fas fa-medal" }),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("Sponsorizzato")])
-                      ]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
                 _c(
-                  "div",
-                  { staticClass: "col-md-3 col-sm-4 align-self-center" },
+                  "a",
+                  {
+                    staticClass: "doc-element",
+                    attrs: { href: "doctor/" + doctor.id }
+                  },
                   [
-                    _c("div", {}, [
-                      _c("b", [_vm._v("Recensioni:")]),
-                      _vm._v(" "),
-                      _c("span", [_vm._v(_vm._s(doctor.reviews.length))])
-                    ]),
+                    doctor.sponsors.length > 0 && _vm.isSponsored(doctor)
+                      ? _c(
+                          "div",
+                          { staticClass: "sponsored-doc position-absolute" },
+                          [
+                            _c("i", { staticClass: "fas fa-medal" }),
+                            _vm._v(" "),
+                            _c("span", [_vm._v("Sponsorizzato")])
+                          ]
+                        )
+                      : _vm._e(),
                     _vm._v(" "),
                     _c(
                       "div",
+                      { staticClass: "col-md-3 col-sm-4 align-self-center" },
                       [
-                        _vm._l(_vm.getVotesAverage(doctor), function(vote) {
-                          return _vm.getVotesAverage(doctor)
-                            ? _c("i", { staticClass: "fas fa-star" })
-                            : _vm._e()
-                        }),
-                        _vm._l(5 - _vm.getVotesAverage(doctor), function(vote) {
-                          return _c("i", { staticClass: "far fa-star" })
+                        _c("div", {}, [
+                          _c("b", [_vm._v("Recensioni:")]),
+                          _vm._v(" "),
+                          _c("span", [_vm._v(_vm._s(doctor.reviews.length))])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          [
+                            _vm._l(_vm.getVotesAverage(doctor), function(vote) {
+                              return _vm.getVotesAverage(doctor)
+                                ? _c("i", { staticClass: "fas fa-star" })
+                                : _vm._e()
+                            }),
+                            _vm._l(5 - _vm.getVotesAverage(doctor), function(
+                              vote
+                            ) {
+                              return _c("i", { staticClass: "far fa-star" })
+                            })
+                          ],
+                          2
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "col-md-3 col-sm-4 align-self-center department"
+                      },
+                      _vm._l(doctor.departments, function(obj, index) {
+                        return _c("span", { key: index }, [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(obj.type) +
+                              _vm._s(
+                                index !== doctor.departments.length - 1
+                                  ? ","
+                                  : ""
+                              ) +
+                              "\n                        "
+                          )
+                        ])
+                      }),
+                      0
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "col-md-3 col-sm-2 align-self-center doc-name"
+                      },
+                      [
+                        _c("span", [
+                          _vm._v(
+                            _vm._s(doctor.name) + " " + _vm._s(doctor.lastname)
+                          )
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "doctor-pic-dashboard-container" },
+                      [
+                        _c("img", {
+                          staticClass: "doctor-pic-dashboard",
+                          attrs: {
+                            src: "storage/" + doctor.detail.pic,
+                            alt: "profile pic"
+                          },
+                          on: {
+                            error: function($event) {
+                              return _vm.correctPicUrl(doctor, index)
+                            }
+                          }
                         })
-                      ],
-                      2
+                      ]
                     )
                   ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "col-md-3 col-sm-4 align-self-center department"
-                  },
-                  _vm._l(doctor.departments, function(obj, index) {
-                    return _c("span", { key: index }, [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(obj.type) +
-                          _vm._s(
-                            index !== doctor.departments.length - 1 ? "," : ""
-                          ) +
-                          "\n                    "
-                      )
-                    ])
-                  }),
-                  0
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-md-3 col-sm-2 align-self-center" },
-                  [
-                    _c("span", [
-                      _vm._v(
-                        _vm._s(doctor.name) + " " + _vm._s(doctor.lastname)
-                      )
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "doctor-pic-dashboard-container" }, [
-                  _c("a", { attrs: { href: "doctor/" + doctor.id } }, [
-                    _c("img", {
-                      staticClass: "doctor-pic-dashboard",
-                      attrs: {
-                        src: "storage/" + doctor.detail.pic,
-                        alt: "profile pic"
-                      },
-                      on: {
-                        error: function($event) {
-                          return _vm.correctPicUrl(doctor, index)
-                        }
-                      }
-                    })
-                  ])
-                ])
+                )
               ]
             )
           })

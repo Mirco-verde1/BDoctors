@@ -42,12 +42,12 @@
                                 @foreach ($messages as $message)
                                     <div class="container-review">
                                         <div class="header-review d-flex justify-content-between">
-                                            <span class="text-capitalize"><b>{{$message->name}}</b></span>
+                                            <span class="text-capitalize"><b>{{$message->guest_name}}</b></span>
                                             <span><b>{{ \Carbon\Carbon::parse($message->created_at)->format('d/m/Y')}}</b></span>
                                         </div>
-                                        <h5 class="mt-4 mb-4">{{$message->body}}</h5>
-                                        <a href="mailto:{{$message->email}}" class="btn btn-navbar-toggler">
-                                            <span>Rispondi a <span class="text-capitalize">{{$message->name}}</span></span>
+                                        <h5 class="mt-4 mb-4">{{$message->content}}</h5>
+                                        <a href="mailto:{{$message->guest_email}}" class="btn btn-navbar-toggler">
+                                            <span>Rispondi a <span class="text-capitalize">{{$message->guest_name}}</span></span>
                                         </a>
                                     </div>
                                 @endforeach

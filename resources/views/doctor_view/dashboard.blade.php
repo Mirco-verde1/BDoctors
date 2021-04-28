@@ -204,9 +204,9 @@
                             @if(isset($message))
 
                                 <div>
-                                    <small class="text-muted text-capitalize d-block">Nome: {{$message->name}}</small>
-                                    <small class="text-muted">Email: {{$message->email}}</small>
-                                    <p class="margin-top-container">{{$message->body}}</p>
+                                    <small class="text-muted text-capitalize d-block">Nome: {{$message->guest_name}}</small>
+                                    <small class="text-muted">Email: {{$message->guest_email}}</small>
+                                    <p class="margin-top-container">{{$message->content}}</p>
                                 </div>
 
                             @else
@@ -218,8 +218,8 @@
                             @endif
                             @if (isset($message))
 
-                            <a href="mailto:{{$message->email}}" class="btn btn-navbar-toggler">
-                                <span>Rispondi a <span class="text-capitalize">{{$message->name}}</span></span>
+                            <a href="mailto:{{$message->user_email}}" class="btn btn-navbar-toggler">
+                                <span>Rispondi a <span class="text-capitalize">{{$message->guest_name}}</span></span>
                             </a>
                             @endif
                         </div>

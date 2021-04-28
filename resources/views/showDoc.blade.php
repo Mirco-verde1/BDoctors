@@ -63,13 +63,13 @@
                                 <div class="row">
 
                                     {{-- PARTE CENTRALE --}}
-                                    <div class="col-xl-6 col-lg-6 info centering">
+                                    <div class="col-xl-7 col-lg-7 info centering">
 
                                         {{-- nome cognome dottore --}}
                                         @if(isset($activeSponsor) && \Carbon\Carbon::parse($activeSponsor['created_at'])->addHour($chosenSponsor->duration)->gte(\Carbon\Carbon::now()))
-                                          <h1>{{$user->name}} {{$user->lastname}}<i class="fas fa-medal fa-sm ml-2 icon-sponsorshow" alt="badge-sponsorizzazione"></i></h1>
+                                          <div><h3 class="font-show">{{$user->name}} {{$user->lastname}}</h3><i class="fas fa-medal fa-lg ml-2 icon-sponsorshow" alt="badge-sponsorizzazione"></i></div>
                                           @else
-                                          <h1>{{$user->name}} {{$user->lastname}}</h1>
+                                          <div><h3 class="font-show">{{$user->name}} {{$user->lastname}}</h3></div>
                                          @endif
 
                                         @foreach ($user->departments as $department)
@@ -122,7 +122,7 @@
                                     </div>
 
                                     {{-- PARTE DESTRA --}}
-                                    <div class="col-xl-6 col-lg-6 centering">
+                                    <div class="col-xl-5 col-lg-5 centering">
 
                                         {{-- Servizi medici --}}
                                         <div class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog"

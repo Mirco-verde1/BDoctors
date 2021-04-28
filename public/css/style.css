@@ -16818,6 +16818,10 @@ a {
   font-weight: bold;
 }
 
+.font-show {
+  display: inline-block;
+}
+
 .cotainer-box1 {
   width: 100vw;
 }

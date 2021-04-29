@@ -218,7 +218,7 @@
                             @endif
                             @if (isset($message))
 
-                            <a href="mailto:{{$message->user_email}}" class="btn btn-navbar-toggler">
+                            <a href="mailto:{{$message->guest_email}}" class="btn btn-navbar-toggler">
                                 <span>Rispondi a <span class="text-capitalize">{{$message->guest_name}}</span></span>
                             </a>
                             @endif

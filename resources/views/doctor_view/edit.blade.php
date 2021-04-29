@@ -32,7 +32,7 @@
                 <div>
                     <ul>
                         <li class="active-nav">
-                            <b>My account</b>
+                            <b>Il mio profilo</b>
                         </li>
                     </ul>
                 </div>
@@ -63,12 +63,12 @@
                             </div>
                             {{-- name --}}
                             <div class="col-md-5 align-self-center">
-                                <label class="" for="name"><b>Name</b></label>
+                                <label class="" for="name"><b>Nome</b></label>
                                 <input type="text" name="name" id="name" class="form-control"
                                     placeholder="Insert your name" value="{{$user->name}}" required>
                                 <br>
                                 {{-- last name --}}
-                                <label class="" for="lastname"><b>Lastname</b></label>
+                                <label class="" for="lastname"><b>Cognome</b></label>
                                 <input type="text" name="lastname" id="lastname" class="form-control"
                                     placeholder="Insert your lastname" value="{{$user->lastname}}" required>
                                 <br>
@@ -78,7 +78,7 @@
 
                             {{-- address --}}
                             <div class="col-md-4">
-                                <label class="" for="address"><b>Address</b></label>
+                                <label class="" for="address"><b>Indirizzo</b></label>
                                 <input type="text" name="address" id="address" class="form-control"
                                     placeholder="Insert your address" value="{{$user->address}}" required>
                             </div>
@@ -93,7 +93,7 @@
                                             <br> --}}
                             {{-- phone --}}
                             <div class="col-md-4">
-                                <label class="" for="phone"><b>Phone</b></label>
+                                <label class="" for="phone"><b>Numero di telefono</b></label>
                                 <input type="text" name="phone" id="phone" class="form-control"
                                     placeholder="Insert your phone" value="{{$userDetail->phone}}">
                             </div>

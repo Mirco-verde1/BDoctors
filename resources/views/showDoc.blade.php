@@ -340,14 +340,14 @@
                 <div class="box-general">
                     <div class="profile">
                         <div class="">
-                            <form action="{{ route('review.store', [ 'user_id' => $user->id]) }}" method="post">
+                            <form class="needs-validation" action="{{ route('review.store', [ 'user_id' => $user->id]) }}" method="post" novalidate>
                                 @csrf
                                 @method('POST')
 
                                 <div class="form-group position-relative">
                                     <label for="name" class="form-label">Nome</label>
                                     <input class="form-control {{ $errors->has('name') ? 'is-invalid' : ''}}"
-                                        type="text" name="name" placeholder="Nome">
+                                        type="text" name="name" placeholder="Nome" required>
                                     <div class="invalid-tooltip">
                                         <span>Questo campo è obbligatorio.</span>
                                     </div>
@@ -356,7 +356,7 @@
                                 <div class="form-group position-relative mt-5">
                                     <label for="email">Email</label>
                                     <input class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}"
-                                        type="text" name="email" placeholder="Email">
+                                        type="text" name="email" placeholder="Email" required>
                                     <div class="invalid-tooltip">
                                         <span>Questo campo è obbligatorio.</span>
                                     </div>
@@ -365,7 +365,7 @@
                                 <div class="form-group position-relative mt-5">
                                     <label for="body">Testo </label>
                                     <textarea class="form-control {{ $errors->has('body') ? 'is-invalid' : ''}}"
-                                        type="text" name="body" placeholder="Testo" rows="6"></textarea>
+                                        type="text" name="body" placeholder="Testo" rows="6" required></textarea>
                                     <div class="invalid-tooltip">
                                         <span>Questo campo è obbligatorio.</span>
                                     </div>
